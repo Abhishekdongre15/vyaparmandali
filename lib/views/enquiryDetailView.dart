@@ -261,22 +261,12 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
     return SizedBox(
       width: double.infinity,
       height: 55,
-      child: ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(ReUseKit.getColor.primaryColor),
-          shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-          ),
-        ),
-        onPressed: () {
-          // Validate returns true if the form is valid, or false otherwise.
-          if (_formKey.currentState!.validate()) {
-            // ... Navigate To your Home Page
-          }
-        },
-        child: const Text('Submit Form'),
+      child: ReUseButton(onPressed: () {
+        // Validate returns true if the form is valid, or false otherwise.
+        if (_formKey.currentState!.validate()) {
+          // ... Navigate To your Home Page
+        }
+      }, title: 'Sumit Form',
       ),
     );
   }

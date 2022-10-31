@@ -6,6 +6,10 @@ import 'package:reusekit/reusekit.dart';
 import 'package:vyaparmandali/views/enquiryDetailView.dart';
 import '../constants.dart';
 import '../controller/simple_ui_controller.dart';
+import '../responsive/desktop_body.dart';
+import '../responsive/mobile_body.dart';
+import '../responsive/responsive_layout.dart';
+import '../responsive/tablet_body.dart';
 
 class HomeLoginView extends StatefulWidget {
   const HomeLoginView({Key? key}) : super(key: key);
@@ -273,28 +277,24 @@ class _HomeLoginViewState extends State<HomeLoginView> {
       ],
     );
   }
-
   // SignUp Button
   Widget signUpButton(ThemeData theme) {
     return SizedBox(
       width: double.infinity,
       height: 55,
-      child: ElevatedButton(
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(ReUseKit.getColor.primaryColor),
-          shape: MaterialStateProperty.all(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15),
-            ),
-          ),
-        ),
-        onPressed: () {
-          // Validate returns true if the form is valid, or false otherwise.
-          if (_formKey.currentState!.validate()) {
-            // ... Navigate To your Home Page
-          }
-        },
-        child: const Text('Login'),
+      child:ReUseButton(onPressed: () {
+        // Validate returns true if the form is valid, or false otherwise.
+        if (_formKey.currentState!.validate()) {
+          // ... Navigate To your Home Page
+          Navigator.push(context, MaterialPageRoute(builder: (context) {
+            return ResponsiveLayout(
+              mobileBody: const MobileScaffold(),
+              tabletBody: const TabletScaffold(),
+              desktopBody: const DesktopScaffold(),
+            );
+          },));
+        }
+      }, title: 'Login',
       ),
     );
   }
