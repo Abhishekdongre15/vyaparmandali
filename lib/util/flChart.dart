@@ -31,6 +31,7 @@ class PieChart2State extends State {
                 child: PieChart(
                   PieChartData(
                     pieTouchData: PieTouchData(
+
                       touchCallback: (FlTouchEvent event, pieTouchResponse) {
                         setState(() {
                           if (!event.isInterestedForInteractions ||
@@ -43,6 +44,7 @@ class PieChart2State extends State {
                               .touchedSection!.touchedSectionIndex;
                         });
                       },
+
                     ),
                     borderData: FlBorderData(
                       show: false,

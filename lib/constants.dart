@@ -2,6 +2,23 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:reusekit/reusekit_controller.dart';
 
+// Colors used in this app
+const primaryColor = Color.fromRGBO(17, 159, 250, 1);
+const secondaryColor = Colors.white;
+const bgColor = Color.fromRGBO(247, 251, 254, 1);
+const textColor = Colors.black;
+const lightTextColor = Colors.black26;
+const transparent = Colors.transparent;
+
+const grey = Color.fromRGBO(148, 170, 220, 1);
+const purple = Color.fromRGBO(165, 80, 179, 1);
+const orange = Color.fromRGBO(251, 137, 13, 1);
+const green = Color.fromRGBO(51, 173, 127, 1);
+const red = Colors.red;
+
+// Default App Padding
+const appPadding = 16.0;
+
 TextStyle kLoginTitleStyle(Size size) => GoogleFonts.ubuntu(
       fontSize: size.height * 0.060,
       fontWeight: FontWeight.bold,
@@ -29,18 +46,57 @@ TextStyle kLoginOrSignUpTextStyle(
 TextStyle kTextFormFieldStyle() => const TextStyle(color: Colors.black);
 
 var defaultBackgroundColor = Colors.grey[300];
-var appBarColor = ReUseKit.getColor.primaryColor;
+var appBarColor = ReUseKit.getColor.black;
 var myAppBar = AppBar(
   backgroundColor: appBarColor,
   title: const Text('VyaparMandali'),
   centerTitle: false,
+  leading: Builder(builder: (context) {
+    return IconButton(
+        onPressed: () {
+          Scaffold.of(context).openDrawer();
+        },
+        icon: Icon(
+          Icons.menu,
+          color: ReUseKit.getColor.white,
+        ));
+  }),
+  actions: [
+    IconButton(
+      onPressed: () {},
+      icon: Icon(
+        Icons.notifications,
+        color: ReUseKit.getColor.white,
+      ),
+    ),
+    IconButton(
+      onPressed: () {},
+      icon: Icon(
+        Icons.filter_center_focus,
+        color: ReUseKit.getColor.white,
+      ),
+    ),
+    CircleAvatar(
+      backgroundImage: NetworkImage('https://media.istockphoto.com/photos/millennial-male-team-leader-organize-virtual-workshop-with-employees-picture-id1300972574?b=1&k=20&m=1300972574&s=170667a&w=0&h=2nBGC7tr0kWIU8zRQ3dMg-C5JLo9H2sNUuDjQ5mlYfo='),
+    ),
+    IconButton(
+      onPressed: () {},
+      icon: Icon(
+        Icons.settings,
+        color: ReUseKit.getColor.white,
+      ),
+    ),
+    SizedBox(
+      width: 10,
+    ),
+  ],
 );
 var drawerTextColor = TextStyle(
   color: Colors.grey[600],
 );
 var tilePadding = const EdgeInsets.only(left: 8.0, right: 8, top: 8);
 var myDrawer = Drawer(
-  backgroundColor: Colors.grey[300],
+  backgroundColor: ReUseKit.getColor.white,
   elevation: 0,
   child: Column(
     children: [
