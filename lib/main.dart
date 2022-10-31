@@ -1,9 +1,10 @@
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:reusekit/reusekit.dart';
 import 'package:reusekit/utills/reuse_button_util.dart';
 import 'package:reusekit/utills/reuse_image_picker_util.dart';
 import 'package:reusekit/utills/reuse_theme_util.dart';
-import 'package:vyaparmandali/views/signUp_view.dart';
+import 'package:vyaparmandali/views/homeLoginView.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +14,7 @@ void main() {
       noInternetJson: "assets/no_internet_found.json",
       baseUrl: "base url here ",
       reUseColor: ReUseColor(
-          primaryColor: Colors.pink,
+          primaryColor: Colors.lightGreen,
           secondaryColor: ReUseKit.getColor.errorColor
       ),
 
@@ -47,12 +48,16 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-
-        primarySwatch: Colors.blue,
-      ),
-      home:  SignUpView(),
+      title: 'vyaparmandali',
+      theme: ReUseThemeProvider().getThemeData,
+      home:  HomeLoginView(),
     );
   }
+}
+class CustomScrollBehaviour extends MaterialScrollBehavior {
+  @override
+  Set<PointerDeviceKind> get dragDevices => {
+    PointerDeviceKind.touch,
+    PointerDeviceKind.mouse,
+  };
 }

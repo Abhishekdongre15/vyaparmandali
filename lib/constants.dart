@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:reusekit/reusekit_controller.dart';
 
 TextStyle kLoginTitleStyle(Size size) => GoogleFonts.ubuntu(
       fontSize: size.height * 0.060,
@@ -22,7 +23,7 @@ TextStyle kLoginOrSignUpTextStyle(
     GoogleFonts.ubuntu(
       fontSize: size.height * 0.022,
       fontWeight: FontWeight.w500,
-      color: Colors.deepPurpleAccent,
+      color: ReUseKit.getColor.primaryColor,
     );
 
 TextStyle kTextFormFieldStyle() => const TextStyle(color: Colors.black);

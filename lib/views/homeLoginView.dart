@@ -1,19 +1,20 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-
+import 'package:reusekit/reusekit.dart';
+import 'package:vyaparmandali/views/enquiryDetailView.dart';
 import '../constants.dart';
 import '../controller/simple_ui_controller.dart';
 
-class LoginView extends StatefulWidget {
-  const LoginView({Key? key}) : super(key: key);
+class HomeLoginView extends StatefulWidget {
+  const HomeLoginView({Key? key}) : super(key: key);
 
   @override
-  State<LoginView> createState() => _LoginViewState();
+  State<HomeLoginView> createState() => _HomeLoginViewState();
 }
 
-class _LoginViewState extends State<LoginView> {
+class _HomeLoginViewState extends State<HomeLoginView> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
@@ -28,33 +29,33 @@ class _LoginViewState extends State<LoginView> {
     super.dispose();
   }
 
+  SimpleUIController simpleUIController = Get.put(SimpleUIController());
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    SimpleUIController simpleUIController = Get.find<SimpleUIController>();
+    var theme = Theme.of(context);
+
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
-        backgroundColor: Colors.white,
-        resizeToAvoidBottomInset: false,
-        body: LayoutBuilder(
-          builder: (context, constraints) {
-            if (constraints.maxWidth > 600) {
-              return _buildLargeScreen(size, simpleUIController);
-            } else {
-              return _buildSmallScreen(size, simpleUIController);
-            }
-          },
-        ),
-      ),
+          backgroundColor: Colors.white,
+          resizeToAvoidBottomInset: false,
+          body: LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxWidth > 600) {
+                return _buildLargeScreen(size, simpleUIController, theme);
+              } else {
+                return _buildSmallScreen(size, simpleUIController, theme);
+              }
+            },
+          )),
     );
   }
 
   /// For large screens
   Widget _buildLargeScreen(
-    Size size,
-    SimpleUIController simpleUIController,
-  ) {
+      Size size, SimpleUIController simpleUIController, ThemeData theme) {
     return Row(
       children: [
         Expanded(
@@ -72,10 +73,7 @@ class _LoginViewState extends State<LoginView> {
         SizedBox(width: size.width * 0.06),
         Expanded(
           flex: 5,
-          child: _buildMainBody(
-            size,
-            simpleUIController,
-          ),
+          child: _buildMainBody(size, simpleUIController, theme),
         ),
       ],
     );
@@ -83,22 +81,15 @@ class _LoginViewState extends State<LoginView> {
 
   /// For Small screens
   Widget _buildSmallScreen(
-    Size size,
-    SimpleUIController simpleUIController,
-  ) {
+      Size size, SimpleUIController simpleUIController, ThemeData theme) {
     return Center(
-      child: _buildMainBody(
-        size,
-        simpleUIController,
-      ),
+      child: _buildMainBody(size, simpleUIController, theme),
     );
   }
 
   /// Main Body
   Widget _buildMainBody(
-    Size size,
-    SimpleUIController simpleUIController,
-  ) {
+      Size size, SimpleUIController simpleUIController, ThemeData theme) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       mainAxisAlignment:
@@ -118,7 +109,7 @@ class _LoginViewState extends State<LoginView> {
         Padding(
           padding: const EdgeInsets.only(left: 20.0),
           child: Text(
-            'Login',
+            'Log in',
             style: kLoginTitleStyle(size),
           ),
         ),
@@ -128,7 +119,7 @@ class _LoginViewState extends State<LoginView> {
         Padding(
           padding: const EdgeInsets.only(left: 20.0),
           child: Text(
-            'Welcome Back Catchy',
+            'Welcome Back',
             style: kLoginSubtitleStyle(size),
           ),
         ),
@@ -141,51 +132,55 @@ class _LoginViewState extends State<LoginView> {
             key: _formKey,
             child: Column(
               children: [
-                /// username or Gmail
-                TextFormField(
-                  style: kTextFormFieldStyle(),
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.person),
-                    hintText: 'Username or Gmail',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                  ),
-                  controller: nameController,
-                  // The validator receives the text that the user has entered.
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter username';
-                    } else if (value.length < 4) {
-                      return 'at least enter 4 characters';
-                    } else if (value.length > 13) {
-                      return 'maximum character is 13';
-                    }
-                    return null;
-                  },
-                ),
-                // SizedBox(
-                //   height: size.height * 0.02,
-                // ),
+                /// username
                 // TextFormField(
-                //   controller: emailController,
+                //   style: kTextFormFieldStyle(),
                 //   decoration: const InputDecoration(
-                //     prefixIcon: Icon(Icons.email_rounded),
-                //     hintText: 'gmail',
+                //     prefixIcon: Icon(Icons.person),
+                //     hintText: 'Username',
                 //     border: OutlineInputBorder(
                 //       borderRadius: BorderRadius.all(Radius.circular(15)),
                 //     ),
                 //   ),
+                //
+                //   controller: nameController,
                 //   // The validator receives the text that the user has entered.
                 //   validator: (value) {
                 //     if (value == null || value.isEmpty) {
-                //       return 'Please enter gmail';
-                //     } else if (!value.endsWith('@gmail.com')) {
-                //       return 'please enter valid gmail';
+                //       return 'Please enter username';
+                //     } else if (value.length < 4) {
+                //       return 'at least enter 4 characters';
+                //     } else if (value.length > 13) {
+                //       return 'maximum character is 13';
                 //     }
                 //     return null;
                 //   },
                 // ),
+                // SizedBox(
+                //   height: size.height * 0.02,
+                // ),
+
+                /// Gmail
+                TextFormField(
+                  style: kTextFormFieldStyle(),
+                  controller: emailController,
+                  decoration: const InputDecoration(
+                    prefixIcon: Icon(Icons.email_rounded),
+                    hintText: 'gmail',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(15)),
+                    ),
+                  ),
+                  // The validator receives the text that the user has entered.
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter gmail';
+                    } else if (!value.endsWith('@gmail.com')) {
+                      return 'please enter valid gmail';
+                    }
+                    return null;
+                  },
+                ),
                 SizedBox(
                   height: size.height * 0.02,
                 ),
@@ -238,8 +233,8 @@ class _LoginViewState extends State<LoginView> {
                   height: size.height * 0.02,
                 ),
 
-                /// Login Button
-                loginButton(),
+                /// SignUp Button
+                signUpButton(theme),
                 SizedBox(
                   height: size.height * 0.03,
                 ),
@@ -247,24 +242,26 @@ class _LoginViewState extends State<LoginView> {
                 /// Navigate To Login Screen
                 GestureDetector(
                   onTap: () {
-                    Navigator.pop(context);
+
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (ctx) => const EnquiryDetailView()));
                     nameController.clear();
                     emailController.clear();
                     passwordController.clear();
                     _formKey.currentState?.reset();
+
                     simpleUIController.isObscure.value = true;
                   },
                   child: RichText(
                     text: TextSpan(
-                      text: 'Don\'t have an account?',
+                      text: 'Need an Account?',
                       style: kHaveAnAccountStyle(size),
                       children: [
                         TextSpan(
-                          text: " Sign up",
-                          style: kLoginOrSignUpTextStyle(
-                            size,
-                          ),
-                        ),
+                            text: " Fill Form",
+                            style: kLoginOrSignUpTextStyle(size)),
                       ],
                     ),
                   ),
@@ -277,14 +274,14 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
-  // Login Button
-  Widget loginButton() {
+  // SignUp Button
+  Widget signUpButton(ThemeData theme) {
     return SizedBox(
       width: double.infinity,
       height: 55,
       child: ElevatedButton(
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Colors.orangeAccent),
+          backgroundColor: MaterialStateProperty.all(ReUseKit.getColor.primaryColor),
           shape: MaterialStateProperty.all(
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(15),
