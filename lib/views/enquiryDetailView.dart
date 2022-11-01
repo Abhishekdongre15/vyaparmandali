@@ -280,6 +280,7 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
 
                   ///Country Picker
                   CSCPicker(
+                    layout: Layout.vertical,
                     // defaultCountry: DefaultCountry.India,
                     dropdownDecoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(15)),

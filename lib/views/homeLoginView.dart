@@ -10,6 +10,7 @@ import '../responsive/desktop_body.dart';
 import '../responsive/mobile_body.dart';
 import '../responsive/responsive_layout.dart';
 import '../responsive/tablet_body.dart';
+import 'forgetPassword.dart';
 
 class HomeLoginView extends StatefulWidget {
   const HomeLoginView({Key? key}) : super(key: key);
@@ -246,7 +247,6 @@ class _HomeLoginViewState extends State<HomeLoginView> {
                 /// Navigate To Login Screen
                 GestureDetector(
                   onTap: () {
-
                     Navigator.push(
                         context,
                         CupertinoPageRoute(
@@ -270,6 +270,32 @@ class _HomeLoginViewState extends State<HomeLoginView> {
                     ),
                   ),
                 ),
+                SizedBox(height: 10,),
+                GestureDetector(
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        CupertinoPageRoute(
+                            builder: (ctx) =>  ForgetPassword()));
+                    nameController.clear();
+                    emailController.clear();
+                    passwordController.clear();
+                    _formKey.currentState?.reset();
+
+                    simpleUIController.isObscure.value = true;
+                  },
+                  child: RichText(
+                    text: TextSpan(
+                      text: 'Forget Your Password?',
+                      style: kHaveAnAccountStyle(size),
+                      children: [
+                        TextSpan(
+                            text: " Reset Here",
+                            style: kLoginOrSignUpTextStyle(size)),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -277,24 +303,29 @@ class _HomeLoginViewState extends State<HomeLoginView> {
       ],
     );
   }
+
   // SignUp Button
   Widget signUpButton(ThemeData theme) {
     return SizedBox(
       width: double.infinity,
       height: 55,
-      child:ReUseButton(onPressed: () {
-        // Validate returns true if the form is valid, or false otherwise.
-        if (_formKey.currentState!.validate()) {
-          // ... Navigate To your Home Page
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return ResponsiveLayout(
-              mobileBody: const MobileScaffold(),
-              tabletBody: const TabletScaffold(),
-              desktopBody: const DesktopScaffold(),
-            );
-          },));
-        }
-      }, title: 'Login',
+      child: ReUseButton(
+        onPressed: () {
+          // Validate returns true if the form is valid, or false otherwise.
+          if (_formKey.currentState!.validate()) {
+            // ... Navigate To your Home Page
+            Navigator.push(context, MaterialPageRoute(
+              builder: (context) {
+                return ResponsiveLayout(
+                  mobileBody: const MobileScaffold(),
+                  tabletBody: const TabletScaffold(),
+                  desktopBody: const DesktopScaffold(),
+                );
+              },
+            ));
+          }
+        },
+        title: 'Login',
       ),
     );
   }
