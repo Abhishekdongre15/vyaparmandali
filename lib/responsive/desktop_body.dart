@@ -14,18 +14,21 @@ class DesktopScaffold extends StatefulWidget {
 }
 
 class _DesktopScaffoldState extends State<DesktopScaffold> {
+
+  bool isVisible = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ReUseKit.getColor.white,
       appBar: myAppBar,
       // open drawer
-      drawer: myDrawer,
+      // drawer: myDrawer,
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+          myDrawer,
             // first half of page
             Expanded(
               flex: 2,
@@ -58,7 +61,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                           borderRadius: BorderRadius.circular(8),
                           color: Colors.grey[400],
                         ),
-                        child: LineChartSample2(),
+                        // child: LineChartSample2(),
                       ),
                     ),
                        // List View builder code
@@ -85,7 +88,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                         borderRadius: BorderRadius.circular(8),
                         color: Colors.grey[400],
                       ),
-                      child: PieChartSample2(),
+                      // child: PieChartSample2(),
                     ),
                   ),
                   // list of stuff

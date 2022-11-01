@@ -54,7 +54,7 @@ var myAppBar = AppBar(
   leading: Builder(builder: (context) {
     return IconButton(
         onPressed: () {
-          Scaffold.of(context).openDrawer();
+          Scaffold.of(context).closeDrawer();
         },
         icon: Icon(
           Icons.menu,

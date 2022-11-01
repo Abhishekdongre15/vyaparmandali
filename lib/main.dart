@@ -4,6 +4,10 @@ import 'package:reusekit/reusekit.dart';
 import 'package:reusekit/utills/reuse_button_util.dart';
 import 'package:reusekit/utills/reuse_image_picker_util.dart';
 import 'package:reusekit/utills/reuse_theme_util.dart';
+import 'package:vyaparmandali/responsive/desktop_body.dart';
+import 'package:vyaparmandali/responsive/mobile_body.dart';
+import 'package:vyaparmandali/responsive/responsive_layout.dart';
+import 'package:vyaparmandali/responsive/tablet_body.dart';
 import 'package:vyaparmandali/views/homeLoginView.dart';
 
 void main() {
@@ -51,7 +55,12 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'vyaparmandali',
       theme: ReUseThemeProvider().getThemeData,
-      home:  HomeLoginView(),
+      home: HomeLoginView(),
+      // ResponsiveLayout(
+      //   mobileBody: const MobileScaffold(),
+      //   tabletBody: const TabletScaffold(),
+      //   desktopBody: const DesktopScaffold(),
+      // ),
     );
   }
 }

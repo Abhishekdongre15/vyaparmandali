@@ -6,6 +6,7 @@ class MyBox extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8),
       child: Container(
+        child: Text('Random'),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: Colors.grey[400],
