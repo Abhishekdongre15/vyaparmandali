@@ -100,7 +100,7 @@ var myDrawer = Drawer(
           ],
         ),
       ),
-      DrawerList(rName: 'Master'),
+      DrawerList(rName: 'Master',cName: 'Codes'),
       DrawerList(rName: 'Data Entry'),
       DrawerList(rName: 'Report'),
       DrawerList(rName: 'balance'),
