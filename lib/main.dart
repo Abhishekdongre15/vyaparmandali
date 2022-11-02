@@ -55,12 +55,13 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'vyaparmandali',
       theme: ReUseThemeProvider().getThemeData,
-      home: HomeLoginView(),
-      // ResponsiveLayout(
-      //   mobileBody: const MobileScaffold(),
-      //   tabletBody: const TabletScaffold(),
-      //   desktopBody: const DesktopScaffold(),
-      // ),
+      home:
+      // HomeLoginView(),
+      ResponsiveLayout(
+        mobileBody: const MobileScaffold(),
+        tabletBody: const TabletScaffold(),
+        desktopBody: const DesktopScaffold(),
+      ),
     );
   }
 }

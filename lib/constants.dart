@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:reusekit/reusekit_controller.dart';
+import 'package:vyaparmandali/views/components/drawer_list.dart';
 
 // Colors used in this app
 const primaryColor = Color.fromRGBO(17, 159, 250, 1);
@@ -48,19 +49,9 @@ TextStyle kTextFormFieldStyle() => const TextStyle(color: Colors.black);
 var defaultBackgroundColor = Colors.grey[300];
 var appBarColor = ReUseKit.getColor.black;
 var myAppBar = AppBar(
-  backgroundColor: appBarColor,
+  backgroundColor: ReUseKit.getColor.primaryColor,
   title: const Text('VyaparMandali'),
   centerTitle: false,
-  leading: Builder(builder: (context) {
-    return IconButton(
-        onPressed: () {
-          Scaffold.of(context).closeDrawer();
-        },
-        icon: Icon(
-          Icons.menu,
-          color: ReUseKit.getColor.white,
-        ));
-  }),
   actions: [
     IconButton(
       onPressed: () {},
@@ -98,54 +89,22 @@ var tilePadding = const EdgeInsets.only(left: 8.0, right: 8, top: 8);
 var myDrawer = Drawer(
   backgroundColor: ReUseKit.getColor.white,
   elevation: 0,
-  child: Column(
+  child: ListView(
     children: [
       DrawerHeader(
-        child: Icon(
-          Icons.favorite,
-          size: 64,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Text('Menu',style: TextStyle(fontSize: 30),),
+          ],
         ),
       ),
-      Padding(
-        padding: tilePadding,
-        child: ListTile(
-          leading: Icon(Icons.home),
-          title: Text(
-            'D A S H B O A R D',
-            style: drawerTextColor,
-          ),
-        ),
-      ),
-      Padding(
-        padding: tilePadding,
-        child: ListTile(
-          leading: Icon(Icons.settings),
-          title: Text(
-            'S E T T I N G S',
-            style: drawerTextColor,
-          ),
-        ),
-      ),
-      Padding(
-        padding: tilePadding,
-        child: ListTile(
-          leading: Icon(Icons.info),
-          title: Text(
-            'A B O U T',
-            style: drawerTextColor,
-          ),
-        ),
-      ),
-      Padding(
-        padding: tilePadding,
-        child: ListTile(
-          leading: Icon(Icons.logout),
-          title: Text(
-            'L O G O U T',
-            style: drawerTextColor,
-          ),
-        ),
-      ),
+      DrawerList(rName: 'Master'),
+      DrawerList(rName: 'Data Entry'),
+      DrawerList(rName: 'Report'),
+      DrawerList(rName: 'balance'),
+      DrawerList(rName: 'utility'),
     ],
   ),
 );
