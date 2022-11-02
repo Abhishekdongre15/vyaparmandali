@@ -266,8 +266,8 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                     validator: (value) {
                       if (value == null || value.isEmpty) {
                         return 'Please enter the email';
-                      // } else if (!value.endsWith('.com')) {
-                      //   return 'please enter valid gmail';
+                        // } else if (!value.endsWith('.com')) {
+                        //   return 'please enter valid gmail';
                       } else if (value.length > 320) {
                         return 'maximum character is 320';
                       }
@@ -282,14 +282,20 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                   CSCPicker(
                     layout: Layout.vertical,
                     // defaultCountry: DefaultCountry.India,
-                    dropdownDecoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
                     flagState: CountryFlag.ENABLE,
                     onCountryChanged: (Country) {},
                     onStateChanged: (State) {},
                     onCityChanged: (City) {},
-                  ),
+                    dropdownDecoration: BoxDecoration(
+                      border: Border.all(color: ReUseKit.getColor.primaryColor, width: 1),
+                      borderRadius: BorderRadius.all(Radius.circular(15),),
+                      ),
+                    disabledDropdownDecoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        color: Colors.white,
+                        border:
+                        Border.all(color: Colors.grey.shade300, width: 1,)),
+                    ),
                   SizedBox(
                     height: size.height * 0.02,
                   ),
