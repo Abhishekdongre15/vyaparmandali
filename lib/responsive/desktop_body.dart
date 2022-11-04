@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:reusekit/reusekit_controller.dart';
+import 'package:vyaparmandali/views/components/light_sidebar.dart';
 import '../constants.dart';
-import '../util/flChart.dart';
-import '../util/lineChart.dart';
 import '../util/my_box.dart';
 import '../util/my_tile.dart';
 
@@ -14,7 +13,6 @@ class DesktopScaffold extends StatefulWidget {
 }
 
 class _DesktopScaffoldState extends State<DesktopScaffold> {
-
   bool isVisible = true;
   @override
   Widget build(BuildContext context) {
@@ -28,7 +26,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-          myDrawer,
+            myDrawer,
             // first half of page
             Expanded(
               flex: 2,
@@ -36,27 +34,36 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                 children: [
                   // first 4 boxes in grid
                   AspectRatio(
-                    aspectRatio: 4,
+                    aspectRatio: 3,
                     child: SizedBox(
                       width: double.infinity,
-                      child: GridView.builder(
-                        itemCount: 3,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3),
-                        itemBuilder: (context, index) {
-                          return MyBox();
-                        },
+                      child: GridView.count(
+                        crossAxisCount: 3,
+                        children: [
+                          LightSidebar(
+                              headName: 'Number of Sales',
+                              totalValue: '999',
+                              iconName: Icons.menu_open_outlined),
+                          LightSidebar(
+                              headName: 'Sales Revenue',
+                              totalValue: '999',
+                              iconName: Icons.shopify_outlined),
+                          LightSidebar(
+                            headName: 'Average Price',
+                            totalValue: '999',
+                            iconName: Icons.shopping_bag_rounded,
+                          ),
+                        ],
                       ),
                     ),
                   ),
 
                   // list of previous days
                   Expanded(
-                    child:  Padding(
+                    child: Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Container(
-                        height: MediaQuery.of(context).size.width*1,
+                        height: MediaQuery.of(context).size.width * 1,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
                           color: Colors.grey[400],
@@ -64,14 +71,13 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                         // child: LineChartSample2(),
                       ),
                     ),
-                       // List View builder code
+                    // List View builder code
                     // ListView.builder(
                     //   itemCount: 7,
                     //   itemBuilder: (context, index) {
                     //     return const MyTile();
                     //   },
                     // ),
-
                   ),
                 ],
               ),
