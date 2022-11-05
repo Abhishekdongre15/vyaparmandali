@@ -9,6 +9,7 @@ import 'package:vyaparmandali/responsive/mobile_body.dart';
 import 'package:vyaparmandali/responsive/responsive_layout.dart';
 import 'package:vyaparmandali/responsive/tablet_body.dart';
 import 'package:vyaparmandali/views/homeLoginView.dart';
+import 'package:vyaparmandali/views/profile_page.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,12 +57,13 @@ class MyApp extends StatelessWidget {
       title: 'vyaparmandali',
       theme: ReUseThemeProvider().getThemeData,
       home:
+        ProfilePage(),
       // HomeLoginView(),
-      ResponsiveLayout(
-        mobileBody: const MobileScaffold(),
-        tabletBody: const TabletScaffold(),
-        desktopBody: const DesktopScaffold(),
-      ),
+      // ResponsiveLayout(
+      //   mobileBody: const MobileScaffold(),
+      //   tabletBody: const TabletScaffold(),
+      //   desktopBody: const DesktopScaffold(),
+      // ),
     );
   }
 }
