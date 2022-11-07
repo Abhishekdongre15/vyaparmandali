@@ -11,6 +11,8 @@ import 'package:vyaparmandali/responsive/tablet_body.dart';
 import 'package:vyaparmandali/views/homeLoginView.dart';
 import 'package:vyaparmandali/views/profile_page.dart';
 
+import 'Widget/to_do_list.dart';
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   ReUseKit.initiate(
@@ -57,13 +59,12 @@ class MyApp extends StatelessWidget {
       title: 'vyaparmandali',
       theme: ReUseThemeProvider().getThemeData,
       home:
-        ProfilePage(),
-      // HomeLoginView(),
-      // ResponsiveLayout(
-      //   mobileBody: const MobileScaffold(),
-      //   tabletBody: const TabletScaffold(),
-      //   desktopBody: const DesktopScaffold(),
-      // ),
+      // ToDoView(),
+      ResponsiveLayout(
+        mobileBody: const MobileScaffold(),
+        tabletBody: const TabletScaffold(),
+        desktopBody: const DesktopScaffold(),
+      ),
     );
   }
 }

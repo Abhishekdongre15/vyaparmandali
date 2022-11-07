@@ -49,47 +49,6 @@ TextStyle kTextFormFieldStyle() => const TextStyle(color: Colors.black);
 
 var defaultBackgroundColor = Colors.grey[300];
 var appBarColor = ReUseKit.getColor.black;
-var myAppBar = AppBar(
-  backgroundColor: ReUseKit.getColor.primaryColor,
-  title: const Text('VyaparMandali'),
-  centerTitle: false,
-  actions: [
-    IconButton(
-      onPressed: () {
-
-      },
-      icon: Icon(
-        Icons.notifications,
-        color: ReUseKit.getColor.white,
-      ),
-    ),
-    IconButton(
-      onPressed: () {},
-      icon: Icon(
-        Icons.filter_center_focus,
-        color: ReUseKit.getColor.white,
-      ),
-    ),
-    InkWell(
-      // onTap: (ctx){
-      //   Navigator.push(ctx, MaterialPageRoute(builder: (ctx) => ProfilePage(),));
-      // },
-      child: CircleAvatar(
-        backgroundImage: NetworkImage('https://media.istockphoto.com/photos/millennial-male-team-leader-organize-virtual-workshop-with-employees-picture-id1300972574?b=1&k=20&m=1300972574&s=170667a&w=0&h=2nBGC7tr0kWIU8zRQ3dMg-C5JLo9H2sNUuDjQ5mlYfo='),
-      ),
-    ),
-    IconButton(
-      onPressed: () {},
-      icon: Icon(
-        Icons.settings,
-        color: ReUseKit.getColor.white,
-      ),
-    ),
-    SizedBox(
-      width: 10,
-    ),
-  ],
-);
 var drawerTextColor = TextStyle(
   color: Colors.grey[600],
 );
@@ -116,3 +75,51 @@ var myDrawer = Drawer(
     ],
   ),
 );
+class AppBarProfile extends StatelessWidget {
+  const AppBarProfile({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return  AppBar(
+      backgroundColor: ReUseKit.getColor.primaryColor,
+      title: const Text('VyaparMandali'),
+      centerTitle: false,
+      actions: [
+        IconButton(
+          onPressed: () {
+
+          },
+          icon: Icon(
+            Icons.notifications,
+            color: ReUseKit.getColor.white,
+          ),
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: Icon(
+            Icons.filter_center_focus,
+            color: ReUseKit.getColor.white,
+          ),
+        ),
+        InkWell(
+          onTap: (){
+           Navigator.push(context, MaterialPageRoute(builder: (context) => ProfilePage(),));
+          },
+          child: CircleAvatar(
+            backgroundImage: NetworkImage('https://media.istockphoto.com/photos/millennial-male-team-leader-organize-virtual-workshop-with-employees-picture-id1300972574?b=1&k=20&m=1300972574&s=170667a&w=0&h=2nBGC7tr0kWIU8zRQ3dMg-C5JLo9H2sNUuDjQ5mlYfo='),
+          ),
+        ),
+        IconButton(
+          onPressed: () {},
+          icon: Icon(
+            Icons.settings,
+            color: ReUseKit.getColor.white,
+          ),
+        ),
+        SizedBox(
+          width: 10,
+        ),
+      ],
+    );
+  }
+}

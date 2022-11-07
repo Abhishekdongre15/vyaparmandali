@@ -15,7 +15,7 @@ class _TabletScaffoldState extends State<TabletScaffold> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: defaultBackgroundColor,
-      appBar: myAppBar,
+      appBar: PreferredSize(child: AppBarProfile(), preferredSize:  Size.fromHeight(120),),
       drawer: myDrawer,
       body: Padding(
         padding: const EdgeInsets.all(8.0),

@@ -18,7 +18,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ReUseKit.getColor.white,
-      appBar: myAppBar,
+      appBar: PreferredSize(child: AppBarProfile(), preferredSize:  Size.fromHeight(120),),
       // open drawer
       // drawer: myDrawer,
       body: Padding(
@@ -66,7 +66,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                         height: MediaQuery.of(context).size.width * 1,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
-                          color: Colors.grey[400],
+                          color: ReUseKit.getColor.white,
                         ),
                         // child: LineChartSample2(),
                       ),
@@ -92,7 +92,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                       height: 400,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
-                        color: Colors.grey[400],
+                        color: ReUseKit.getColor.white,
                       ),
                       // child: PieChartSample2(),
                     ),
@@ -104,7 +104,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
-                          color: Colors.grey[200],
+                          color: ReUseKit.getColor.white,
                         ),
                       ),
                     ),
