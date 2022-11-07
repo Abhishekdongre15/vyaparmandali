@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reusekit/reusekit_controller.dart';
+import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/views/components/light_sidebar.dart';
 import '../constants.dart';
 import '../util/my_box.dart';
@@ -17,7 +17,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ReUseKit.getColor.white,
+      backgroundColor: ToolkitColors.white,
       appBar: PreferredSize(child: AppBarProfile(), preferredSize:  Size.fromHeight(120),),
       // open drawer
       // drawer: myDrawer,
@@ -66,7 +66,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                         height: MediaQuery.of(context).size.width * 1,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
-                          color: ReUseKit.getColor.white,
+                          color: ToolkitColors.white,
                         ),
                         // child: LineChartSample2(),
                       ),
@@ -92,7 +92,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                       height: 400,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(8),
-                        color: ReUseKit.getColor.white,
+                        color: ToolkitColors.white,
                       ),
                       // child: PieChartSample2(),
                     ),
@@ -104,7 +104,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
-                          color: ReUseKit.getColor.white,
+                          color: ToolkitColors.white,
                         ),
                       ),
                     ),

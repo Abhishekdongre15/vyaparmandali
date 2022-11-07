@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:reusekit/reusekit_controller.dart';
+import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/views/components/drawer_list.dart';
 import 'package:vyaparmandali/views/profile_page.dart';
 
@@ -42,19 +42,19 @@ TextStyle kLoginOrSignUpTextStyle(
     GoogleFonts.ubuntu(
       fontSize: size.height * 0.022,
       fontWeight: FontWeight.w500,
-      color: ReUseKit.getColor.primaryColor,
+      color:ToolkitColors.primary,
     );
 
 TextStyle kTextFormFieldStyle() => const TextStyle(color: Colors.black);
 
 var defaultBackgroundColor = Colors.grey[300];
-var appBarColor = ReUseKit.getColor.black;
+var appBarColor =ToolkitColors.black;
 var drawerTextColor = TextStyle(
   color: Colors.grey[600],
 );
 var tilePadding = const EdgeInsets.only(left: 8.0, right: 8, top: 8);
 var myDrawer = Drawer(
-  backgroundColor: ReUseKit.getColor.white,
+  backgroundColor: ToolkitColors.white,
   elevation: 0,
   child: ListView(
     children: [
@@ -81,7 +81,7 @@ class AppBarProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  AppBar(
-      backgroundColor: ReUseKit.getColor.primaryColor,
+      backgroundColor:ToolkitColors.primary,
       title: const Text('VyaparMandali'),
       centerTitle: false,
       actions: [
@@ -91,14 +91,14 @@ class AppBarProfile extends StatelessWidget {
           },
           icon: Icon(
             Icons.notifications,
-            color: ReUseKit.getColor.white,
+            color: ToolkitColors.white,
           ),
         ),
         IconButton(
           onPressed: () {},
           icon: Icon(
             Icons.filter_center_focus,
-            color: ReUseKit.getColor.white,
+            color: ToolkitColors.white,
           ),
         ),
         InkWell(
@@ -113,7 +113,7 @@ class AppBarProfile extends StatelessWidget {
           onPressed: () {},
           icon: Icon(
             Icons.settings,
-            color: ReUseKit.getColor.white,
+            color: ToolkitColors.white,
           ),
         ),
         SizedBox(

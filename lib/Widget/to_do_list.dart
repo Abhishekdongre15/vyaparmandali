@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reusekit/reusekit.dart';
+import 'package:uitoolkit/uitoolkit.dart';
 
 import '../Model/todo.dart';
 
@@ -16,7 +16,7 @@ class _ToDoViewState extends State<ToDoView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: ReUseKit.getColor.greyLight,
+      backgroundColor: ToolkitColors.greyLight,
       body: ListView(
         children: [
           for(ToDo todo in toDosList)
@@ -54,7 +54,7 @@ final  onToDoDelete;
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15),
         ),
-        tileColor: ReUseKit.getColor.white,
+        tileColor: ToolkitColors.white,
         leading: Icon(todo.isDone?
           Icons.check_box : Icons.check_box_outline_blank,
           color: Colors.purple,

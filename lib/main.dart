@@ -1,50 +1,14 @@
 import 'dart:ui';
+
 import 'package:flutter/material.dart';
-import 'package:reusekit/reusekit.dart';
-import 'package:reusekit/utills/reuse_button_util.dart';
-import 'package:reusekit/utills/reuse_image_picker_util.dart';
-import 'package:reusekit/utills/reuse_theme_util.dart';
+
 import 'package:vyaparmandali/responsive/desktop_body.dart';
 import 'package:vyaparmandali/responsive/mobile_body.dart';
 import 'package:vyaparmandali/responsive/responsive_layout.dart';
 import 'package:vyaparmandali/responsive/tablet_body.dart';
-import 'package:vyaparmandali/views/homeLoginView.dart';
-import 'package:vyaparmandali/views/profile_page.dart';
-
-import 'Widget/to_do_list.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  ReUseKit.initiate(
-      progressJson: "assets/progress_animation.json",
-      noDataFoundJson: "assets/no_data_found.json",
-      noInternetJson: "assets/no_internet_found.json",
-      baseUrl: "base url here ",
-      reUseColor: ReUseColor(
-          primaryColor: Colors.lightGreen,
-          secondaryColor: ReUseKit.getColor.errorColor
-      ),
-
-      primaryTextFieldUtil: ReUseTextFieldUtil(
-
-      ),
-      secondaryTextFieldUtil: ReUseTextFieldUtil(
-
-      ),
-      primaryButtonUtil: ReUseButtonUtil(
-      ),
-      secondaryButtonUtil: ReUseButtonUtil(
-      ),
-      imagePickerUtil: ReUseImagePickerUtil(
-
-      ),
-      textThemeUtil: ReUseTextThemeUtil(
-        // smallTextSize: 100
-      )
-
-
-
-  );
   runApp(const MyApp());
 }
 
@@ -56,8 +20,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'vyaparmandali',
-      theme: ReUseThemeProvider().getThemeData,
+      title: 'Vyapar Mandali',
       home:
       // ToDoView(),
       ResponsiveLayout(

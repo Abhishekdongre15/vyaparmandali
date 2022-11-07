@@ -1,8 +1,8 @@
-import 'package:flutter/material.dart';
 import 'package:csc_picker/csc_picker.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:reusekit/reusekit.dart';
+import 'package:uitoolkit/uitoolkit.dart';
 
 import '../constants.dart';
 import '../controller/simple_ui_controller.dart';
@@ -151,17 +151,18 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Expanded(
-                        child: ReUseTextField(
-                          textStyle: kTextFormFieldStyle(),
-                          decoration: const InputDecoration(
+                        child: UIToolkit.textFormField(
+                          hintText: 'First Name ',
+                          label: "First Name",
+
+                          /*     decoration: const InputDecoration(
                             // prefixIcon: Icon(Icons.person),
-                            hintText: 'First Name ',
-                            label: Text("First Name"),
                             border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15)),
                             ),
-                          ),
+                          ),*/
+
                           controller: firstNameController,
                           // The validator receives the text that the user has entered.
                           validator: (value) {
@@ -179,7 +180,7 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                       const SizedBox(
                         width: 10,
                       ),
-                      Expanded(
+                 /*     Expanded(
                         child: ReUseTextField(
                           textStyle: kTextFormFieldStyle(),
                           decoration: InputDecoration(
@@ -204,7 +205,7 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                             return null;
                           },
                         ),
-                      ),
+                      ),*/
                     ],
                   ),
                   SizedBox(
@@ -251,7 +252,7 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                   ),
 
                   /// email
-                  ReUseTextField(
+                /*  ReUseTextField(
                     textStyle: kTextFormFieldStyle(),
                     controller: emailController,
                     decoration: InputDecoration(
@@ -273,7 +274,7 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                       }
                       return null;
                     },
-                  ),
+                  ),*/
                   SizedBox(
                     height: size.height * 0.02,
                   ),
@@ -287,7 +288,7 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                     onStateChanged: (State) {},
                     onCityChanged: (City) {},
                     dropdownDecoration: BoxDecoration(
-                      border: Border.all(color: ReUseKit.getColor.primaryColor, width: 1),
+                      border: Border.all(color:ToolkitColors.primary, width: 1),
                       borderRadius: BorderRadius.all(Radius.circular(15),),
                       ),
                     disabledDropdownDecoration: BoxDecoration(
@@ -301,7 +302,7 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                   ),
 
                   /// Requirement
-                  ReUseTextField(
+                /*  ReUseTextField(
                     maxLine: 3,
                     textStyle: kTextFormFieldStyle(),
                     controller: requirementController,
@@ -319,7 +320,7 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                       }
                       return null;
                     },
-                  ),
+                  ),*/
                   SizedBox(
                     height: size.height * 0.02,
                   ),
@@ -369,14 +370,14 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
     return SizedBox(
       width: double.infinity,
       height: 55,
-      child: ReUseButton(
+      child:  UIToolkitButtons.primaryButton(
         onPressed: () {
           // Validate returns true if the form is valid, or false otherwise.
           if (_formKey.currentState!.validate()) {
             // ... Navigate To your Home Page
           }
         },
-        title: 'Submit Form',
+        text: 'Submit Form',
       ),
     );
   }

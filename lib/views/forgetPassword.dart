@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reusekit/reusekit.dart';
+import 'package:uitoolkit/uitoolkit.dart';
 class ForgetPassword extends StatefulWidget {
   const ForgetPassword({Key? key}) : super(key: key);
 
@@ -18,10 +18,10 @@ class _ForgetPasswordState extends State<ForgetPassword> {
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ReUseTextField(
+         /* UIToolkit.ReUseTextField(
             hintText: "Enter Otp",
-          ),
-          ReUseButton(onPressed: (){}, title: "Submit Otp")
+          ),*/
+          UIToolkitButtons.primaryButton(onPressed: (){}, text: "Submit Otp")
         ],
       ),
     );

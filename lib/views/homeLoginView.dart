@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
-import 'package:reusekit/reusekit.dart';
+import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/views/enquiryDetailView.dart';
 import '../constants.dart';
 import '../controller/simple_ui_controller.dart';
@@ -309,7 +309,7 @@ class _HomeLoginViewState extends State<HomeLoginView> {
     return SizedBox(
       width: double.infinity,
       height: 55,
-      child: ReUseButton(
+      child:  UIToolkitButtons.primaryButton(
         onPressed: () {
           // Validate returns true if the form is valid, or false otherwise.
           if (_formKey.currentState!.validate()) {
@@ -324,8 +324,8 @@ class _HomeLoginViewState extends State<HomeLoginView> {
               },
             ));
           }
-        },
-        title: 'Login',
+        }, text: 'Login',
+
       ),
     );
   }
