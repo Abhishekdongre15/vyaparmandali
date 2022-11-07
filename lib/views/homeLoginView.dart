@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/views/enquiryDetailView.dart';
+import 'package:vyaparmandali/views/enquiry_detail_view.dart';
 
 import '../constants.dart';
 import '../controller/simple_ui_controller.dart';
@@ -10,7 +10,7 @@ import '../responsive/desktop_body.dart';
 import '../responsive/mobile_body.dart';
 import '../responsive/responsive_layout.dart';
 import '../responsive/tablet_body.dart';
-import 'forgetPassword.dart';
+import 'forget_password.dart';
 
 class HomeLoginView extends StatefulWidget {
   const HomeLoginView({Key? key}) : super(key: key);

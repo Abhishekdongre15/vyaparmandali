@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
-import '../Model/todo.dart';
+import '../Model/todo_model.dart';
 
 class ToDoView extends StatefulWidget {
    ToDoView({Key? key}) : super(key: key);

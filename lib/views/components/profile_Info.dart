@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vyaparmandali/views/components/reusableButton.dart';
+import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/views/components/reusableText.dart';
 
 class ProfileInFo extends StatelessWidget {
@@ -23,8 +23,10 @@ class ProfileInFo extends StatelessWidget {
                 // SocialValue('Photos', 10),
                 // SocialValue('Comments', 86),
                 Spacer(flex: 10),
-                NormalButton(
-                    'Edit', Colors.white, '', Colors.white, Colors.teal[300]!),
+                UIToolkitButtons.primaryButton(
+                  text: 'Edit',
+                  onPressed: () {},
+                ),
                 Spacer(flex: 1),
               ],
             ),
@@ -64,7 +66,7 @@ class ProfileInFo extends StatelessWidget {
           Divider(height: 30, thickness: 1, color: Colors.grey[300]),
           NormalGreyText(data),
           SizedBox(height: 10),
-          TextButtons('Show more', Colors.green)
+          UIToolkitButtons.primaryButton(text: 'Show more', onPressed: () {})
         ],
       ),
     );

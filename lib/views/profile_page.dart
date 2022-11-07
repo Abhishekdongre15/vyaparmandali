@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vyaparmandali/responsive/responsive_layout.dart';
 
-import 'components/ProfileInfo.dart';
+import 'components/profile_Info.dart';
 
 class ProfilePage extends StatelessWidget {
   const ProfilePage({Key? key}) : super(key: key);
