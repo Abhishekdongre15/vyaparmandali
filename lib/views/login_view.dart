@@ -13,14 +13,14 @@ import '../responsive/responsive_layout.dart';
 import '../responsive/tablet_body.dart';
 import 'forget_password.dart';
 
-class HomeLoginView extends StatefulWidget {
-  const HomeLoginView({Key? key}) : super(key: key);
+class LoginView extends StatefulWidget {
+  const LoginView({Key? key}) : super(key: key);
 
   @override
-  State<HomeLoginView> createState() => _HomeLoginViewState();
+  State<LoginView> createState() => _LoginViewState();
 }
 
-class _HomeLoginViewState extends State<HomeLoginView> {
+class _LoginViewState extends State<LoginView> {
   TextEditingController nameController = TextEditingController();
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
