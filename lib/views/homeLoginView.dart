@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uitoolkit/uitoolkit.dart';
+import 'package:vyaparmandali/util/EmailValidator.dart';
 import 'package:vyaparmandali/views/enquiry_detail_view.dart';
 
 import '../constants.dart';
@@ -134,21 +135,18 @@ class _HomeLoginViewState extends State<HomeLoginView> {
                 children: [
                   UIToolkit.textFormField(
                     style: kTextFormFieldStyle()
-                        .copyWith(color: ToolkitColors.black),
+                        .copyWith(color: ToolkitColors.white),
                     controller: emailController,
                     hintStyle: ToolkitTypography.body1B
-                        .copyWith(color: ToolkitColors.black),
+                        .copyWith(color: ToolkitColors.white),
 
-                    hintText: 'Please Enter Email ID/Mobile Number',
+                    hintText: 'Please Enter Email ID',
 
                     // The validator receives the text that the user has entered.
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter Email ID/Mobile Number';
-                      } else if (!value.endsWith('@gmail.com')) {
-                        return 'please enter valid gmail';
-                      }
-                      return null;
+                    validator: (String? input) {
+                      return input!.isValidEmail()
+                          ? null
+                          : "Please enter proper email ID";
                     },
                   ),
                   SizedBox(
@@ -159,12 +157,13 @@ class _HomeLoginViewState extends State<HomeLoginView> {
                   Obx(
                     () {
                       return UIToolkit.textFormField(
-                        style: kTextFormFieldStyle(),
+                        style: kTextFormFieldStyle()
+                            .copyWith(color: ToolkitColors.white),
                         controller: passwordController,
                         obscureText: simpleUIController.isObscure.value,
                         hintText: 'Please Enter Password',
                         hintStyle: ToolkitTypography.body1B
-                            .copyWith(color: ToolkitColors.black),
+                            .copyWith(color: ToolkitColors.white),
                         validator: (value) {
                           if (value == null || value.isEmpty) {
                             return 'Please enter password';
@@ -173,7 +172,6 @@ class _HomeLoginViewState extends State<HomeLoginView> {
                           }
                           return null;
                         },
-
                       );
                     },
                   ),
