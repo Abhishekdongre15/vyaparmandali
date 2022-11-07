@@ -55,7 +55,9 @@ var myAppBar = AppBar(
   centerTitle: false,
   actions: [
     IconButton(
-      onPressed: () {},
+      onPressed: () {
+
+      },
       icon: Icon(
         Icons.notifications,
         color: ReUseKit.getColor.white,
