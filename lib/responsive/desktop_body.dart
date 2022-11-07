@@ -18,16 +18,14 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: ToolkitColors.white,
-      appBar: PreferredSize(child: AppBarProfile(), preferredSize:  Size.fromHeight(120),),
-      // open drawer
-      // drawer: myDrawer,
+      drawer: myDrawer,
+      appBar: PreferredSize(child: AppBarProfile(), preferredSize:  Size.fromHeight(52),),
+
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            myDrawer,
-            // first half of page
             Expanded(
               flex: 2,
               child: Column(

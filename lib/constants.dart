@@ -63,7 +63,25 @@ var myDrawer = Drawer(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            Text('Menu',style: TextStyle(fontSize: 30),),
+            Column(
+              children: const [
+                Align(
+                  alignment: Alignment.bottomCenter,
+                  child: CircleAvatar(
+                    radius: 40,
+                    backgroundImage: NetworkImage(
+                        'https://media.istockphoto.com/photos/millennial-male-team-leader-organize-virtual-workshop-with-employees-picture-id1300972574?b=1&k=20&m=1300972574&s=170667a&w=0&h=2nBGC7tr0kWIU8zRQ3dMg-C5JLo9H2sNUuDjQ5mlYfo='),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    'Shivam Pandey',
+                    style: TextStyle(fontSize: 20),
+                  ),
+                ),
+              ],
+            ),
           ],
         ),
       ),
@@ -81,14 +99,17 @@ class AppBarProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  AppBar(
-      backgroundColor:ToolkitColors.primary,
-      title: const Text('VyaparMandali'),
+      backgroundColor: ToolkitColors.primary,
+      title: Text(
+        "Vyapar Mandali",
+        style: ToolkitTypography.body2A.copyWith(
+          color: ToolkitColors.black,
+        ),
+      ),
       centerTitle: false,
       actions: [
         IconButton(
-          onPressed: () {
-
-          },
+          onPressed: () {},
           icon: Icon(
             Icons.notifications,
             color: ToolkitColors.white,
@@ -115,9 +136,6 @@ class AppBarProfile extends StatelessWidget {
             Icons.settings,
             color: ToolkitColors.white,
           ),
-        ),
-        SizedBox(
-          width: 10,
         ),
       ],
     );
