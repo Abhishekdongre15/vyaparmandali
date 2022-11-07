@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/views/enquiryDetailView.dart';
+
 import '../constants.dart';
 import '../controller/simple_ui_controller.dart';
 import '../responsive/desktop_body.dart';
@@ -49,9 +49,23 @@ class _HomeLoginViewState extends State<HomeLoginView> {
           body: LayoutBuilder(
             builder: (context, constraints) {
               if (constraints.maxWidth > 600) {
-                return _buildLargeScreen(size, simpleUIController, theme);
+                return Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/farm_background.jpg"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: _buildLargeScreen(size, simpleUIController, theme));
               } else {
-                return _buildSmallScreen(size, simpleUIController, theme);
+                return Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage("assets/images/farm_background.jpg"),
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    child: _buildSmallScreen(size, simpleUIController, theme));
               }
             },
           )),
@@ -61,27 +75,7 @@ class _HomeLoginViewState extends State<HomeLoginView> {
   /// For large screens
   Widget _buildLargeScreen(
       Size size, SimpleUIController simpleUIController, ThemeData theme) {
-    return Row(
-      children: [
-        Expanded(
-          flex: 4,
-          child: RotatedBox(
-            quarterTurns: 4,
-            child: Lottie.asset(
-              'assets/grocery.json',
-              height: size.height * 0.3,
-              width: double.infinity,
-              fit: BoxFit.fill,
-            ),
-          ),
-        ),
-        SizedBox(width: size.width * 0.06),
-        Expanded(
-          flex: 5,
-          child: _buildMainBody(size, simpleUIController, theme),
-        ),
-      ],
-    );
+    return Center(child: _buildMainBody(size, simpleUIController, theme));
   }
 
   /// For Small screens
@@ -95,212 +89,165 @@ class _HomeLoginViewState extends State<HomeLoginView> {
   /// Main Body
   Widget _buildMainBody(
       Size size, SimpleUIController simpleUIController, ThemeData theme) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment:
-          size.width > 600 ? MainAxisAlignment.center : MainAxisAlignment.start,
-      children: [
-        size.width > 600
-            ? Container()
-            : Lottie.asset(
-                'assets/farmer.json',
-                height: size.height * 0.2,
-                width: size.width,
-                fit: BoxFit.fill,
-              ),
-        SizedBox(
-          height: size.height * 0.03,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 20.0),
-          child: Text(
-            'Log in',
-            style: kLoginTitleStyle(size),
+    return Container(
+      width: size.width * 0.5,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.min,
+        mainAxisAlignment: size.width > 600
+            ? MainAxisAlignment.center
+            : MainAxisAlignment.start,
+        children: [
+          const Align(
+            alignment: Alignment.bottomCenter,
+            child: CircleAvatar(
+              radius: 80,
+              backgroundImage: NetworkImage(
+                  'https://media.istockphoto.com/photos/millennial-male-team-leader-organize-virtual-workshop-with-employees-picture-id1300972574?b=1&k=20&m=1300972574&s=170667a&w=0&h=2nBGC7tr0kWIU8zRQ3dMg-C5JLo9H2sNUuDjQ5mlYfo='),
+            ),
           ),
-        ),
-        const SizedBox(
-          height: 10,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 20.0),
-          child: Text(
-            'Welcome Back',
-            style: kLoginSubtitleStyle(size),
+          const SizedBox(
+            height: 10,
           ),
-        ),
-        SizedBox(
-          height: size.height * 0.03,
-        ),
-        Padding(
-          padding: const EdgeInsets.only(left: 20.0, right: 20),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                /// username
-                // TextFormField(
-                //   style: kTextFormFieldStyle(),
-                //   decoration: const InputDecoration(
-                //     prefixIcon: Icon(Icons.person),
-                //     hintText: 'Username',
-                //     border: OutlineInputBorder(
-                //       borderRadius: BorderRadius.all(Radius.circular(15)),
-                //     ),
-                //   ),
-                //
-                //   controller: nameController,
-                //   // The validator receives the text that the user has entered.
-                //   validator: (value) {
-                //     if (value == null || value.isEmpty) {
-                //       return 'Please enter username';
-                //     } else if (value.length < 4) {
-                //       return 'at least enter 4 characters';
-                //     } else if (value.length > 13) {
-                //       return 'maximum character is 13';
-                //     }
-                //     return null;
-                //   },
-                // ),
-                // SizedBox(
-                //   height: size.height * 0.02,
-                // ),
+          Padding(
+            padding: const EdgeInsets.only(left: 20.0),
+            child: Text(
+              'Welcome to,',
+              style: kLoginSubtitleStyle(size),
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 20.0),
+            child: Text(
+              'Vyapar Mandali',
+              style: kLoginTitleStyle(size),
+            ),
+          ),
+          SizedBox(
+            height: size.height * 0.03,
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 20.0, right: 20),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  UIToolkit.textFormField(
+                    style: kTextFormFieldStyle()
+                        .copyWith(color: ToolkitColors.black),
+                    controller: emailController,
+                    hintStyle: ToolkitTypography.body1B
+                        .copyWith(color: ToolkitColors.black),
 
-                /// Gmail
-                TextFormField(
-                  style: kTextFormFieldStyle(),
-                  controller: emailController,
-                  decoration: const InputDecoration(
-                    prefixIcon: Icon(Icons.email_rounded),
-                    hintText: 'gmail',
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.all(Radius.circular(15)),
-                    ),
-                  ),
-                  // The validator receives the text that the user has entered.
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter gmail';
-                    } else if (!value.endsWith('@gmail.com')) {
-                      return 'please enter valid gmail';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(
-                  height: size.height * 0.02,
-                ),
+                    hintText: 'Please Enter Email ID/Mobile Number',
 
-                /// password
-                Obx(
-                  () => TextFormField(
-                    style: kTextFormFieldStyle(),
-                    controller: passwordController,
-                    obscureText: simpleUIController.isObscure.value,
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.lock_open),
-                      suffixIcon: IconButton(
-                        icon: Icon(
-                          simpleUIController.isObscure.value
-                              ? Icons.visibility
-                              : Icons.visibility_off,
-                        ),
-                        onPressed: () {
-                          simpleUIController.isObscureActive();
-                        },
-                      ),
-                      hintText: 'Password',
-                      border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
-                      ),
-                    ),
                     // The validator receives the text that the user has entered.
                     validator: (value) {
                       if (value == null || value.isEmpty) {
-                        return 'Please enter some text';
-                      } else if (value.length < 7) {
-                        return 'at least enter 6 characters';
-                      } else if (value.length > 13) {
-                        return 'maximum character is 13';
+                        return 'Please enter Email ID/Mobile Number';
+                      } else if (!value.endsWith('@gmail.com')) {
+                        return 'please enter valid gmail';
                       }
                       return null;
                     },
                   ),
-                ),
-                SizedBox(
-                  height: size.height * 0.01,
-                ),
-                Text(
-                  'Creating an account means you\'re okay with our Terms of Services and our Privacy Policy',
-                  style: kLoginTermsAndPrivacyStyle(size),
-                  textAlign: TextAlign.center,
-                ),
-                SizedBox(
-                  height: size.height * 0.02,
-                ),
+                  SizedBox(
+                    height: size.height * 0.02,
+                  ),
 
-                /// SignUp Button
-                signUpButton(theme),
-                SizedBox(
-                  height: size.height * 0.03,
-                ),
+                  /// password
+                  Obx(
+                    () {
+                      return UIToolkit.textFormField(
+                        style: kTextFormFieldStyle(),
+                        controller: passwordController,
+                        obscureText: simpleUIController.isObscure.value,
+                        hintText: 'Please Enter Password',
+                        hintStyle: ToolkitTypography.body1B
+                            .copyWith(color: ToolkitColors.black),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Please enter password';
+                          } else if (value.length < 6) {
+                            return 'At least enter 6 characters';
+                          }
+                          return null;
+                        },
 
-                /// Navigate To Login Screen
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                            builder: (ctx) => const EnquiryDetailView()));
-                    nameController.clear();
-                    emailController.clear();
-                    passwordController.clear();
-                    _formKey.currentState?.reset();
+                      );
+                    },
+                  ),
+                  SizedBox(
+                    height: size.height * 0.01,
+                  ),
 
-                    simpleUIController.isObscure.value = true;
-                  },
-                  child: RichText(
-                    text: TextSpan(
-                      text: 'Need an Account?',
-                      style: kHaveAnAccountStyle(size),
-                      children: [
-                        TextSpan(
-                            text: " Fill Form",
-                            style: kLoginOrSignUpTextStyle(size)),
-                      ],
+                  signUpButton(theme),
+                  SizedBox(
+                    height: size.height * 0.03,
+                  ),
+
+                  /// Navigate To Login Screen
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (ctx) => const EnquiryDetailView()));
+                      nameController.clear();
+                      emailController.clear();
+                      passwordController.clear();
+                      _formKey.currentState?.reset();
+
+                      simpleUIController.isObscure.value = true;
+                    },
+                    child: RichText(
+                      text: TextSpan(
+                        text: 'Need an Account?',
+                        style: kHaveAnAccountStyle(size)
+                            .copyWith(color: ToolkitColors.white),
+                        children: [
+                          TextSpan(
+                              text: " Fill Form",
+                              style: kLoginOrSignUpTextStyle(size)),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-                SizedBox(height: 10,),
-                GestureDetector(
-                  onTap: () {
-                    Navigator.push(
-                        context,
-                        CupertinoPageRoute(
-                            builder: (ctx) =>  ForgetPassword()));
-                    nameController.clear();
-                    emailController.clear();
-                    passwordController.clear();
-                    _formKey.currentState?.reset();
+                  SizedBox(
+                    height: 10,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                          context,
+                          CupertinoPageRoute(
+                              builder: (ctx) => ForgetPassword()));
+                      nameController.clear();
+                      emailController.clear();
+                      passwordController.clear();
+                      _formKey.currentState?.reset();
 
-                    simpleUIController.isObscure.value = true;
-                  },
-                  child: RichText(
-                    text: TextSpan(
-                      text: 'Forget Your Password?',
-                      style: kHaveAnAccountStyle(size),
-                      children: [
-                        TextSpan(
-                            text: " Reset Here",
-                            style: kLoginOrSignUpTextStyle(size)),
-                      ],
+                      simpleUIController.isObscure.value = true;
+                    },
+                    child: RichText(
+                      text: TextSpan(
+                        text: 'Forget Your Password?',
+                        style: kHaveAnAccountStyle(size)
+                            .copyWith(color: ToolkitColors.white),
+                        children: [
+                          TextSpan(
+                              text: " Reset Here",
+                              style: kLoginOrSignUpTextStyle(size)),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

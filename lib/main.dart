@@ -6,6 +6,7 @@ import 'package:vyaparmandali/responsive/desktop_body.dart';
 import 'package:vyaparmandali/responsive/mobile_body.dart';
 import 'package:vyaparmandali/responsive/responsive_layout.dart';
 import 'package:vyaparmandali/responsive/tablet_body.dart';
+import 'package:vyaparmandali/views/homeLoginView.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,7 +27,7 @@ class MyApp extends StatelessWidget {
       ResponsiveLayout(
         mobileBody: const MobileScaffold(),
         tabletBody: const TabletScaffold(),
-        desktopBody: const DesktopScaffold(),
+        desktopBody: const HomeLoginView(),
       ),
     );
   }
