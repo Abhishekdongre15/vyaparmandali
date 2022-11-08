@@ -20,13 +20,13 @@ class _AddItemsViewState extends State<AddItemsView> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ToolkitColors.primary,
-        title: const Text("Add Item"),
+        title: Text("Add Item"),
         leading: GestureDetector(child: Icon(Icons.arrow_back,),
         onTap: (){
           Navigator.of(context).pop();
       },),
       ),
-      child: Container(
+      body: Container(
         height: MediaQuery.of(context).size.width * 1,
         width: double.infinity,
         decoration: BoxDecoration(
