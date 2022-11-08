@@ -20,16 +20,16 @@ class _TabletScaffoldState extends State<TabletScaffold> {
 
     return Scaffold(
       backgroundColor: defaultBackgroundColor,
-      appBar: PreferredSize(
-        child: AppBarProfile(),
+      appBar: const PreferredSize(
         preferredSize: Size.fromHeight(120),
+        child: AppBarProfile(),
       ),
       drawer: Drawer(
         backgroundColor: ToolkitColors.white,
         elevation: 0,
         child: ListView(padding: EdgeInsets.zero, children: <Widget>[
-          Container(
-            height: size!.height * 0.25,
+          SizedBox(
+            height: size.height * 0.25,
             child: DrawerHeader(
               child: Column(
                 children: const [

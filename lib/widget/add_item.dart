@@ -1,17 +1,30 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
-class AddItems extends StatelessWidget {
-  AddItems({Key? key}) : super(key: key);
+class AddItemsView extends StatefulWidget {
+  const AddItemsView({Key? key}) : super(key: key);
+
+  @override
+  State<AddItemsView> createState() => _AddItemsViewState();
+}
+
+class _AddItemsViewState extends State<AddItemsView> {
   TextEditingController codeController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController rateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
+    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ToolkitColors.primary,
+        title: Text("Add Item"),
+        leading: GestureDetector(child: Icon(Icons.arrow_back,),
+        onTap: (){
+          Navigator.of(context).pop();
+      },),
       ),
       body: Container(
         height: MediaQuery.of(context).size.width * 1,
@@ -21,56 +34,66 @@ class AddItems extends StatelessWidget {
           color: ToolkitColors.whiteBackground,
         ),
         child: Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              height: MediaQuery.of(context).size.height*0.5,
-              width: MediaQuery.of(context).size.width*0.5,
+              height: MediaQuery.of(context).size.height * 0.4,
+              width: MediaQuery.of(context).size.width * 0.5,
               child: Form(
                 child: Column(
                   children: [
-                    UIToolkit.textFormField(
-                      hintText: "Code no",
-                      label: "Code no",
-                      controller: codeController,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: UIToolkit.textFormField(
+                        hintText: "Code no",
+                        label: "Code no",
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.singleLineFormatter,
+                          FilteringTextInputFormatter.digitsOnly,
+                        ], // O
+                        controller: codeController,
+                      ),
                     ),
-                    UIToolkit.textFormField(
-                      hintText: "Product Name",
-                      label: "Product Name",
-                      controller: nameController,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: UIToolkit.textFormField(
+                        hintText: "Product Name",
+                        label: "Product Name",
+                        controller: nameController,
+                      ),
                     ),
-                    UIToolkit.textFormField(
-                      hintText: "Rate",
-                      label: "Rate",
-                      controller: rateController,
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: UIToolkit.textFormField(
+                        hintText: "Rate(KG)",
+                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
+
+                        inputFormatters: <TextInputFormatter>[
+                          FilteringTextInputFormatter.singleLineFormatter,
+                          FilteringTextInputFormatter.digitsOnly,
+                        ], // O
+                        label: "Rate(KG)",
+                        controller: rateController,
+                      ),
                     ),
                   ],
                 ),
               ),
             ),
-            submitAddButton(context),
+            UIToolkitButtons.primaryButton(
+              onPressed: () {
+                // Validate returns true if the form is valid, or false otherwise.
+                // if (_formKey.currentState!.validate()) {
+                //   // ... Navigate To your Home Page
+                // }
+              },
+              text: 'Submit',
+            ),
           ],
         ),
       ),
-    );
-
-  }
-
-  Widget submitAddButton(context) {
-    return Builder(
-      builder: (BuildContext context) { return SizedBox(
-        width: MediaQuery.of(context).size.width*0.5,
-        height: 55,
-        child:  UIToolkitButtons.primaryButton(
-          onPressed: () {
-            // Validate returns true if the form is valid, or false otherwise.
-            // if (_formKey.currentState!.validate()) {
-            //   // ... Navigate To your Home Page
-            // }
-          },
-          text: 'Submit',
-        ),
-      ); },
-
     );
   }
 }

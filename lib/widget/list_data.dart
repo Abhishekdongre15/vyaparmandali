@@ -86,7 +86,7 @@ class ListDataViewState extends State<ListDataView> {
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => AddItems()));
+                context, MaterialPageRoute(builder: (context) => const AddItemsView()));
           },
           child: const Icon(Icons.add)),
     );

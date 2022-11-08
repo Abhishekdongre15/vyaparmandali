@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/views/components/reusableText.dart';
 
-class ProfileInFo extends StatelessWidget {
+class ProfileInfoView extends StatelessWidget {
   String data =
       'An artist of considerable range, Jenna the name taken by Melbourne-raised, Brooklyn-based Nick Murphy writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure. An artist of considerable range.';
 
@@ -31,7 +30,10 @@ class ProfileInFo extends StatelessWidget {
               ],
             ),
           ),
-          SizedBox(height: 50), LargeBoldTextBlack('Shivam Pandey'),
+          SizedBox(height: 50),
+          Text('Shivam Pandey',
+              style: ToolkitTypography.displayMedium
+                  .copyWith(color: ToolkitColors.black)),
           SizedBox(height: 10),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -39,7 +41,9 @@ class ProfileInFo extends StatelessWidget {
             children: [
               Icon(Icons.phone, size: 20, color: Colors.grey[400]),
               SizedBox(width: 5),
-              NormalGreyText('9990009900'),
+              Text('9990009900',
+                  style: ToolkitTypography.body1A
+                      .copyWith(color: ToolkitColors.greyDark)),
             ],
           ),
           SizedBox(height: 30),
@@ -49,7 +53,9 @@ class ProfileInFo extends StatelessWidget {
             children: [
               Icon(Icons.email, size: 20, color: Colors.grey[400]),
               SizedBox(width: 5),
-              NormalGreyText('Random123@gmail.com'),
+              Text('Random123@gmail.com',
+                  style: ToolkitTypography.body1A
+                      .copyWith(color: ToolkitColors.greyDark)),
             ],
           ),
           SizedBox(height: 10),
@@ -59,12 +65,17 @@ class ProfileInFo extends StatelessWidget {
             children: [
               Icon(Icons.location_pin, size: 20, color: Colors.grey[400]),
               SizedBox(width: 5),
-              NormalGreyText('Delhi - Ali vihar'),
+              Text('Delhi - Ali vihar',
+                  style: ToolkitTypography.body1A
+                      .copyWith(color: ToolkitColors.greyDark)),
             ],
           ),
+
           /// description
           Divider(height: 30, thickness: 1, color: Colors.grey[300]),
-          NormalGreyText(data),
+          Text(data,
+              style: ToolkitTypography.body1A
+                  .copyWith(color: ToolkitColors.greyDark)),
           SizedBox(height: 10),
           UIToolkitButtons.primaryButton(text: 'Show more', onPressed: () {})
         ],

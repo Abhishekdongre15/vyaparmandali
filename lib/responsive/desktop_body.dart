@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/views/components/light_sidebar.dart';
 import '../constants.dart';
-import '../util/my_box.dart';
-import '../util/my_tile.dart';
 import '../views/components/drawer_list.dart';
 
 class DesktopScaffold extends StatefulWidget {
@@ -26,8 +24,8 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
         backgroundColor: ToolkitColors.white,
         elevation: 0,
         child: ListView(padding: EdgeInsets.zero, children: <Widget>[
-          Container(
-            height:  size!.height * 0.25,
+          SizedBox(
+            height:  size.height * 0.25,
 
             child: DrawerHeader(
               child: Column(
@@ -48,15 +46,15 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
               ),
             ),
           ),
-          Container(
-            height:  size!.height * 0.75,
+          SizedBox(
+            height:  size.height * 0.75,
             child: DrawerList(
               entry: data,
             ),
           ),
         ]),
       ),
-      appBar: PreferredSize(child: AppBarProfile(), preferredSize:  Size.fromHeight(52),),
+      appBar: const PreferredSize(preferredSize:  Size.fromHeight(52),child: AppBarProfile(),),
 
       body: Padding(
         padding: const EdgeInsets.all(8.0),

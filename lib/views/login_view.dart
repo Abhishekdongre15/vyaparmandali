@@ -207,7 +207,7 @@ class _LoginViewState extends State<LoginView> {
                       Navigator.push(
                           context,
                           CupertinoPageRoute(
-                              builder: (ctx) => ForgetPassword()));
+                              builder: (ctx) => ForgetPasswordView()));
                       nameController.clear();
                       emailController.clear();
                       passwordController.clear();
