@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       ResponsiveLayout(
         mobileBody: const LoginView(),
         tabletBody: const LoginView(),
-        desktopBody: const ListData(),
+        desktopBody: const DesktopScaffold(),
       ),
     );
   }

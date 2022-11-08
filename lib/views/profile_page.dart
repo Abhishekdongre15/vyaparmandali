@@ -42,9 +42,7 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
             ],
-          ),
-
-        ],
+          ),],
       )),
     );
   }

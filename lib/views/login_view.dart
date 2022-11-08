@@ -138,11 +138,7 @@ class _LoginViewState extends State<LoginView> {
                         .copyWith(color: ToolkitColors.white),
                     controller: emailController,
                     hintStyle: ToolkitTypography.body1B
-                        .copyWith(color: ToolkitColors.white),
-
-                    hintText: 'Please Enter Email ID',
-
-                    // The validator receives the text that the user has entered.
+                        .copyWith(color: ToolkitColors.white),            hintText: 'Please Enter Email ID',            // The validator receives the text that the user has entered.
                     validator: (String? input) {
                       return input!.isValidEmail()
                           ? null
@@ -151,9 +147,7 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   SizedBox(
                     height: size.height * 0.02,
-                  ),
-
-                  /// password
+                  ),          /// password
                   Obx(
                     () {
                       return UIToolkit.textFormField(
@@ -177,14 +171,10 @@ class _LoginViewState extends State<LoginView> {
                   ),
                   SizedBox(
                     height: size.height * 0.01,
-                  ),
-
-                  signUpButton(theme),
+                  ),          signUpButton(theme),
                   SizedBox(
                     height: size.height * 0.03,
-                  ),
-
-                  /// Navigate To Login Screen
+                  ),          /// Navigate To Login Screen
                   GestureDetector(
                     onTap: () {
                       Navigator.push(
@@ -194,9 +184,7 @@ class _LoginViewState extends State<LoginView> {
                       nameController.clear();
                       emailController.clear();
                       passwordController.clear();
-                      _formKey.currentState?.reset();
-
-                      simpleUIController.isObscure.value = true;
+                      _formKey.currentState?.reset();              simpleUIController.isObscure.value = true;
                     },
                     child: RichText(
                       text: TextSpan(
@@ -223,9 +211,7 @@ class _LoginViewState extends State<LoginView> {
                       nameController.clear();
                       emailController.clear();
                       passwordController.clear();
-                      _formKey.currentState?.reset();
-
-                      simpleUIController.isObscure.value = true;
+                      _formKey.currentState?.reset();              simpleUIController.isObscure.value = true;
                     },
                     child: RichText(
                       text: TextSpan(

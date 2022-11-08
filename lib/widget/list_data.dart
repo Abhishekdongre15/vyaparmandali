@@ -2,115 +2,146 @@ import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/widget/add_item.dart';
 
-class ListData extends StatelessWidget {
-  const ListData({Key? key}) : super(key: key);
+class ListDataView extends StatefulWidget {
+  const ListDataView({Key? key}) : super(key: key);
 
   @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return ListDataViewState();
+  }
+}
+
+class ListDataViewState extends State<ListDataView> {
+  @override
   Widget build(BuildContext context) {
+    // TODO: implement build
     return Scaffold(
-      body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 20,right: 90),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text("Id"),
-                  Text("Product Tile"),
-                  Text("Product Body"),
-                  Text("Actions"),
-                ],
-              ),
-            ),
-
-            ListRow(),
-
-          ],
-        ),
+      appBar: AppBar(
+        backgroundColor: ToolkitColors.primary,
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => AddItems()));
-      },child: Icon(Icons.add)),
-    );
-  }
-}
-
-class ListRow extends StatefulWidget {
-   ListRow({Key? key}) : super(key: key);
-
-
-  @override
-  State<ListRow> createState() => _ListRowState();
-}
-
-class _ListRowState extends State<ListRow> {
-  var noOfItem = 10;
-  void subValue(){
-    noOfItem--;
-  }
-  @override
-  Widget build(BuildContext context) {
-    return ListView.builder(
-      physics: ClampingScrollPhysics(),
-      shrinkWrap: true,
-      padding: EdgeInsets.zero,
-      itemCount: noOfItem,
-      itemBuilder: (context, index) {
-        return rowView();
-      },
-    );
-  }
-
-  Widget rowView() {
-    return Column(
-      children: [
-        Divider(),
-        Padding(
-          padding: const EdgeInsets.only(
-            left: 25,
-            right: 20,
-          ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
             children: [
-              Text(
-                "Code",
-                style:
-                    ToolkitTypography.body1A.copyWith(color: ToolkitColors.black),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        "Code",
+                        style: ToolkitTypography.h2
+                            .copyWith(color: ToolkitColors.black),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        "Name",
+                        style: ToolkitTypography.h2
+                            .copyWith(color: ToolkitColors.black),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        "Rate(Kg)",
+                        style: ToolkitTypography.h2
+                            .copyWith(color: ToolkitColors.black),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        "Actions",
+                        style: ToolkitTypography.h2
+                            .copyWith(color: ToolkitColors.black),
+                      ),
+                    ),
+                  ],
+                ),
               ),
-              Text("Name"),
-              Text("Rate(Kg)"),
-              Row(
-                children: [
-                  UIToolkitButtons.primaryButton(
-                    text: "Edit",
-                    onPressed: () {},
-                    style:ElevatedButton.styleFrom( shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(50.0),
-
-                    ), backgroundColor:ToolkitColors.primary),
-                  ),
-                  SizedBox(
-                    width: 5,
-                  ),
-                  UIToolkitButtons.secondaryButtonDark(
-                      text: "Delete",
-                      style:ElevatedButton.styleFrom( shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50.0)
-                      ),backgroundColor: Colors.redAccent),
-                      onPressed: () {
-                        setState(() {
-                          subValue();
-                        });
-                      }),
-                ],
-              ),
+              ListView.separated(
+                physics: ClampingScrollPhysics(),
+                shrinkWrap: true,
+                separatorBuilder: (context, index) {
+                  return const Padding(
+                    padding: EdgeInsets.only(left: 0),
+                  );
+                },
+                padding: EdgeInsets.zero,
+                itemCount: 10,
+                itemBuilder: (BuildContext context, int index) {
+                  return _gstBottomValue();
+                },
+              )
             ],
           ),
         ),
-      ],
+      ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => AddItems()));
+          },
+          child: const Icon(Icons.add)),
+    );
+  }
+
+  Widget _gstBottomValue() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Card(
+        color: ToolkitColors.white,
+        shadowColor: Colors.white,
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Expanded(
+                  flex: 1,
+                  child: Text(
+                    "Code",
+                    style: ToolkitTypography.body1A
+                        .copyWith(color: ToolkitColors.black),
+                  ),
+                ),
+                Expanded(
+                  child: Text("Name"),
+                  flex: 1,
+                ),
+                Expanded(
+                  child: Text("Rate(Kg)"),
+                  flex: 1,
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Row(
+                    children: [
+                      UIToolkitButtons.iconButton(
+                          text: "",
+                          onPressed: () {},
+                          icon: ToolkitAssets.editIcon44),
+                      UIToolkitButtons.iconButton(
+                          text: "",
+                          onPressed: () {},
+                          icon: ToolkitAssets.iconTrash44),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

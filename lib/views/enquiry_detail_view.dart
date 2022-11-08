@@ -153,17 +153,13 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                       Expanded(
                         child: UIToolkit.textFormField(
                           hintText: 'First Name ',
-                          label: "First Name",
-
-                          /*     decoration: const InputDecoration(
+                          label: "First Name",                  /*     decoration: const InputDecoration(
                             // prefixIcon: Icon(Icons.person),
                             border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15)),
                             ),
-                          ),*/
-
-                          controller: firstNameController,
+                          ),*/                  controller: firstNameController,
                           // The validator receives the text that the user has entered.
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -210,9 +206,7 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                   ),
                   SizedBox(
                     height: size.height * 0.02,
-                  ),
-
-                  ///Phone no and
+                  ),          ///Phone no and
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -249,9 +243,7 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                   ),
                   SizedBox(
                     height: size.height * 0.02,
-                  ),
-
-                  /// email
+                  ),          /// email
                 /*  ReUseTextField(
                     textStyle: kTextFormFieldStyle(),
                     controller: emailController,
@@ -277,9 +269,7 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                   ),*/
                   SizedBox(
                     height: size.height * 0.02,
-                  ),
-
-                  ///Country Picker
+                  ),          ///Country Picker
                   CSCPicker(
                     layout: Layout.vertical,
                     // defaultCountry: DefaultCountry.India,
@@ -299,9 +289,7 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                     ),
                   SizedBox(
                     height: size.height * 0.02,
-                  ),
-
-                  /// Requirement
+                  ),          /// Requirement
                 /*  ReUseTextField(
                     maxLine: 3,
                     textStyle: kTextFormFieldStyle(),
@@ -323,15 +311,11 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                   ),*/
                   SizedBox(
                     height: size.height * 0.02,
-                  ),
-
-                  /// Login Button
+                  ),          /// Login Button
                   submitFormButton(),
                   SizedBox(
                     height: size.height * 0.02,
-                  ),
-
-                  /// Navigate To Login Screen
+                  ),          /// Navigate To Login Screen
                   GestureDetector(
                     onTap: () {
                       Navigator.pop(context);

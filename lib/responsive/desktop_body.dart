@@ -4,6 +4,7 @@ import 'package:vyaparmandali/views/components/light_sidebar.dart';
 import '../constants.dart';
 import '../util/my_box.dart';
 import '../util/my_tile.dart';
+import '../views/components/drawer_list.dart';
 
 class DesktopScaffold extends StatefulWidget {
   const DesktopScaffold({Key? key}) : super(key: key);
@@ -14,11 +15,47 @@ class DesktopScaffold extends StatefulWidget {
 
 class _DesktopScaffoldState extends State<DesktopScaffold> {
   bool isVisible = true;
+
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size ;
+
     return Scaffold(
       backgroundColor: ToolkitColors.white,
-      drawer: myDrawer,
+      drawer: Drawer(
+        backgroundColor: ToolkitColors.white,
+        elevation: 0,
+        child: ListView(padding: EdgeInsets.zero, children: <Widget>[
+          Container(
+            height:  size!.height * 0.25,
+
+            child: DrawerHeader(
+              child: Column(
+                children: const [
+                  CircleAvatar(
+                    radius: 40,
+                    backgroundImage: NetworkImage(
+                        'https://media.istockphoto.com/photos/millennial-male-team-leader-organize-virtual-workshop-with-employees-picture-id1300972574?b=1&k=20&m=1300972574&s=170667a&w=0&h=2nBGC7tr0kWIU8zRQ3dMg-C5JLo9H2sNUuDjQ5mlYfo='),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: Text(
+                      'Shivam Pandey',
+                      style: TextStyle(fontSize: 20),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          Container(
+            height:  size!.height * 0.75,
+            child: DrawerList(
+              entry: data,
+            ),
+          ),
+        ]),
+      ),
       appBar: PreferredSize(child: AppBarProfile(), preferredSize:  Size.fromHeight(52),),
 
       body: Padding(
@@ -54,9 +91,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                         ],
                       ),
                     ),
-                  ),
-
-                  // list of previous days
+                  ),          // list of previous days
                   Expanded(
                     child: Padding(
                       padding: const EdgeInsets.all(8.0),
@@ -68,15 +103,7 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                         ),
                         // child: LineChartSample2(),
                       ),
-                    ),
-                    // List View builder code
-                    // ListView.builder(
-                    //   itemCount: 7,
-                    //   itemBuilder: (context, index) {
-                    //     return const MyTile();
-                    //   },
-                    // ),
-                  ),
+                    ),          ),
                 ],
               ),
             ),
@@ -92,7 +119,6 @@ class _DesktopScaffoldState extends State<DesktopScaffold> {
                         borderRadius: BorderRadius.circular(8),
                         color: ToolkitColors.white,
                       ),
-                      // child: PieChartSample2(),
                     ),
                   ),
                   // list of stuff

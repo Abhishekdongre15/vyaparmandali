@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uitoolkit/uitoolkit.dart';
+import 'package:vyaparmandali/Entry.dart';
 import 'package:vyaparmandali/views/components/drawer_list.dart';
 import 'package:vyaparmandali/views/profile_page.dart';
 
@@ -17,6 +18,46 @@ const purple = Color.fromRGBO(165, 80, 179, 1);
 const orange = Color.fromRGBO(251, 137, 13, 1);
 const green = Color.fromRGBO(51, 173, 127, 1);
 const red = Colors.red;
+
+final List<Entry> data = <Entry>[
+  Entry(
+    'MASTER',
+    <Entry>[
+      Entry(
+        'CODES',
+        <Entry>[
+          Entry('GROUP'),
+          Entry('STD CODE'),
+          Entry('NARRATION'),
+        ],
+      ),
+      Entry(
+        'ITEM',
+        <Entry>[
+          Entry('ITEM NAME'),
+          Entry('ITEM EXP'),
+          Entry('HAMALI EXP'),
+        ],
+      ),
+      Entry('A/C MASTER'),
+      Entry('PLACE MASTER'),
+      Entry('A/C SETTINGS'),
+      Entry('ACCOUNT MERGE'),
+    ],
+  ),
+// Second Row
+  Entry('DATA ENTERY', <Entry>[
+    Entry('ROJMEL'),
+    Entry('VACHHAT AVAK'),
+    Entry('DHADA ENTRY'),
+    Entry('BILL PROCESSING'),
+    Entry('GROCCERY BOARD AVAK'),
+    Entry('OCCATIONAL ENTRY', <Entry>[
+      Entry('JOURNAL ENTRY'),
+      Entry('PURCHASE ENTRY'),
+    ]),
+  ]),
+];
 
 // Default App Padding
 const appPadding = 16.0;
@@ -53,46 +94,7 @@ var drawerTextColor = TextStyle(
   color: Colors.grey[600],
 );
 var tilePadding = const EdgeInsets.only(left: 8.0, right: 8, top: 8);
-var myDrawer = Drawer(
-  backgroundColor: ToolkitColors.white,
-  elevation: 0,
-  child: ListView(
-    children: [
-      DrawerHeader(
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Column(
-              children: const [
-                Align(
-                  alignment: Alignment.bottomCenter,
-                  child: CircleAvatar(
-                    radius: 40,
-                    backgroundImage: NetworkImage(
-                        'https://media.istockphoto.com/photos/millennial-male-team-leader-organize-virtual-workshop-with-employees-picture-id1300972574?b=1&k=20&m=1300972574&s=170667a&w=0&h=2nBGC7tr0kWIU8zRQ3dMg-C5JLo9H2sNUuDjQ5mlYfo='),
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsets.all(8.0),
-                  child: Text(
-                    'Shivam Pandey',
-                    style: TextStyle(fontSize: 20),
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
-      ),
-      DrawerList(rName: 'Master',cName: 'Codes'),
-      DrawerList(rName: 'Data Entry'),
-      DrawerList(rName: 'Report'),
-      DrawerList(rName: 'balance'),
-      DrawerList(rName: 'utility'),
-    ],
-  ),
-);
+
 class AppBarProfile extends StatelessWidget {
   const AppBarProfile({Key? key}) : super(key: key);
 
