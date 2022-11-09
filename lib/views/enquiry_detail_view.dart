@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
-import '../constants.dart';
+import '../util/constants.dart';
 import '../controller/simple_ui_controller.dart';
 
 class EnquiryDetailView extends StatefulWidget {

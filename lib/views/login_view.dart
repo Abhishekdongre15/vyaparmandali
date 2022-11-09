@@ -5,13 +5,13 @@ import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/util/EmailValidator.dart';
 import 'package:vyaparmandali/views/enquiry_detail_view.dart';
 
-import '../constants.dart';
+import '../util/constants.dart';
 import '../controller/simple_ui_controller.dart';
 import '../responsive/desktop_body.dart';
 import '../responsive/mobile_body.dart';
 import '../responsive/responsive_layout.dart';
 import '../responsive/tablet_body.dart';
-import 'forget_password.dart';
+import 'forget_password_view.dart';
 
 class LoginView extends StatefulWidget {
   const LoginView({Key? key}) : super(key: key);

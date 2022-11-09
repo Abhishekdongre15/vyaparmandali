@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/widget/add_item.dart';
+import 'package:vyaparmandali/views/add_list_data_view.dart';
 
 class ListDataView extends StatefulWidget {
   const ListDataView({Key? key}) : super(key: key);

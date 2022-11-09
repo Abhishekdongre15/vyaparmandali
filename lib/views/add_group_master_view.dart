@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
-class AddACMasterList extends StatefulWidget {
-  const AddACMasterList({Key? key}) : super(key: key);
+class AddGroupMasterView extends StatefulWidget {
+  const AddGroupMasterView({Key? key}) : super(key: key);
 
   @override
-  State<AddACMasterList> createState() => _AddACMasterListState();
+  State<AddGroupMasterView> createState() => _AddGroupMasterViewState();
 }
 
-class _AddACMasterListState extends State<AddACMasterList> {
+class _AddGroupMasterViewState extends State<AddGroupMasterView> {
+  TextEditingController codeController = TextEditingController();
   TextEditingController nameController = TextEditingController();
-  TextEditingController emailController = TextEditingController();
-  TextEditingController phoneController = TextEditingController();
-  TextEditingController openingController = TextEditingController();
+  TextEditingController rateController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +20,11 @@ class _AddACMasterListState extends State<AddACMasterList> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ToolkitColors.primary,
-        title: Text("Add Item"),
-        leading: GestureDetector(child: Icon(Icons.arrow_back,),
-          onTap: (){
-            Navigator.of(context).pop();
-          },),
+        title:  Text("Add Group Item",style: ToolkitTypography.h2.copyWith(color: ToolkitColors.black)),
+        leading: GestureDetector(child: const Icon(Icons.arrow_back,color:  ToolkitColors.black,),
+        onTap: (){
+          Navigator.of(context).pop();
+      },),
       ),
       body: Container(
         height: MediaQuery.of(context).size.width * 1,
@@ -48,52 +47,24 @@ class _AddACMasterListState extends State<AddACMasterList> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: UIToolkit.textFormField(
-                        hintText: "Name",
-                        label: "Name",
-                        inputFormatters: <TextInputFormatter>[
-
-                        ], // abc
-                        controller: nameController,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: UIToolkit.textFormField(
-                        hintText: "Email Id",
-                        label: "Email Id",
-                        controller: emailController,
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: UIToolkit.textFormField(
-                        hintText: "Phone No)",
-                        keyboardType: const TextInputType.numberWithOptions(decimal: true),
-
+                        hintText: "Code",
+                        label: "Code",
                         inputFormatters: <TextInputFormatter>[
                           FilteringTextInputFormatter.singleLineFormatter,
                           FilteringTextInputFormatter.digitsOnly,
                         ], // O
-                        label: "Phone No",
-                        controller: phoneController,
+                        controller: codeController,
                       ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: UIToolkit.textFormField(
-                        hintText: "Opening Balance)",
-                        keyboardType: const TextInputType.numberWithOptions(
-                            decimal: true),
-
-                        inputFormatters: <TextInputFormatter>[
-                          FilteringTextInputFormatter.singleLineFormatter,
-                          FilteringTextInputFormatter.digitsOnly,
-                        ],
-                        // O
-                        label: "Opening Balance",
-                        controller: openingController,
+                        hintText: "Name",
+                        label: "Name",
+                        controller: nameController,
                       ),
                     ),
+
                   ],
                 ),
               ),

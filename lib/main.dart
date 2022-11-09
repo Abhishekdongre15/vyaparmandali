@@ -1,15 +1,19 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:vyaparmandali/components/profile_Info.dart';
 
 import 'package:vyaparmandali/responsive/desktop_body.dart';
 import 'package:vyaparmandali/responsive/mobile_body.dart';
 import 'package:vyaparmandali/responsive/responsive_layout.dart';
 import 'package:vyaparmandali/responsive/tablet_body.dart';
+import 'package:vyaparmandali/views/add_group_master_view.dart';
+import 'package:vyaparmandali/views/group_master_list_view.dart';
 import 'package:vyaparmandali/views/login_view.dart';
-import 'package:vyaparmandali/widget/ac_master_list.dart';
-import 'package:vyaparmandali/widget/add_item.dart';
-import 'package:vyaparmandali/widget/list_data.dart';
+import 'package:vyaparmandali/views/ac_master_view.dart';
+import 'package:vyaparmandali/views/add_list_data_view.dart';
+import 'package:vyaparmandali/views/list_data_view.dart';
+import 'package:vyaparmandali/views/profile_page_view.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +34,7 @@ class MyApp extends StatelessWidget {
       ResponsiveLayout(
         mobileBody: const LoginView(),
         tabletBody: const LoginView(),
-        desktopBody:DesktopScaffold())
+        desktopBody:GroupMasterListView())
     );
   }
 }

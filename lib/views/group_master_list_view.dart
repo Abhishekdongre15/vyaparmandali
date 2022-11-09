@@ -1,19 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/widget/add_ac_master_list.dart';
-import 'package:vyaparmandali/widget/add_item.dart';
+import 'package:vyaparmandali/views/add_group_master_view.dart';
+import 'package:vyaparmandali/views/add_list_data_view.dart';
 
-class ACMasterList extends StatefulWidget {
-  const ACMasterList({Key? key}) : super(key: key);
+class GroupMasterListView extends StatefulWidget {
+  const GroupMasterListView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return ACMasterListState();
+    return GroupMasterListViewState();
   }
 }
 
-class ACMasterListState extends State<ACMasterList> {
+class GroupMasterListViewState extends State<GroupMasterListView> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -34,31 +34,15 @@ class ACMasterListState extends State<ACMasterList> {
                     Expanded(
                       flex: 1,
                       child: Text(
+                        "Code",
+                        style: ToolkitTypography.h2
+                            .copyWith(color: ToolkitColors.black),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Text(
                         "Name",
-                        style: ToolkitTypography.h2
-                            .copyWith(color: ToolkitColors.black),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Text(
-                        "Email Id",
-                        style: ToolkitTypography.h2
-                            .copyWith(color: ToolkitColors.black),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Text(
-                        "Phone no",
-                        style: ToolkitTypography.h2
-                            .copyWith(color: ToolkitColors.black),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Text(
-                        "Opening Balance",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
                       ),
@@ -94,8 +78,8 @@ class ACMasterListState extends State<ACMasterList> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const AddACMasterList()));
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => const AddGroupMasterView()));
           },
           child: const Icon(Icons.add)),
     );
@@ -118,25 +102,13 @@ class ACMasterListState extends State<ACMasterList> {
                 Expanded(
                   flex: 1,
                   child: Text(
-                    "Shivam Pandey",
+                    "Code",
                     style: ToolkitTypography.body1A
                         .copyWith(color: ToolkitColors.black),
                   ),
                 ),
                 Expanded(
-                  flex: 1,
-                  child: Text(
-                    "shivamPandey@gmail.com",
-                    style: ToolkitTypography.body1A
-                        .copyWith(color: ToolkitColors.black),
-                  ),
-                ),
-                Expanded(
-                  child: Text("9999007766"),
-                  flex: 1,
-                ),
-                Expanded(
-                  child: Text("Rs: 99990"),
+                  child: Text("Name"),
                   flex: 1,
                 ),
                 Expanded(
