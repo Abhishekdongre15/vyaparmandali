@@ -87,14 +87,14 @@ class _AddDataEntryViewState extends State<AddDataEntryView> {
                           child: Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: UIToolkit.buildDateWidget(
-                                  initialDate: _date,
-                                  validDateCallBack: _validDateCallBack,
-                                  onDobEntered: _onDobEntered,
-                                  isEmptyDate: 'Please Enter DOB',
-                                  inValidDateMsg: 'Invalid date format',
-                                  youAreUnder18: 'Sorry, you have to be 18 or older to apply',
-                                  setError: setError,)
-                        ),
+                                initialDate: _date,
+                                validDateCallBack: _validDateCallBack,
+                                onDobEntered: _onDobEntered,
+                                isEmptyDate: 'Please Enter DOB',
+                                inValidDateMsg: 'Invalid date format',
+                                youAreUnder18: 'Sorry, you have to be 18 or older to apply',
+                                setError: setError,)
+                          ),),
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
@@ -108,7 +108,7 @@ class _AddDataEntryViewState extends State<AddDataEntryView> {
                               controller: codeController,
                             ),
                           ),
-                        ),),)
+                        ),
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
