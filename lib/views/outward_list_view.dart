@@ -2,25 +2,26 @@ import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/views/add_data_entry_view.dart';
 import 'package:vyaparmandali/views/add_Outword_litst_view.dart';
-import 'package:vyaparmandali/views/add_inword_view.dart';
 
-class InWordListView extends StatefulWidget {
-  const InWordListView({Key? key}) : super(key: key);
+import 'add_inword_view.dart';
+
+class OutWardListView extends StatefulWidget {
+  const OutWardListView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return InWordListViewState();
+    return OutWardListViewState();
   }
 }
 
-class InWordListViewState extends State<InWordListView> {
+class OutWardListViewState extends State<OutWardListView> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("InWord "),
+        title: Text("OutWord "),
         backgroundColor: ToolkitColors.primary,
       ),
       body: SingleChildScrollView(
@@ -60,7 +61,31 @@ class InWordListViewState extends State<InWordListView> {
                     Expanded(
                       flex: 1,
                       child: Text(
-                        "Total Quantity",
+                        "Inword Date",
+                        style: ToolkitTypography.h2
+                            .copyWith(color: ToolkitColors.black),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        "Party Name",
+                        style: ToolkitTypography.h2
+                            .copyWith(color: ToolkitColors.black),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        "Lot Name",
+                        style: ToolkitTypography.h2
+                            .copyWith(color: ToolkitColors.black),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        "Balance Qty",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
                       ),
@@ -99,7 +124,7 @@ class InWordListViewState extends State<InWordListView> {
             Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => const AddInWordListView()));
+                    builder: (context) => const AddOutWordLIstView()));
           },
           child: const Icon(Icons.add)),
     );
@@ -140,7 +165,18 @@ class InWordListViewState extends State<InWordListView> {
                   flex: 1,
                 ),
                 Expanded(
-                  child: Text("Total Quantity"),
+                  child: Text("Inword Date"),
+                  flex: 1,
+                ),  Expanded(
+                  child: Text("Party Name"),
+                  flex: 1,
+                ),
+                Expanded(
+                  child: Text("Lot"),
+                  flex: 1,
+                ),
+                Expanded(
+                  child: Text("Balance Qty"),
                   flex: 1,
                 ),
                 Expanded(

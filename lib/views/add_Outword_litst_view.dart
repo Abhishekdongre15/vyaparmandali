@@ -2,17 +2,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
-class AddInWordLIstView extends StatefulWidget {
-  const AddInWordLIstView({Key? key}) : super(key: key);
+class AddOutWordLIstView extends StatefulWidget {
+  const AddOutWordLIstView({Key? key}) : super(key: key);
 
   @override
-  State<AddInWordLIstView> createState() => _AddInWordLIstViewState();
+  State<AddOutWordLIstView> createState() => _AddOutWordLIstViewState();
 }
 
-class _AddInWordLIstViewState extends State<AddInWordLIstView> {
-  TextEditingController snoController = TextEditingController();
-  TextEditingController nameController = TextEditingController();
-  TextEditingController rateController = TextEditingController();
+class _AddOutWordLIstViewState extends State<AddOutWordLIstView> {
+  TextEditingController itemController = TextEditingController();
+  TextEditingController sellerNameController = TextEditingController();
+  TextEditingController qtyController = TextEditingController();
+  TextEditingController weightController = TextEditingController();
+  TextEditingController augWeightController = TextEditingController();
+  TextEditingController buyRateController = TextEditingController();
+  TextEditingController sellRateController = TextEditingController();
+  TextEditingController amountController = TextEditingController();
   DateTime _date = DateTime.now();
   bool setError = false;
   bool dateIsValid = false;
@@ -37,7 +42,7 @@ class _AddInWordLIstViewState extends State<AddInWordLIstView> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ToolkitColors.primary,
-        title: Text("Add InWord Item",
+        title: Text("Add OutWord Item",
             style: ToolkitTypography.h2.copyWith(color: ToolkitColors.black)),
         leading: GestureDetector(
           child: const Icon(
@@ -73,40 +78,84 @@ class _AddInWordLIstViewState extends State<AddInWordLIstView> {
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: UIToolkit.textFormField(
-                              hintText: "sr no",
-                              label: "sr no",
+                              hintText: "Item",
+                              label: "Item",
                               inputFormatters: <TextInputFormatter>[
                                 FilteringTextInputFormatter.singleLineFormatter,
                                 FilteringTextInputFormatter.digitsOnly,
                               ], // O
-                              controller: snoController,
+                              controller: itemController,
                             ),
                           ),
                         ),
                         Expanded(
                           child: Padding(
                               padding: const EdgeInsets.all(8.0),
-                              child: UIToolkit.buildDateWidget(
-                                initialDate: _date,
-                                validDateCallBack: _validDateCallBack,
-                                onDobEntered: _onDobEntered,
-                                isEmptyDate: 'Please Enter DOB',
-                                inValidDateMsg: 'Invalid date format',
-                                youAreUnder18: 'Sorry, you have to be 18 or older to apply',
-                                setError: setError,)
-                          ),),
+                              child: UIToolkit.textFormField(
+                                hintText: "Seller Name",
+                                label: "Seller Name",
+
+                                controller: sellerNameController,
+                              ),),
+                        ),
 
                         Expanded(
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: UIToolkit.textFormField(
-                              hintText: "Vehicle No",
-                              label: "Vehicle No",
+                              hintText: "Quantity",
+                              label: "Quantity",
                               inputFormatters: <TextInputFormatter>[
                                 FilteringTextInputFormatter.singleLineFormatter,
                                 FilteringTextInputFormatter.digitsOnly,
                               ], // O
-                              controller: snoController,
+                              controller: qtyController,
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                     Row(
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: UIToolkit.textFormField(
+                              hintText: " Weight",
+                              label: "Weight",
+                              inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter.singleLineFormatter,
+                                FilteringTextInputFormatter.digitsOnly,
+                              ], // O
+                              controller: weightController,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: UIToolkit.textFormField(
+                              hintText: "Aug Weight",
+                              label: "Aug Weight",
+                              inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter.singleLineFormatter,
+                                FilteringTextInputFormatter.digitsOnly,
+                              ],
+                              controller: augWeightController,
+                            ),
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: UIToolkit.textFormField(
+                              hintText: "Buy Rate",
+                              label: "Buy Rate",
+                              inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter.singleLineFormatter,
+                                FilteringTextInputFormatter.digitsOnly,
+                              ],
+                              controller: buyRateController,
                             ),
                           ),
                         ),
@@ -118,84 +167,29 @@ class _AddInWordLIstViewState extends State<AddInWordLIstView> {
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: UIToolkit.textFormField(
-                              hintText: " Total Quantity",
-                              label: "Total Quantity",
+                              hintText: "Sell Rate",
+                              label: "Sell Rate",
                               inputFormatters: <TextInputFormatter>[
                                 FilteringTextInputFormatter.singleLineFormatter,
                                 FilteringTextInputFormatter.digitsOnly,
-                              ], // O
-                              controller: snoController,
+                              ],
+                              controller: sellRateController,
                             ),
                           ),
                         ),
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: UIToolkit.textFormField(
-                              hintText: " Vacchut Name",
-                              label: "Vacchut Name",
-                              // O
-                              controller: snoController,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: UIToolkit.textFormField(
-                              hintText: " Freight",
-                              label: "Freight",
-                              controller: snoController,
-                            ),
-                          ),
-                        ),
+                       Expanded(child:  Padding(
+                         padding: const EdgeInsets.all(8.0),
+                         child: UIToolkit.textFormField(
+                           hintText: "Amount",
+                           label: "Amount",
+                           inputFormatters: <TextInputFormatter>[
+                             FilteringTextInputFormatter.singleLineFormatter,
+                             FilteringTextInputFormatter.digitsOnly,
+                           ],
+                           controller: amountController,
+                         ),
+                       ),),
                       ],
-                    ), Row(
-                      children: [
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: UIToolkit.textFormField(
-                              hintText: " Hundekari",
-                              label: "Hundekari",
-                              inputFormatters: <TextInputFormatter>[
-                                FilteringTextInputFormatter.singleLineFormatter,
-                                FilteringTextInputFormatter.digitsOnly,
-                              ], // O
-                              controller: snoController,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: UIToolkit.textFormField(
-                              hintText: " Item Type",
-                              label: "Item Type",
-                              // O
-                              controller: snoController,
-                            ),
-                          ),
-                        ),
-                        Expanded(
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: UIToolkit.textFormField(
-                              hintText: "Hundekari Name",
-                              label: "Hundekari Name",
-                              controller: snoController,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: UIToolkit.textFormField(
-                        hintText: "D D Name",
-                        label: "D D Name",
-                        controller: snoController,
-                      ),
                     ),
                   ],
                 ),

@@ -16,6 +16,7 @@ import 'package:vyaparmandali/views/login_view.dart';
 import 'package:vyaparmandali/views/ac_master_view.dart';
 import 'package:vyaparmandali/views/add_list_data_view.dart';
 import 'package:vyaparmandali/views/list_data_view.dart';
+import 'package:vyaparmandali/views/outward_list_view.dart';
 import 'package:vyaparmandali/views/profile_page_view.dart';
 
 void main() {
@@ -32,19 +33,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Vyapar Mandali',
-      home:
-      // ToDoView(),
-      ResponsiveLayout(
+      home: ResponsiveLayout(
         mobileBody: const LoginView(),
         tabletBody: const LoginView(),
-        desktopBody:InWordListView())
+        desktopBody: InWordListView(),
+      ),
     );
   }
 }
+
 class CustomScrollBehaviour extends MaterialScrollBehavior {
   @override
   Set<PointerDeviceKind> get dragDevices => {
-    PointerDeviceKind.touch,
-    PointerDeviceKind.mouse,
-  };
+        PointerDeviceKind.touch,
+        PointerDeviceKind.mouse,
+      };
 }
