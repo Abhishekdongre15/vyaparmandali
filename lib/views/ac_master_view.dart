@@ -2,18 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/views/add_ac_master_view.dart';
 import 'package:vyaparmandali/views/add_list_data_view.dart';
-
-class ACMasterList extends StatefulWidget {
-  const ACMasterList({Key? key}) : super(key: key);
+class ACMasterListView extends StatefulWidget {
+  const ACMasterListView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return ACMasterListState();
+    return ACMasterListViewState();
   }
 }
 
-class ACMasterListState extends State<ACMasterList> {
+class ACMasterListViewState extends State<ACMasterListView> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
