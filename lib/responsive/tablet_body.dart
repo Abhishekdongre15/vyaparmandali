@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
+import '../components/drawer_list.dart';
 import '/constants.dart';
 import '../util/my_box.dart';
 import '../util/my_tile.dart';
-import '../views/components/drawer_list.dart';
 
 class TabletScaffold extends StatefulWidget {
   const TabletScaffold({Key? key}) : super(key: key);

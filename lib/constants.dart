@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/Entry.dart';
-import 'package:vyaparmandali/views/components/drawer_list.dart';
 import 'package:vyaparmandali/views/profile_page.dart';
 
 // Colors used in this app

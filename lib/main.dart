@@ -6,7 +6,6 @@ import 'package:vyaparmandali/responsive/desktop_body.dart';
 import 'package:vyaparmandali/responsive/mobile_body.dart';
 import 'package:vyaparmandali/responsive/responsive_layout.dart';
 import 'package:vyaparmandali/responsive/tablet_body.dart';
-import 'package:vyaparmandali/views/components/profile_Info.dart';
 import 'package:vyaparmandali/views/login_view.dart';
 import 'package:vyaparmandali/widget/ac_master_list.dart';
 import 'package:vyaparmandali/widget/add_item.dart';

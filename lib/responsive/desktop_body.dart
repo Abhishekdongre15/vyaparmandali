@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/views/components/light_sidebar.dart';
+import '../components/drawer_list.dart';
+import '../components/light_sidebar.dart';
 import '../constants.dart';
-import '../views/components/drawer_list.dart';
 
 class DesktopScaffold extends StatefulWidget {
   const DesktopScaffold({Key? key}) : super(key: key);
