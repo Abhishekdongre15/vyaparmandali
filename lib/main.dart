@@ -8,6 +8,7 @@ import 'package:vyaparmandali/responsive/responsive_layout.dart';
 import 'package:vyaparmandali/responsive/tablet_body.dart';
 import 'package:vyaparmandali/views/components/profile_Info.dart';
 import 'package:vyaparmandali/views/login_view.dart';
+import 'package:vyaparmandali/widget/ac_master_list.dart';
 import 'package:vyaparmandali/widget/add_item.dart';
 import 'package:vyaparmandali/widget/list_data.dart';
 
@@ -30,8 +31,7 @@ class MyApp extends StatelessWidget {
       ResponsiveLayout(
         mobileBody: const LoginView(),
         tabletBody: const LoginView(),
-        desktopBody:  AddItemsView(),
-      ),
+        desktopBody:DesktopScaffold())
     );
   }
 }

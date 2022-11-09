@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
+import 'package:vyaparmandali/widget/add_ac_master_list.dart';
 import 'package:vyaparmandali/widget/add_item.dart';
 
-class ListDataView extends StatefulWidget {
-  const ListDataView({Key? key}) : super(key: key);
+class ACMasterList extends StatefulWidget {
+  const ACMasterList({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return ListDataViewState();
+    return ACMasterListState();
   }
 }
 
-class ListDataViewState extends State<ListDataView> {
+class ACMasterListState extends State<ACMasterList> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -33,14 +34,6 @@ class ListDataViewState extends State<ListDataView> {
                     Expanded(
                       flex: 1,
                       child: Text(
-                        "Code",
-                        style: ToolkitTypography.h2
-                            .copyWith(color: ToolkitColors.black),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Text(
                         "Name",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
@@ -49,7 +42,23 @@ class ListDataViewState extends State<ListDataView> {
                     Expanded(
                       flex: 1,
                       child: Text(
-                        "Rate(Kg)",
+                        "Email Id",
+                        style: ToolkitTypography.h2
+                            .copyWith(color: ToolkitColors.black),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        "Phone no",
+                        style: ToolkitTypography.h2
+                            .copyWith(color: ToolkitColors.black),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        "Opening Balance",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
                       ),
@@ -85,8 +94,8 @@ class ListDataViewState extends State<ListDataView> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => const AddItemsView()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const AddACMasterList()));
           },
           child: const Icon(Icons.add)),
     );
@@ -109,17 +118,25 @@ class ListDataViewState extends State<ListDataView> {
                 Expanded(
                   flex: 1,
                   child: Text(
-                    "Code",
+                    "Shivam Pandey",
                     style: ToolkitTypography.body1A
                         .copyWith(color: ToolkitColors.black),
                   ),
                 ),
                 Expanded(
-                  child: Text("Name"),
+                  flex: 1,
+                  child: Text(
+                    "shivamPandey@gmail.com",
+                    style: ToolkitTypography.body1A
+                        .copyWith(color: ToolkitColors.black),
+                  ),
+                ),
+                Expanded(
+                  child: Text("9999007766"),
                   flex: 1,
                 ),
                 Expanded(
-                  child: Text("Rate(Kg)"),
+                  child: Text("Rs: 99990"),
                   flex: 1,
                 ),
                 Expanded(
