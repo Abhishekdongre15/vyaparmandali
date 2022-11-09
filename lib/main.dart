@@ -9,6 +9,7 @@ import 'package:vyaparmandali/responsive/responsive_layout.dart';
 import 'package:vyaparmandali/responsive/tablet_body.dart';
 import 'package:vyaparmandali/views/add_data_entry_view.dart';
 import 'package:vyaparmandali/views/add_group_master_view.dart';
+import 'package:vyaparmandali/views/data_entry_view.dart';
 import 'package:vyaparmandali/views/group_master_list_view.dart';
 import 'package:vyaparmandali/views/login_view.dart';
 import 'package:vyaparmandali/views/ac_master_view.dart';
@@ -35,7 +36,7 @@ class MyApp extends StatelessWidget {
       ResponsiveLayout(
         mobileBody: const LoginView(),
         tabletBody: const LoginView(),
-        desktopBody:AddDataEntryView())
+        desktopBody:DataEntryView())
     );
   }
 }

@@ -37,7 +37,7 @@ class _AddDataEntryViewState extends State<AddDataEntryView> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ToolkitColors.primary,
-        title: Text("Add Group Item",
+        title: Text("Add Cashbook Item",
             style: ToolkitTypography.h2.copyWith(color: ToolkitColors.black)),
         leading: GestureDetector(
           child: const Icon(
@@ -63,7 +63,7 @@ class _AddDataEntryViewState extends State<AddDataEntryView> {
           children: [
             Container(
               height: MediaQuery.of(context).size.height * 0.4,
-              width: MediaQuery.of(context).size.width * 0.5,
+              width: MediaQuery.of(context).size.width * 0.8,
               child: Form(
                 child: Column(
                   children: [
@@ -113,8 +113,8 @@ class _AddDataEntryViewState extends State<AddDataEntryView> {
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: UIToolkit.textFormField(
-                              hintText: "Code",
-                              label: "Code",
+                              hintText: "Bank Name",
+                              label: "Bank Name",
                               inputFormatters: <TextInputFormatter>[
                                 FilteringTextInputFormatter.singleLineFormatter,
                                 FilteringTextInputFormatter.digitsOnly,
@@ -128,8 +128,8 @@ class _AddDataEntryViewState extends State<AddDataEntryView> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: UIToolkit.textFormField(
-                        hintText: "Code",
-                        label: "Code",
+                        hintText: " Total of line Item",
+                        label: "Total of line Item",
                         inputFormatters: <TextInputFormatter>[
                           FilteringTextInputFormatter.singleLineFormatter,
                           FilteringTextInputFormatter.digitsOnly,
@@ -140,8 +140,16 @@ class _AddDataEntryViewState extends State<AddDataEntryView> {
                     Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: UIToolkit.textFormField(
-                        hintText: "Name",
-                        label: "Name",
+                        hintText: "Galla Amount",
+                        label: "Galla Amount",
+                        controller: nameController,
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: UIToolkit.textFormField(
+                        hintText: "Udhari Baki Amount",
+                        label: "Udhari Baki Amount",
                         controller: nameController,
                       ),
                     ),
