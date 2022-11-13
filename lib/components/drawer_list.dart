@@ -15,6 +15,7 @@ class DrawerList extends StatelessWidget {
       itemCount: entry.length,
       itemBuilder: (BuildContext context, int index) => EntryItem(
         entry[index],
+        context
       ),
     );
   }

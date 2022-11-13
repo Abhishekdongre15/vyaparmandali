@@ -5,12 +5,12 @@ import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/util/EmailValidator.dart';
 import 'package:vyaparmandali/views/enquiry_detail_view.dart';
 
-import '../util/constants.dart';
 import '../controller/simple_ui_controller.dart';
 import '../responsive/desktop_body.dart';
 import '../responsive/mobile_body.dart';
 import '../responsive/responsive_layout.dart';
 import '../responsive/tablet_body.dart';
+import '../util/constants.dart';
 import 'forget_password_view.dart';
 
 class LoginView extends StatefulWidget {
@@ -138,7 +138,9 @@ class _LoginViewState extends State<LoginView> {
                         .copyWith(color: ToolkitColors.white),
                     controller: emailController,
                     hintStyle: ToolkitTypography.body1B
-                        .copyWith(color: ToolkitColors.white),            hintText: 'Please Enter Email ID',            // The validator receives the text that the user has entered.
+                        .copyWith(color: ToolkitColors.white),
+                    hintText: 'Please Enter Email ID',
+                    // The validator receives the text that the user has entered.
                     validator: (String? input) {
                       return input!.isValidEmail()
                           ? null

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/widget/Entry.dart';
-import 'package:vyaparmandali/views/profile_page_view.dart';
 
 // Colors used in this app
 const primaryColor = Color.fromRGBO(17, 159, 250, 1);
@@ -51,11 +50,132 @@ final List<Entry> data = <Entry>[
     Entry('DHADA ENTRY'),
     Entry('BILL PROCESSING'),
     Entry('GROCCERY BOARD AVAK'),
+    Entry('NEFT/RTGS'),
     Entry('OCCATIONAL ENTRY', <Entry>[
       Entry('JOURNAL ENTRY'),
       Entry('PURCHASE ENTRY'),
     ]),
   ]),
+
+  // Third Row
+  Entry('REPORT', <Entry>[
+    Entry('CASH/BANK BOOK', <Entry>[
+      Entry('ROJMEL AS A/C'),
+      Entry('ROJMEL AS BOOK'),
+      Entry('CASH BOOOK'),
+      Entry('BANK BOOK'),
+      Entry('DAILY CASH BALANCE'),
+      Entry('DAY WISE BANK BOOK'),
+      Entry('BANK RECO'),
+      Entry('CASH LIMITS REPORT'),
+    ]),
+    Entry('VACHHAT REPORT', <Entry>[
+      Entry('PATTI REGISTER'),
+      Entry('VACHHAT PATTI O/S'),
+      Entry('JAMA NONDH'),
+      Entry('JAMA NONDH SUMMERY'),
+      Entry('JAMA NONDH SUMMERY MONTHLY'),
+    ]),
+    Entry('LEDGERS', <Entry>[
+      Entry('GENERAL LEDGER'),
+      Entry('STATEMENT OF ACCOUNTS'),
+      Entry('SCREEN LEDGER'),
+      Entry('DETAIL LEDGER'),
+      Entry('GROUP LEDGER'),
+      Entry('CUSTOMER LEDGER'),
+      Entry('SUPPLIERS LEDGER'),
+      Entry('ITEMWISE LEDGER'),
+      Entry('DAYWISE LEDGER'),
+      Entry('MONTH WISE LEDGER'),
+      Entry('ALL A/C REPORT'),
+    ]),
+    Entry('REGISTERS', <Entry>[
+      Entry('AAVAK REGISTER'),
+      Entry('DHADA REGISTER'),
+      Entry('SALES REGISTER'),
+      Entry('PURCHASE REGISTER'),
+      Entry('LOTWISE DHADA REGISTER'),
+      Entry('SALES SUMMERY REPOST'),
+      Entry('ITEMWISE SALES  REPOST'),
+      Entry('SALES SUMMERY MONTHLY REPOST'),
+    ]),
+    Entry('TRANSPORT REPORT', <Entry>[
+      Entry('TRANSPORT REPORT'),
+      Entry('TRANSPORT COMM REPORT'),
+      Entry('TRANSPORT WISE PATTI O/S'),
+      Entry('TRANSPORT WISE PATTI DATE O/S'),
+    ]),
+    Entry('ADDITIONAL REPORT', <Entry>[
+      Entry('APMC DAILY REPORT'),
+      Entry('VACHHATWISE DAILY REPORT'),
+      Entry('MONTHWISE P & L  REPORT'),
+      Entry('VACHHATWISE REPORT'),
+      Entry('VACHHATWISE SUMMERY REPORT'),
+      Entry('GB DAILY REPORT'),
+      Entry('GB MONTHLY REPORT'),
+      Entry('GB MONTHLY ENTRY REPORT'),
+    ]),
+    Entry('CUSTOMERS REPORT', <Entry>[
+      Entry('LEDGER SALES O/S REPORT'),
+      Entry('LEDGER SALES O/S LEBLE REPORT'),
+      Entry('PARTYWISE SALES REPORT'),
+      Entry('LEDGER SALES O/S 90 DAYS REPORT'),
+    ]),
+  ]),
+  Entry("UTILITY", <Entry>[
+    Entry('REINDEX', <Entry>[
+      Entry("REINDEX"),
+      Entry("FILE CLEAN"),
+      Entry("UPDATE ACCOUNT"),
+      Entry("UPDATE BILLS"),
+      Entry("UPDATE CASH BOOK"),
+    ]),
+    Entry('REPORT FILES', <Entry>[
+      Entry("REPORT VIEW"),
+      Entry("REPORT PRINT"),
+      Entry("REPORT EDIT"),
+      Entry("REPORT DELETE"),
+    ]),
+    Entry('BILL PRINTS', <Entry>[
+      Entry("BILL PRINTING"),
+      Entry("BILL DELETE"),
+      Entry("BILL BALANCE"),
+      Entry("PARTY WISE BILL"),
+      Entry("PLAIN BILL PRINTING"),
+    ]),
+    Entry("PATTI PRINTING", <Entry>[
+      Entry("PATTI PREPAIR"),
+      Entry("PATTI PRINTING  (ENGLISH)"),
+      Entry("PATTI DELETE"),
+      Entry("PATTI BALANCE"),
+      Entry("PATTI PRINTING MARATHI"),
+      Entry("SINGLE PATTI DELETE"),
+      Entry("STOCK ADJESTMENT"),
+      Entry("PLAIN PAPER PATTI PRINTING"),
+      Entry("HUNDEKARI CHANGE"),
+    ]),
+    Entry("END OF YEAR", <Entry>[
+      Entry("NEXT YEAR FILE TRANSFER"),
+      Entry("BALANCE TRANSFER"),
+      Entry("BILL TRANSFER"),
+      Entry("PATTI TRANSFER"),
+    ]),
+    Entry("PARTY FOLIO", <Entry>[
+      Entry("ADDRESS BOOK"),
+      Entry("ACCOUNT LIST"),
+      Entry("PARTY MAIL ID / PANCARD / MOBILE NO & OTHER"),
+    ])
+  ]),
+  Entry("BALANCE SHEETS", <Entry>[
+    Entry("P & L STATEMENT REPORT"),
+    Entry("TRIAL BALANCE REPORT"),
+    Entry("SCHEDULES REPORT"),
+    Entry("BALANCE SHEETS REPORT"),
+    Entry("EOY KASAR DR  GROUP WISE"),
+    Entry("EOY KASAR CR GROUP WISE"),
+    Entry("TRIAL BALANCE DETAILS SCREEN"),
+    Entry("SCHEDULES DETAILS SCREEN"),
+  ])
 ];
 
 // Default App Padding
