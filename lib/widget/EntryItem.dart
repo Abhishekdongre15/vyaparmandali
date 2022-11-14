@@ -1,9 +1,10 @@
 // Create the Widget for the row
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
+import 'package:vyaparmandali/views/master/ac_master_view.dart';
 import 'package:vyaparmandali/views/group_master_list_view.dart';
 import 'package:vyaparmandali/views/list_data_view.dart';
-
+import  'package:get/get.dart';
 import 'Entry.dart';
 
 class EntryItem extends StatelessWidget {
@@ -32,36 +33,40 @@ class EntryItem extends StatelessWidget {
             )),
       );
     }
-    return ExpansionTile(
-      key: PageStorageKey<Entry>(root),
-      title: GestureDetector(
-          onTap: () {
-            if (root.title.toLowerCase() == 'GROUP'.toLowerCase()) {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const GroupMasterListView(),
-                  ));
-            }
-          },
-          child: GestureDetector(
+    else{
+      return ExpansionTile(
+        key: PageStorageKey<Entry>(root),
+        title: GestureDetector(
             onTap: () {
               if (root.title.toLowerCase() == 'GROUP'.toLowerCase()) {
-                Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => const GroupMasterListView(),
-                    ));
+                // Navigator.push(
+                //   context,
+                //   MaterialPageRoute(
+                //     builder: (context) => const GroupMasterListView(),
+                //   ),
+                // );
+                Get.to(GroupMasterListView());
               }
             },
-            child: Text(
-              root.title,
-              style:
-                  ToolkitTypography.body1A.copyWith(color: ToolkitColors.black),
-            ),
-          )),
-      children: root.children.map<Widget>(_buildTiles).toList(),
-    );
+            child: GestureDetector(
+              onTap: () {
+                if (root.title.toLowerCase() == 'GROUP'.toLowerCase()) {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const GroupMasterListView(),
+                      ));
+                }
+              },
+              child: Text(
+                root.title,
+                style:
+                ToolkitTypography.body1A.copyWith(color: ToolkitColors.black),
+              ),
+            )),
+        children: root.children.map<Widget>(_buildTiles).toList(),
+      );
+    }
   }
 
   @override
@@ -78,12 +83,11 @@ class EntryItem extends StatelessWidget {
               builder: (context) => const GroupMasterListView(),
             ));
         break;
-      case 'group':
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const ListDataView(),
-            ));
+      case 'std code':
+      Get.to(ListDataView());
+        break;
+      case 'a/c master':
+        Get.to(ACMasterListView());
         break;
     }
   }

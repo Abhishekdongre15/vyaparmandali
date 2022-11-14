@@ -1,10 +1,10 @@
 import 'dart:ui';
-
+import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:vyaparmandali/responsive/desktop_body.dart';
 import 'package:vyaparmandali/responsive/responsive_layout.dart';
 import 'package:vyaparmandali/views/Inword_list_view.dart';
-import 'package:vyaparmandali/views/ac_master_view.dart';
+import 'package:vyaparmandali/views/master/ac_master_view.dart';
 import 'package:vyaparmandali/views/group_master_list_view.dart';
 import 'package:vyaparmandali/views/list_data_view.dart';
 import 'package:vyaparmandali/views/login_view.dart';
@@ -21,14 +21,15 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Vyapar Mandali',
-      home: ResponsiveLayout(
-        mobileBody: const LoginView(),
-        tabletBody: const LoginView(),
-        desktopBody: const DesktopScaffold(),
-      ),
+      home: DesktopScaffold(),
+      // home: ResponsiveLayout(
+      //   mobileBody: const LoginView(),
+      //   tabletBody: const LoginView(),
+      //   desktopBody: const DesktopScaffold(),
+      // ),
     );
   }
 }

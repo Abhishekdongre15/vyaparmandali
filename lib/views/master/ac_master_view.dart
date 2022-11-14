@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/views/add_ac_master_view.dart';
+import 'package:vyaparmandali/views/master/add_ac_master_view.dart';
 import 'package:vyaparmandali/views/add_list_data_view.dart';
 class ACMasterListView extends StatefulWidget {
   const ACMasterListView({Key? key}) : super(key: key);
