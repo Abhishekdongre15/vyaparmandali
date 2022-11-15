@@ -5,7 +5,7 @@ import 'package:vyaparmandali/responsive/desktop_body.dart';
 import 'package:vyaparmandali/responsive/responsive_layout.dart';
 import 'package:vyaparmandali/views/Inword_list_view.dart';
 import 'package:vyaparmandali/views/master/ac_master_view.dart';
-import 'package:vyaparmandali/views/group_master_list_view.dart';
+import 'package:vyaparmandali/views/master/codes/group_master_list_view.dart';
 import 'package:vyaparmandali/views/list_data_view.dart';
 import 'package:vyaparmandali/views/login_view.dart';
 import 'package:vyaparmandali/views/outward_list_view.dart';

@@ -2,11 +2,13 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/views/master/ac_master_view.dart';
-import 'package:vyaparmandali/views/group_master_list_view.dart';
+import 'package:vyaparmandali/views/master/codes/group_master_list_view.dart';
 import 'package:vyaparmandali/views/list_data_view.dart';
 import 'package:get/get.dart';
+import 'package:vyaparmandali/views/master/codes/narration_view.dart';
 import 'package:vyaparmandali/views/master/items/item_exp_view.dart';
 import 'package:vyaparmandali/views/master/items/item_view.dart';
+import 'package:vyaparmandali/views/master/place_master_view.dart';
 import '../views/master/items/item_hamali_exp_view.dart';
 import 'Entry.dart';
 
@@ -85,8 +87,8 @@ class EntryItem extends StatelessWidget {
               builder: (context) => const GroupMasterListView(),
             ));
         break;
-      case 'std code':
-        Get.to(ListDataView());
+      case 'narration':
+        Get.to(NarrationView());
         break;
       case 'a/c master':
         Get.to(ACMasterListView());
@@ -99,6 +101,9 @@ class EntryItem extends StatelessWidget {
         break;
       case 'hamali exp':
         Get.to(ItemHamaliExpView());
+        break;
+      case 'place master':
+        Get.to(PlaceMasterView());
         break;
     }
   }

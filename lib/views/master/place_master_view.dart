@@ -1,24 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/views/add_group_master_view.dart';
-import 'package:vyaparmandali/views/add_list_data_view.dart';
+import 'package:vyaparmandali/views/master/add_place_master.dart';
 
-class GroupMasterListView extends StatefulWidget {
-  const GroupMasterListView({Key? key}) : super(key: key);
+class PlaceMasterView extends StatefulWidget {
+  const PlaceMasterView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return GroupMasterListViewState();
+    return PlaceMasterViewState();
   }
 }
 
-class GroupMasterListViewState extends State<GroupMasterListView> {
+class PlaceMasterViewState extends State<PlaceMasterView> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
+        title:  Text("Place Master View",style: ToolkitTypography.h2.copyWith(color: ToolkitColors.black)),
         backgroundColor: ToolkitColors.primary,
       ),
       body: SingleChildScrollView(
@@ -42,11 +44,12 @@ class GroupMasterListViewState extends State<GroupMasterListView> {
                     Expanded(
                       flex: 1,
                       child: Text(
-                        "Name",
+                        "Place",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
                       ),
                     ),
+
                     Expanded(
                       flex: 1,
                       child: Text(
@@ -78,8 +81,7 @@ class GroupMasterListViewState extends State<GroupMasterListView> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => const AddGroupMasterView()));
+            Get.to(AddPlaceMaster());
           },
           child: const Icon(Icons.add)),
     );
@@ -108,7 +110,7 @@ class GroupMasterListViewState extends State<GroupMasterListView> {
                   ),
                 ),
                 Expanded(
-                  child: Text("Name"),
+                  child: Text("mumbai"),
                   flex: 1,
                 ),
                 Expanded(
