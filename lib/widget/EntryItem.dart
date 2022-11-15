@@ -4,7 +4,10 @@ import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/views/master/ac_master_view.dart';
 import 'package:vyaparmandali/views/group_master_list_view.dart';
 import 'package:vyaparmandali/views/list_data_view.dart';
-import  'package:get/get.dart';
+import 'package:get/get.dart';
+import 'package:vyaparmandali/views/master/items/item_exp_view.dart';
+import 'package:vyaparmandali/views/master/items/item_view.dart';
+import '../views/master/items/item_hamali_exp_view.dart';
 import 'Entry.dart';
 
 class EntryItem extends StatelessWidget {
@@ -32,8 +35,7 @@ class EntryItem extends StatelessWidget {
               root.title,
             )),
       );
-    }
-    else{
+    } else {
       return ExpansionTile(
         key: PageStorageKey<Entry>(root),
         title: GestureDetector(
@@ -60,8 +62,8 @@ class EntryItem extends StatelessWidget {
               },
               child: Text(
                 root.title,
-                style:
-                ToolkitTypography.body1A.copyWith(color: ToolkitColors.black),
+                style: ToolkitTypography.body1A
+                    .copyWith(color: ToolkitColors.black),
               ),
             )),
         children: root.children.map<Widget>(_buildTiles).toList(),
@@ -84,10 +86,19 @@ class EntryItem extends StatelessWidget {
             ));
         break;
       case 'std code':
-      Get.to(ListDataView());
+        Get.to(ListDataView());
         break;
       case 'a/c master':
         Get.to(ACMasterListView());
+        break;
+      case 'item name':
+        Get.to(ItemView());
+        break;
+      case 'item exp':
+        Get.to(ItemExpView());
+        break;
+      case 'hamali exp':
+        Get.to(ItemHamaliExpView());
         break;
     }
   }

@@ -13,7 +13,6 @@ class _AddItemsViewState extends State<AddItemsView> {
   TextEditingController codeController = TextEditingController();
   TextEditingController nameController = TextEditingController();
   TextEditingController rateController = TextEditingController();
-  TextEditingController itemQuantityController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -63,17 +62,6 @@ class _AddItemsViewState extends State<AddItemsView> {
                         hintText: "Product Name",
                         label: "Product Name",
                         controller: nameController,
-                      ),
-                    ),Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: UIToolkit.textFormField(
-                        hintText: "Product Quantity",
-                        label: "Product Quantity",
-                        controller: itemQuantityController,
-                        inputFormatters: <TextInputFormatter>[
-                          FilteringTextInputFormatter.singleLineFormatter,
-                          FilteringTextInputFormatter.digitsOnly,
-                        ],
                       ),
                     ),
                     Padding(
