@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/views/add_data_entry_view.dart';
+import 'package:vyaparmandali/views/data_entry/add_data_entry_view.dart';
 
 class DataEntryView extends StatefulWidget {
   const DataEntryView({Key? key}) : super(key: key);

@@ -1,6 +1,7 @@
 // Create the Widget for the row
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
+import 'package:vyaparmandali/views/data_entry/data_entry_view.dart';
 import 'package:vyaparmandali/views/master/ac_master_view.dart';
 import 'package:vyaparmandali/views/master/codes/group_master_list_view.dart';
 import 'package:vyaparmandali/views/list_data_view.dart';
@@ -104,6 +105,9 @@ class EntryItem extends StatelessWidget {
         break;
       case 'place master':
         Get.to(PlaceMasterView());
+        break;
+      case 'rojmel':
+        Get.to(DataEntryView());
         break;
     }
   }
