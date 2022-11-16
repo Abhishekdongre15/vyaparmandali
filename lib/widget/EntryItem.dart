@@ -7,6 +7,7 @@ import 'package:vyaparmandali/views/master/codes/group_master_list_view.dart';
 import 'package:vyaparmandali/views/list_data_view.dart';
 import 'package:get/get.dart';
 import 'package:vyaparmandali/views/master/codes/narration_view.dart';
+import 'package:vyaparmandali/views/master/items/hamali_exp_view.dart';
 import 'package:vyaparmandali/views/master/items/item_exp_view.dart';
 import 'package:vyaparmandali/views/master/items/item_view.dart';
 import 'package:vyaparmandali/views/master/place_master_view.dart';
@@ -101,7 +102,7 @@ class EntryItem extends StatelessWidget {
         Get.to(ItemExpView());
         break;
       case 'hamali exp':
-        Get.to(ItemHamaliExpView());
+        Get.to(HamaliExpView());
         break;
       case 'place master':
         Get.to(PlaceMasterView());
