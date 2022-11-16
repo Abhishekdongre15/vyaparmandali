@@ -187,7 +187,7 @@ class ItemExpViewState extends State<ItemExpView> {
                       UIToolkitButtons.iconButton(
                           text: "",
                           onPressed: () {},
-                          icon: ToolkitAssets.iconEye44),
+                          icon: ToolkitAssets.editIcon44),
                       UIToolkitButtons.iconButton(
                           text: "",
                           onPressed: () {},

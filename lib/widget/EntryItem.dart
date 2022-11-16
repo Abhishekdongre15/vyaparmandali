@@ -11,7 +11,6 @@ import 'package:vyaparmandali/views/master/items/hamali_exp_view.dart';
 import 'package:vyaparmandali/views/master/items/item_exp_view.dart';
 import 'package:vyaparmandali/views/master/items/item_view.dart';
 import 'package:vyaparmandali/views/master/place_master_view.dart';
-import '../views/master/items/item_hamali_exp_view.dart';
 import 'Entry.dart';
 
 class EntryItem extends StatelessWidget {

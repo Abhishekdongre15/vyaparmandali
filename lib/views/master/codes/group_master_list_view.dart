@@ -119,7 +119,7 @@ class GroupMasterListViewState extends State<GroupMasterListView> {
                       UIToolkitButtons.iconButton(
                           text: "",
                           onPressed: () {},
-                          icon: ToolkitAssets.iconEye44),
+                          icon: ToolkitAssets.editIcon44),
                       UIToolkitButtons.iconButton(
                           text: "",
                           onPressed: () {},
