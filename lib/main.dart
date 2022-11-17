@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:vyaparmandali/responsive/desktop_body.dart';
+import 'package:vyaparmandali/views/report/journal_view.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,10 +18,12 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Vyapar Mandali',
-      home: DesktopScaffold(),
+      home: Scaffold(
+        body: DesktopScaffold(),
+      ),
       // home: ResponsiveLayout(
       //   mobileBody: const LoginView(),
-      //   tabletBody: const LoginView(),
+      //   tabletBody: const LoginView()
       //   desktopBody: const DesktopScaffold(),
       // ),
     );
