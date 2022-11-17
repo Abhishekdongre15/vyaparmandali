@@ -11,7 +11,10 @@ import 'package:vyaparmandali/views/master/items/hamali_exp_view.dart';
 import 'package:vyaparmandali/views/master/items/item_exp_view.dart';
 import 'package:vyaparmandali/views/master/items/item_view.dart';
 import 'package:vyaparmandali/views/master/place_master_view.dart';
-import '../views/report/journal_view.dart';
+import 'package:vyaparmandali/views/report/cash%20bank%20book/bank_book_view.dart';
+import 'package:vyaparmandali/views/report/cash%20bank%20book/cashbook_view.dart';
+import 'package:vyaparmandali/views/report/cash%20bank%20book/rojmel_as_book_view.dart';
+import '../views/report/cash bank book/journal_view.dart';
 import 'Entry.dart';
 
 class EntryItem extends StatelessWidget {
@@ -112,6 +115,15 @@ class EntryItem extends StatelessWidget {
         break;
       case 'rojmel as a/c':
         Get.to(JournalView());
+        break;
+      case 'rojmel as book':
+        Get.to(RojmelAsBook());
+        break;
+      case 'cash boook':
+        Get.to(CashbookView());
+        break;
+      case 'bank book':
+        Get.to(BankBookView());
         break;
     }
   }
