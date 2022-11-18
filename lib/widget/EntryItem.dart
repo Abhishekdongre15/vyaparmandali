@@ -21,6 +21,7 @@ import 'package:vyaparmandali/views/report/ledgers/general_ledger_view.dart';
 import 'package:vyaparmandali/views/report/vacchat%20report/patti_register_view.dart';
 import '../views/report/cash bank book/daily_wise_bank_book_view.dart';
 import '../views/report/cash bank book/journal_view.dart';
+import '../views/report/ledgers/statement_of_account_view.dart';
 import '../views/report/vacchat report/jama_nondh.dart';
 import '../views/report/vacchat report/jama_nondh_summery_monthly_view.dart';
 import '../views/report/vacchat report/jama_nondh_summery_view.dart';
@@ -160,6 +161,9 @@ class EntryItem extends StatelessWidget {
         break;
       case 'general ledger':
         Get.to(GeneralLedgerView());
+        break;
+      case 'statement of accounts':
+        Get.to(StatementOfAccountView());
         break;
     }
   }

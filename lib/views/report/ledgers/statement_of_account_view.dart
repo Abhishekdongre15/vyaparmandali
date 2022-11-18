@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
-class GeneralLedgerView extends StatefulWidget {
-  const GeneralLedgerView({Key? key}) : super(key: key);
+class StatementOfAccountView extends StatefulWidget {
+  const StatementOfAccountView({Key? key}) : super(key: key);
 
   @override
-  State<GeneralLedgerView> createState() => _GeneralLedgerViewState();
+  State<StatementOfAccountView> createState() => _StatementOfAccountViewState();
 }
 
-class _GeneralLedgerViewState extends State<GeneralLedgerView> {
+class _StatementOfAccountViewState extends State<StatementOfAccountView> {
   DateTime fdate = DateTime(2022, 11, 17);
   DateTime tdate = DateTime(2022, 11, 17);
 
@@ -96,7 +96,7 @@ class _GeneralLedgerViewState extends State<GeneralLedgerView> {
                 color: Colors.white,
                 width: double.infinity,
                 child: TextField(),), width: width, height: height),
-              reUseRow(text: "Print", child:  Container(
+              reUseRow(text: "Start Page", child:  Container(
                 margin: EdgeInsets.symmetric(horizontal: width*0.10),
                 alignment: Alignment.center,
                 height:  height*0.07,
@@ -104,7 +104,7 @@ class _GeneralLedgerViewState extends State<GeneralLedgerView> {
                 width: double.infinity,
                 child: TextField(),), width: width, height: height),
               dottedRow(),
-              reUseContainer("Farmers Deposit Monthly Record",height),
+              reUseContainer("Account Detail",height),
             ],
           ),
         ),
