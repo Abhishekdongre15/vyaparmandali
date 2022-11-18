@@ -17,6 +17,7 @@ import 'package:vyaparmandali/views/report/cash%20bank%20book/cash_limit_view.da
 import 'package:vyaparmandali/views/report/cash%20bank%20book/cashbook_view.dart';
 import 'package:vyaparmandali/views/report/cash%20bank%20book/daily_cash_balance_view.dart';
 import 'package:vyaparmandali/views/report/cash%20bank%20book/rojmel_as_book_view.dart';
+import 'package:vyaparmandali/views/report/ledgers/general_ledger_view.dart';
 import 'package:vyaparmandali/views/report/vacchat%20report/patti_register_view.dart';
 import '../views/report/cash bank book/daily_wise_bank_book_view.dart';
 import '../views/report/cash bank book/journal_view.dart';
@@ -156,6 +157,9 @@ class EntryItem extends StatelessWidget {
         break;
       case 'jama nondh summery monthly':
         Get.to(JamaNondhSummeryMonthlyView());
+        break;
+      case 'general ledger':
+        Get.to(GeneralLedgerView());
         break;
     }
   }
