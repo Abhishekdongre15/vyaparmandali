@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
-class BankRecoView extends StatefulWidget {
-  const BankRecoView({Key? key}) : super(key: key);
+class CashLimitView extends StatefulWidget {
+  const CashLimitView({Key? key}) : super(key: key);
 
   @override
-  State<BankRecoView> createState() => _BankRecoViewState();
+  State<CashLimitView> createState() => _CashLimitViewState();
 }
 
-class _BankRecoViewState extends State<BankRecoView> {
+class _CashLimitViewState extends State<CashLimitView> {
   DateTime fdate = DateTime(2022, 11, 17);
   DateTime tdate = DateTime(2022, 11, 17);
 
@@ -54,8 +54,11 @@ class _BankRecoViewState extends State<BankRecoView> {
                       // margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                       alignment: Alignment.center,
                       height: height*0.08,
-                      color: Colors.white,
                       width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
                       child: Text(
                         '${fdate.year}/${fdate.month}/${fdate.day}',
                       )),
@@ -82,15 +85,18 @@ class _BankRecoViewState extends State<BankRecoView> {
                       // margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                       alignment: Alignment.center,
                       height:  height*0.08,
-                      color: Colors.white,
                       width: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
                       child: Text(
                         '${tdate.year}/${tdate.month}/${tdate.day}',
                       )),
                 ),
               ),
               Divider(),
-              reUseContainer("Bank Reco",height),
+              reUseContainer("Cash Limit",height),
             ],
           ),
         ),
@@ -132,7 +138,7 @@ class _BankRecoViewState extends State<BankRecoView> {
             style: ToolkitTypography.h3.copyWith(color: ToolkitColors.white),
           ),
         ),
-        SizedBox(width: width*0.02,),
+        SizedBox(width: width*0.01,),
         Expanded(child: child),
       ],
     );
