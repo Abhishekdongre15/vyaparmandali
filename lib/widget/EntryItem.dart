@@ -17,8 +17,12 @@ import 'package:vyaparmandali/views/report/cash%20bank%20book/cash_limit_view.da
 import 'package:vyaparmandali/views/report/cash%20bank%20book/cashbook_view.dart';
 import 'package:vyaparmandali/views/report/cash%20bank%20book/daily_cash_balance_view.dart';
 import 'package:vyaparmandali/views/report/cash%20bank%20book/rojmel_as_book_view.dart';
+import 'package:vyaparmandali/views/report/vacchat%20report/patti_register_view.dart';
 import '../views/report/cash bank book/daily_wise_bank_book_view.dart';
 import '../views/report/cash bank book/journal_view.dart';
+import '../views/report/vacchat report/jama_nondh.dart';
+import '../views/report/vacchat report/jama_nondh_summery_monthly_view.dart';
+import '../views/report/vacchat report/jama_nondh_summery_view.dart';
 import 'Entry.dart';
 
 class EntryItem extends StatelessWidget {
@@ -140,6 +144,18 @@ class EntryItem extends StatelessWidget {
         break;
       case 'cash limits report':
         Get.to(CashLimitView());
+        break;
+      case 'patti register':
+        Get.to(PattiRegisterView());
+        break;
+      case 'jama nondh':
+        Get.to(JamaNondhView());
+        break;
+      case 'jama nondh summery':
+        Get.to(JamaNondhSummeryView());
+        break;
+      case 'jama nondh summery monthly':
+        Get.to(JamaNondhSummeryMonthlyView());
         break;
     }
   }
