@@ -12,8 +12,11 @@ import 'package:vyaparmandali/views/master/items/item_exp_view.dart';
 import 'package:vyaparmandali/views/master/items/item_view.dart';
 import 'package:vyaparmandali/views/master/place_master_view.dart';
 import 'package:vyaparmandali/views/report/cash%20bank%20book/bank_book_view.dart';
+import 'package:vyaparmandali/views/report/cash%20bank%20book/bank_reco_view.dart';
 import 'package:vyaparmandali/views/report/cash%20bank%20book/cashbook_view.dart';
+import 'package:vyaparmandali/views/report/cash%20bank%20book/daily_cash_balance_view.dart';
 import 'package:vyaparmandali/views/report/cash%20bank%20book/rojmel_as_book_view.dart';
+import '../views/report/cash bank book/daily_wise_bank_book_view.dart';
 import '../views/report/cash bank book/journal_view.dart';
 import 'Entry.dart';
 
@@ -124,6 +127,13 @@ class EntryItem extends StatelessWidget {
         break;
       case 'bank book':
         Get.to(BankBookView());
+        break;
+      case 'daily cash balance':
+        Get.to(DailyCashBalanceView());
+        break; case 'day wise bank book':
+        Get.to(DailyWiseBankBookView());
+        break; case 'bank reco':
+        Get.to(BankRecoView());
         break;
     }
   }

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
-class DailyCashBookView extends StatefulWidget {
-  DailyCashBookView({Key? key}) : super(key: key);
+class BankRecoView extends StatefulWidget {
+  const BankRecoView({Key? key}) : super(key: key);
 
   @override
-  State<DailyCashBookView> createState() => _DailyCashBookViewState();
+  State<BankRecoView> createState() => _BankRecoViewState();
 }
 
-class _DailyCashBookViewState extends State<DailyCashBookView> {
+class _BankRecoViewState extends State<BankRecoView> {
   DateTime fdate = DateTime(2022, 11, 17);
   DateTime tdate = DateTime(2022, 11, 17);
 
@@ -17,10 +17,11 @@ class _DailyCashBookViewState extends State<DailyCashBookView> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AppBar(),
       body: Center(
         child: Container(
           alignment: Alignment.center,
-          height: height * 0.55,
+          height: height * 0.5,
           width: width * 0.5,
           decoration: BoxDecoration(
             color: ToolkitColors.primary,
@@ -30,9 +31,11 @@ class _DailyCashBookViewState extends State<DailyCashBookView> {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              reUseContainer("Enter Period"),
+              reUseContainer("Enter Period",height),
               Divider(),
               reUseRow(
+                height: height,
+                width: width,
                 text: "From Date",
                 child: InkWell(
                   onTap: () async {
@@ -50,7 +53,7 @@ class _DailyCashBookViewState extends State<DailyCashBookView> {
                   child: Container(
                       margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                       alignment: Alignment.center,
-                      height: 50,
+                      height: height*0.08,
                       color: Colors.white,
                       width: double.infinity,
                       child: Text(
@@ -59,6 +62,8 @@ class _DailyCashBookViewState extends State<DailyCashBookView> {
                 ),
               ),
               reUseRow(
+                height: height,
+                width: width,
                 text: "Till Date",
                 child: InkWell(
                   onTap: () async {
@@ -76,7 +81,7 @@ class _DailyCashBookViewState extends State<DailyCashBookView> {
                   child: Container(
                       margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
                       alignment: Alignment.center,
-                      height: 50,
+                      height:  height*0.08,
                       color: Colors.white,
                       width: double.infinity,
                       child: Text(
@@ -85,7 +90,7 @@ class _DailyCashBookViewState extends State<DailyCashBookView> {
                 ),
               ),
               Divider(),
-              reUseContainer("Every Day"),
+              reUseContainer("Bank Reco",height),
             ],
           ),
         ),
@@ -93,11 +98,11 @@ class _DailyCashBookViewState extends State<DailyCashBookView> {
     );
   }
 
-  Widget reUseContainer(String data) {
+  Widget reUseContainer(String data,double height) {
     return Container(
       alignment: Alignment.center,
       margin: EdgeInsets.all(5),
-      height: 50,
+      height: height*0.08,
       width: double.infinity,
       decoration: BoxDecoration(
         color: ToolkitColors.greyLight,
@@ -110,15 +115,15 @@ class _DailyCashBookViewState extends State<DailyCashBookView> {
     );
   }
 
-  Widget reUseRow({required String text, required Widget child}) {
+  Widget reUseRow({required String text, required Widget child, required double width,required double height}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(
           alignment: Alignment.center,
-          margin: EdgeInsets.all(20),
-          height: 50,
-          width: 400,
+          margin: EdgeInsets.all(10),
+          height: height*0.08,
+          width: width*0.1,
           decoration: BoxDecoration(
             color: Color(0xffC576F6),
             borderRadius: BorderRadius.circular(15),
