@@ -96,7 +96,7 @@ final List<Entry> data = <Entry>[
       Entry('PURCHASE REGISTER'),
       Entry('LOTWISE DHADA REGISTER'),
       Entry('SALES SUMMERY REPOST'),
-      Entry('ITEMWISE SALES  REPOST'),
+      Entry('ITEMWISE SALES REPOST'),
       Entry('SALES SUMMERY MONTHLY REPOST'),
     ]),
     Entry('TRANSPORT REPORT', <Entry>[
@@ -202,16 +202,14 @@ TextStyle kLoginOrSignUpTextStyle(
     GoogleFonts.ubuntu(
       fontSize: size.height * 0.022,
       fontWeight: FontWeight.w500,
-      color:ToolkitColors.primary,
+      color: ToolkitColors.primary,
     );
 
 TextStyle kTextFormFieldStyle() => const TextStyle(color: Colors.black);
 
 var defaultBackgroundColor = Colors.grey[300];
-var appBarColor =ToolkitColors.black;
+var appBarColor = ToolkitColors.black;
 var drawerTextColor = TextStyle(
   color: Colors.grey[600],
 );
 var tilePadding = const EdgeInsets.only(left: 8.0, right: 8, top: 8);
-
-

@@ -25,6 +25,7 @@ import 'package:vyaparmandali/views/report/ledgers/monthlywise_ledger_view.dart'
 import 'package:vyaparmandali/views/report/ledgers/screen_ledger_view.dart';
 import 'package:vyaparmandali/views/report/ledgers/supplier_ledger_view.dart';
 import 'package:vyaparmandali/views/report/registers/aavak_register_view.dart';
+import 'package:vyaparmandali/views/report/registers/itemwise_sales_repost_view.dart';
 import 'package:vyaparmandali/views/report/registers/lotwise_dhara_register_view.dart';
 import 'package:vyaparmandali/views/report/registers/purchase_register_view.dart';
 import 'package:vyaparmandali/views/report/registers/sales_register_view.dart';
@@ -218,6 +219,9 @@ class EntryItem extends StatelessWidget {
         break;
       case 'sales summery repost':
         Get.to(SalesSummeryRepostView());
+        break;
+      case 'itemwise sales repost':
+        Get.to(ItemwiseSalesRepostView());
         break;
     }
   }
