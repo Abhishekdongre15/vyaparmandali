@@ -18,6 +18,7 @@ import 'package:vyaparmandali/views/report/cash%20bank%20book/cashbook_view.dart
 import 'package:vyaparmandali/views/report/cash%20bank%20book/daily_cash_balance_view.dart';
 import 'package:vyaparmandali/views/report/cash%20bank%20book/rojmel_as_book_view.dart';
 import 'package:vyaparmandali/views/report/ledgers/customer_ledger_view.dart';
+import 'package:vyaparmandali/views/report/ledgers/daywise_ledger_view.dart';
 import 'package:vyaparmandali/views/report/ledgers/general_ledger_view.dart';
 import 'package:vyaparmandali/views/report/ledgers/group_ledger_view.dart';
 import 'package:vyaparmandali/views/report/ledgers/itemwise_ledger_view.dart';
@@ -188,6 +189,9 @@ class EntryItem extends StatelessWidget {
         break;
       case 'itemwise ledger':
         Get.to(ItemWiseLedgerView());
+        break;
+      case 'daywise ledger':
+        Get.to(DayWiseLedgerView());
         break;
     }
   }
