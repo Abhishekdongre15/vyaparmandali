@@ -4,7 +4,6 @@ import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/views/data_entry/data_entry_view.dart';
 import 'package:vyaparmandali/views/master/ac_master_view.dart';
 import 'package:vyaparmandali/views/master/codes/group_master_list_view.dart';
-import 'package:vyaparmandali/views/list_data_view.dart';
 import 'package:get/get.dart';
 import 'package:vyaparmandali/views/master/codes/narration_view.dart';
 import 'package:vyaparmandali/views/master/items/hamali_exp_view.dart';
@@ -25,11 +24,16 @@ import 'package:vyaparmandali/views/report/ledgers/itemwise_ledger_view.dart';
 import 'package:vyaparmandali/views/report/ledgers/monthlywise_ledger_view.dart';
 import 'package:vyaparmandali/views/report/ledgers/screen_ledger_view.dart';
 import 'package:vyaparmandali/views/report/ledgers/supplier_ledger_view.dart';
+import 'package:vyaparmandali/views/report/registers/aavak_register_view.dart';
+import 'package:vyaparmandali/views/report/registers/lotwise_dhara_register_view.dart';
+import 'package:vyaparmandali/views/report/registers/purchase_register_view.dart';
+import 'package:vyaparmandali/views/report/registers/sales_register_view.dart';
 import 'package:vyaparmandali/views/report/vacchat%20report/patti_register_view.dart';
 import '../views/report/cash bank book/daily_wise_bank_book_view.dart';
 import '../views/report/cash bank book/journal_view.dart';
 import '../views/report/ledgers/detail_ledger_view.dart';
 import '../views/report/ledgers/statement_of_account_view.dart';
+import '../views/report/registers/dhada_register_view.dart';
 import '../views/report/vacchat report/jama_nondh.dart';
 import '../views/report/vacchat report/jama_nondh_summery_monthly_view.dart';
 import '../views/report/vacchat report/jama_nondh_summery_view.dart';
@@ -66,12 +70,6 @@ class EntryItem extends StatelessWidget {
         title: GestureDetector(
             onTap: () {
               if (root.title.toLowerCase() == 'GROUP'.toLowerCase()) {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => const GroupMasterListView(),
-                //   ),
-                // );
                 Get.to(GroupMasterListView());
               }
             },
@@ -167,6 +165,8 @@ class EntryItem extends StatelessWidget {
       case 'jama nondh summery monthly':
         Get.to(JamaNondhSummeryMonthlyView());
         break;
+
+      /// Ledger Screens Started.
       case 'general ledger':
         Get.to(GeneralLedgerView());
         break;
@@ -196,6 +196,24 @@ class EntryItem extends StatelessWidget {
         break;
       case 'month wise ledger':
         Get.to(MonthlyWiseLedgerView());
+        break;
+      //    Ledger Screen Ended
+
+      /// Register Screen Started
+      case 'aavak register':
+        Get.to(AavakRegisterView());
+        break;
+      case 'dhada register':
+        Get.to(DhadaRegisterView());
+        break;
+      case 'sales register':
+        Get.to(SalesRegisterView());
+        break;
+      case 'purchase register':
+        Get.to(PurchaseRegisterView());
+        break;
+      case 'lotwise dhada register':
+        Get.to(LotwiseDhadaRegisterView());
         break;
     }
   }
