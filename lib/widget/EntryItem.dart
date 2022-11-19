@@ -20,6 +20,7 @@ import 'package:vyaparmandali/views/report/cash%20bank%20book/rojmel_as_book_vie
 import 'package:vyaparmandali/views/report/ledgers/customer_ledger_view.dart';
 import 'package:vyaparmandali/views/report/ledgers/general_ledger_view.dart';
 import 'package:vyaparmandali/views/report/ledgers/group_ledger_view.dart';
+import 'package:vyaparmandali/views/report/ledgers/itemwise_ledger_view.dart';
 import 'package:vyaparmandali/views/report/ledgers/screen_ledger_view.dart';
 import 'package:vyaparmandali/views/report/ledgers/supplier_ledger_view.dart';
 import 'package:vyaparmandali/views/report/vacchat%20report/patti_register_view.dart';
@@ -184,6 +185,9 @@ class EntryItem extends StatelessWidget {
         break;
       case 'suppliers ledger':
         Get.to(SupplierLedgerView());
+        break;
+      case 'itemwise ledger':
+        Get.to(ItemWiseLedgerView());
         break;
     }
   }
