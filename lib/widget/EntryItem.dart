@@ -22,6 +22,7 @@ import 'package:vyaparmandali/views/report/ledgers/daywise_ledger_view.dart';
 import 'package:vyaparmandali/views/report/ledgers/general_ledger_view.dart';
 import 'package:vyaparmandali/views/report/ledgers/group_ledger_view.dart';
 import 'package:vyaparmandali/views/report/ledgers/itemwise_ledger_view.dart';
+import 'package:vyaparmandali/views/report/ledgers/monthlywise_ledger_view.dart';
 import 'package:vyaparmandali/views/report/ledgers/screen_ledger_view.dart';
 import 'package:vyaparmandali/views/report/ledgers/supplier_ledger_view.dart';
 import 'package:vyaparmandali/views/report/vacchat%20report/patti_register_view.dart';
@@ -192,6 +193,9 @@ class EntryItem extends StatelessWidget {
         break;
       case 'daywise ledger':
         Get.to(DayWiseLedgerView());
+        break;
+      case 'month wise ledger':
+        Get.to(MonthlyWiseLedgerView());
         break;
     }
   }

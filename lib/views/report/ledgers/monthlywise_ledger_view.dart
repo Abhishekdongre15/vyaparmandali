@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
-class GroupLedgerView extends StatefulWidget {
-  const GroupLedgerView({Key? key}) : super(key: key);
+class MonthlyWiseLedgerView extends StatefulWidget {
+  const MonthlyWiseLedgerView({Key? key}) : super(key: key);
 
   @override
-  State<GroupLedgerView> createState() => _GroupLedgerViewState();
+  State<MonthlyWiseLedgerView> createState() => _MonthlyWiseLedgerViewState();
 }
 
-class _GroupLedgerViewState extends State<GroupLedgerView> {
+class _MonthlyWiseLedgerViewState extends State<MonthlyWiseLedgerView> {
   DateTime fdate = DateTime(2022, 11, 17);
   DateTime tdate = DateTime(2022, 11, 17);
-  TextEditingController group1Controller = TextEditingController();
-  TextEditingController group2Controller = TextEditingController();
+  TextEditingController accountController = TextEditingController();
+  TextEditingController printController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class _GroupLedgerViewState extends State<GroupLedgerView> {
       appBar: AppBar(
         backgroundColor: ToolkitColors.primary,
         title: Text(
-          "Group Ledger",
+          "Month Wise Ledger",
           style: ToolkitTypography.h2.copyWith(color: Colors.white),
         ),
       ),
@@ -99,7 +99,7 @@ class _GroupLedgerViewState extends State<GroupLedgerView> {
                 ),
               ),
               reUseRow(
-                  text: "Group",
+                  text: "Name of the account holder",
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: width * 0.01),
                     alignment: Alignment.center,
@@ -107,13 +107,13 @@ class _GroupLedgerViewState extends State<GroupLedgerView> {
                     color: Colors.white,
                     width: double.infinity,
                     child: TextField(
-                      controller: group1Controller,
+                      controller: accountController,
                     ),
                   ),
                   width: width,
                   height: height),
               reUseRow(
-                  text: "Group",
+                  text: "To Print",
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: width * 0.10),
                     alignment: Alignment.center,
@@ -121,7 +121,7 @@ class _GroupLedgerViewState extends State<GroupLedgerView> {
                     color: Colors.white,
                     width: double.infinity,
                     child: TextField(
-                      controller: group2Controller,
+                      controller: printController,
                     ),
                   ),
                   width: width,
