@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
-class DetailLedgerView extends StatefulWidget {
-  const DetailLedgerView({Key? key}) : super(key: key);
+class CustomerLedgerView extends StatefulWidget {
+  const CustomerLedgerView({Key? key}) : super(key: key);
 
   @override
-  State<DetailLedgerView> createState() => _DetailLedgerViewState();
+  State<CustomerLedgerView> createState() => _CustomerLedgerViewState();
 }
 
-class _DetailLedgerViewState extends State<DetailLedgerView> {
+class _CustomerLedgerViewState extends State<CustomerLedgerView> {
   DateTime fdate = DateTime(2022, 11, 17);
   DateTime tdate = DateTime(2022, 11, 17);
-  TextEditingController printPageController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +19,10 @@ class _DetailLedgerViewState extends State<DetailLedgerView> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ToolkitColors.primary,
+        title: Text(
+          "Customer Ledger",
+          style: ToolkitTypography.body1A.copyWith(color: Colors.white),
+        ),
       ),
       body: Center(
         child: Container(
@@ -34,7 +37,7 @@ class _DetailLedgerViewState extends State<DetailLedgerView> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              reUseContainer("Enter Date", height),
+              reUseContainer("Statement of Account", height),
               dottedRow(),
               reUseRow(
                 height: height,
@@ -94,7 +97,7 @@ class _DetailLedgerViewState extends State<DetailLedgerView> {
                 ),
               ),
               reUseRow(
-                  text: "Name of the Account Holder",
+                  text: "From A/C",
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: width * 0.01),
                     alignment: Alignment.center,
@@ -106,7 +109,19 @@ class _DetailLedgerViewState extends State<DetailLedgerView> {
                   width: width,
                   height: height),
               reUseRow(
-                  text: "Print Page",
+                  text: "To A/C",
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: width * 0.01),
+                    alignment: Alignment.center,
+                    height: height * 0.07,
+                    color: Colors.white,
+                    width: double.infinity,
+                    child: TextField(),
+                  ),
+                  width: width,
+                  height: height),
+              reUseRow(
+                  text: "Start Page",
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: width * 0.10),
                     alignment: Alignment.center,
@@ -114,13 +129,15 @@ class _DetailLedgerViewState extends State<DetailLedgerView> {
                     color: Colors.white,
                     width: double.infinity,
                     child: TextField(
-                      controller: printPageController,
-                    ),
+                        decoration: InputDecoration(
+                            hintText: "0",
+                            hintStyle: TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold))),
                   ),
                   width: width,
                   height: height),
               dottedRow(),
-              reUseContainer("Account Statement", height),
+              reUseContainer("Account Detail", height),
             ],
           ),
         ),
@@ -158,12 +175,12 @@ class _DetailLedgerViewState extends State<DetailLedgerView> {
           height: height * 0.07,
           width: width * 0.2,
           decoration: BoxDecoration(
-            color: Colors.green,
+            color: ToolkitColors.primary,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Text(
             "$text",
-            style: ToolkitTypography.h3.copyWith(color: ToolkitColors.white),
+            style: ToolkitTypography.h3.copyWith(color: ToolkitColors.black),
           ),
         ),
         SizedBox(

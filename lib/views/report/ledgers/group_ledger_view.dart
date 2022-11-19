@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
-class DetailLedgerView extends StatefulWidget {
-  const DetailLedgerView({Key? key}) : super(key: key);
+class GroupLedgerView extends StatefulWidget {
+  const GroupLedgerView({Key? key}) : super(key: key);
 
   @override
-  State<DetailLedgerView> createState() => _DetailLedgerViewState();
+  State<GroupLedgerView> createState() => _GroupLedgerViewState();
 }
 
-class _DetailLedgerViewState extends State<DetailLedgerView> {
+class _GroupLedgerViewState extends State<GroupLedgerView> {
   DateTime fdate = DateTime(2022, 11, 17);
   DateTime tdate = DateTime(2022, 11, 17);
-  TextEditingController printPageController = TextEditingController();
+  TextEditingController group1Controller = TextEditingController();
+  TextEditingController group2Controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -94,19 +95,21 @@ class _DetailLedgerViewState extends State<DetailLedgerView> {
                 ),
               ),
               reUseRow(
-                  text: "Name of the Account Holder",
+                  text: "Group",
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: width * 0.01),
                     alignment: Alignment.center,
                     height: height * 0.07,
                     color: Colors.white,
                     width: double.infinity,
-                    child: TextField(),
+                    child: TextField(
+                      controller: group1Controller,
+                    ),
                   ),
                   width: width,
                   height: height),
               reUseRow(
-                  text: "Print Page",
+                  text: "Group",
                   child: Container(
                     margin: EdgeInsets.symmetric(horizontal: width * 0.10),
                     alignment: Alignment.center,
@@ -114,7 +117,7 @@ class _DetailLedgerViewState extends State<DetailLedgerView> {
                     color: Colors.white,
                     width: double.infinity,
                     child: TextField(
-                      controller: printPageController,
+                      controller: group2Controller,
                     ),
                   ),
                   width: width,

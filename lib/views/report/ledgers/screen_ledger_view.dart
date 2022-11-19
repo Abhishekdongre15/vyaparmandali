@@ -19,6 +19,10 @@ class _ScreenLedgerViewState extends State<ScreenLedgerView> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ToolkitColors.primary,
+        title: Text(
+          "Screen Ledger",
+          style: ToolkitTypography.body1A.copyWith(color: Colors.white),
+        ),
       ),
       body: Center(
         child: Container(
