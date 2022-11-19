@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
-class LotwiseDhadaRegisterView extends StatefulWidget {
-  const LotwiseDhadaRegisterView({Key? key}) : super(key: key);
+class SalesSummeryRepostView extends StatefulWidget {
+  const SalesSummeryRepostView({Key? key}) : super(key: key);
 
   @override
-  State<LotwiseDhadaRegisterView> createState() =>
-      _LotwiseDhadaRegisterViewState();
+  State<SalesSummeryRepostView> createState() => _SalesSummeryRepostViewState();
 }
 
-class _LotwiseDhadaRegisterViewState extends State<LotwiseDhadaRegisterView> {
+class _SalesSummeryRepostViewState extends State<SalesSummeryRepostView> {
   DateTime fdate = DateTime(2022, 11, 17);
   DateTime tdate = DateTime(2022, 11, 17);
   TextEditingController ginhayakController = TextEditingController();
@@ -22,7 +21,7 @@ class _LotwiseDhadaRegisterViewState extends State<LotwiseDhadaRegisterView> {
       appBar: AppBar(
         backgroundColor: ToolkitColors.primary,
         title: Text(
-          "Lotwise Dhada Register",
+          "Sales Summery Repost",
           style: ToolkitTypography.h2.copyWith(color: Colors.white),
         ),
       ),
@@ -113,7 +112,7 @@ class _LotwiseDhadaRegisterViewState extends State<LotwiseDhadaRegisterView> {
                   width: width,
                   height: height),
               dottedRow(),
-              reUseContainer("Sales Register", height),
+              reUseContainer("Dhada book Register", height),
             ],
           ),
         ),

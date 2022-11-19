@@ -34,6 +34,7 @@ import '../views/report/cash bank book/journal_view.dart';
 import '../views/report/ledgers/detail_ledger_view.dart';
 import '../views/report/ledgers/statement_of_account_view.dart';
 import '../views/report/registers/dhada_register_view.dart';
+import '../views/report/registers/sales_summery_repost_view.dart';
 import '../views/report/vacchat report/jama_nondh.dart';
 import '../views/report/vacchat report/jama_nondh_summery_monthly_view.dart';
 import '../views/report/vacchat report/jama_nondh_summery_view.dart';
@@ -214,6 +215,9 @@ class EntryItem extends StatelessWidget {
         break;
       case 'lotwise dhada register':
         Get.to(LotwiseDhadaRegisterView());
+        break;
+      case 'sales summery repost':
+        Get.to(SalesSummeryRepostView());
         break;
     }
   }
