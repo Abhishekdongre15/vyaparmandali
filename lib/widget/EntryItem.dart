@@ -29,6 +29,7 @@ import 'package:vyaparmandali/views/report/registers/itemwise_sales_repost_view.
 import 'package:vyaparmandali/views/report/registers/lotwise_dhara_register_view.dart';
 import 'package:vyaparmandali/views/report/registers/purchase_register_view.dart';
 import 'package:vyaparmandali/views/report/registers/sales_register_view.dart';
+import 'package:vyaparmandali/views/report/registers/sales_summery_monthly_repost_view.dart';
 import 'package:vyaparmandali/views/report/vacchat%20report/patti_register_view.dart';
 import '../views/report/cash bank book/daily_wise_bank_book_view.dart';
 import '../views/report/cash bank book/journal_view.dart';
@@ -222,6 +223,9 @@ class EntryItem extends StatelessWidget {
         break;
       case 'itemwise sales repost':
         Get.to(ItemwiseSalesRepostView());
+        break;
+      case 'sales summery monthly repost':
+        Get.to(SalesSummeryMonthlyRepostView());
         break;
     }
   }
