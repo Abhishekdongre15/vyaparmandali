@@ -108,7 +108,7 @@ final List<Entry> data = <Entry>[
     Entry('ADDITIONAL REPORT', <Entry>[
       Entry('APMC DAILY REPORT'),
       Entry('VACHHATWISE DAILY REPORT'),
-      Entry('MONTHWISE P & L  REPORT'),
+      Entry('MONTHWISE P & L REPORT'),
       Entry('VACHHATWISE REPORT'),
       Entry('VACHHATWISE SUMMERY REPORT'),
       Entry('GB DAILY REPORT'),
@@ -117,7 +117,7 @@ final List<Entry> data = <Entry>[
     ]),
     Entry('CUSTOMERS REPORT', <Entry>[
       Entry('LEDGER SALES O/S REPORT'),
-      Entry('LEDGER SALES O/S LEBLE REPORT'),
+      Entry('LEDGER SALES O/S LABEL REPORT'),
       Entry('PARTYWISE SALES REPORT'),
       Entry('LEDGER SALES O/S 90 DAYS REPORT'),
     ]),
