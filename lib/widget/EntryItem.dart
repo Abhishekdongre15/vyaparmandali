@@ -39,6 +39,7 @@ import '../views/report/registers/dhada_register_view.dart';
 import '../views/report/registers/sales_summery_repost_view.dart';
 import '../views/report/transport report/transport_comm_report_view.dart';
 import '../views/report/transport report/transport_report_view.dart';
+import '../views/report/transport report/transportwise_patti_os_view.dart';
 import '../views/report/vacchat report/jama_nondh.dart';
 import '../views/report/vacchat report/jama_nondh_summery_monthly_view.dart';
 import '../views/report/vacchat report/jama_nondh_summery_view.dart';
@@ -234,8 +235,8 @@ class EntryItem extends StatelessWidget {
       case 'transport report':
         Get.to(TransportReportView());
         break;
-      case 'transport comm report':
-        Get.to(TransportCommReportView());
+      case 'transport wise patti o/s':
+        Get.to(TransportWisePattiOSRepostView());
         break;
     }
   }
