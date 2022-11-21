@@ -10,6 +10,7 @@ import 'package:vyaparmandali/views/master/items/hamali_exp_view.dart';
 import 'package:vyaparmandali/views/master/items/item_exp_view.dart';
 import 'package:vyaparmandali/views/master/items/item_view.dart';
 import 'package:vyaparmandali/views/master/place_master_view.dart';
+import 'package:vyaparmandali/views/report/additional%20report/apmc_daily_report_view.dart';
 import 'package:vyaparmandali/views/report/cash%20bank%20book/bank_book_view.dart';
 import 'package:vyaparmandali/views/report/cash%20bank%20book/bank_reco_view.dart';
 import 'package:vyaparmandali/views/report/cash%20bank%20book/cash_limit_view.dart';
@@ -246,7 +247,9 @@ class EntryItem extends StatelessWidget {
     // Transport Screen Ended
 
     /// Additional Report Started
-        
+      case 'apmc daily report':
+        Get.to(APMCDailyReportView());
+        break;
     }
   }
 }
