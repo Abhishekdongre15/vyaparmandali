@@ -34,6 +34,7 @@ import 'package:vyaparmandali/views/report/registers/sales_register_view.dart';
 import 'package:vyaparmandali/views/report/registers/sales_summery_monthly_repost_view.dart';
 import 'package:vyaparmandali/views/report/transport%20report/transportwise_patti_date_os_view.dart';
 import 'package:vyaparmandali/views/report/vacchat%20report/patti_register_view.dart';
+import '../views/report/additional report/monthwise_p&l_report_view.dart';
 import '../views/report/cash bank book/daily_wise_bank_book_view.dart';
 import '../views/report/cash bank book/journal_view.dart';
 import '../views/report/ledgers/detail_ledger_view.dart';
@@ -253,6 +254,9 @@ class EntryItem extends StatelessWidget {
         break;
       case 'vachhatwise daily report':
         Get.to(VachatWiseDailyReportView());
+        break;
+      case 'monthwise p & l  report':
+        Get.to(MonthWisePLReportView());
         break;
     }
   }
