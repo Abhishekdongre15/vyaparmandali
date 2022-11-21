@@ -39,8 +39,9 @@ import 'package:vyaparmandali/views/report/vacchat%20report/patti_register_view.
 import '../views/report/additional report/monthwise_p&l_report_view.dart';
 import '../views/report/additional report/vachatwise_report_view.dart';
 import '../views/report/additional report/vachatwise_summery_report_view.dart';
-import '../views/report/cash bank book/daily_wise_bank_book_view.dart';
-import '../views/report/cash bank book/journal_view.dart';
+import '../views/report/cash bank book/day_wise_bank_book_view.dart';
+import '../views/report/cash bank book/rojmel_ac_view.dart';
+import '../views/report/customer report/ledger_sales_os_90_day_report_view.dart';
 import '../views/report/customer report/partywise_sales_report_view.dart';
 import '../views/report/ledgers/detail_ledger_view.dart';
 import '../views/report/ledgers/statement_of_account_view.dart';
@@ -145,7 +146,7 @@ class EntryItem extends StatelessWidget {
         Get.to(DataEntryView());
         break;
       case 'rojmel as a/c':
-        Get.to(JournalView());
+        Get.to(RojmelAcView());
         break;
       case 'rojmel as book':
         Get.to(RojmelAsBook());
@@ -160,7 +161,7 @@ class EntryItem extends StatelessWidget {
         Get.to(DailyCashBalanceView());
         break;
       case 'day wise bank book':
-        Get.to(DailyWiseBankBookView());
+        Get.to(DayWiseBankBookView());
         break;
       case 'bank reco':
         Get.to(BankRecoView());
@@ -284,6 +285,10 @@ class EntryItem extends StatelessWidget {
       case 'partywise sales report':
         Get.to(PartywiseWiseSalesReportView());
         break;
+      case 'ledger sales o/s 90 days report':
+        Get.to(LedgerOS90DayRepostView());
+        break;
+      // Customers Report Screen Ended
     }
   }
 }

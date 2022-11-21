@@ -11,12 +11,20 @@ class BankBookView extends StatefulWidget {
 class _BankBookViewState extends State<BankBookView> {
   DateTime fdate = DateTime(2022, 11, 17);
   DateTime tdate = DateTime(2022, 11, 17);
+  TextEditingController bankNameController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ToolkitColors.primary,
+        title: Text(
+          "Bank Book",
+          style: ToolkitTypography.h2.copyWith(color: Colors.white),
+        ),
+      ),
       body: Center(
         child: Container(
           alignment: Alignment.center,
@@ -30,9 +38,11 @@ class _BankBookViewState extends State<BankBookView> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              reUseContainer("Enter Period"),
-              Divider(),
+              reUseContainer("Enter Period", height),
+              dottedRow(),
               reUseRow(
+                height: height,
+                width: width,
                 text: "From Date",
                 child: InkWell(
                   onTap: () async {
@@ -48,9 +58,9 @@ class _BankBookViewState extends State<BankBookView> {
                     setState(() => fdate = fromDate);
                   },
                   child: Container(
-                      margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                      margin: EdgeInsets.symmetric(horizontal: width * 0.01),
                       alignment: Alignment.center,
-                      height: 50,
+                      height: height * 0.07,
                       color: Colors.white,
                       width: double.infinity,
                       child: Text(
@@ -59,6 +69,8 @@ class _BankBookViewState extends State<BankBookView> {
                 ),
               ),
               reUseRow(
+                height: height,
+                width: width,
                 text: "Till Date",
                 child: InkWell(
                   onTap: () async {
@@ -74,20 +86,33 @@ class _BankBookViewState extends State<BankBookView> {
                     setState(() => tdate = tillDate);
                   },
                   child: Container(
-                      margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                      alignment: Alignment.center,
-                      height: 50,
-                      color: Colors.white,
-                      width: double.infinity,
-                      child: Text(
-                        '${tdate.year}/${tdate.month}/${tdate.day}',
-                      )),
+                    margin: EdgeInsets.symmetric(horizontal: width * 0.01),
+                    alignment: Alignment.center,
+                    height: height * 0.07,
+                    color: Colors.white,
+                    width: double.infinity,
+                    child: Text(
+                      '${tdate.year}/${tdate.month}/${tdate.day}',
+                    ),
+                  ),
                 ),
               ),
-              reUseRow(text: "Bank Name", child: Expanded(child: TextField(
-              ),),),
-              Divider(),
-              reUseContainer("Bank Book"),
+              reUseRow(
+                  text: "Bank Name",
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: width * 0.01),
+                    alignment: Alignment.center,
+                    height: height * 0.07,
+                    color: Colors.white,
+                    width: double.infinity,
+                    child: TextField(
+                      controller: bankNameController,
+                    ),
+                  ),
+                  width: width,
+                  height: height),
+              dottedRow(),
+              reUseContainer("Bank Book", height),
             ],
           ),
         ),
@@ -95,11 +120,11 @@ class _BankBookViewState extends State<BankBookView> {
     );
   }
 
-  Widget reUseContainer(String data) {
+  Widget reUseContainer(String data, double height) {
     return Container(
       alignment: Alignment.center,
       margin: EdgeInsets.all(5),
-      height: 40,
+      height: height * 0.07,
       width: double.infinity,
       decoration: BoxDecoration(
         color: ToolkitColors.greyLight,
@@ -112,28 +137,46 @@ class _BankBookViewState extends State<BankBookView> {
     );
   }
 
-  Widget reUseRow({required String text, required Widget child}) {
+  Widget reUseRow(
+      {required String text,
+      required Widget child,
+      required double width,
+      required double height}) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Container(
           alignment: Alignment.center,
-          margin: EdgeInsets.symmetric(
-            horizontal: 20,vertical: 10
-          ),
-          height: 40,
-          width: 400,
+          height: height * 0.07,
+          width: width * 0.2,
           decoration: BoxDecoration(
-            color: Color(0xffC576F6),
+            color: ToolkitColors.primary,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Text(
             "$text",
-            style: ToolkitTypography.h3.copyWith(color: ToolkitColors.white),
+            style: ToolkitTypography.h3.copyWith(color: ToolkitColors.black),
           ),
+        ),
+        SizedBox(
+          width: width * 0.02,
         ),
         Expanded(child: child),
       ],
+    );
+  }
+
+  Widget dottedRow() {
+    return Row(
+      children: List.generate(
+        MediaQuery.of(context).size.width ~/ 10,
+        (index) => Expanded(
+          child: Container(
+            color: index % 2 == 0 ? Colors.transparent : Colors.grey,
+            height: 2,
+          ),
+        ),
+      ),
     );
   }
 }

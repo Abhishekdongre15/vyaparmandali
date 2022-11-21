@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
-class DailyCashBalanceView extends StatefulWidget {
-  const DailyCashBalanceView({Key? key}) : super(key: key);
+class LedgerOS90DayRepostView extends StatefulWidget {
+  const LedgerOS90DayRepostView({Key? key}) : super(key: key);
 
   @override
-  State<DailyCashBalanceView> createState() => _DailyCashBalanceViewState();
+  State<LedgerOS90DayRepostView> createState() =>
+      _LedgerOS90DayRepostViewState();
 }
 
-class _DailyCashBalanceViewState extends State<DailyCashBalanceView> {
+class _LedgerOS90DayRepostViewState extends State<LedgerOS90DayRepostView> {
   DateTime fdate = DateTime(2022, 11, 17);
   DateTime tdate = DateTime(2022, 11, 17);
+  TextEditingController fromParyCodeController = TextEditingController();
+  TextEditingController toPartyCodeController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class _DailyCashBalanceViewState extends State<DailyCashBalanceView> {
       appBar: AppBar(
         backgroundColor: ToolkitColors.primary,
         title: Text(
-          "Daily Cash Balance",
+          "Ledger Sales O/S 90 Days Report",
           style: ToolkitTypography.h2.copyWith(color: Colors.white),
         ),
       ),
@@ -37,7 +40,7 @@ class _DailyCashBalanceViewState extends State<DailyCashBalanceView> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              reUseContainer("Enter Period", height),
+              reUseContainer("Sales Bill OutStanding", height),
               dottedRow(),
               reUseRow(
                 height: height,
@@ -96,8 +99,50 @@ class _DailyCashBalanceViewState extends State<DailyCashBalanceView> {
                   ),
                 ),
               ),
+              reUseRow(
+                  text: "From Party Code",
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: width * 0.01),
+                    alignment: Alignment.center,
+                    height: height * 0.07,
+                    color: Colors.white,
+                    width: double.infinity,
+                    child: TextField(
+                      controller: fromParyCodeController,
+                    ),
+                  ),
+                  width: width,
+                  height: height),
+              reUseRow(
+                  text: "To Party code",
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: width * 0.01),
+                    alignment: Alignment.center,
+                    height: height * 0.07,
+                    color: Colors.white,
+                    width: double.infinity,
+                    child: TextField(
+                      controller: toPartyCodeController,
+                    ),
+                  ),
+                  width: width,
+                  height: height),
+              reUseRow(
+                  text: "To View Print",
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: width * 0.01),
+                    alignment: Alignment.center,
+                    height: height * 0.07,
+                    color: Colors.white,
+                    width: double.infinity,
+                    child: TextField(
+                      controller: toPartyCodeController,
+                    ),
+                  ),
+                  width: width,
+                  height: height),
               dottedRow(),
-              reUseContainer("Account Statement", height),
+              reUseContainer("Enter Date", height),
             ],
           ),
         ),

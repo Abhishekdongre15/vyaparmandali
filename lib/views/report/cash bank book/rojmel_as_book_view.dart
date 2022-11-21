@@ -17,6 +17,13 @@ class _RojmelAsBookState extends State<RojmelAsBook> {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: ToolkitColors.primary,
+        title: Text(
+          "Rojmel as Book",
+          style: ToolkitTypography.h2.copyWith(color: Colors.white),
+        ),
+      ),
       body: Center(
         child: Container(
           alignment: Alignment.center,
@@ -30,9 +37,11 @@ class _RojmelAsBookState extends State<RojmelAsBook> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              reUseContainer("Enter Period"),
+              reUseContainer("Enter Period", height),
               Divider(),
               reUseRow(
+                height: height,
+                width: width,
                 text: "From Date",
                 child: InkWell(
                   onTap: () async {
@@ -48,9 +57,9 @@ class _RojmelAsBookState extends State<RojmelAsBook> {
                     setState(() => fdate = fromDate);
                   },
                   child: Container(
-                      margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
+                      margin: EdgeInsets.symmetric(horizontal: width * 0.01),
                       alignment: Alignment.center,
-                      height: 50,
+                      height: height * 0.07,
                       color: Colors.white,
                       width: double.infinity,
                       child: Text(
@@ -59,6 +68,8 @@ class _RojmelAsBookState extends State<RojmelAsBook> {
                 ),
               ),
               reUseRow(
+                height: height,
+                width: width,
                 text: "Till Date",
                 child: InkWell(
                   onTap: () async {
@@ -74,20 +85,31 @@ class _RojmelAsBookState extends State<RojmelAsBook> {
                     setState(() => tdate = tillDate);
                   },
                   child: Container(
-                      margin: EdgeInsets.symmetric(vertical: 5, horizontal: 5),
-                      alignment: Alignment.center,
-                      height: 50,
-                      color: Colors.white,
-                      width: double.infinity,
-                      child: Text(
-                        '${tdate.year}/${tdate.month}/${tdate.day}',
-                      )),
+                    margin: EdgeInsets.symmetric(horizontal: width * 0.01),
+                    alignment: Alignment.center,
+                    height: height * 0.07,
+                    color: Colors.white,
+                    width: double.infinity,
+                    child: Text(
+                      '${tdate.year}/${tdate.month}/${tdate.day}',
+                    ),
+                  ),
                 ),
               ),
-              reUseRow(text: "Start Page No", child: Expanded(child: TextField(
-              ),),),
-              Divider(),
-              reUseContainer("Every Day"),
+              reUseRow(
+                  text: "Start Page no",
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: width * 0.01),
+                    alignment: Alignment.center,
+                    height: height * 0.07,
+                    color: Colors.transparent,
+                    width: double.infinity,
+                    child: TextField(),
+                  ),
+                  width: width,
+                  height: height),
+              dottedRow(),
+              reUseContainer("Every Day", height),
             ],
           ),
         ),
@@ -95,11 +117,11 @@ class _RojmelAsBookState extends State<RojmelAsBook> {
     );
   }
 
-  Widget reUseContainer(String data) {
+  Widget reUseContainer(String data, double height) {
     return Container(
       alignment: Alignment.center,
       margin: EdgeInsets.all(5),
-      height: 40,
+      height: height * 0.07,
       width: double.infinity,
       decoration: BoxDecoration(
         color: ToolkitColors.greyLight,
@@ -112,28 +134,46 @@ class _RojmelAsBookState extends State<RojmelAsBook> {
     );
   }
 
-  Widget reUseRow({required String text, required Widget child}) {
+  Widget reUseRow(
+      {required String text,
+      required Widget child,
+      required double width,
+      required double height}) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Container(
           alignment: Alignment.center,
-          margin: EdgeInsets.symmetric(
-            horizontal: 20,vertical: 10
-          ),
-          height: 40,
-          width: 400,
+          height: height * 0.07,
+          width: width * 0.2,
           decoration: BoxDecoration(
-            color: Color(0xffC576F6),
+            color: ToolkitColors.primary,
             borderRadius: BorderRadius.circular(15),
           ),
           child: Text(
             "$text",
-            style: ToolkitTypography.h3.copyWith(color: ToolkitColors.white),
+            style: ToolkitTypography.h3.copyWith(color: ToolkitColors.black),
           ),
+        ),
+        SizedBox(
+          width: width * 0.02,
         ),
         Expanded(child: child),
       ],
+    );
+  }
+
+  Widget dottedRow() {
+    return Row(
+      children: List.generate(
+        MediaQuery.of(context).size.width ~/ 10,
+        (index) => Expanded(
+          child: Container(
+            color: index % 2 == 0 ? Colors.transparent : Colors.grey,
+            height: 2,
+          ),
+        ),
+      ),
     );
   }
 }

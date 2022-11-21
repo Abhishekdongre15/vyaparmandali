@@ -5,23 +5,31 @@ class JamaNondhSummeryMonthlyView extends StatefulWidget {
   const JamaNondhSummeryMonthlyView({Key? key}) : super(key: key);
 
   @override
-  State<JamaNondhSummeryMonthlyView> createState() => _JamaNondhSummeryMonthlyViewState();
+  State<JamaNondhSummeryMonthlyView> createState() =>
+      _JamaNondhSummeryMonthlyViewState();
 }
 
-class _JamaNondhSummeryMonthlyViewState extends State<JamaNondhSummeryMonthlyView> {
+class _JamaNondhSummeryMonthlyViewState
+    extends State<JamaNondhSummeryMonthlyView> {
   DateTime fdate = DateTime(2022, 11, 17);
   DateTime tdate = DateTime(2022, 11, 17);
-
+ 
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      appBar: AppBar(backgroundColor: ToolkitColors.primary,),
+      appBar: AppBar(
+        backgroundColor: ToolkitColors.primary,
+        title: Text(
+          "Jama Nondh Summery Monthly",
+          style: ToolkitTypography.h2.copyWith(color: Colors.white),
+        ),
+      ),
       body: Center(
         child: Container(
           alignment: Alignment.center,
-          height: height * 0.5,
+          height: height * 0.55,
           width: width * 0.5,
           decoration: BoxDecoration(
             color: ToolkitColors.primary,
@@ -31,8 +39,8 @@ class _JamaNondhSummeryMonthlyViewState extends State<JamaNondhSummeryMonthlyVie
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              reUseContainer("Enter Date",height),
-              Divider(),
+              reUseContainer("Enter Period", height),
+              dottedRow(),
               reUseRow(
                 height: height,
                 width: width,
@@ -51,9 +59,9 @@ class _JamaNondhSummeryMonthlyViewState extends State<JamaNondhSummeryMonthlyVie
                     setState(() => fdate = fromDate);
                   },
                   child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: width*0.01),
+                      margin: EdgeInsets.symmetric(horizontal: width * 0.01),
                       alignment: Alignment.center,
-                      height: height*0.08,
+                      height: height * 0.07,
                       color: Colors.white,
                       width: double.infinity,
                       child: Text(
@@ -79,18 +87,19 @@ class _JamaNondhSummeryMonthlyViewState extends State<JamaNondhSummeryMonthlyVie
                     setState(() => tdate = tillDate);
                   },
                   child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: width*0.01),
-                      alignment: Alignment.center,
-                      height:  height*0.08,
-                      color: Colors.white,
-                      width: double.infinity,
-                      child: Text(
-                        '${tdate.year}/${tdate.month}/${tdate.day}',
-                      ),),
+                    margin: EdgeInsets.symmetric(horizontal: width * 0.01),
+                    alignment: Alignment.center,
+                    height: height * 0.07,
+                    color: Colors.white,
+                    width: double.infinity,
+                    child: Text(
+                      '${tdate.year}/${tdate.month}/${tdate.day}',
+                    ),
+                  ),
                 ),
               ),
-              Divider(),
-              reUseContainer("Farmers Deposit Monthly Record",height),
+              dottedRow(),
+              reUseContainer("Farmers Deposit Monthly Record", height),
             ],
           ),
         ),
@@ -98,11 +107,11 @@ class _JamaNondhSummeryMonthlyViewState extends State<JamaNondhSummeryMonthlyVie
     );
   }
 
-  Widget reUseContainer(String data,double height) {
+  Widget reUseContainer(String data, double height) {
     return Container(
       alignment: Alignment.center,
       margin: EdgeInsets.all(5),
-      height: height*0.08,
+      height: height * 0.07,
       width: double.infinity,
       decoration: BoxDecoration(
         color: ToolkitColors.greyLight,
@@ -115,16 +124,20 @@ class _JamaNondhSummeryMonthlyViewState extends State<JamaNondhSummeryMonthlyVie
     );
   }
 
-  Widget reUseRow({required String text, required Widget child, required double width,required double height}) {
+  Widget reUseRow(
+      {required String text,
+      required Widget child,
+      required double width,
+      required double height}) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         Container(
           alignment: Alignment.center,
-          height: height*0.08,
-          width: width*0.2,
+          height: height * 0.07,
+          width: width * 0.2,
           decoration: BoxDecoration(
-            color: Colors.green,
+            color: Colors.green[500],
             borderRadius: BorderRadius.circular(15),
           ),
           child: Text(
@@ -132,9 +145,25 @@ class _JamaNondhSummeryMonthlyViewState extends State<JamaNondhSummeryMonthlyVie
             style: ToolkitTypography.h3.copyWith(color: ToolkitColors.white),
           ),
         ),
-        SizedBox(width: width*0.02,),
+        SizedBox(
+          width: width * 0.02,
+        ),
         Expanded(child: child),
       ],
+    );
+  }
+
+  Widget dottedRow() {
+    return Row(
+      children: List.generate(
+        MediaQuery.of(context).size.width ~/ 10,
+        (index) => Expanded(
+          child: Container(
+            color: index % 2 == 0 ? Colors.transparent : Colors.grey,
+            height: 2,
+          ),
+        ),
+      ),
     );
   }
 }
