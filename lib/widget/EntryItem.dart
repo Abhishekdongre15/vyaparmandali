@@ -37,6 +37,7 @@ import '../views/report/ledgers/detail_ledger_view.dart';
 import '../views/report/ledgers/statement_of_account_view.dart';
 import '../views/report/registers/dhada_register_view.dart';
 import '../views/report/registers/sales_summery_repost_view.dart';
+import '../views/report/transport report/transport_comm_report_view.dart';
 import '../views/report/transport report/transport_report_view.dart';
 import '../views/report/vacchat report/jama_nondh.dart';
 import '../views/report/vacchat report/jama_nondh_summery_monthly_view.dart';
@@ -170,7 +171,7 @@ class EntryItem extends StatelessWidget {
         Get.to(JamaNondhSummeryMonthlyView());
         break;
 
-    /// Ledger Screens Started.
+      /// Ledger Screens Started.
       case 'general ledger':
         Get.to(GeneralLedgerView());
         break;
@@ -201,9 +202,9 @@ class EntryItem extends StatelessWidget {
       case 'month wise ledger':
         Get.to(MonthlyWiseLedgerView());
         break;
-    //    Ledger Screen Ended
+      //    Ledger Screen Ended
 
-    /// Register Screen Started
+      /// Register Screen Started
       case 'aavak register':
         Get.to(AavakRegisterView());
         break;
@@ -228,10 +229,13 @@ class EntryItem extends StatelessWidget {
       case 'sales summery monthly repost':
         Get.to(SalesSummeryMonthlyRepostView());
         break;
-    // Register Screen Ended
-    /// Transport Screen Started
+      // Register Screen Ended
+      /// Transport Screen Started
       case 'transport report':
         Get.to(TransportReportView());
+        break;
+      case 'transport comm report':
+        Get.to(TransportCommReportView());
         break;
     }
   }
