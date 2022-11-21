@@ -30,6 +30,7 @@ import 'package:vyaparmandali/views/report/registers/lotwise_dhara_register_view
 import 'package:vyaparmandali/views/report/registers/purchase_register_view.dart';
 import 'package:vyaparmandali/views/report/registers/sales_register_view.dart';
 import 'package:vyaparmandali/views/report/registers/sales_summery_monthly_repost_view.dart';
+import 'package:vyaparmandali/views/report/transport%20report/transportwise_patti_date_os_view.dart';
 import 'package:vyaparmandali/views/report/vacchat%20report/patti_register_view.dart';
 import '../views/report/cash bank book/daily_wise_bank_book_view.dart';
 import '../views/report/cash bank book/journal_view.dart';
@@ -172,7 +173,7 @@ class EntryItem extends StatelessWidget {
         Get.to(JamaNondhSummeryMonthlyView());
         break;
 
-      /// Ledger Screens Started.
+    /// Ledger Screens Started.
       case 'general ledger':
         Get.to(GeneralLedgerView());
         break;
@@ -203,9 +204,9 @@ class EntryItem extends StatelessWidget {
       case 'month wise ledger':
         Get.to(MonthlyWiseLedgerView());
         break;
-      //    Ledger Screen Ended
+    //    Ledger Screen Ended
 
-      /// Register Screen Started
+    /// Register Screen Started
       case 'aavak register':
         Get.to(AavakRegisterView());
         break;
@@ -230,14 +231,22 @@ class EntryItem extends StatelessWidget {
       case 'sales summery monthly repost':
         Get.to(SalesSummeryMonthlyRepostView());
         break;
-      // Register Screen Ended
-      /// Transport Screen Started
+    // Register Screen Ended
+
+    /// Transport Screen Started
       case 'transport report':
         Get.to(TransportReportView());
         break;
       case 'transport wise patti o/s':
         Get.to(TransportWisePattiOSRepostView());
         break;
+      case 'transport wise patti date o/s':
+        Get.to(TransportWisePattiDateOSRepostView());
+        break;
+    // Transport Screen Ended
+
+    /// Additional Report Started
+        
     }
   }
 }
