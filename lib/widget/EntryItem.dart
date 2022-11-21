@@ -36,6 +36,7 @@ import 'package:vyaparmandali/views/report/transport%20report/transportwise_patt
 import 'package:vyaparmandali/views/report/vacchat%20report/patti_register_view.dart';
 import '../views/report/additional report/monthwise_p&l_report_view.dart';
 import '../views/report/additional report/vachatwise_report_view.dart';
+import '../views/report/additional report/vachatwise_summery_report_view.dart';
 import '../views/report/cash bank book/daily_wise_bank_book_view.dart';
 import '../views/report/cash bank book/journal_view.dart';
 import '../views/report/ledgers/detail_ledger_view.dart';
@@ -241,6 +242,9 @@ class EntryItem extends StatelessWidget {
       case 'transport report':
         Get.to(TransportReportView());
         break;
+      case 'transport comm report':
+        Get.to(TransportCommReportView());
+        break;
       case 'transport wise patti o/s':
         Get.to(TransportWisePattiOSRepostView());
         break;
@@ -261,6 +265,9 @@ class EntryItem extends StatelessWidget {
         break;
       case 'vachhatwise report':
         Get.to(VachatWiseReportView());
+        break;
+      case 'vachhatwise summery report':
+        Get.to(VachatWiseSummeryReportView());
         break;
     }
   }
