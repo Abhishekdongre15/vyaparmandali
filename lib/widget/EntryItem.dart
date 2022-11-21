@@ -35,6 +35,7 @@ import 'package:vyaparmandali/views/report/registers/sales_summery_monthly_repos
 import 'package:vyaparmandali/views/report/transport%20report/transportwise_patti_date_os_view.dart';
 import 'package:vyaparmandali/views/report/vacchat%20report/patti_register_view.dart';
 import '../views/report/additional report/monthwise_p&l_report_view.dart';
+import '../views/report/additional report/vachatwise_report_view.dart';
 import '../views/report/cash bank book/daily_wise_bank_book_view.dart';
 import '../views/report/cash bank book/journal_view.dart';
 import '../views/report/ledgers/detail_ledger_view.dart';
@@ -176,7 +177,7 @@ class EntryItem extends StatelessWidget {
         Get.to(JamaNondhSummeryMonthlyView());
         break;
 
-    /// Ledger Screens Started.
+      /// Ledger Screens Started.
       case 'general ledger':
         Get.to(GeneralLedgerView());
         break;
@@ -207,9 +208,9 @@ class EntryItem extends StatelessWidget {
       case 'month wise ledger':
         Get.to(MonthlyWiseLedgerView());
         break;
-    //    Ledger Screen Ended
+      //    Ledger Screen Ended
 
-    /// Register Screen Started
+      /// Register Screen Started
       case 'aavak register':
         Get.to(AavakRegisterView());
         break;
@@ -234,9 +235,9 @@ class EntryItem extends StatelessWidget {
       case 'sales summery monthly repost':
         Get.to(SalesSummeryMonthlyRepostView());
         break;
-    // Register Screen Ended
+      // Register Screen Ended
 
-    /// Transport Screen Started
+      /// Transport Screen Started
       case 'transport report':
         Get.to(TransportReportView());
         break;
@@ -246,9 +247,9 @@ class EntryItem extends StatelessWidget {
       case 'transport wise patti date o/s':
         Get.to(TransportWisePattiDateOSRepostView());
         break;
-    // Transport Screen Ended
+      // Transport Screen Ended
 
-    /// Additional Report Started
+      /// Additional Report Started
       case 'apmc daily report':
         Get.to(APMCDailyReportView());
         break;
@@ -257,6 +258,9 @@ class EntryItem extends StatelessWidget {
         break;
       case 'monthwise p & l  report':
         Get.to(MonthWisePLReportView());
+        break;
+      case 'vachhatwise report':
+        Get.to(VachatWiseReportView());
         break;
     }
   }
