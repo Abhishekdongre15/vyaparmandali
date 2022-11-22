@@ -12,6 +12,7 @@ import 'package:vyaparmandali/views/master/items/item_view.dart';
 import 'package:vyaparmandali/views/master/place_master_view.dart';
 import 'package:vyaparmandali/views/report/additional%20report/apmc_daily_report_view.dart';
 import 'package:vyaparmandali/views/report/additional%20report/gb_daily_report_view.dart';
+import 'package:vyaparmandali/views/report/additional%20report/gb_monthly_report_view.dart';
 import 'package:vyaparmandali/views/report/additional%20report/vachatwise_daily_report_view.dart';
 import 'package:vyaparmandali/views/report/cash%20bank%20book/bank_book_view.dart';
 import 'package:vyaparmandali/views/report/cash%20bank%20book/bank_reco_view.dart';
@@ -276,6 +277,9 @@ class EntryItem extends StatelessWidget {
         break;
       case 'gb daily report':
         Get.to(GbDailyReportView());
+        break;
+      case 'gb monthly report':
+        Get.to(GbMonthlyReportView());
         break;
       // Additional Report Ended
 
