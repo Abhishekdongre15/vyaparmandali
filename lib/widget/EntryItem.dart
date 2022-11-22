@@ -12,6 +12,7 @@ import 'package:vyaparmandali/views/master/items/item_view.dart';
 import 'package:vyaparmandali/views/master/place_master_view.dart';
 import 'package:vyaparmandali/views/report/additional%20report/apmc_daily_report_view.dart';
 import 'package:vyaparmandali/views/report/additional%20report/gb_daily_report_view.dart';
+import 'package:vyaparmandali/views/report/additional%20report/gb_monthly_entry_report_view.dart';
 import 'package:vyaparmandali/views/report/additional%20report/gb_monthly_report_view.dart';
 import 'package:vyaparmandali/views/report/additional%20report/vachatwise_daily_report_view.dart';
 import 'package:vyaparmandali/views/report/cash%20bank%20book/bank_book_view.dart';
@@ -184,7 +185,7 @@ class EntryItem extends StatelessWidget {
         Get.to(JamaNondhSummeryMonthlyView());
         break;
 
-      /// Ledger Screens Started.
+    /// Ledger Screens Started.
       case 'general ledger':
         Get.to(GeneralLedgerView());
         break;
@@ -215,9 +216,9 @@ class EntryItem extends StatelessWidget {
       case 'month wise ledger':
         Get.to(MonthlyWiseLedgerView());
         break;
-      //    Ledger Screen Ended
+    //    Ledger Screen Ended
 
-      /// Register Screen Started
+    /// Register Screen Started
       case 'aavak register':
         Get.to(AavakRegisterView());
         break;
@@ -242,9 +243,9 @@ class EntryItem extends StatelessWidget {
       case 'sales summery monthly repost':
         Get.to(SalesSummeryMonthlyRepostView());
         break;
-      // Register Screen Ended
+    // Register Screen Ended
 
-      /// Transport Screen Started
+    /// Transport Screen Started
       case 'transport report':
         Get.to(TransportReportView());
         break;
@@ -257,9 +258,9 @@ class EntryItem extends StatelessWidget {
       case 'transport wise patti date o/s':
         Get.to(TransportWisePattiDateOSRepostView());
         break;
-      // Transport Screen Ended
+    // Transport Screen Ended
 
-      /// Additional Report Started
+    /// Additional Report Started
       case 'apmc daily report':
         Get.to(APMCDailyReportView());
         break;
@@ -278,12 +279,12 @@ class EntryItem extends StatelessWidget {
       case 'gb daily report':
         Get.to(GbDailyReportView());
         break;
-      case 'gb monthly report':
-        Get.to(GbMonthlyReportView());
+      case 'gb monthly entry report':
+        Get.to(GbMonthlyEntryReportView());
         break;
-      // Additional Report Ended
+    // Additional Report Ended
 
-      /// Customers Report Screen Started
+    /// Customers Report Screen Started
       case 'ledger sales o/s report':
         Get.to(LedgerSaleOSRepostView());
         break;
@@ -296,7 +297,7 @@ class EntryItem extends StatelessWidget {
       case 'ledger sales o/s 90 days report':
         Get.to(LedgerOS90DayRepostView());
         break;
-      // Customers Report Screen Ended
+    // Customers Report Screen Ended
     }
   }
 }
