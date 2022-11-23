@@ -42,6 +42,7 @@ import 'package:vyaparmandali/views/report/transport%20report/transportwise_patt
 import 'package:vyaparmandali/views/report/vacchat%20report/patti_register_view.dart';
 import '../views/balance_sheet/balance_sheets_report_view.dart';
 import '../views/balance_sheet/p_and_l_statement_view.dart';
+import '../views/balance_sheet/trial_balance_detail_screen_view.dart';
 import '../views/report/additional report/monthwise_p&l_report_view.dart';
 import '../views/report/additional report/vachatwise_report_view.dart';
 import '../views/report/additional report/vachatwise_summery_report_view.dart';
@@ -301,6 +302,8 @@ class EntryItem extends StatelessWidget {
         Get.to(LedgerOS90DayRepostView());
         break;
       // Customers Report Screen Ended
+
+      /// Balance Sheet Report Screen Started
       case 'p & l statement report':
         Get.to(PandLStatementView());
         break;
@@ -309,6 +312,9 @@ class EntryItem extends StatelessWidget {
         break;
       case 'balance sheets report':
         Get.to(BalanceSheetReportView());
+        break;
+      case 'trial balance details screen':
+        Get.to(TrialBalanceDetailScreenView());
         break;
     }
   }

@@ -1,19 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
-enum radioType { GroupWise, DescriptionWise }
-
-class TrialBalanceView extends StatefulWidget {
-  const TrialBalanceView({Key? key}) : super(key: key);
+class TrialBalanceDetailScreenView extends StatefulWidget {
+  const TrialBalanceDetailScreenView({Key? key}) : super(key: key);
 
   @override
-  State<TrialBalanceView> createState() => _TrialBalanceViewState();
+  State<TrialBalanceDetailScreenView> createState() =>
+      _TrialBalanceDetailScreenViewState();
 }
 
-class _TrialBalanceViewState extends State<TrialBalanceView> {
+class _TrialBalanceDetailScreenViewState
+    extends State<TrialBalanceDetailScreenView> {
   DateTime fdate = DateTime(2022, 11, 17);
-
-  radioType _type = radioType.DescriptionWise;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +21,7 @@ class _TrialBalanceViewState extends State<TrialBalanceView> {
       appBar: AppBar(
         backgroundColor: ToolkitColors.primary,
         title: Text(
-          "Trial Balance",
+          "Trial Balance Detail Screen",
           style: ToolkitTypography.h2.copyWith(color: Colors.white),
         ),
       ),
@@ -41,12 +39,12 @@ class _TrialBalanceViewState extends State<TrialBalanceView> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              reUseContainer("<< Trial Balance Report >>", height),
+              reUseContainer("<< Trial Balance Detail Report >>", height),
               dottedRow(),
               reUseRow(
                 height: height,
                 width: width,
-                text: "From Date",
+                text: "As On",
                 child: InkWell(
                   onTap: () async {
                     DateTime? fromDate = await showDatePicker(
@@ -129,46 +127,42 @@ class _TrialBalanceViewState extends State<TrialBalanceView> {
                       alignment: Alignment.center,
                       height: height * 0.07,
                       color: Colors.white,
-                      width: width * 0.03,
+                      width: width * 0.3,
                       child: TextField(),
                     ),
                   ),
                 ],
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Expanded(
-                    child: ListTile(
-                      title: const Text('DescriptonWise'),
-                      leading: Radio(
-                        activeColor: ToolkitColors.black,
-                        value: radioType.DescriptionWise,
-                        groupValue: _type,
-                        onChanged: (radioType? value) {
-                          setState(() {
-                            _type = value!;
-                          });
-                        },
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      alignment: Alignment.center,
+                      height: height * 0.07,
+                      width: width * 0.3,
+                      decoration: BoxDecoration(
+                        color: ToolkitColors.primary,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Text(
+                        "GroupWise DescriptionWise",
+                        style: ToolkitTypography.h3
+                            .copyWith(color: ToolkitColors.black),
                       ),
                     ),
-                  ),
-                  Expanded(
-                    child: ListTile(
-                      title: const Text('GroupWise'),
-                      leading: Radio(
-                        activeColor: ToolkitColors.black,
-                        value: radioType.GroupWise,
-                        groupValue: _type,
-                        onChanged: (radioType? value) {
-                          setState(() {
-                            _type = value!;
-                          });
-                        },
+                    Expanded(
+                      child: Container(
+                        margin: EdgeInsets.symmetric(horizontal: width * 0.01),
+                        alignment: Alignment.center,
+                        height: height * 0.07,
+                        color: Colors.white,
+                        width: width * 0.05,
+                        child: TextField(),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               dottedRow(),
               reUseContainer("Enter Date", height),
