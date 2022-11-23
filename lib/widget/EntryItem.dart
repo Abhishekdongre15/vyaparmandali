@@ -40,6 +40,7 @@ import 'package:vyaparmandali/views/report/registers/sales_register_view.dart';
 import 'package:vyaparmandali/views/report/registers/sales_summery_monthly_repost_view.dart';
 import 'package:vyaparmandali/views/report/transport%20report/transportwise_patti_date_os_view.dart';
 import 'package:vyaparmandali/views/report/vacchat%20report/patti_register_view.dart';
+import '../views/balance_sheet/balance_sheets_report_view.dart';
 import '../views/balance_sheet/p_and_l_statement_view.dart';
 import '../views/report/additional report/monthwise_p&l_report_view.dart';
 import '../views/report/additional report/vachatwise_report_view.dart';
@@ -305,6 +306,9 @@ class EntryItem extends StatelessWidget {
         break;
       case 'trial balance report':
         Get.to(TrialBalanceView());
+        break;
+      case 'balance sheets report':
+        Get.to(BalanceSheetReportView());
         break;
     }
   }
