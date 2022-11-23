@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
-class TrialBalance extends StatefulWidget {
-  const TrialBalance({Key? key}) : super(key: key);
+enum radioType { GroupWise, DescriptionWise }
+
+class TrialBalanceView extends StatefulWidget {
+  const TrialBalanceView({Key? key}) : super(key: key);
 
   @override
-  State<TrialBalance> createState() => _TrialBalanceState();
+  State<TrialBalanceView> createState() => _TrialBalanceViewState();
 }
 
-class _TrialBalanceState extends State<TrialBalance> {
+class _TrialBalanceViewState extends State<TrialBalanceView> {
   DateTime fdate = DateTime(2022, 11, 17);
 
-  // DateTime tdate = DateTime(2022, 11, 17);
+  radioType _type = radioType.DescriptionWise;
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +23,13 @@ class _TrialBalanceState extends State<TrialBalance> {
       appBar: AppBar(
         backgroundColor: ToolkitColors.primary,
         title: Text(
-          "P & L Statement Report",
+          "Trial Balance",
           style: ToolkitTypography.h2.copyWith(color: Colors.white),
         ),
       ),
       body: Center(
         child: Container(
+          margin: EdgeInsets.symmetric(horizontal: width * 0.001),
           alignment: Alignment.center,
           height: height * 0.55,
           width: width * 0.5,
@@ -38,7 +41,7 @@ class _TrialBalanceState extends State<TrialBalance> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              reUseContainer("<< P & L Report >>", height),
+              reUseContainer("<< Trial Balance Report >>", height),
               dottedRow(),
               reUseRow(
                 height: height,
@@ -68,18 +71,104 @@ class _TrialBalanceState extends State<TrialBalance> {
                       )),
                 ),
               ),
-              reUseRow(
-                height: height,
-                width: width,
-                text: "Print Previous \n Year's Balance ?",
-                child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: width * 0.01),
-                  alignment: Alignment.center,
-                  height: height * 0.07,
-                  color: Colors.white,
-                  width: 200,
-                  child: TextField(),
-                ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    height: height * 0.07,
+                    width: width * 0.3,
+                    decoration: BoxDecoration(
+                      color: ToolkitColors.primary,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Text(
+                      "Print Previous Year's Balance ?. (Y/N)",
+                      style: ToolkitTypography.h3
+                          .copyWith(color: ToolkitColors.black),
+                    ),
+                  ),
+                  SizedBox(
+                    width: width * 0.01,
+                  ),
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: width * 0.01),
+                      alignment: Alignment.center,
+                      height: height * 0.07,
+                      color: Colors.white,
+                      width: 100,
+                      child: TextField(),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    height: height * 0.07,
+                    width: width * 0.3,
+                    decoration: BoxDecoration(
+                      color: ToolkitColors.primary,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Text(
+                      "Print A/C with Zero  Balance ?. (Y/N)",
+                      style: ToolkitTypography.h3
+                          .copyWith(color: ToolkitColors.black),
+                    ),
+                  ),
+                  SizedBox(
+                    width: width * 0.01,
+                  ),
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: width * 0.01),
+                      alignment: Alignment.center,
+                      height: height * 0.07,
+                      color: Colors.white,
+                      width: 100,
+                      child: TextField(),
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: ListTile(
+                      title: const Text('DescriptonWise'),
+                      leading: Radio(
+                        activeColor: ToolkitColors.black,
+                        value: radioType.DescriptionWise,
+                        groupValue: _type,
+                        onChanged: (radioType? value) {
+                          setState(() {
+                            _type = value!;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                  Expanded(
+                    child: ListTile(
+                      title: const Text('GroupWise'),
+                      leading: Radio(
+                        activeColor: ToolkitColors.black,
+                        value: radioType.GroupWise,
+                        groupValue: _type,
+                        onChanged: (radioType? value) {
+                          setState(() {
+                            _type = value!;
+                          });
+                        },
+                      ),
+                    ),
+                  ),
+                ],
               ),
               dottedRow(),
               reUseContainer("Enter Date", height),

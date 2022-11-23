@@ -1,6 +1,7 @@
 // Create the Widget for the row
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
+import 'package:vyaparmandali/views/balance_sheet/trial_balance_view.dart';
 import 'package:vyaparmandali/views/data_entry/data_entry_view.dart';
 import 'package:vyaparmandali/views/master/ac_master_view.dart';
 import 'package:vyaparmandali/views/master/codes/group_master_list_view.dart';
@@ -301,6 +302,9 @@ class EntryItem extends StatelessWidget {
       // Customers Report Screen Ended
       case 'p & l statement report':
         Get.to(PandLStatementView());
+        break;
+      case 'trial balance report':
+        Get.to(TrialBalanceView());
         break;
     }
   }
