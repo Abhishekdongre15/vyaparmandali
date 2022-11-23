@@ -2,7 +2,9 @@ import 'dart:ui';
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
 import 'package:vyaparmandali/responsive/desktop_body.dart';
-import 'package:vyaparmandali/views/PunchingView.dart';
+import 'package:vyaparmandali/responsive/responsive_layout.dart';
+import 'package:vyaparmandali/views/data_entry/PunchingView.dart';
+import 'package:vyaparmandali/views/login_view.dart';
 import 'package:vyaparmandali/views/report/cash%20bank%20book/rojmel_ac_view.dart';
 
 void main() {
@@ -25,7 +27,7 @@ class MyApp extends StatelessWidget {
       ),
       // home: ResponsiveLayout(
       //   mobileBody: const LoginView(),
-      //   tabletBody: const LoginView()
+      //   tabletBody: const LoginView(),
       //   desktopBody: const DesktopScaffold(),
       // ),
     );

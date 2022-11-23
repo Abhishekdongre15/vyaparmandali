@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
+bool isChanged = false;
+int srNo = 1;
+
 class PunchingView extends StatefulWidget {
   const PunchingView({Key? key}) : super(key: key);
 
@@ -8,16 +11,24 @@ class PunchingView extends StatefulWidget {
   State<PunchingView> createState() => _PunchingViewState();
 }
 
-List<DataCell> totalList = [
-  DataCell(Text('1')),
-  DataCell(TextField()),
-  DataCell(TextField()),
-  DataCell(TextField()),
-  DataCell(TextField()),
-  DataCell(TextField()),
-  DataCell(TextField()),
-  DataCell(TextField()),
+List<DataRow> totalList = [
+  DataRow(cells: [
+    DataCell(Text('$srNo')),
+    DataCell(
+      textFiled2(),
+    ),
+    DataCell(textFiled2()),
+    DataCell(textFiled2()),
+    DataCell(textFiled2()),
+    DataCell(textFiled2()),
+    DataCell(textFiled2()),
+    DataCell(textFiled2()),
+  ]),
 ];
+
+void counter() {
+  srNo++;
+}
 
 class _PunchingViewState extends State<PunchingView> {
   @override
@@ -29,13 +40,24 @@ class _PunchingViewState extends State<PunchingView> {
         backgroundColor: ToolkitColors.primary,
         title: Text(
           "Punching View",
-          style: ToolkitTypography.h2.copyWith(color: Colors.white),
         ),
       ),
       floatingActionButton: FloatingActionButton(
           child: Icon(Icons.add),
           onPressed: () {
-            setState(() {});
+            setState(() {
+              counter();
+              totalList.add(DataRow(cells: [
+                DataCell(Text('$srNo')),
+                DataCell(textFiled2()),
+                DataCell(textFiled2()),
+                DataCell(textFiled2()),
+                DataCell(textFiled2()),
+                DataCell(textFiled2()),
+                DataCell(textFiled2()),
+                DataCell(textFiled2()),
+              ]));
+            });
           }),
       body: Column(
         children: [
@@ -47,15 +69,19 @@ class _PunchingViewState extends State<PunchingView> {
             child: Column(
               children: [
                 Container(
-                  color: ToolkitColors.primary,
+                  color: Colors.green,
                 ),
               ],
             ),
           ),
           Container(
-            height: height * 0.5,
-            width: width * 1,
-            child: datTableEntry(),
+            height: height * 0.6,
+            width: double.infinity,
+            child: ListView(
+              children: [
+                datTableEntry(),
+              ],
+            ),
           ),
         ],
       ),
@@ -134,18 +160,24 @@ class _PunchingViewState extends State<PunchingView> {
           ),
         ),
       ],
-      rows: <DataRow>[
-        DataRow(cells: [
-          DataCell(Text('1')),
-          DataCell(TextField()),
-          DataCell(TextField()),
-          DataCell(TextField()),
-          DataCell(TextField()),
-          DataCell(TextField()),
-          DataCell(TextField()),
-          DataCell(TextField()),
-        ]),
-      ],
+      rows: totalList,
+    );
+  }
+}
+
+class textFiled2 extends StatelessWidget {
+  textFiled2({Key? key}) : super(key: key);
+  TextEditingController textEditingController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: textEditingController,
+      onChanged: (v) {
+        if (v.trim().isNotEmpty) {
+          isChanged = true;
+        }
+      },
     );
   }
 }
