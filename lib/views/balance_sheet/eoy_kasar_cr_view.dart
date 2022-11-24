@@ -3,14 +3,14 @@ import 'package:uitoolkit/uitoolkit.dart';
 
 enum radioType { GroupWise, DescriptionWise }
 
-class EOYKasarDrGroupView extends StatefulWidget {
-  const EOYKasarDrGroupView({Key? key}) : super(key: key);
+class EOYKasarCrGroupView extends StatefulWidget {
+  const EOYKasarCrGroupView({Key? key}) : super(key: key);
 
   @override
-  State<EOYKasarDrGroupView> createState() => _EOYKasarDrGroupViewState();
+  State<EOYKasarCrGroupView> createState() => _EOYKasarCrGroupViewState();
 }
 
-class _EOYKasarDrGroupViewState extends State<EOYKasarDrGroupView> {
+class _EOYKasarCrGroupViewState extends State<EOYKasarCrGroupView> {
   DateTime fdate = DateTime(2022, 11, 17);
 
   @override
@@ -21,7 +21,7 @@ class _EOYKasarDrGroupViewState extends State<EOYKasarDrGroupView> {
       appBar: AppBar(
         backgroundColor: ToolkitColors.primary,
         title: Text(
-          "EOY Kasar Dr Report",
+          "EOY Kasar Cr Report",
           style: ToolkitTypography.h2.copyWith(color: Colors.white),
         ),
       ),

@@ -42,6 +42,7 @@ import 'package:vyaparmandali/views/report/registers/sales_summery_monthly_repos
 import 'package:vyaparmandali/views/report/transport%20report/transportwise_patti_date_os_view.dart';
 import 'package:vyaparmandali/views/report/vacchat%20report/patti_register_view.dart';
 import '../views/balance_sheet/balance_sheets_report_view.dart';
+import '../views/balance_sheet/eoy_kasar_cr_view.dart';
 import '../views/balance_sheet/p_and_l_statement_view.dart';
 import '../views/balance_sheet/schedules_report_view.dart';
 import '../views/balance_sheet/trial_balance_detail_screen_view.dart';
@@ -325,7 +326,7 @@ class EntryItem extends StatelessWidget {
         Get.to(EOYKasarDrGroupView());
         break;
       case 'eoy kasar cr group wise':
-        Get.to(EOYKasarDrGroupView());
+        Get.to(EOYKasarCrGroupView());
         break;
       case 'trial balance details screen':
         Get.to(EOYKasarDrGroupView());
