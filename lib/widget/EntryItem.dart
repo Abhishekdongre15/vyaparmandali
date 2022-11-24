@@ -1,7 +1,8 @@
 // Create the Widget for the row
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/views/balance_sheet/trial_balance_view.dart';
+import 'package:vyaparmandali/views/balance_sheet/trial_balance_report_view.dart';
+import 'package:vyaparmandali/views/balance_sheet/eoy_kasar_dr_view.dart';
 import 'package:vyaparmandali/views/data_entry/data_entry_view.dart';
 import 'package:vyaparmandali/views/master/ac_master_view.dart';
 import 'package:vyaparmandali/views/master/codes/group_master_list_view.dart';
@@ -190,7 +191,7 @@ class EntryItem extends StatelessWidget {
         Get.to(JamaNondhSummeryMonthlyView());
         break;
 
-    /// Ledger Screens Started.
+      /// Ledger Screens Started.
       case 'general ledger':
         Get.to(GeneralLedgerView());
         break;
@@ -221,9 +222,9 @@ class EntryItem extends StatelessWidget {
       case 'month wise ledger':
         Get.to(MonthlyWiseLedgerView());
         break;
-    //    Ledger Screen Ended
+      //    Ledger Screen Ended
 
-    /// Register Screen Started
+      /// Register Screen Started
       case 'aavak register':
         Get.to(AavakRegisterView());
         break;
@@ -248,9 +249,9 @@ class EntryItem extends StatelessWidget {
       case 'sales summery monthly repost':
         Get.to(SalesSummeryMonthlyRepostView());
         break;
-    // Register Screen Ended
+      // Register Screen Ended
 
-    /// Transport Screen Started
+      /// Transport Screen Started
       case 'transport report':
         Get.to(TransportReportView());
         break;
@@ -263,9 +264,9 @@ class EntryItem extends StatelessWidget {
       case 'transport wise patti date o/s':
         Get.to(TransportWisePattiDateOSRepostView());
         break;
-    // Transport Screen Ended
+      // Transport Screen Ended
 
-    /// Additional Report Started
+      /// Additional Report Started
       case 'apmc daily report':
         Get.to(APMCDailyReportView());
         break;
@@ -287,9 +288,9 @@ class EntryItem extends StatelessWidget {
       case 'gb monthly entry report':
         Get.to(GbMonthlyEntryReportView());
         break;
-    // Additional Report Ended
+      // Additional Report Ended
 
-    /// Customers Report Screen Started
+      /// Customers Report Screen Started
       case 'ledger sales o/s report':
         Get.to(LedgerSaleOSRepostView());
         break;
@@ -302,9 +303,9 @@ class EntryItem extends StatelessWidget {
       case 'ledger sales o/s 90 days report':
         Get.to(LedgerOS90DayRepostView());
         break;
-    // Customers Report Screen Ended
+      // Customers Report Screen Ended
 
-    /// Balance Sheet Report Screen Started
+      /// Balance Sheet Report Screen Started
       case 'p & l statement report':
         Get.to(PandLStatementView());
         break;
@@ -319,6 +320,18 @@ class EntryItem extends StatelessWidget {
         break;
       case 'trial balance details screen':
         Get.to(TrialBalanceDetailScreenView());
+        break;
+      case 'eoy kasar dr  group wise':
+        Get.to(EOYKasarDrGroupView());
+        break;
+      case 'eoy kasar cr group wise':
+        Get.to(EOYKasarDrGroupView());
+        break;
+      case 'trial balance details screen':
+        Get.to(EOYKasarDrGroupView());
+        break;
+      case 'schedules details screen':
+        Get.to(EOYKasarDrGroupView());
         break;
     }
   }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
+enum radioType { Yes, No }
+
 class PandLStatementView extends StatefulWidget {
   const PandLStatementView({Key? key}) : super(key: key);
 
@@ -10,6 +12,7 @@ class PandLStatementView extends StatefulWidget {
 
 class _PandLStatementViewState extends State<PandLStatementView> {
   DateTime fdate = DateTime(2022, 11, 17);
+  radioType _type = radioType.Yes;
 
   // DateTime tdate = DateTime(2022, 11, 17);
 
@@ -68,17 +71,50 @@ class _PandLStatementViewState extends State<PandLStatementView> {
                       )),
                 ),
               ),
-              reUseRow(
-                height: height,
-                width: width,
-                text: "Print Previous \n Year's Balance ?",
-                child: Container(
-                  margin: EdgeInsets.symmetric(horizontal: width * 0.01),
-                  alignment: Alignment.center,
-                  height: height * 0.07,
-                  color: Colors.white,
-                  width: 200,
-                  child: TextField(),
+              Padding(
+                padding: EdgeInsets.all(height * 0.02),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Expanded(
+                      flex: 3,
+                      child: Text(
+                        "Print Previous Year Balance balance ?",
+                        style: ToolkitTypography.h3
+                            .copyWith(color: ToolkitColors.black),
+                      ),
+                    ),
+                    Expanded(
+                      child: ListTile(
+                        title: const Text('Yes'),
+                        leading: Radio(
+                          activeColor: ToolkitColors.black,
+                          value: radioType.Yes,
+                          groupValue: _type,
+                          onChanged: (radioType? value) {
+                            setState(() {
+                              _type = value!;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      child: ListTile(
+                        title: const Text('No'),
+                        leading: Radio(
+                          activeColor: ToolkitColors.black,
+                          value: radioType.No,
+                          groupValue: _type,
+                          onChanged: (radioType? value) {
+                            setState(() {
+                              _type = value!;
+                            });
+                          },
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
               dottedRow(),

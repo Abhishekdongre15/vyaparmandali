@@ -3,17 +3,15 @@ import 'package:uitoolkit/uitoolkit.dart';
 
 enum radioType { GroupWise, DescriptionWise }
 
-class TrialBalanceView extends StatefulWidget {
-  const TrialBalanceView({Key? key}) : super(key: key);
+class EOYKasarDrGroupView extends StatefulWidget {
+  const EOYKasarDrGroupView({Key? key}) : super(key: key);
 
   @override
-  State<TrialBalanceView> createState() => _TrialBalanceViewState();
+  State<EOYKasarDrGroupView> createState() => _EOYKasarDrGroupViewState();
 }
 
-class _TrialBalanceViewState extends State<TrialBalanceView> {
+class _EOYKasarDrGroupViewState extends State<EOYKasarDrGroupView> {
   DateTime fdate = DateTime(2022, 11, 17);
-
-  radioType _type = radioType.DescriptionWise;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +21,7 @@ class _TrialBalanceViewState extends State<TrialBalanceView> {
       appBar: AppBar(
         backgroundColor: ToolkitColors.primary,
         title: Text(
-          "Trial Balance",
+          "Year End Kasar ",
           style: ToolkitTypography.h2.copyWith(color: Colors.white),
         ),
       ),
@@ -41,12 +39,88 @@ class _TrialBalanceViewState extends State<TrialBalanceView> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              reUseContainer("<< Trial Balance Report >>", height),
+              reUseContainer("<< Year End Kasar >>", height),
               dottedRow(),
+              Row(
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    height: height * 0.07,
+                    width: width * 0.3,
+                    decoration: BoxDecoration(
+                      color: ToolkitColors.primary,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Text(
+                      "From",
+                      style: ToolkitTypography.h3
+                          .copyWith(color: ToolkitColors.black),
+                    ),
+                  ),
+                  SizedBox(
+                    width: width * 0.01,
+                  ),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Text("["),
+                        Container(
+                          margin:
+                              EdgeInsets.symmetric(horizontal: width * 0.01),
+                          alignment: Alignment.center,
+                          height: height * 0.07,
+                          color: Colors.transparent,
+                          width: 100,
+                          child: TextField(),
+                        ),
+                        Text("]"),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    height: height * 0.07,
+                    width: width * 0.3,
+                    decoration: BoxDecoration(
+                      color: ToolkitColors.primary,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Text(
+                      "To",
+                      style: ToolkitTypography.h3
+                          .copyWith(color: ToolkitColors.black),
+                    ),
+                  ),
+                  SizedBox(
+                    width: width * 0.01,
+                  ),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Text("["),
+                        Container(
+                          margin:
+                              EdgeInsets.symmetric(horizontal: width * 0.01),
+                          alignment: Alignment.center,
+                          height: height * 0.07,
+                          color: Colors.transparent,
+                          width: 100,
+                          child: TextField(),
+                        ),
+                        Text("]"),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
               reUseRow(
                 height: height,
                 width: width,
-                text: "From Date",
+                text: "As on (DD/MM/YY)",
                 child: InkWell(
                   onTap: () async {
                     DateTime? fromDate = await showDatePicker(
@@ -71,105 +145,18 @@ class _TrialBalanceViewState extends State<TrialBalanceView> {
                       )),
                 ),
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
+              reUseRow(
+                  text: "Enter Amount For > [00.00]",
+                  child: Container(
+                    margin: EdgeInsets.symmetric(horizontal: width * 0.01),
                     alignment: Alignment.center,
                     height: height * 0.07,
-                    width: width * 0.3,
-                    decoration: BoxDecoration(
-                      color: ToolkitColors.primary,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Text(
-                      "Print Previous Year's Balance ?. (Y/N)",
-                      style: ToolkitTypography.h3
-                          .copyWith(color: ToolkitColors.black),
-                    ),
+                    color: Colors.white,
+                    width: width * 0.03,
+                    child: TextField(),
                   ),
-                  SizedBox(
-                    width: width * 0.01,
-                  ),
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: width * 0.01),
-                      alignment: Alignment.center,
-                      height: height * 0.07,
-                      color: Colors.white,
-                      width: 100,
-                      child: TextField(),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Container(
-                    alignment: Alignment.center,
-                    height: height * 0.07,
-                    width: width * 0.3,
-                    decoration: BoxDecoration(
-                      color: ToolkitColors.primary,
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Text(
-                      "Print A/C with Zero  Balance ?. (Y/N)",
-                      style: ToolkitTypography.h3
-                          .copyWith(color: ToolkitColors.black),
-                    ),
-                  ),
-                  SizedBox(
-                    width: width * 0.01,
-                  ),
-                  Expanded(
-                    child: Container(
-                      margin: EdgeInsets.symmetric(horizontal: width * 0.01),
-                      alignment: Alignment.center,
-                      height: height * 0.07,
-                      color: Colors.white,
-                      width: width * 0.03,
-                      child: TextField(),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Expanded(
-                    child: ListTile(
-                      title: const Text('DescriptonWise'),
-                      leading: Radio(
-                        activeColor: ToolkitColors.black,
-                        value: radioType.DescriptionWise,
-                        groupValue: _type,
-                        onChanged: (radioType? value) {
-                          setState(() {
-                            _type = value!;
-                          });
-                        },
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: ListTile(
-                      title: const Text('GroupWise'),
-                      leading: Radio(
-                        activeColor: ToolkitColors.black,
-                        value: radioType.GroupWise,
-                        groupValue: _type,
-                        onChanged: (radioType? value) {
-                          setState(() {
-                            _type = value!;
-                          });
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
+                  width: width,
+                  height: height),
               dottedRow(),
               reUseContainer("Enter Date", height),
             ],
