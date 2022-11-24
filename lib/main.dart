@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Vyapar Mandali',
       home: Scaffold(
-        body: DesktopScaffold(),
+        body: PunchingView(),
         //  PunchingView()
       ),
       // home: ResponsiveLayout(

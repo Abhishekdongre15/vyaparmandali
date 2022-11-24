@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
+enum radioType { GroupWise, DescriptionWise }
+
 bool isChanged = false;
 int srNo = 1;
 
@@ -11,18 +13,19 @@ class PunchingView extends StatefulWidget {
   State<PunchingView> createState() => _PunchingViewState();
 }
 
+radioType _type = radioType.DescriptionWise;
 List<DataRow> totalList = [
   DataRow(cells: [
     DataCell(Text('$srNo')),
     DataCell(
-      textFiled2(),
+      TextField(),
     ),
-    DataCell(textFiled2()),
-    DataCell(textFiled2()),
-    DataCell(textFiled2()),
-    DataCell(textFiled2()),
-    DataCell(textFiled2()),
-    DataCell(textFiled2()),
+    DataCell(TextField()),
+    DataCell(TextField()),
+    DataCell(TextField()),
+    DataCell(TextField()),
+    DataCell(TextField()),
+    DataCell(TextField()),
   ]),
 ];
 
@@ -30,60 +33,127 @@ void counter() {
   srNo++;
 }
 
+DateTime fdate = DateTime(2022, 11, 17);
+
 class _PunchingViewState extends State<PunchingView> {
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: ToolkitColors.primary,
-        title: Text(
-          "Punching View",
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: ToolkitColors.primary,
+          title: Text(
+            "Punching View",
+          ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add),
-          onPressed: () {
-            setState(() {
-              counter();
-              totalList.add(DataRow(cells: [
-                DataCell(Text('$srNo')),
-                DataCell(textFiled2()),
-                DataCell(textFiled2()),
-                DataCell(textFiled2()),
-                DataCell(textFiled2()),
-                DataCell(textFiled2()),
-                DataCell(textFiled2()),
-                DataCell(textFiled2()),
-              ]));
-            });
-          }),
-      body: Column(
-        children: [
-          Container(
-            color: Colors.grey,
-            height: height * 0.3,
-            width: double.infinity,
-            // margin: EdgeInsets.only(top: 5),
-            child: Column(
-              children: [
-                Container(
-                  color: Colors.green,
-                ),
-              ],
+        floatingActionButton: FloatingActionButton(
+            child: Icon(Icons.add),
+            onPressed: () {
+              setState(() {
+                counter();
+                totalList.add(DataRow(cells: [
+                  DataCell(Text('$srNo')),
+                  DataCell(TextField()),
+                  DataCell(TextField()),
+                  DataCell(TextField()),
+                  DataCell(TextField()),
+                  DataCell(TextField()),
+                  DataCell(TextField()),
+                  DataCell(TextField()),
+                ]));
+              });
+            }),
+        body: Column(
+          children: [
+            Container(
+              color: Colors.white,
+              height: height * 0.3,
+              width: double.infinity,
+              // margin: EdgeInsets.only(top: 5),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    height: height * 0.05,
+                    width: double.infinity,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: height * 0.05,
+                        color: Colors.green,
+                        width: width * 0.05,
+                        child: Center(
+                          child: Text(
+                            "A.no",
+                            style: ToolkitTypography.h3
+                                .copyWith(color: ToolkitColors.black),
+                          ),
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.symmetric(
+                          horizontal: width * 0.01,
+                          vertical: height * 0.01,
+                        ),
+                        height: height * 0.05,
+                        color: Colors.white,
+                        width: width * 0.07,
+                        child: TextField(),
+                      ),
+                      Container(
+                        height: height * 0.05,
+                        width: width * 0.2,
+                        child: ListTile(
+                          title: const Text('Payment T'),
+                          leading: Radio(
+                            activeColor: ToolkitColors.black,
+                            value: radioType.DescriptionWise,
+                            groupValue: _type,
+                            onChanged: (radioType? value) {
+                              setState(() {
+                                _type = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                      Container(
+                        height: height * 0.05,
+                        width: width * 0.2,
+                        child: ListTile(
+                          title: const Text('Receipt T'),
+                          leading: Radio(
+                            activeColor: ToolkitColors.black,
+                            value: radioType.GroupWise,
+                            groupValue: _type,
+                            onChanged: (radioType? value) {
+                              setState(() {
+                                _type = value!;
+                              });
+                            },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
             ),
-          ),
-          Container(
-            height: height * 0.6,
-            width: double.infinity,
-            child: ListView(
-              children: [
-                datTableEntry(),
-              ],
+            Container(
+              height: height * 0.6,
+              width: double.infinity,
+              child: ListView(
+                children: [
+                  datTableEntry(),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
@@ -161,23 +231,6 @@ class _PunchingViewState extends State<PunchingView> {
         ),
       ],
       rows: totalList,
-    );
-  }
-}
-
-class textFiled2 extends StatelessWidget {
-  textFiled2({Key? key}) : super(key: key);
-  TextEditingController textEditingController = TextEditingController();
-
-  @override
-  Widget build(BuildContext context) {
-    return TextField(
-      controller: textEditingController,
-      onChanged: (v) {
-        if (v.trim().isNotEmpty) {
-          isChanged = true;
-        }
-      },
     );
   }
 }
