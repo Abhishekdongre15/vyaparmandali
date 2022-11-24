@@ -1,6 +1,7 @@
 // Create the Widget for the row
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
+import 'package:vyaparmandali/views/balance_sheet/schedules_details_screen_view.dart';
 import 'package:vyaparmandali/views/balance_sheet/trial_balance_report_view.dart';
 import 'package:vyaparmandali/views/balance_sheet/eoy_kasar_dr_view.dart';
 import 'package:vyaparmandali/views/data_entry/data_entry_view.dart';
@@ -329,10 +330,10 @@ class EntryItem extends StatelessWidget {
         Get.to(EOYKasarCrGroupView());
         break;
       case 'trial balance details screen':
-        Get.to(EOYKasarDrGroupView());
+        Get.to(TrialBalanceDetailScreenView());
         break;
       case 'schedules details screen':
-        Get.to(EOYKasarDrGroupView());
+        Get.to(SchedulesDetailScreenView());
         break;
     }
   }

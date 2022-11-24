@@ -2,22 +2,19 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
-enum yearBalanceType { Yes, No }
-
 enum zeroBalanceType { Yes, No }
 
-class TrialBalanceDetailScreenView extends StatefulWidget {
-  const TrialBalanceDetailScreenView({Key? key}) : super(key: key);
+class SchedulesDetailScreenView extends StatefulWidget {
+  const SchedulesDetailScreenView({Key? key}) : super(key: key);
 
   @override
-  State<TrialBalanceDetailScreenView> createState() =>
-      _TrialBalanceDetailScreenViewState();
+  State<SchedulesDetailScreenView> createState() =>
+      _SchedulesDetailScreenViewState();
 }
 
-class _TrialBalanceDetailScreenViewState
-    extends State<TrialBalanceDetailScreenView> {
+class _SchedulesDetailScreenViewState extends State<SchedulesDetailScreenView> {
   DateTime fdate = DateTime(2022, 11, 17);
-  yearBalanceType _type = yearBalanceType.No;
+
   zeroBalanceType _zero = zeroBalanceType.No;
 
   @override
@@ -28,7 +25,7 @@ class _TrialBalanceDetailScreenViewState
       appBar: AppBar(
         backgroundColor: ToolkitColors.primary,
         title: Text(
-          "Trial Balance Detail Report",
+          "Schedules Details Screen ",
           style: ToolkitTypography.h2.copyWith(color: Colors.white),
         ),
       ),
@@ -45,8 +42,84 @@ class _TrialBalanceDetailScreenViewState
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              reUseContainer("<< Trial Balance Detail Report >>", height),
+              reUseContainer("<< S C H E D U L E S >>", height),
               dottedRow(),
+              Row(
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    height: height * 0.07,
+                    width: width * 0.3,
+                    decoration: BoxDecoration(
+                      color: ToolkitColors.primary,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Text(
+                      "From :",
+                      style: ToolkitTypography.h3
+                          .copyWith(color: ToolkitColors.black),
+                    ),
+                  ),
+                  SizedBox(
+                    width: width * 0.01,
+                  ),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Text("["),
+                        Container(
+                          margin:
+                              EdgeInsets.symmetric(horizontal: width * 0.01),
+                          alignment: Alignment.center,
+                          height: height * 0.07,
+                          color: Colors.transparent,
+                          width: 100,
+                          child: TextField(),
+                        ),
+                        Text("]"),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Container(
+                    alignment: Alignment.center,
+                    height: height * 0.07,
+                    width: width * 0.3,
+                    decoration: BoxDecoration(
+                      color: ToolkitColors.primary,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Text(
+                      "To :",
+                      style: ToolkitTypography.h3
+                          .copyWith(color: ToolkitColors.black),
+                    ),
+                  ),
+                  SizedBox(
+                    width: width * 0.01,
+                  ),
+                  Expanded(
+                    child: Row(
+                      children: [
+                        Text("["),
+                        Container(
+                          margin:
+                              EdgeInsets.symmetric(horizontal: width * 0.01),
+                          alignment: Alignment.center,
+                          height: height * 0.07,
+                          color: Colors.transparent,
+                          width: 100,
+                          child: TextField(),
+                        ),
+                        Text("]"),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
               reUseRow(
                 height: height,
                 width: width,
@@ -80,53 +153,13 @@ class _TrialBalanceDetailScreenViewState
                 children: [
                   Expanded(
                     flex: 3,
-                    child: Text(
-                      "Print Previous Year Balance ?",
-                      style: ToolkitTypography.h3
-                          .copyWith(color: ToolkitColors.black),
-                    ),
-                  ),
-                  Expanded(
-                    child: ListTile(
-                      title: const Text('Yes'),
-                      leading: Radio(
-                        activeColor: ToolkitColors.black,
-                        value: yearBalanceType.Yes,
-                        groupValue: _type,
-                        onChanged: (yearBalanceType? value) {
-                          setState(() {
-                            _type = value!;
-                          });
-                        },
+                    child: Container(
+                      margin: EdgeInsets.only(left: width * 0.02),
+                      child: Text(
+                        "Print A/C with Nill balance ?",
+                        style: ToolkitTypography.h3
+                            .copyWith(color: ToolkitColors.black),
                       ),
-                    ),
-                  ),
-                  Expanded(
-                    child: ListTile(
-                      title: const Text('No'),
-                      leading: Radio(
-                        activeColor: ToolkitColors.black,
-                        value: yearBalanceType.No,
-                        groupValue: _type,
-                        onChanged: (yearBalanceType? value) {
-                          setState(() {
-                            _type = value!;
-                          });
-                        },
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Expanded(
-                    flex: 3,
-                    child: Text(
-                      "Print A/C with Zero balance ?",
-                      style: ToolkitTypography.h3
-                          .copyWith(color: ToolkitColors.black),
                     ),
                   ),
                   Expanded(
