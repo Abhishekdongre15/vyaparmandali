@@ -23,7 +23,12 @@ class MyApp extends StatelessWidget {
       title: 'Vyapar Mandali',
       home: Scaffold(
         body: PunchingView(),
-        //  PunchingView()
+        // ResponsiveLayout(
+        //   mobileBody: const LoginView(),
+        //   tabletBody: const LoginView(),
+        //   desktopBody: const DesktopScaffold(),
+        // ),
+
       ),
       // home: ResponsiveLayout(
       //   mobileBody: const LoginView(),
@@ -36,7 +41,8 @@ class MyApp extends StatelessWidget {
 
 class CustomScrollBehaviour extends MaterialScrollBehavior {
   @override
-  Set<PointerDeviceKind> get dragDevices => {
+  Set<PointerDeviceKind> get dragDevices =>
+      {
         PointerDeviceKind.touch,
         PointerDeviceKind.mouse,
       };

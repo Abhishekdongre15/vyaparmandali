@@ -20,13 +20,20 @@ class _AddACMasterListState extends State<AddACMasterList> {
 
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
+    double height = MediaQuery
+        .of(context)
+        .size
+        .height;
+    double width = MediaQuery
+        .of(context)
+        .size
+        .width;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ToolkitColors.primary,
         title: Text("Add Item"),
         leading: GestureDetector(
-          child: Icon(
+          child: const Icon(
             Icons.arrow_back,
           ),
           onTap: () {
@@ -35,7 +42,7 @@ class _AddACMasterListState extends State<AddACMasterList> {
         ),
       ),
       body: Container(
-        height: MediaQuery.of(context).size.width * 1,
+        height: height,
         width: double.infinity,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(20),
@@ -47,13 +54,13 @@ class _AddACMasterListState extends State<AddACMasterList> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              height: MediaQuery.of(context).size.height * 0.6,
-              width: MediaQuery.of(context).size.width * 0.5,
+              height: height * 0.6,
+              width: width * 0.5,
               child: Form(
                 child: Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(height * 0.001),
                       child: UIToolkit.textFormField(
                         hintText: "Name",
                         label: "Name",
@@ -62,7 +69,7 @@ class _AddACMasterListState extends State<AddACMasterList> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(height * 0.001),
                       child: UIToolkit.textFormField(
                         hintText: "Email Id",
                         label: "Email Id",
@@ -70,7 +77,7 @@ class _AddACMasterListState extends State<AddACMasterList> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(height * 0.001),
                       child: UIToolkit.textFormField(
                         hintText: "Place",
                         label: "Place",
@@ -78,7 +85,7 @@ class _AddACMasterListState extends State<AddACMasterList> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(height * 0.001),
                       child: UIToolkit.textFormField(
                         hintText: "Phone No)",
                         keyboardType: const TextInputType.numberWithOptions(
@@ -98,10 +105,11 @@ class _AddACMasterListState extends State<AddACMasterList> {
                         Expanded(
                           flex: 1,
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.all(height * 0.001),
                             child: UIToolkit.textFormField(
                               hintText: "Ledger No",
-                              keyboardType: const TextInputType.numberWithOptions(
+                              keyboardType:
+                              const TextInputType.numberWithOptions(
                                   decimal: true),
 
                               inputFormatters: <TextInputFormatter>[
@@ -117,10 +125,11 @@ class _AddACMasterListState extends State<AddACMasterList> {
                         Expanded(
                           flex: 1,
                           child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                            padding: EdgeInsets.all(height * 0.001),
                             child: UIToolkit.textFormField(
                               hintText: "Pan No",
-                              keyboardType: const TextInputType.numberWithOptions(
+                              keyboardType:
+                              const TextInputType.numberWithOptions(
                                   decimal: true),
 
                               inputFormatters: <TextInputFormatter>[
@@ -136,7 +145,7 @@ class _AddACMasterListState extends State<AddACMasterList> {
                       ],
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.all(height * 0.01),
                       child: UIToolkit.textFormField(
                         hintText: "Opening Balance",
                         keyboardType: const TextInputType.numberWithOptions(
@@ -151,18 +160,22 @@ class _AddACMasterListState extends State<AddACMasterList> {
                         controller: openingController,
                       ),
                     ),
+                    UIToolkitButtons.primaryButton(
+                      style: ButtonStyle(
+
+                      ),
+                      onPressed: () {
+                        // Validate returns true if the form is valid, or false otherwise.
+                        // if (_formKey.currentState!.validate()) {
+                        //   // ... Navigate To your Home Page
+                        // }
+
+                      },
+                      text: 'Submit',
+                    ),
                   ],
                 ),
               ),
-            ),
-            UIToolkitButtons.primaryButton(
-              onPressed: () {
-                // Validate returns true if the form is valid, or false otherwise.
-                // if (_formKey.currentState!.validate()) {
-                //   // ... Navigate To your Home Page
-                // }
-              },
-              text: 'Submit',
             ),
           ],
         ),
