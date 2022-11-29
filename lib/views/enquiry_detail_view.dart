@@ -153,13 +153,15 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                       Expanded(
                         child: UIToolkit.textFormField(
                           hintText: 'First Name ',
-                          label: "First Name",                  /*     decoration: const InputDecoration(
+                          label: "First Name",
+                          /*     decoration: const InputDecoration(
                             // prefixIcon: Icon(Icons.person),
                             border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15)),
                             ),
-                          ),*/                  controller: firstNameController,
+                          ),*/
+                          controller: firstNameController,
                           // The validator receives the text that the user has entered.
                           validator: (value) {
                             if (value == null || value.isEmpty) {
@@ -176,10 +178,11 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                       const SizedBox(
                         width: 10,
                       ),
-                 /*     Expanded(
-                        child: ReUseTextField(
-                          textStyle: kTextFormFieldStyle(),
-                          decoration: InputDecoration(
+                      Expanded(
+                        child: UIToolkit.textFormField(
+                          hintText: "Second Name",
+                          style: kTextFormFieldStyle(),
+                          /* decoration: InputDecoration(
                             // prefixIcon: Icon(Icons.person),
                             hintText: "Last Name",
                             label: Text("Last Name"),
@@ -187,7 +190,7 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15)),
                             ),
-                          ),
+                          ), */
                           controller: secondNameController,
                           // The validator receives the text that the user has entered.
                           validator: (value) {
@@ -201,12 +204,14 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                             return null;
                           },
                         ),
-                      ),*/
+                      ),
                     ],
                   ),
                   SizedBox(
                     height: size.height * 0.02,
-                  ),          ///Phone no and
+                  ),
+
+                  ///Phone no and
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -243,9 +248,11 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                   ),
                   SizedBox(
                     height: size.height * 0.02,
-                  ),          /// email
-                /*  ReUseTextField(
-                    textStyle: kTextFormFieldStyle(),
+                  ),
+
+                  /// email
+                  TextFormField(
+                    style: kTextFormFieldStyle(),
                     controller: emailController,
                     decoration: InputDecoration(
                       prefixIcon: const Icon(Icons.alternate_email_rounded),
@@ -266,10 +273,12 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                       }
                       return null;
                     },
-                  ),*/
+                  ),
                   SizedBox(
                     height: size.height * 0.02,
-                  ),          ///Country Picker
+                  ),
+
+                  ///Country Picker
                   CSCPicker(
                     layout: Layout.vertical,
                     // defaultCountry: DefaultCountry.India,
@@ -278,19 +287,26 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                     onStateChanged: (State) {},
                     onCityChanged: (City) {},
                     dropdownDecoration: BoxDecoration(
-                      border: Border.all(color:ToolkitColors.primary, width: 1),
-                      borderRadius: BorderRadius.all(Radius.circular(15),),
+                      border:
+                          Border.all(color: ToolkitColors.primary, width: 1),
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(15),
                       ),
+                    ),
                     disabledDropdownDecoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                         color: Colors.white,
-                        border:
-                        Border.all(color: Colors.grey.shade300, width: 1,)),
-                    ),
+                        border: Border.all(
+                          color: Colors.grey.shade300,
+                          width: 1,
+                        )),
+                  ),
                   SizedBox(
                     height: size.height * 0.02,
-                  ),          /// Requirement
-                /*  ReUseTextField(
+                  ),
+
+                  /// Requirement
+                  /*  ReUseTextField(
                     maxLine: 3,
                     textStyle: kTextFormFieldStyle(),
                     controller: requirementController,
@@ -311,11 +327,15 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                   ),*/
                   SizedBox(
                     height: size.height * 0.02,
-                  ),          /// Login Button
+                  ),
+
+                  /// Login Button
                   submitFormButton(),
                   SizedBox(
                     height: size.height * 0.02,
-                  ),          /// Navigate To Login Screen
+                  ),
+
+                  /// Navigate To Login Screen
                   GestureDetector(
                     onTap: () {
                       Navigator.pop(context);
@@ -354,7 +374,7 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
     return SizedBox(
       width: double.infinity,
       height: 55,
-      child:  UIToolkitButtons.primaryButton(
+      child: UIToolkitButtons.primaryButton(
         onPressed: () {
           // Validate returns true if the form is valid, or false otherwise.
           if (_formKey.currentState!.validate()) {
