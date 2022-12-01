@@ -5,6 +5,7 @@ import 'package:vyaparmandali/responsive/desktop_body.dart';
 import 'package:vyaparmandali/responsive/responsive_layout.dart';
 import 'package:vyaparmandali/views/data_entry/PunchingView.dart';
 import 'package:vyaparmandali/views/login_view.dart';
+import 'package:vyaparmandali/views/master/ac_master_view.dart';
 import 'package:vyaparmandali/views/report/cash%20bank%20book/rojmel_ac_view.dart';
 
 void main() {
@@ -25,9 +26,9 @@ class MyApp extends StatelessWidget {
         body:
             // PunchingView(),
             ResponsiveLayout(
-          mobileBody: const LoginView(),
-          tabletBody: const LoginView(),
-          desktopBody: const LoginView(),
+          mobileBody: const ACMasterListView(),
+          tabletBody: const ACMasterListView(),
+          desktopBody: const ACMasterListView(),
         ),
       ),
       // home: ResponsiveLayout(

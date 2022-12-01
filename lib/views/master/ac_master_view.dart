@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/views/master/add_ac_master_view.dart';
 import 'package:vyaparmandali/views/add_list_data_view.dart';
+
 class ACMasterListView extends StatefulWidget {
   const ACMasterListView({Key? key}) : super(key: key);
 
@@ -18,60 +20,60 @@ class ACMasterListViewState extends State<ACMasterListView> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
+        title: Text("Ac Master"),
         backgroundColor: ToolkitColors.primary,
       ),
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
+      body: Container(
+        height: MediaQuery.of(context).size.height * 1,
+        width: MediaQuery.of(context).size.width * 1,
+        child: SingleChildScrollView(
+          // scrollDirection: ScrollDirection.,
           child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: Text(
-                        "Name",
-                        style: ToolkitTypography.h2
-                            .copyWith(color: ToolkitColors.black),
-                      ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    flex: 1,
+                    child: Text(
+                      "Name",
+                      style: ToolkitTypography.h2
+                          .copyWith(color: ToolkitColors.black),
                     ),
-                    Expanded(
-                      flex: 1,
-                      child: Text(
-                        "Email Id",
-                        style: ToolkitTypography.h2
-                            .copyWith(color: ToolkitColors.black),
-                      ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Text(
+                      "Email Id",
+                      style: ToolkitTypography.h2
+                          .copyWith(color: ToolkitColors.black),
                     ),
-                    Expanded(
-                      flex: 1,
-                      child: Text(
-                        "Phone no",
-                        style: ToolkitTypography.h2
-                            .copyWith(color: ToolkitColors.black),
-                      ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Text(
+                      "Phone no",
+                      style: ToolkitTypography.h2
+                          .copyWith(color: ToolkitColors.black),
                     ),
-                    Expanded(
-                      flex: 1,
-                      child: Text(
-                        "Opening Balance",
-                        style: ToolkitTypography.h2
-                            .copyWith(color: ToolkitColors.black),
-                      ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Text(
+                      "Opening Balance",
+                      style: ToolkitTypography.h2
+                          .copyWith(color: ToolkitColors.black),
                     ),
-                    Expanded(
-                      flex: 1,
-                      child: Text(
-                        "Actions",
-                        style: ToolkitTypography.h2
-                            .copyWith(color: ToolkitColors.black),
-                      ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: Text(
+                      "Actions",
+                      style: ToolkitTypography.h2
+                          .copyWith(color: ToolkitColors.black),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               ListView.separated(
                 physics: ClampingScrollPhysics(),
@@ -93,70 +95,69 @@ class ACMasterListViewState extends State<ACMasterListView> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const AddACMasterList()));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const AddACMasterList()));
           },
           child: const Icon(Icons.add)),
     );
   }
 
   Widget _gstBottomValue() {
-    return Padding(
-      padding: const EdgeInsets.all(8.0),
-      child: Card(
-        color: ToolkitColors.white,
-        shadowColor: Colors.white,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Expanded(
-                  flex: 1,
-                  child: Text(
-                    "Shivam Pandey",
-                    style: ToolkitTypography.body1A
-                        .copyWith(color: ToolkitColors.black),
-                  ),
+    return Card(
+      color: ToolkitColors.white,
+      shadowColor: Colors.white,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Expanded(
+                flex: 1,
+                child: Text(
+                  "Shivam Pandey",
+                  style: ToolkitTypography.body1A
+                      .copyWith(color: ToolkitColors.black),
                 ),
-                Expanded(
-                  flex: 1,
-                  child: Text(
-                    "shivamPandey@gmail.com",
-                    style: ToolkitTypography.body1A
-                        .copyWith(color: ToolkitColors.black),
-                  ),
+              ),
+              Expanded(
+                flex: 1,
+                child: Text(
+                  "shivamPandey@gmail.com",
+                  style: ToolkitTypography.body1A
+                      .copyWith(color: ToolkitColors.black),
                 ),
-                Expanded(
-                  child: Text("9999007766"),
-                  flex: 1,
+              ),
+              Expanded(
+                child: Text("9999007766"),
+                flex: 1,
+              ),
+              Expanded(
+                child: Text("Rs: 99990"),
+                flex: 1,
+              ),
+              Expanded(
+                flex: 1,
+                child: Row(
+                  children: [
+                    UIToolkitButtons.iconButton(
+                        text: "",
+                        onPressed: () {},
+                        icon: ToolkitAssets.editIcon44),
+                    UIToolkitButtons.iconButton(
+                        text: "",
+                        onPressed: () {},
+                        icon: ToolkitAssets.iconTrash44),
+                  ],
                 ),
-                Expanded(
-                  child: Text("Rs: 99990"),
-                  flex: 1,
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Row(
-                    children: [
-                      UIToolkitButtons.iconButton(
-                          text: "",
-                          onPressed: () {},
-                          icon: ToolkitAssets.editIcon44),
-                      UIToolkitButtons.iconButton(
-                          text: "",
-                          onPressed: () {},
-                          icon: ToolkitAssets.iconTrash44),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
