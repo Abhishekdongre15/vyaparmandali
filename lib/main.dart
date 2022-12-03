@@ -19,17 +19,17 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
+    return const GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Vyapar Mandali',
       home: Scaffold(
-        body:
-            // PunchingView(),
-            ResponsiveLayout(
-          mobileBody: const ACMasterListView(),
-          tabletBody: const ACMasterListView(),
-          desktopBody: const ACMasterListView(),
-        ),
+        body: LoginView(),
+        // ResponsiveLayout(
+        //   mobileBody: const LoginView(),
+        //   tabletBody: const LoginView(),
+        //   desktopBody: const DesktopScaffold(),
+        // ),
+
       ),
       // home: ResponsiveLayout(
       //   mobileBody: const LoginView(),
