@@ -306,15 +306,17 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                   ),
 
                   /// Requirement
-                  /*  ReUseTextField(
-                    maxLine: 3,
-                    textStyle: kTextFormFieldStyle(),
+                  TextFormField(
+                    maxLines: 3,
+                    style: kTextFormFieldStyle(),
                     controller: requirementController,
                     decoration: InputDecoration(
                       hintText: 'Requirments',
                       label: Text('Give Some Requirments'),
                       border: const OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(15),
+                        ),
                       ),
                     ),
                     // The validator receives the text that the user has entered.
@@ -324,7 +326,7 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                       }
                       return null;
                     },
-                  ),*/
+                  ),
                   SizedBox(
                     height: size.height * 0.02,
                   ),

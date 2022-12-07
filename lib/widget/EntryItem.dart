@@ -47,6 +47,7 @@ import '../views/balance_sheet/eoy_kasar_cr_view.dart';
 import '../views/balance_sheet/p_and_l_statement_view.dart';
 import '../views/balance_sheet/schedules_report_view.dart';
 import '../views/balance_sheet/trial_balance_detail_screen_view.dart';
+import '../views/master/items/account_setting_view.dart';
 import '../views/report/additional report/monthwise_p&l_report_view.dart';
 import '../views/report/additional report/vachatwise_report_view.dart';
 import '../views/report/additional report/vachatwise_summery_report_view.dart';
@@ -153,6 +154,12 @@ class EntryItem extends StatelessWidget {
       case 'place master':
         Get.to(PlaceMasterView());
         break;
+      case 'a/c settings':
+        Get.to(AccountSettingView());
+        break;
+
+      /// Master Screen Ended
+
       case 'rojmel':
         Get.to(DataEntryView());
         break;
