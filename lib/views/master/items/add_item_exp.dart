@@ -17,7 +17,7 @@ class _AddItemExpState extends State<AddItemExp> {
   TextEditingController bHamaliController = TextEditingController();
   TextEditingController mitmController = TextEditingController();
   TextEditingController totalController = TextEditingController();
-  DateTime _date = DateTime.now();
+  final DateTime _date = DateTime.now();
   bool setError = false;
   bool dateIsValid = false;
   String resultDate = '';
@@ -65,7 +65,7 @@ class _AddItemExpState extends State<AddItemExp> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: MediaQuery.of(context).size.height * 0.4,
               width: MediaQuery.of(context).size.width * 0.8,
               child: Form(

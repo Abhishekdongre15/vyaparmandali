@@ -31,7 +31,7 @@ class _AddACMasterListState extends State<AddACMasterList> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ToolkitColors.primary,
-        title: Text("Add Item"),
+        title: const Text("Add Item"),
         leading: GestureDetector(
           child: const Icon(
             Icons.arrow_back,
@@ -53,7 +53,7 @@ class _AddACMasterListState extends State<AddACMasterList> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: height * 0.6,
               width: width * 0.5,
               child: Form(
@@ -161,7 +161,7 @@ class _AddACMasterListState extends State<AddACMasterList> {
                       ),
                     ),
                     UIToolkitButtons.primaryButton(
-                      style: ButtonStyle(
+                      style: const ButtonStyle(
 
                       ),
                       onPressed: () {

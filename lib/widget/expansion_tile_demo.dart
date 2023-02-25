@@ -1,7 +1,9 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 
 class ExpansionTileDemo extends StatelessWidget {
+  const ExpansionTileDemo({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -73,7 +75,7 @@ final List<Entry> data = <Entry>[
 
 // Create the Widget for the row
 class EntryItem extends StatelessWidget {
-  const EntryItem(this.entry);
+  const EntryItem(this.entry, {super.key});
 
   final Entry entry;
 

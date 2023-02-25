@@ -16,7 +16,6 @@ import 'package:vyaparmandali/views/master/place_master_view.dart';
 import 'package:vyaparmandali/views/report/additional%20report/apmc_daily_report_view.dart';
 import 'package:vyaparmandali/views/report/additional%20report/gb_daily_report_view.dart';
 import 'package:vyaparmandali/views/report/additional%20report/gb_monthly_entry_report_view.dart';
-import 'package:vyaparmandali/views/report/additional%20report/gb_monthly_report_view.dart';
 import 'package:vyaparmandali/views/report/additional%20report/vachatwise_daily_report_view.dart';
 import 'package:vyaparmandali/views/report/cash%20bank%20book/bank_book_view.dart';
 import 'package:vyaparmandali/views/report/cash%20bank%20book/bank_reco_view.dart';
@@ -48,7 +47,7 @@ import '../views/balance_sheet/p_and_l_statement_view.dart';
 import '../views/balance_sheet/schedules_report_view.dart';
 import '../views/balance_sheet/trial_balance_detail_screen_view.dart';
 import '../views/master/items/account_setting_view.dart';
-import '../views/report/additional report/monthwise_p&l_report_view.dart';
+import '../views/report/additional report/monthwise_pnl_report_view.dart';
 import '../views/report/additional report/vachatwise_report_view.dart';
 import '../views/report/additional report/vachatwise_summery_report_view.dart';
 import '../views/report/cash bank book/day_wise_bank_book_view.dart';
@@ -65,10 +64,10 @@ import '../views/report/transport report/transportwise_patti_os_view.dart';
 import '../views/report/vacchat report/jama_nondh.dart';
 import '../views/report/vacchat report/jama_nondh_summery_monthly_view.dart';
 import '../views/report/vacchat report/jama_nondh_summery_view.dart';
-import 'Entry.dart';
+import 'entry.dart';
 
 class EntryItem extends StatelessWidget {
-  const EntryItem(this.entry, this.context);
+  const EntryItem(this.entry, this.context, {super.key});
 
   final Entry entry;
   final BuildContext context;
@@ -95,28 +94,11 @@ class EntryItem extends StatelessWidget {
     } else {
       return ExpansionTile(
         key: PageStorageKey<Entry>(root),
-        title: GestureDetector(
-            onTap: () {
-              if (root.title.toLowerCase() == 'GROUP'.toLowerCase()) {
-                Get.to(GroupMasterListView());
-              }
-            },
-            child: GestureDetector(
-              onTap: () {
-                if (root.title.toLowerCase() == 'GROUP'.toLowerCase()) {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const GroupMasterListView(),
-                      ));
-                }
-              },
-              child: Text(
-                root.title,
-                style: ToolkitTypography.body1A
-                    .copyWith(color: ToolkitColors.black),
-              ),
-            )),
+        title: Text(
+          root.title,
+          style: ToolkitTypography.body1A
+              .copyWith(color: ToolkitColors.black),
+        ),
         children: root.children.map<Widget>(_buildTiles).toList(),
       );
     }
@@ -127,220 +109,217 @@ class EntryItem extends StatelessWidget {
     return _buildTiles(entry);
   }
 
-  void callPages(String pages) {
+  void callPages(String pages) async{
     switch (pages) {
       case 'group':
-        Navigator.push(
+        await Get.to(const GroupMasterListView())?.then((value) =>  Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => const GroupMasterListView(),
-            ));
+            )));
         break;
       case 'narration':
-        Get.to(NarrationView());
+        Get.to(const NarrationView());
         break;
       case 'a/c master':
-        Get.to(ACMasterListView());
+        Get.to(const ACMasterListView());
         break;
       case 'item name':
-        Get.to(ItemView());
+        Get.to(const ItemView());
         break;
       case 'item exp':
-        Get.to(ItemExpView());
+        Get.to(const ItemExpView());
         break;
       case 'hamali exp':
-        Get.to(HamaliExpView());
+        Get.to(const HamaliExpView());
         break;
       case 'place master':
-        Get.to(PlaceMasterView());
+        Get.to(const PlaceMasterView());
         break;
       case 'a/c settings':
-        Get.to(AccountSettingView());
+        Get.to(const AccountSettingView());
         break;
 
       /// Master Screen Ended
 
       case 'rojmel':
-        Get.to(DataEntryView());
+        Get.to(const DataEntryView());
         break;
       case 'rojmel as a/c':
-        Get.to(RojmelAcView());
+        Get.to(const RojmelAcView());
         break;
       case 'rojmel as book':
-        Get.to(RojmelAsBook());
+        Get.to(const RojmelAsBook());
         break;
       case 'cash boook':
-        Get.to(CashbookView());
+        Get.to(const CashbookView());
         break;
       case 'bank book':
-        Get.to(BankBookView());
+        Get.to(const BankBookView());
         break;
       case 'daily cash balance':
-        Get.to(DailyCashBalanceView());
+        Get.to(const DailyCashBalanceView());
         break;
       case 'day wise bank book':
-        Get.to(DayWiseBankBookView());
+        Get.to(const DayWiseBankBookView());
         break;
       case 'bank reco':
-        Get.to(BankRecoView());
+        Get.to(const BankRecoView());
         break;
       case 'cash limits report':
-        Get.to(CashLimitView());
+        Get.to(const CashLimitView());
         break;
       case 'patti register':
-        Get.to(PattiRegisterView());
+        Get.to(const PattiRegisterView());
         break;
       case 'jama nondh':
-        Get.to(JamaNondhView());
+        Get.to(const JamaNondhView());
         break;
       case 'jama nondh summery':
-        Get.to(JamaNondhSummeryView());
+        Get.to(const JamaNondhSummeryView());
         break;
       case 'jama nondh summery monthly':
-        Get.to(JamaNondhSummeryMonthlyView());
+        Get.to(const JamaNondhSummeryMonthlyView());
         break;
 
       /// Ledger Screens Started.
       case 'general ledger':
-        Get.to(GeneralLedgerView());
+        Get.to(const GeneralLedgerView());
         break;
       case 'statement of accounts':
-        Get.to(StatementOfAccountView());
+        Get.to(const StatementOfAccountView());
         break;
       case 'screen ledger':
-        Get.to(ScreenLedgerView());
+        Get.to(const ScreenLedgerView());
         break;
       case 'detail ledger':
-        Get.to(DetailLedgerView());
+        Get.to(const DetailLedgerView());
         break;
       case 'group ledger':
-        Get.to(GroupLedgerView());
+        Get.to(const GroupLedgerView());
         break;
       case 'customer ledger':
-        Get.to(CustomerLedgerView());
+        Get.to(const CustomerLedgerView());
         break;
       case 'suppliers ledger':
-        Get.to(SupplierLedgerView());
+        Get.to(const SupplierLedgerView());
         break;
       case 'itemwise ledger':
-        Get.to(ItemWiseLedgerView());
+        Get.to(const ItemWiseLedgerView());
         break;
       case 'daywise ledger':
-        Get.to(DayWiseLedgerView());
+        Get.to(const DayWiseLedgerView());
         break;
       case 'month wise ledger':
-        Get.to(MonthlyWiseLedgerView());
+        Get.to(const MonthlyWiseLedgerView());
         break;
       //    Ledger Screen Ended
 
       /// Register Screen Started
       case 'aavak register':
-        Get.to(AavakRegisterView());
+        Get.to(const AavakRegisterView());
         break;
       case 'dhada register':
-        Get.to(DhadaRegisterView());
+        Get.to(const DhadaRegisterView());
         break;
       case 'sales register':
-        Get.to(SalesRegisterView());
+        Get.to(const SalesRegisterView());
         break;
       case 'purchase register':
-        Get.to(PurchaseRegisterView());
+        Get.to(const PurchaseRegisterView());
         break;
       case 'lotwise dhada register':
-        Get.to(LotwiseDhadaRegisterView());
+        Get.to(const LotwiseDhadaRegisterView());
         break;
       case 'sales summery repost':
-        Get.to(SalesSummeryRepostView());
+        Get.to(const SalesSummeryRepostView());
         break;
       case 'itemwise sales repost':
-        Get.to(ItemwiseSalesRepostView());
+        Get.to(const ItemwiseSalesRepostView());
         break;
       case 'sales summery monthly repost':
-        Get.to(SalesSummeryMonthlyRepostView());
+        Get.to(const SalesSummeryMonthlyRepostView());
         break;
       // Register Screen Ended
 
       /// Transport Screen Started
       case 'transport report':
-        Get.to(TransportReportView());
+        Get.to(const TransportReportView());
         break;
       case 'transport comm report':
-        Get.to(TransportCommReportView());
+        Get.to(const TransportCommReportView());
         break;
       case 'transport wise patti o/s':
-        Get.to(TransportWisePattiOSRepostView());
+        Get.to(const TransportWisePattiOSRepostView());
         break;
       case 'transport wise patti date o/s':
-        Get.to(TransportWisePattiDateOSRepostView());
+        Get.to(const TransportWisePattiDateOSRepostView());
         break;
       // Transport Screen Ended
 
       /// Additional Report Started
       case 'apmc daily report':
-        Get.to(APMCDailyReportView());
+        Get.to(const APMCDailyReportView());
         break;
       case 'vachhatwise daily report':
-        Get.to(VachatWiseDailyReportView());
+        Get.to(const VachatWiseDailyReportView());
         break;
       case 'monthwise p & l report':
-        Get.to(MonthWisePLReportView());
+        Get.to(const MonthWisePLReportView());
         break;
       case 'vachhatwise report':
-        Get.to(VachatWiseReportView());
+        Get.to(const VachatWiseReportView());
         break;
       case 'vachhatwise summery report':
-        Get.to(VachatWiseSummeryReportView());
+        Get.to(const VachatWiseSummeryReportView());
         break;
       case 'gb daily report':
-        Get.to(GbDailyReportView());
+        Get.to(const GbDailyReportView());
         break;
       case 'gb monthly entry report':
-        Get.to(GbMonthlyEntryReportView());
+        Get.to(const GbMonthlyEntryReportView());
         break;
       // Additional Report Ended
 
       /// Customers Report Screen Started
       case 'ledger sales o/s report':
-        Get.to(LedgerSaleOSRepostView());
+        Get.to(const LedgerSaleOSRepostView());
         break;
       case 'ledger sales o/s label report':
-        Get.to(LedgerOSLabelRepostView());
+        Get.to(const LedgerOSLabelRepostView());
         break;
       case 'partywise sales report':
-        Get.to(PartywiseWiseSalesReportView());
+        Get.to(const PartywiseWiseSalesReportView());
         break;
       case 'ledger sales o/s 90 days report':
-        Get.to(LedgerOS90DayRepostView());
+        Get.to(const LedgerOS90DayRepostView());
         break;
       // Customers Report Screen Ended
 
       /// Balance Sheet Report Screen Started
       case 'p & l statement report':
-        Get.to(PandLStatementView());
+        Get.to(const PandLStatementView());
         break;
       case 'trial balance report':
-        Get.to(TrialBalanceView());
+        Get.to(const TrialBalanceView());
         break;
       case 'schedules report':
-        Get.to(SchedulesReportView());
+        Get.to(const SchedulesReportView());
         break;
       case 'balance sheets report':
-        Get.to(BalanceSheetReportView());
+        Get.to(const BalanceSheetReportView());
         break;
       case 'trial balance details screen':
-        Get.to(TrialBalanceDetailScreenView());
+        Get.to(const TrialBalanceDetailScreenView());
         break;
       case 'eoy kasar dr  group wise':
-        Get.to(EOYKasarDrGroupView());
+        Get.to(const EOYKasarDrGroupView());
         break;
       case 'eoy kasar cr group wise':
-        Get.to(EOYKasarCrGroupView());
-        break;
-      case 'trial balance details screen':
-        Get.to(TrialBalanceDetailScreenView());
+        Get.to(const EOYKasarCrGroupView());
         break;
       case 'schedules details screen':
-        Get.to(SchedulesDetailScreenView());
+        Get.to(const SchedulesDetailScreenView());
         break;
     }
   }

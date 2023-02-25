@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
+// ignore: camel_case_types, constant_identifier_names
 enum radioType { GroupWise, DescriptionWise }
 
 class TrialBalanceView extends StatefulWidget {
@@ -98,7 +99,7 @@ class _TrialBalanceViewState extends State<TrialBalanceView> {
                       height: height * 0.07,
                       color: Colors.white,
                       width: 100,
-                      child: TextField(),
+                      child: const TextField(),
                     ),
                   ),
                 ],
@@ -130,7 +131,7 @@ class _TrialBalanceViewState extends State<TrialBalanceView> {
                       height: height * 0.07,
                       color: Colors.white,
                       width: width * 0.03,
-                      child: TextField(),
+                      child: const TextField(),
                     ),
                   ),
                 ],
@@ -191,7 +192,7 @@ class _TrialBalanceViewState extends State<TrialBalanceView> {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Text(
-        '$data',
+        data,
         style: ToolkitTypography.h3,
       ),
     );
@@ -214,7 +215,7 @@ class _TrialBalanceViewState extends State<TrialBalanceView> {
             borderRadius: BorderRadius.circular(15),
           ),
           child: Text(
-            "$text",
+            text,
             style: ToolkitTypography.h3.copyWith(color: ToolkitColors.black),
           ),
         ),

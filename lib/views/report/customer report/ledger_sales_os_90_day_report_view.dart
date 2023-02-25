@@ -153,7 +153,7 @@ class _LedgerOS90DayRepostViewState extends State<LedgerOS90DayRepostView> {
   Widget reUseContainer(String data, double height) {
     return Container(
       alignment: Alignment.center,
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       height: height * 0.07,
       width: double.infinity,
       decoration: BoxDecoration(
@@ -161,7 +161,7 @@ class _LedgerOS90DayRepostViewState extends State<LedgerOS90DayRepostView> {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Text(
-        '$data',
+        data,
         style: ToolkitTypography.h3,
       ),
     );
@@ -184,7 +184,7 @@ class _LedgerOS90DayRepostViewState extends State<LedgerOS90DayRepostView> {
             borderRadius: BorderRadius.circular(15),
           ),
           child: Text(
-            "$text",
+            text,
             style: ToolkitTypography.h3.copyWith(color: ToolkitColors.black),
           ),
         ),

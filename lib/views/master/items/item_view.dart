@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/views/add_list_data_view.dart';
 
@@ -69,7 +68,7 @@ class ItemViewState extends State<ItemView> {
                 ),
               ),
               ListView.separated(
-                physics: ClampingScrollPhysics(),
+                physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 separatorBuilder: (context, index) {
                   return const Padding(
@@ -88,7 +87,7 @@ class ItemViewState extends State<ItemView> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Get.to(AddItemsView());
+            Get.to(const AddItemsView());
           },
           child: const Icon(Icons.add)),
     );
@@ -116,13 +115,13 @@ class ItemViewState extends State<ItemView> {
                         .copyWith(color: ToolkitColors.black),
                   ),
                 ),
-                Expanded(
+                const Expanded(
+                  flex: 1,
                   child: Text("Item Code"),
-                  flex: 1,
                 ),
-                Expanded(
-                  child: Text("Rate(Kg)"),
+                const Expanded(
                   flex: 1,
+                  child: Text("Rate(Kg)"),
                 ),
                 Expanded(
                   flex: 1,

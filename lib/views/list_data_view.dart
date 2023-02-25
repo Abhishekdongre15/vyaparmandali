@@ -66,7 +66,7 @@ class ListDataViewState extends State<ListDataView> {
                 ),
               ),
               ListView.separated(
-                physics: ClampingScrollPhysics(),
+                physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 separatorBuilder: (context, index) {
                   return const Padding(
@@ -114,13 +114,13 @@ class ListDataViewState extends State<ListDataView> {
                         .copyWith(color: ToolkitColors.black),
                   ),
                 ),
-                Expanded(
+                const Expanded(
+                  flex: 1,
                   child: Text("Name"),
-                  flex: 1,
                 ),
-                Expanded(
-                  child: Text("Rate(Kg)"),
+                const Expanded(
                   flex: 1,
+                  child: Text("Rate(Kg)"),
                 ),
                 Expanded(
                   flex: 1,

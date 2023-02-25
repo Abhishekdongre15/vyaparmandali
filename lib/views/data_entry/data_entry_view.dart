@@ -18,7 +18,7 @@ class DataEntryViewState extends State<DataEntryView> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("Data entry"),
+        title: const Text("Data entry"),
         backgroundColor: ToolkitColors.primary,
       ),
       body: SingleChildScrollView(
@@ -67,7 +67,7 @@ class DataEntryViewState extends State<DataEntryView> {
                 ),
               ),
               ListView.separated(
-                physics: ClampingScrollPhysics(),
+                physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 separatorBuilder: (context, index) {
                   return const Padding(
@@ -123,9 +123,9 @@ class DataEntryViewState extends State<DataEntryView> {
                         .copyWith(color: ToolkitColors.black),
                   ),
                 ),
-                Expanded(
-                  child: Text("Udhaar baki"),
+                const Expanded(
                   flex: 1,
+                  child: Text("Udhaar baki"),
                 ),
 
                 Expanded(

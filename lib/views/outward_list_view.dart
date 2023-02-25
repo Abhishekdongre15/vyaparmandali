@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/views/data_entry/add_data_entry_view.dart';
-import 'package:vyaparmandali/views/add_Outword_litst_view.dart';
-
-import 'add_inword_view.dart';
+import 'package:vyaparmandali/views/add_outword_litst_view.dart';
 
 class OutWardListView extends StatefulWidget {
   const OutWardListView({Key? key}) : super(key: key);
@@ -21,7 +18,7 @@ class OutWardListViewState extends State<OutWardListView> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("OutWord "),
+        title: const Text("OutWord "),
         backgroundColor: ToolkitColors.primary,
       ),
       body: SingleChildScrollView(
@@ -102,7 +99,7 @@ class OutWardListViewState extends State<OutWardListView> {
                 ),
               ),
               ListView.separated(
-                physics: ClampingScrollPhysics(),
+                physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 separatorBuilder: (context, index) {
                   return const Padding(
@@ -160,24 +157,24 @@ class OutWardListViewState extends State<OutWardListView> {
                         .copyWith(color: ToolkitColors.black),
                   ),
                 ),
-                Expanded(
+                const Expanded(
+                  flex: 1,
                   child: Text("Vehicle No"),
-                  flex: 1,
                 ),
-                Expanded(
+                const Expanded(
+                  flex: 1,
                   child: Text("Inword Date"),
+                ),  const Expanded(
                   flex: 1,
-                ),  Expanded(
                   child: Text("Party Name"),
-                  flex: 1,
                 ),
-                Expanded(
+                const Expanded(
+                  flex: 1,
                   child: Text("Lot"),
-                  flex: 1,
                 ),
-                Expanded(
-                  child: Text("Balance Qty"),
+                const Expanded(
                   flex: 1,
+                  child: Text("Balance Qty"),
                 ),
                 Expanded(
                   flex: 1,

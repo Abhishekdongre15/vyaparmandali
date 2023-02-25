@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
 class RojmelAsBook extends StatefulWidget {
-  RojmelAsBook({Key? key}) : super(key: key);
+  const RojmelAsBook({Key? key}) : super(key: key);
 
   @override
   State<RojmelAsBook> createState() => _RojmelAsBookState();
@@ -38,7 +38,7 @@ class _RojmelAsBookState extends State<RojmelAsBook> {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               reUseContainer("Enter Period", height),
-              Divider(),
+              const Divider(),
               reUseRow(
                 height: height,
                 width: width,
@@ -104,7 +104,7 @@ class _RojmelAsBookState extends State<RojmelAsBook> {
                     height: height * 0.07,
                     color: Colors.transparent,
                     width: double.infinity,
-                    child: TextField(),
+                    child: const TextField(),
                   ),
                   width: width,
                   height: height),
@@ -120,7 +120,7 @@ class _RojmelAsBookState extends State<RojmelAsBook> {
   Widget reUseContainer(String data, double height) {
     return Container(
       alignment: Alignment.center,
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       height: height * 0.07,
       width: double.infinity,
       decoration: BoxDecoration(
@@ -128,7 +128,7 @@ class _RojmelAsBookState extends State<RojmelAsBook> {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Text(
-        '$data',
+        data,
         style: ToolkitTypography.h3,
       ),
     );
@@ -151,7 +151,7 @@ class _RojmelAsBookState extends State<RojmelAsBook> {
             borderRadius: BorderRadius.circular(15),
           ),
           child: Text(
-            "$text",
+            text,
             style: ToolkitTypography.h3.copyWith(color: ToolkitColors.black),
           ),
         ),

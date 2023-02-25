@@ -1,9 +1,11 @@
-import 'package:dropdown_search/dropdown_search.dart';
+
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
+// ignore: camel_case_types, constant_identifier_names
 enum yearBalanceType { Yes, No }
 
+// ignore: camel_case_types, constant_identifier_names
 enum zeroBalanceType { Yes, No }
 
 class TrialBalanceDetailScreenView extends StatefulWidget {
@@ -182,7 +184,7 @@ class _TrialBalanceDetailScreenViewState
         borderRadius: BorderRadius.circular(15),
       ),
       child: Text(
-        '$data',
+        data,
         style: ToolkitTypography.h3,
       ),
     );
@@ -205,7 +207,7 @@ class _TrialBalanceDetailScreenViewState
             borderRadius: BorderRadius.circular(15),
           ),
           child: Text(
-            "$text",
+            text,
             style: ToolkitTypography.h3.copyWith(color: ToolkitColors.black),
           ),
         ),

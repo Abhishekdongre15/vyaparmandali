@@ -78,7 +78,7 @@ class _BalanceSheetReportViewState extends State<BalanceSheetReportView> {
                   height: height * 0.07,
                   color: Colors.white,
                   width: 200,
-                  child: TextField(),
+                  child: const TextField(),
                 ),
               ),
               dottedRow(),
@@ -102,7 +102,7 @@ class _BalanceSheetReportViewState extends State<BalanceSheetReportView> {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Text(
-        '$data',
+        data,
         style: ToolkitTypography.h3,
       ),
     );
@@ -125,7 +125,7 @@ class _BalanceSheetReportViewState extends State<BalanceSheetReportView> {
             borderRadius: BorderRadius.circular(15),
           ),
           child: Text(
-            "$text",
+            text,
             style: ToolkitTypography.h3.copyWith(color: ToolkitColors.black),
           ),
         ),

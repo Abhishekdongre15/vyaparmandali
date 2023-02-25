@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/views/data_entry/add_data_entry_view.dart';
-import 'package:vyaparmandali/views/add_Outword_litst_view.dart';
 import 'package:vyaparmandali/views/add_inword_view.dart';
 
 class InWordListView extends StatefulWidget {
@@ -20,7 +18,7 @@ class InWordListViewState extends State<InWordListView> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("InWord "),
+        title: const Text("InWord "),
         backgroundColor: ToolkitColors.primary,
       ),
       body: SingleChildScrollView(
@@ -77,7 +75,7 @@ class InWordListViewState extends State<InWordListView> {
                 ),
               ),
               ListView.separated(
-                physics: ClampingScrollPhysics(),
+                physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 separatorBuilder: (context, index) {
                   return const Padding(
@@ -135,13 +133,13 @@ class InWordListViewState extends State<InWordListView> {
                         .copyWith(color: ToolkitColors.black),
                   ),
                 ),
-                Expanded(
+                const Expanded(
+                  flex: 1,
                   child: Text("Vehicle No"),
-                  flex: 1,
                 ),
-                Expanded(
-                  child: Text("Total Quantity"),
+                const Expanded(
                   flex: 1,
+                  child: Text("Total Quantity"),
                 ),
                 Expanded(
                   flex: 1,

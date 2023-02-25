@@ -18,7 +18,7 @@ class _AddInWordListViewState extends State<AddInWordListView> {
   TextEditingController quantityController = TextEditingController();
   TextEditingController hundekariController = TextEditingController();
   TextEditingController hundekariNamedController = TextEditingController();
-  DateTime _date = DateTime.now();
+  final DateTime _date = DateTime.now();
   bool setError = false;
   bool dateIsValid = false;
   String resultDate = '';
@@ -68,7 +68,7 @@ class _AddInWordListViewState extends State<AddInWordListView> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: MediaQuery.of(context).size.height * 0.4,
               width: MediaQuery.of(context).size.width * 0.8,
               child: Form(

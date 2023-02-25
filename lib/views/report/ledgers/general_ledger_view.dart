@@ -95,14 +95,14 @@ class _GeneralLedgerViewState extends State<GeneralLedgerView> {
                 height:  height*0.07,
                 color: Colors.white,
                 width: double.infinity,
-                child: TextField(),), width: width, height: height),
+                child: const TextField(),), width: width, height: height),
               reUseRow(text: "Print", child:  Container(
                 margin: EdgeInsets.symmetric(horizontal: width*0.10),
                 alignment: Alignment.center,
                 height:  height*0.07,
                 color: Colors.white,
                 width: double.infinity,
-                child: TextField(),), width: width, height: height),
+                child: const TextField(),), width: width, height: height),
               dottedRow(),
               reUseContainer("Farmers Deposit Monthly Record",height),
             ],
@@ -115,7 +115,7 @@ class _GeneralLedgerViewState extends State<GeneralLedgerView> {
   Widget reUseContainer(String data,double height) {
     return Container(
       alignment: Alignment.center,
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       height: height*0.07,
       width: double.infinity,
       decoration: BoxDecoration(
@@ -123,7 +123,7 @@ class _GeneralLedgerViewState extends State<GeneralLedgerView> {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Text(
-        '$data',
+        data,
         style: ToolkitTypography.h3,
       ),
     );
@@ -142,7 +142,7 @@ class _GeneralLedgerViewState extends State<GeneralLedgerView> {
             borderRadius: BorderRadius.circular(15),
           ),
           child: Text(
-            "$text",
+            text,
             style: ToolkitTypography.h3.copyWith(color: ToolkitColors.white),
           ),
         ),

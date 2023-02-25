@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/views/master/codes/add_group_master_view.dart';
-import 'package:vyaparmandali/views/add_list_data_view.dart';
 
 class GroupMasterListView extends StatefulWidget {
   const GroupMasterListView({Key? key}) : super(key: key);
@@ -60,7 +59,7 @@ class GroupMasterListViewState extends State<GroupMasterListView> {
                 ),
               ),
               ListView.separated(
-                physics: ClampingScrollPhysics(),
+                physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 separatorBuilder: (context, index) {
                   return const Padding(
@@ -108,9 +107,9 @@ class GroupMasterListViewState extends State<GroupMasterListView> {
                         .copyWith(color: ToolkitColors.black),
                   ),
                 ),
-                Expanded(
-                  child: Text("Name"),
+                const Expanded(
                   flex: 1,
+                  child: Text("Name"),
                 ),
                 Expanded(
                   flex: 1,

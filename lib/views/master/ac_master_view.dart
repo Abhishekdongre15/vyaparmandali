@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/views/master/add_ac_master_view.dart';
-import 'package:vyaparmandali/views/add_list_data_view.dart';
 
 class ACMasterListView extends StatefulWidget {
   const ACMasterListView({Key? key}) : super(key: key);
@@ -20,10 +18,10 @@ class ACMasterListViewState extends State<ACMasterListView> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("Ac Master"),
+        title: const Text("Ac Master"),
         backgroundColor: ToolkitColors.primary,
       ),
-      body: Container(
+      body: SizedBox(
         height: MediaQuery.of(context).size.height * 1,
         width: MediaQuery.of(context).size.width * 1,
         child: SingleChildScrollView(
@@ -76,7 +74,7 @@ class ACMasterListViewState extends State<ACMasterListView> {
                 ],
               ),
               ListView.separated(
-                physics: ClampingScrollPhysics(),
+                physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 separatorBuilder: (context, index) {
                   return const Padding(
@@ -132,13 +130,13 @@ class ACMasterListViewState extends State<ACMasterListView> {
                       .copyWith(color: ToolkitColors.black),
                 ),
               ),
-              Expanded(
+              const Expanded(
+                flex: 1,
                 child: Text("9999007766"),
-                flex: 1,
               ),
-              Expanded(
-                child: Text("Rs: 99990"),
+              const Expanded(
                 flex: 1,
+                child: Text("Rs: 99990"),
               ),
               Expanded(
                 flex: 1,

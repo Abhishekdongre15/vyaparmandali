@@ -18,24 +18,12 @@ class _AddOutWordLIstViewState extends State<AddOutWordLIstView> {
   TextEditingController buyRateController = TextEditingController();
   TextEditingController sellRateController = TextEditingController();
   TextEditingController amountController = TextEditingController();
-  DateTime _date = DateTime.now();
+
   bool setError = false;
   bool dateIsValid = false;
   String resultDate = '';
-  void _onDobEntered(DateTime? dob) {
-    setState(() {
-      resultDate = dob.toString();
-    });
-  }
 
-  void _validDateCallBack(bool? value) {
-    dateIsValid = value!;
-    setState(() {
-      if(!dateIsValid){
-        resultDate ='';
-      }
-    });
-  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -66,7 +54,7 @@ class _AddOutWordLIstViewState extends State<AddOutWordLIstView> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: MediaQuery.of(context).size.height * 0.4,
               width: MediaQuery.of(context).size.width * 0.8,
               child: Form(

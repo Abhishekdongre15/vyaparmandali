@@ -26,7 +26,7 @@ class _MobileScaffoldState extends State<MobileScaffold> {
         backgroundColor: ToolkitColors.white,
         elevation: 0,
         child: ListView(padding: EdgeInsets.zero, children: <Widget>[
-          Container(
+          SizedBox(
             height:  size.height * 0.25,
 
             child: DrawerHeader(
@@ -58,32 +58,36 @@ class _MobileScaffoldState extends State<MobileScaffold> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: Column(
-          children: [
-            // first 4 boxes in grid
-            AspectRatio(
-              aspectRatio: 1,
-              child: SizedBox(
-                width: double.infinity,
-                child: GridView.builder(
-                  itemCount: 4,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2),
-                  itemBuilder: (context, index) {
-                    return MyBox();
-                  },
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              // first 4 boxes in grid
+              AspectRatio(
+                aspectRatio: 1,
+                child: SizedBox(
+                  width: double.infinity,
+                  child: GridView.builder(
+                    itemCount: 4,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2),
+                    itemBuilder: (context, index) {
+                      return const MyBox();
+                    },
+                  ),
                 ),
-              ),
-            ),    // list of previous days
-            Expanded(
-              child: ListView.builder(
+              ),    // list of previous days
+              ListView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
                 itemCount: 4,
                 itemBuilder: (context, index) {
                   return const MyTile();
                 },
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

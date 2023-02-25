@@ -2,7 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/util/EmailValidator.dart';
+import 'package:vyaparmandali/app_manager/helper/responsive/widget/responsive_screen.dart';
+import 'package:vyaparmandali/util/email_validation.dart';
 import 'package:vyaparmandali/views/enquiry_detail_view.dart';
 
 import '../controller/simple_ui_controller.dart';
@@ -47,51 +48,32 @@ class _LoginViewState extends State<LoginView> {
       child: Scaffold(
           backgroundColor: Colors.white,
           resizeToAvoidBottomInset: false,
-          body: LayoutBuilder(
-            builder: (context, constraints) {
-              if (constraints.maxWidth > 600) {
-                return Container(
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/farm_background.jpg"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    child: _buildLargeScreen(size, simpleUIController, theme));
-              } else {
-                return Container(
-                    decoration: const BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage("assets/images/farm_background.jpg"),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    child: _buildSmallScreen(size, simpleUIController, theme));
-              }
-            },
+          body: Container(
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/farm_background.jpg"),
+                fit: BoxFit.cover,
+              ),
+            ),
+            child: Center(
+              child: SingleChildScrollView(
+                child: _buildLargeScreen(size, simpleUIController, theme),
+              ),
+            ),
           )),
     );
   }
 
-  /// For large screens
   Widget _buildLargeScreen(
       Size size, SimpleUIController simpleUIController, ThemeData theme) {
     return Center(child: _buildMainBody(size, simpleUIController, theme));
   }
 
-  /// For Small screens
-  Widget _buildSmallScreen(
-      Size size, SimpleUIController simpleUIController, ThemeData theme) {
-    return Center(
-      child: _buildMainBody(size, simpleUIController, theme),
-    );
-  }
 
   /// Main Body
   Widget _buildMainBody(
       Size size, SimpleUIController simpleUIController, ThemeData theme) {
-    return Container(
-      width: size.width * 0.5,
+    return MyResponsiveScreen(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
@@ -201,7 +183,7 @@ class _LoginViewState extends State<LoginView> {
                       ),
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     height: 10,
                   ),
                   GestureDetector(
@@ -209,7 +191,7 @@ class _LoginViewState extends State<LoginView> {
                       Navigator.push(
                           context,
                           CupertinoPageRoute(
-                              builder: (ctx) => ForgetPasswordView()));
+                              builder: (ctx) => const ForgetPasswordView()));
                       nameController.clear();
                       emailController.clear();
                       passwordController.clear();
@@ -249,10 +231,10 @@ class _LoginViewState extends State<LoginView> {
             // ... Navigate To your Home Page
             Navigator.push(context, MaterialPageRoute(
               builder: (context) {
-                return ResponsiveLayout(
-                  mobileBody: const MobileScaffold(),
-                  tabletBody: const TabletScaffold(),
-                  desktopBody: const DesktopScaffold(),
+                return const ResponsiveLayout(
+                  mobileBody: MobileScaffold(),
+                  tabletBody: TabletScaffold(),
+                  desktopBody: DesktopScaffold(),
                 );
               },
             ));

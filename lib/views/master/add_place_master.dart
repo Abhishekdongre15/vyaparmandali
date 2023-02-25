@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
 class AddPlaceMaster extends StatefulWidget {
@@ -37,7 +36,7 @@ class _AddPlaceMasterState extends State<AddPlaceMaster> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
+            SizedBox(
               height: MediaQuery.of(context).size.height * 0.4,
               width: MediaQuery.of(context).size.width * 0.5,
               child: Form(

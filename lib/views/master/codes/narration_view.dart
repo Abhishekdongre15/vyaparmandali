@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/views/master/codes/add_group_master_view.dart';
-import 'package:vyaparmandali/views/add_list_data_view.dart';
 import 'package:vyaparmandali/views/master/codes/add_narration_view.dart';
 
 class NarrationView extends StatefulWidget {
@@ -61,7 +59,7 @@ class NarrationViewState extends State<NarrationView> {
                 ),
               ),
               ListView.separated(
-                physics: ClampingScrollPhysics(),
+                physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 separatorBuilder: (context, index) {
                   return const Padding(
@@ -79,7 +77,7 @@ class NarrationViewState extends State<NarrationView> {
         ),
       ),
       floatingActionButton: FloatingActionButton(onPressed: () {
-        Get.to(AddNarrationView());
+        Get.to(const AddNarrationView());
       },child: const Icon(Icons.add),),
     );
   }
@@ -106,9 +104,9 @@ class NarrationViewState extends State<NarrationView> {
                         .copyWith(color: ToolkitColors.black),
                   ),
                 ),
-                Expanded(
-                  child: Text("Description"),
+                const Expanded(
                   flex: 1,
+                  child: Text("Description"),
                 ),
                 Expanded(
                   flex: 1,

@@ -1,10 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:uitoolkit/uitoolkit.dart';
-import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/responsive/mobile_body.dart';
-import 'package:vyaparmandali/responsive/responsive_layout.dart';
 
 class AccountSettingView extends StatefulWidget {
   const AccountSettingView({Key? key}) : super(key: key);
@@ -21,7 +16,6 @@ class _AccountSettingViewState extends State<AccountSettingView> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
-    print(width);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: ToolkitColors.primary,
@@ -59,35 +53,33 @@ class _AccountSettingViewState extends State<AccountSettingView> {
                       height: height * 0.07,
                       width: double.infinity,
                       color: Colors.white,
-                      child: TextField(),
+                      child: const TextField(),
                     ),
                   ],
                 ),
               ),
-              Container(
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Expanded(
-                      child: Container(
-                        margin: EdgeInsets.only(right: height * 0.03),
-                        height: height * 0.07,
-                        width: double.infinity,
-                        color: Colors.white,
-                        child: TextField(),
-                      ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.only(right: height * 0.03),
+                      height: height * 0.07,
+                      width: double.infinity,
+                      color: Colors.white,
+                      child: const TextField(),
                     ),
-                    Expanded(
-                      child: Container(
-                        margin: EdgeInsets.only(right: height * 0.03),
-                        height: height * 0.07,
-                        width: width / 0.25,
-                        color: Colors.white,
-                        child: TextField(),
-                      ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      margin: EdgeInsets.only(right: height * 0.03),
+                      height: height * 0.07,
+                      width: width / 0.25,
+                      color: Colors.white,
+                      child: const TextField(),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
               Container(
                 padding: EdgeInsets.symmetric(horizontal: height * 0.01),
@@ -212,7 +204,7 @@ class _AccountSettingViewState extends State<AccountSettingView> {
   Widget reUseContainer(String data, double height) {
     return Container(
       alignment: Alignment.center,
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       height: height * 0.07,
       width: double.infinity,
       decoration: BoxDecoration(
@@ -220,7 +212,7 @@ class _AccountSettingViewState extends State<AccountSettingView> {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Text(
-        '$data',
+        data,
         style: ToolkitTypography.h3,
       ),
     );
@@ -244,7 +236,7 @@ class _AccountSettingViewState extends State<AccountSettingView> {
             borderRadius: BorderRadius.circular(15),
           ),
           child: Text(
-            "$text",
+            text,
             style: tStyle,
           ),
         ),

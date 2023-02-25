@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
+// ignore: camel_case_types, constant_identifier_names
 enum radioType { Yes, No }
 
 class PandLStatementView extends StatefulWidget {
@@ -138,7 +139,7 @@ class _PandLStatementViewState extends State<PandLStatementView> {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Text(
-        '$data',
+        data,
         style: ToolkitTypography.h3,
       ),
     );
@@ -161,7 +162,7 @@ class _PandLStatementViewState extends State<PandLStatementView> {
             borderRadius: BorderRadius.circular(15),
           ),
           child: Text(
-            "$text",
+            text,
             style: ToolkitTypography.h3.copyWith(color: ToolkitColors.black),
           ),
         ),

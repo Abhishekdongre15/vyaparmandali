@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:vyaparmandali/widget/Entry.dart';
+import 'package:vyaparmandali/widget/entry.dart';
 
-import '../widget/EntryItem.dart';
+import '../widget/entry_item.dart';
+// ignore: must_be_immutable
 class DrawerList extends StatelessWidget {
   List<Entry> entry;
 

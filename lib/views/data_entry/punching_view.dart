@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
+// ignore: constant_identifier_names, camel_case_types
 enum radioType { GroupWise, DescriptionWise }
 
 bool isChanged = false;
@@ -17,15 +18,15 @@ radioType _type = radioType.DescriptionWise;
 List<DataRow> totalList = [
   DataRow(cells: [
     DataCell(Text('$srNo')),
-    DataCell(
+    const DataCell(
       TextField(),
     ),
-    DataCell(TextField()),
-    DataCell(TextField()),
-    DataCell(TextField()),
-    DataCell(TextField()),
-    DataCell(TextField()),
-    DataCell(TextField()),
+    const DataCell(TextField()),
+    const DataCell(TextField()),
+    const DataCell(TextField()),
+    const DataCell(TextField()),
+    const DataCell(TextField()),
+    const DataCell(TextField()),
   ]),
 ];
 
@@ -44,24 +45,24 @@ class _PunchingViewState extends State<PunchingView> {
       child: Scaffold(
         appBar: AppBar(
           backgroundColor: ToolkitColors.primary,
-          title: Text(
+          title: const Text(
             "Punching View",
           ),
         ),
         floatingActionButton: FloatingActionButton(
-            child: Icon(Icons.add),
+            child: const Icon(Icons.add),
             onPressed: () {
               setState(() {
                 counter();
                 totalList.add(DataRow(cells: [
                   DataCell(Text('$srNo')),
-                  DataCell(TextField()),
-                  DataCell(TextField()),
-                  DataCell(TextField()),
-                  DataCell(TextField()),
-                  DataCell(TextField()),
-                  DataCell(TextField()),
-                  DataCell(TextField()),
+                  const DataCell(TextField()),
+                  const DataCell(TextField()),
+                  const DataCell(TextField()),
+                  const DataCell(TextField()),
+                  const DataCell(TextField()),
+                  const DataCell(TextField()),
+                  const DataCell(TextField()),
                 ]));
               });
             }),
@@ -75,7 +76,7 @@ class _PunchingViewState extends State<PunchingView> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Container(
+                  SizedBox(
                     height: height * 0.05,
                     width: double.infinity,
                   ),
@@ -102,9 +103,9 @@ class _PunchingViewState extends State<PunchingView> {
                         height: height * 0.05,
                         color: Colors.white,
                         width: width * 0.07,
-                        child: TextField(),
+                        child: const TextField(),
                       ),
-                      Container(
+                      SizedBox(
                         height: height * 0.05,
                         width: width * 0.2,
                         child: ListTile(
@@ -121,7 +122,7 @@ class _PunchingViewState extends State<PunchingView> {
                           ),
                         ),
                       ),
-                      Container(
+                      SizedBox(
                         height: height * 0.05,
                         width: width * 0.2,
                         child: ListTile(
@@ -143,7 +144,7 @@ class _PunchingViewState extends State<PunchingView> {
                 ],
               ),
             ),
-            Container(
+            SizedBox(
               height: height * 0.6,
               width: double.infinity,
               child: ListView(
@@ -164,7 +165,7 @@ class _PunchingViewState extends State<PunchingView> {
         width: 1.0,
         color: Colors.grey,
       ),
-      columns: <DataColumn>[
+      columns: const <DataColumn>[
         DataColumn(
           label: Expanded(
             child: Text(

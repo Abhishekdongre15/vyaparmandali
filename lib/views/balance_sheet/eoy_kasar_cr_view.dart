@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
+// ignore: camel_case_types, constant_identifier_names
 enum radioType { GroupWise, DescriptionWise }
 
 class EOYKasarCrGroupView extends StatefulWidget {
@@ -63,7 +64,7 @@ class _EOYKasarCrGroupViewState extends State<EOYKasarCrGroupView> {
                   Expanded(
                     child: Row(
                       children: [
-                        Text("["),
+                        const Text("["),
                         Container(
                           margin:
                               EdgeInsets.symmetric(horizontal: width * 0.01),
@@ -71,9 +72,9 @@ class _EOYKasarCrGroupViewState extends State<EOYKasarCrGroupView> {
                           height: height * 0.07,
                           color: Colors.transparent,
                           width: 100,
-                          child: TextField(),
+                          child: const TextField(),
                         ),
-                        Text("]"),
+                        const Text("]"),
                       ],
                     ),
                   ),
@@ -101,7 +102,7 @@ class _EOYKasarCrGroupViewState extends State<EOYKasarCrGroupView> {
                   Expanded(
                     child: Row(
                       children: [
-                        Text("["),
+                        const Text("["),
                         Container(
                           margin:
                               EdgeInsets.symmetric(horizontal: width * 0.01),
@@ -109,9 +110,9 @@ class _EOYKasarCrGroupViewState extends State<EOYKasarCrGroupView> {
                           height: height * 0.07,
                           color: Colors.transparent,
                           width: 100,
-                          child: TextField(),
+                          child: const TextField(),
                         ),
-                        Text("]"),
+                        const Text("]"),
                       ],
                     ),
                   ),
@@ -153,7 +154,7 @@ class _EOYKasarCrGroupViewState extends State<EOYKasarCrGroupView> {
                     height: height * 0.07,
                     color: Colors.white,
                     width: width * 0.03,
-                    child: TextField(),
+                    child: const TextField(),
                   ),
                   width: width,
                   height: height),
@@ -178,7 +179,7 @@ class _EOYKasarCrGroupViewState extends State<EOYKasarCrGroupView> {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Text(
-        '$data',
+        data,
         style: ToolkitTypography.h3,
       ),
     );
@@ -201,7 +202,7 @@ class _EOYKasarCrGroupViewState extends State<EOYKasarCrGroupView> {
             borderRadius: BorderRadius.circular(15),
           ),
           child: Text(
-            "$text",
+            text,
             style: ToolkitTypography.h3.copyWith(color: ToolkitColors.black),
           ),
         ),

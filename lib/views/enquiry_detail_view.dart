@@ -38,6 +38,9 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
       child: Scaffold(
+        appBar: AppBar(
+          
+        ),
         backgroundColor: Colors.white,
         resizeToAvoidBottomInset: false,
         body: LayoutBuilder(
@@ -113,7 +116,7 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
               ? Container()
               : Lottie.asset(
                   'assets/farmer.json',
-                  height: size.height * 0.2,
+
                   width: size.width,
                   fit: BoxFit.fill,
                 ),
@@ -153,14 +156,6 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                       Expanded(
                         child: UIToolkit.textFormField(
                           hintText: 'First Name ',
-                          label: "First Name",
-                          /*     decoration: const InputDecoration(
-                            // prefixIcon: Icon(Icons.person),
-                            border: OutlineInputBorder(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(15)),
-                            ),
-                          ),*/
                           controller: firstNameController,
                           // The validator receives the text that the user has entered.
                           validator: (value) {
@@ -254,11 +249,11 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                   TextFormField(
                     style: kTextFormFieldStyle(),
                     controller: emailController,
-                    decoration: InputDecoration(
-                      prefixIcon: const Icon(Icons.alternate_email_rounded),
+                    decoration: const InputDecoration(
+                      prefixIcon: Icon(Icons.alternate_email_rounded),
                       hintText: 'Email',
                       label: Text('Email'),
-                      border: const OutlineInputBorder(
+                      border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(Radius.circular(15)),
                       ),
                     ),
@@ -283,18 +278,18 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                     layout: Layout.vertical,
                     // defaultCountry: DefaultCountry.India,
                     flagState: CountryFlag.ENABLE,
-                    onCountryChanged: (Country) {},
-                    onStateChanged: (State) {},
-                    onCityChanged: (City) {},
+                    onCountryChanged: (country) {},
+                    onStateChanged: (state) {},
+                    onCityChanged: (city) {},
                     dropdownDecoration: BoxDecoration(
                       border:
                           Border.all(color: ToolkitColors.primary, width: 1),
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(15),
                       ),
                     ),
                     disabledDropdownDecoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(15)),
+                        borderRadius: const BorderRadius.all(Radius.circular(15)),
                         color: Colors.white,
                         border: Border.all(
                           color: Colors.grey.shade300,
@@ -310,10 +305,10 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                     maxLines: 3,
                     style: kTextFormFieldStyle(),
                     controller: requirementController,
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Requirments',
                       label: Text('Give Some Requirments'),
-                      border: const OutlineInputBorder(
+                      border: OutlineInputBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(15),
                         ),
@@ -361,6 +356,9 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                         ],
                       ),
                     ),
+                  ),
+                  SizedBox(
+                    height: size.height * 0.02,
                   ),
                 ],
               ),

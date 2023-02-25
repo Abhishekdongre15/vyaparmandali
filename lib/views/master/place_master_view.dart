@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/views/master/add_place_master.dart';
 
@@ -62,7 +61,7 @@ class PlaceMasterViewState extends State<PlaceMasterView> {
                 ),
               ),
               ListView.separated(
-                physics: ClampingScrollPhysics(),
+                physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 separatorBuilder: (context, index) {
                   return const Padding(
@@ -81,7 +80,7 @@ class PlaceMasterViewState extends State<PlaceMasterView> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Get.to(AddPlaceMaster());
+            Get.to(const AddPlaceMaster());
           },
           child: const Icon(Icons.add)),
     );
@@ -109,9 +108,9 @@ class PlaceMasterViewState extends State<PlaceMasterView> {
                         .copyWith(color: ToolkitColors.black),
                   ),
                 ),
-                Expanded(
-                  child: Text("mumbai"),
+                const Expanded(
                   flex: 1,
+                  child: Text("mumbai"),
                 ),
                 Expanded(
                   flex: 1,

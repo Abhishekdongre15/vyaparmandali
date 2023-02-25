@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/widget/Entry.dart';
+import 'package:vyaparmandali/widget/entry.dart';
 
 // Colors used in this app
 const primaryColor = Color.fromRGBO(17, 159, 250, 1);

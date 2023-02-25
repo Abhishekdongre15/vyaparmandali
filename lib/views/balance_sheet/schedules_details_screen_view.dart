@@ -1,7 +1,8 @@
-import 'package:dropdown_search/dropdown_search.dart';
+
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
+// ignore: camel_case_types, constant_identifier_names
 enum zeroBalanceType { Yes, No }
 
 class SchedulesDetailScreenView extends StatefulWidget {
@@ -66,7 +67,7 @@ class _SchedulesDetailScreenViewState extends State<SchedulesDetailScreenView> {
                   Expanded(
                     child: Row(
                       children: [
-                        Text("["),
+                        const Text("["),
                         Container(
                           margin:
                               EdgeInsets.symmetric(horizontal: width * 0.01),
@@ -74,9 +75,9 @@ class _SchedulesDetailScreenViewState extends State<SchedulesDetailScreenView> {
                           height: height * 0.07,
                           color: Colors.transparent,
                           width: 100,
-                          child: TextField(),
+                          child: const TextField(),
                         ),
-                        Text("]"),
+                        const Text("]"),
                       ],
                     ),
                   ),
@@ -104,7 +105,7 @@ class _SchedulesDetailScreenViewState extends State<SchedulesDetailScreenView> {
                   Expanded(
                     child: Row(
                       children: [
-                        Text("["),
+                        const Text("["),
                         Container(
                           margin:
                               EdgeInsets.symmetric(horizontal: width * 0.01),
@@ -112,9 +113,9 @@ class _SchedulesDetailScreenViewState extends State<SchedulesDetailScreenView> {
                           height: height * 0.07,
                           color: Colors.transparent,
                           width: 100,
-                          child: TextField(),
+                          child: const TextField(),
                         ),
-                        Text("]"),
+                        const       Text("]"),
                       ],
                     ),
                   ),
@@ -215,7 +216,7 @@ class _SchedulesDetailScreenViewState extends State<SchedulesDetailScreenView> {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Text(
-        '$data',
+        data,
         style: ToolkitTypography.h3,
       ),
     );
@@ -238,7 +239,7 @@ class _SchedulesDetailScreenViewState extends State<SchedulesDetailScreenView> {
             borderRadius: BorderRadius.circular(15),
           ),
           child: Text(
-            "$text",
+            text,
             style: ToolkitTypography.h3.copyWith(color: ToolkitColors.black),
           ),
         ),

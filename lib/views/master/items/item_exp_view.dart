@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/views/master/items/add_item_exp.dart';
 
@@ -20,7 +19,7 @@ class ItemExpViewState extends State<ItemExpView> {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: Text("Item Exp"),
+        title: const Text("Item Exp"),
         backgroundColor: ToolkitColors.primary,
       ),
       body: SingleChildScrollView(
@@ -107,7 +106,7 @@ class ItemExpViewState extends State<ItemExpView> {
                 ),
               ),
               ListView.separated(
-                physics: ClampingScrollPhysics(),
+                physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 separatorBuilder: (context, index) {
                   return const Padding(
@@ -126,7 +125,7 @@ class ItemExpViewState extends State<ItemExpView> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-           Get.to(AddItemExp());
+           Get.to(const AddItemExp());
           },
           child: const Icon(Icons.add)),
     );
@@ -161,24 +160,24 @@ class ItemExpViewState extends State<ItemExpView> {
                     style: ToolkitTypography.body1A
                         .copyWith(color: ToolkitColors.black),
                   ),
-                ), Expanded(
+                ), const Expanded(
+                  flex: 1,
                   child: Text("Onion"),
+                ),const Expanded(
                   flex: 1,
-                ),Expanded(
                   child: Text("6.50"),
+                ),const Expanded(
                   flex: 1,
-                ),Expanded(
                   child: Text("4.09"),
+                ),const Expanded(
                   flex: 1,
-                ),Expanded(
                   child: Text("6.85"),
+                ),const Expanded(
                   flex: 1,
-                ),Expanded(
                   child: Text("0.00"),
+                ),const Expanded(
                   flex: 1,
-                ),Expanded(
                   child: Text("2.67"),
-                  flex: 1,
                 ),
                 Expanded(
                   flex: 2,

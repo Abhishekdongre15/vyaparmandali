@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/views/add_list_data_view.dart';
 
 import 'add_hamali_exp_view.dart';
 
@@ -78,7 +76,7 @@ class HamaliExpViewState extends State<HamaliExpView> {
                 ),
               ),
               ListView.separated(
-                physics: ClampingScrollPhysics(),
+                physics: const ClampingScrollPhysics(),
                 shrinkWrap: true,
                 separatorBuilder: (context, index) {
                   return const Padding(
@@ -97,7 +95,7 @@ class HamaliExpViewState extends State<HamaliExpView> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Get.to(AddHamaliExpView());
+            Get.to(const AddHamaliExpView());
           },
           child: const Icon(Icons.add)),
     );
@@ -125,16 +123,16 @@ class HamaliExpViewState extends State<HamaliExpView> {
                         .copyWith(color: ToolkitColors.black),
                   ),
                 ),
-                Expanded(
+                const Expanded(
+                  flex: 1,
                   child: Text("Detail"),
-                  flex: 1,
                 ),
-                Expanded(
+                const Expanded(
+                  flex: 1,
                   child: Text("Register"),
+                ),const Expanded(
                   flex: 1,
-                ),Expanded(
                   child: Text("Trolly no"),
-                  flex: 1,
                 ),
                 Expanded(
                   flex: 1,

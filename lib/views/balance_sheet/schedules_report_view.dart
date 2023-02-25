@@ -2,6 +2,7 @@ import 'package:dropdown_search/dropdown_search.dart';
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
+// ignore: camel_case_types, constant_identifier_names
 enum radioType { Yes, No }
 
 class SchedulesReportView extends StatefulWidget {
@@ -77,7 +78,7 @@ class _SchedulesReportViewState extends State<SchedulesReportView> {
                     color: Colors.white,
                     child: DropdownSearch(
                       items: dropDownS,
-                      dropdownDecoratorProps: DropDownDecoratorProps(
+                      dropdownDecoratorProps: const DropDownDecoratorProps(
                         dropdownSearchDecoration: InputDecoration(
                           labelText: "From",
                           filled: true,
@@ -101,7 +102,7 @@ class _SchedulesReportViewState extends State<SchedulesReportView> {
                   height: height * 0.07,
                   color: Colors.white,
                   width: 200,
-                  child: TextField(),
+                  child: const TextField(),
                 ),
               ),
               reUseRow(
@@ -196,7 +197,7 @@ class _SchedulesReportViewState extends State<SchedulesReportView> {
         borderRadius: BorderRadius.circular(15),
       ),
       child: Text(
-        '$data',
+        data,
         style: ToolkitTypography.h3,
       ),
     );
@@ -219,7 +220,7 @@ class _SchedulesReportViewState extends State<SchedulesReportView> {
             borderRadius: BorderRadius.circular(15),
           ),
           child: Text(
-            "$text",
+            text,
             style: ToolkitTypography.h3.copyWith(color: ToolkitColors.black),
           ),
         ),

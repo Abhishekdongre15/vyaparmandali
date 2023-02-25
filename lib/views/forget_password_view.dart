@@ -16,12 +16,14 @@ class _ForgetPasswordViewState extends State<ForgetPasswordView> {
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
          /* UIToolkit.ReUseTextField(
             hintText: "Enter Otp",
           ),*/
-          UIToolkitButtons.primaryButton(onPressed: (){}, text: "Submit Otp")
+          Center(
+            child: UIToolkitButtons.primaryButton(onPressed: (){}, text: "Submit Otp"),
+          )
         ],
       ),
     );
