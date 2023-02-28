@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:uitoolkit/uitoolkit.dart';
+import 'package:vyaparmandali/app_manager/helper/navigator.dart';
 import 'package:vyaparmandali/views/master/codes/add_narration_view.dart';
 
 class NarrationView extends StatefulWidget {
@@ -77,7 +77,7 @@ class NarrationViewState extends State<NarrationView> {
         ),
       ),
       floatingActionButton: FloatingActionButton(onPressed: () {
-        Get.to(const AddNarrationView());
+        MyNavigator.push(const AddNarrationView());
       },child: const Icon(Icons.add),),
     );
   }

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:uitoolkit/uitoolkit.dart';
+import 'package:vyaparmandali/app_manager/helper/navigator.dart';
 import 'package:vyaparmandali/views/master/items/add_item_exp.dart';
 
 class ItemExpView extends StatefulWidget {
@@ -125,7 +125,7 @@ class ItemExpViewState extends State<ItemExpView> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-           Get.to(const AddItemExp());
+           MyNavigator.push(const AddItemExp());
           },
           child: const Icon(Icons.add)),
     );

@@ -1,44 +1,58 @@
-import 'dart:ui';
-import 'package:get/get.dart';
+
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:vyaparmandali/views/login_view.dart';
+import 'package:provider/provider.dart';
+import 'package:vyaparmandali/app_manager/constant/project_constant.dart';
+import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
+import 'package:vyaparmandali/app_manager/theme/theme_provider.dart';
+import 'package:vyaparmandali/authentication/user_repository.dart';
+import 'package:vyaparmandali/model/user.dart';
+import 'package:vyaparmandali/views/screen/splash_screen_view.dart';
 
-void main() {
-  WidgetsFlutterBinding.ensureInitialized();
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+class MyHttpOverrides extends HttpOverrides {
   @override
-  Widget build(BuildContext context) {
-    return const GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Vyapar Mandali',
-      home: Scaffold(
-        body: LoginView(),
-        // ResponsiveLayout(
-        //   mobileBody: const LoginView(),
-        //   tabletBody: const LoginView(),
-        //   desktopBody: const DesktopScaffold(),
-        // ),
-
-      ),
-      // home: ResponsiveLayout(
-      //   mobileBody: const LoginView(),
-      //   tabletBody: const LoginView(),
-      //   desktopBody: const DesktopScaffold(),
-      // ),
-    );
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
   }
 }
 
-class CustomScrollBehaviour extends MaterialScrollBehavior {
+Future main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  HttpOverrides.global = MyHttpOverrides();
+  bool isLightTheme = await ThemeProvider().retrieveStoredTheme();
+  User user = await UserRepository.fetchUserData();
+
+  runApp(MultiProvider(
+      providers: [
+        ChangeNotifierProvider<ThemeProvider>(
+          create: (_) => ThemeProvider(isLightTheme: isLightTheme),
+        ),
+        ChangeNotifierProvider<UserRepository>(
+          create: (_) => UserRepository(currentUser: user),
+        ),
+      ],
+      child: const MyApp()));
+}
+
+class MyApp extends StatelessWidget {
+
+  const MyApp({super.key,});
+
   @override
-  Set<PointerDeviceKind> get dragDevices => {
-        PointerDeviceKind.touch,
-        PointerDeviceKind.mouse,
-      };
+  Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    Widget initialWidget = const SplashScreenView();
+
+    // initialWidget= PaymentScreen();
+    return MaterialApp(
+      navigatorKey: NavigationService.navigatorKey,
+      theme: themeProvider.getThemeData,
+      title: ProjectConstant.name,
+      debugShowCheckedModeBanner: false,
+      home:  initialWidget,
+    );
+  }
 }

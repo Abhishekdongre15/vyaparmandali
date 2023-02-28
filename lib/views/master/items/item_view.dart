@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/views/add_list_data_view.dart';
 
@@ -87,7 +86,7 @@ class ItemViewState extends State<ItemView> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Get.to(const AddItemsView());
+            (const AddItemsView());
           },
           child: const Icon(Icons.add)),
     );

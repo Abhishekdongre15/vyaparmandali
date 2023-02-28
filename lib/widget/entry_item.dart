@@ -1,13 +1,13 @@
 // Create the Widget for the row
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
+import 'package:vyaparmandali/app_manager/helper/navigator.dart';
 import 'package:vyaparmandali/views/balance_sheet/schedules_details_screen_view.dart';
 import 'package:vyaparmandali/views/balance_sheet/trial_balance_report_view.dart';
 import 'package:vyaparmandali/views/balance_sheet/eoy_kasar_dr_view.dart';
 import 'package:vyaparmandali/views/data_entry/data_entry_view.dart';
 import 'package:vyaparmandali/views/master/ac_master_view.dart';
 import 'package:vyaparmandali/views/master/codes/group_master_list_view.dart';
-import 'package:get/get.dart';
 import 'package:vyaparmandali/views/master/codes/narration_view.dart';
 import 'package:vyaparmandali/views/master/items/hamali_exp_view.dart';
 import 'package:vyaparmandali/views/master/items/item_exp_view.dart';
@@ -112,214 +112,214 @@ class EntryItem extends StatelessWidget {
   void callPages(String pages) async{
     switch (pages) {
       case 'group':
-        await Get.to(const GroupMasterListView())?.then((value) =>  Navigator.push(
+        await MyNavigator.push(const GroupMasterListView()).then((value) =>  Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) => const GroupMasterListView(),
             )));
         break;
       case 'narration':
-        Get.to(const NarrationView());
+        MyNavigator.push(const NarrationView());
         break;
       case 'a/c master':
-        Get.to(const ACMasterListView());
+        MyNavigator.push(const ACMasterListView());
         break;
       case 'item name':
-        Get.to(const ItemView());
+        MyNavigator.push(const ItemView());
         break;
       case 'item exp':
-        Get.to(const ItemExpView());
+        MyNavigator.push(const ItemExpView());
         break;
       case 'hamali exp':
-        Get.to(const HamaliExpView());
+        MyNavigator.push(const HamaliExpView());
         break;
       case 'place master':
-        Get.to(const PlaceMasterView());
+        MyNavigator.push(const PlaceMasterView());
         break;
       case 'a/c settings':
-        Get.to(const AccountSettingView());
+        MyNavigator.push(const AccountSettingView());
         break;
 
       /// Master Screen Ended
 
       case 'rojmel':
-        Get.to(const DataEntryView());
+        MyNavigator.push(const DataEntryView());
         break;
       case 'rojmel as a/c':
-        Get.to(const RojmelAcView());
+        MyNavigator.push(const RojmelAcView());
         break;
       case 'rojmel as book':
-        Get.to(const RojmelAsBook());
+        MyNavigator.push(const RojmelAsBook());
         break;
       case 'cash boook':
-        Get.to(const CashbookView());
+        MyNavigator.push(const CashbookView());
         break;
       case 'bank book':
-        Get.to(const BankBookView());
+        MyNavigator.push(const BankBookView());
         break;
       case 'daily cash balance':
-        Get.to(const DailyCashBalanceView());
+        MyNavigator.push(const DailyCashBalanceView());
         break;
       case 'day wise bank book':
-        Get.to(const DayWiseBankBookView());
+        MyNavigator.push(const DayWiseBankBookView());
         break;
       case 'bank reco':
-        Get.to(const BankRecoView());
+        MyNavigator.push(const BankRecoView());
         break;
       case 'cash limits report':
-        Get.to(const CashLimitView());
+        MyNavigator.push(const CashLimitView());
         break;
       case 'patti register':
-        Get.to(const PattiRegisterView());
+        MyNavigator.push(const PattiRegisterView());
         break;
       case 'jama nondh':
-        Get.to(const JamaNondhView());
+        MyNavigator.push(const JamaNondhView());
         break;
       case 'jama nondh summery':
-        Get.to(const JamaNondhSummeryView());
+        MyNavigator.push(const JamaNondhSummeryView());
         break;
       case 'jama nondh summery monthly':
-        Get.to(const JamaNondhSummeryMonthlyView());
+        MyNavigator.push(const JamaNondhSummeryMonthlyView());
         break;
 
       /// Ledger Screens Started.
       case 'general ledger':
-        Get.to(const GeneralLedgerView());
+        MyNavigator.push(const GeneralLedgerView());
         break;
       case 'statement of accounts':
-        Get.to(const StatementOfAccountView());
+        MyNavigator.push(const StatementOfAccountView());
         break;
       case 'screen ledger':
-        Get.to(const ScreenLedgerView());
+        MyNavigator.push(const ScreenLedgerView());
         break;
       case 'detail ledger':
-        Get.to(const DetailLedgerView());
+        MyNavigator.push(const DetailLedgerView());
         break;
       case 'group ledger':
-        Get.to(const GroupLedgerView());
+        MyNavigator.push(const GroupLedgerView());
         break;
       case 'customer ledger':
-        Get.to(const CustomerLedgerView());
+        MyNavigator.push(const CustomerLedgerView());
         break;
       case 'suppliers ledger':
-        Get.to(const SupplierLedgerView());
+        MyNavigator.push(const SupplierLedgerView());
         break;
       case 'itemwise ledger':
-        Get.to(const ItemWiseLedgerView());
+        MyNavigator.push(const ItemWiseLedgerView());
         break;
       case 'daywise ledger':
-        Get.to(const DayWiseLedgerView());
+        MyNavigator.push(const DayWiseLedgerView());
         break;
       case 'month wise ledger':
-        Get.to(const MonthlyWiseLedgerView());
+        MyNavigator.push(const MonthlyWiseLedgerView());
         break;
       //    Ledger Screen Ended
 
       /// Register Screen Started
       case 'aavak register':
-        Get.to(const AavakRegisterView());
+        MyNavigator.push(const AavakRegisterView());
         break;
       case 'dhada register':
-        Get.to(const DhadaRegisterView());
+        MyNavigator.push(const DhadaRegisterView());
         break;
       case 'sales register':
-        Get.to(const SalesRegisterView());
+        MyNavigator.push(const SalesRegisterView());
         break;
       case 'purchase register':
-        Get.to(const PurchaseRegisterView());
+        MyNavigator.push(const PurchaseRegisterView());
         break;
       case 'lotwise dhada register':
-        Get.to(const LotwiseDhadaRegisterView());
+        MyNavigator.push(const LotwiseDhadaRegisterView());
         break;
       case 'sales summery repost':
-        Get.to(const SalesSummeryRepostView());
+        MyNavigator.push(const SalesSummeryRepostView());
         break;
       case 'itemwise sales repost':
-        Get.to(const ItemwiseSalesRepostView());
+        MyNavigator.push(const ItemwiseSalesRepostView());
         break;
       case 'sales summery monthly repost':
-        Get.to(const SalesSummeryMonthlyRepostView());
+        MyNavigator.push(const SalesSummeryMonthlyRepostView());
         break;
       // Register Screen Ended
 
       /// Transport Screen Started
       case 'transport report':
-        Get.to(const TransportReportView());
+        MyNavigator.push(const TransportReportView());
         break;
       case 'transport comm report':
-        Get.to(const TransportCommReportView());
+        MyNavigator.push(const TransportCommReportView());
         break;
       case 'transport wise patti o/s':
-        Get.to(const TransportWisePattiOSRepostView());
+        MyNavigator.push(const TransportWisePattiOSRepostView());
         break;
       case 'transport wise patti date o/s':
-        Get.to(const TransportWisePattiDateOSRepostView());
+        MyNavigator.push(const TransportWisePattiDateOSRepostView());
         break;
       // Transport Screen Ended
 
       /// Additional Report Started
       case 'apmc daily report':
-        Get.to(const APMCDailyReportView());
+        MyNavigator.push(const APMCDailyReportView());
         break;
       case 'vachhatwise daily report':
-        Get.to(const VachatWiseDailyReportView());
+        MyNavigator.push(const VachatWiseDailyReportView());
         break;
       case 'monthwise p & l report':
-        Get.to(const MonthWisePLReportView());
+        MyNavigator.push(const MonthWisePLReportView());
         break;
       case 'vachhatwise report':
-        Get.to(const VachatWiseReportView());
+        MyNavigator.push(const VachatWiseReportView());
         break;
       case 'vachhatwise summery report':
-        Get.to(const VachatWiseSummeryReportView());
+        MyNavigator.push(const VachatWiseSummeryReportView());
         break;
       case 'gb daily report':
-        Get.to(const GbDailyReportView());
+        MyNavigator.push(const GbDailyReportView());
         break;
       case 'gb monthly entry report':
-        Get.to(const GbMonthlyEntryReportView());
+        MyNavigator.push(const GbMonthlyEntryReportView());
         break;
       // Additional Report Ended
 
       /// Customers Report Screen Started
       case 'ledger sales o/s report':
-        Get.to(const LedgerSaleOSRepostView());
+        MyNavigator.push(const LedgerSaleOSRepostView());
         break;
       case 'ledger sales o/s label report':
-        Get.to(const LedgerOSLabelRepostView());
+        MyNavigator.push(const LedgerOSLabelRepostView());
         break;
       case 'partywise sales report':
-        Get.to(const PartywiseWiseSalesReportView());
+        MyNavigator.push(const PartywiseWiseSalesReportView());
         break;
       case 'ledger sales o/s 90 days report':
-        Get.to(const LedgerOS90DayRepostView());
+        MyNavigator.push(const LedgerOS90DayRepostView());
         break;
       // Customers Report Screen Ended
 
       /// Balance Sheet Report Screen Started
       case 'p & l statement report':
-        Get.to(const PandLStatementView());
+        MyNavigator.push(const PandLStatementView());
         break;
       case 'trial balance report':
-        Get.to(const TrialBalanceView());
+        MyNavigator.push(const TrialBalanceView());
         break;
       case 'schedules report':
-        Get.to(const SchedulesReportView());
+        MyNavigator.push(const SchedulesReportView());
         break;
       case 'balance sheets report':
-        Get.to(const BalanceSheetReportView());
+        MyNavigator.push(const BalanceSheetReportView());
         break;
       case 'trial balance details screen':
-        Get.to(const TrialBalanceDetailScreenView());
+        MyNavigator.push(const TrialBalanceDetailScreenView());
         break;
       case 'eoy kasar dr  group wise':
-        Get.to(const EOYKasarDrGroupView());
+        MyNavigator.push(const EOYKasarDrGroupView());
         break;
       case 'eoy kasar cr group wise':
-        Get.to(const EOYKasarCrGroupView());
+        MyNavigator.push(const EOYKasarCrGroupView());
         break;
       case 'schedules details screen':
-        Get.to(const SchedulesDetailScreenView());
+        MyNavigator.push(const SchedulesDetailScreenView());
         break;
     }
   }

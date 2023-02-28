@@ -18,8 +18,9 @@ class LightSidebar extends StatelessWidget {
     return Card(
       elevation: 3,
       child: Container(
+        width: 200,
+        height: 200,
         padding: const EdgeInsets.all(20),
-        height: MediaQuery.of(context).size.height * 0.3,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -46,7 +47,7 @@ class LightSidebar extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
+            Wrap(
               children: const [
                 Text(
                   '2.4+',

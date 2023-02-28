@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:uitoolkit/uitoolkit.dart';
+import 'package:vyaparmandali/app_manager/helper/navigator.dart';
 
 import 'add_hamali_exp_view.dart';
 
@@ -95,7 +95,7 @@ class HamaliExpViewState extends State<HamaliExpView> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Get.to(const AddHamaliExpView());
+            MyNavigator.push(const AddHamaliExpView());
           },
           child: const Icon(Icons.add)),
     );

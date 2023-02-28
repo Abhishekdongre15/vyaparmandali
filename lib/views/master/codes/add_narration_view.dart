@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:get/get.dart';
 import 'package:uitoolkit/uitoolkit.dart';
+import 'package:vyaparmandali/app_manager/helper/navigator.dart';
 
 class AddNarrationView extends StatefulWidget {
   const AddNarrationView({Key? key}) : super(key: key);
@@ -23,7 +23,7 @@ class _AddNarrationViewState extends State<AddNarrationView> {
         title:  Text("Add Narration Item",style: ToolkitTypography.h2.copyWith(color: ToolkitColors.black)),
         leading: GestureDetector(child: const Icon(Icons.arrow_back,color:  ToolkitColors.black,),
           onTap: (){
-          Get.back();
+          MyNavigator.pop();
           },),
       ),
       body: Container(

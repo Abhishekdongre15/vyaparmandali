@@ -1,11 +1,11 @@
 import 'package:csc_picker/csc_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 import 'package:uitoolkit/uitoolkit.dart';
+import 'package:vyaparmandali/app_manager/component/colored_safe_area.dart';
+import 'package:vyaparmandali/gen/assets.gen.dart';
 
 import '../util/constants.dart';
-import '../controller/simple_ui_controller.dart';
 
 class EnquiryDetailView extends StatefulWidget {
   const EnquiryDetailView({Key? key}) : super(key: key);
@@ -34,23 +34,24 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
-    SimpleUIController simpleUIController = Get.find<SimpleUIController>();
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
-      child: Scaffold(
-        appBar: AppBar(
-          
-        ),
-        backgroundColor: Colors.white,
-        resizeToAvoidBottomInset: false,
-        body: LayoutBuilder(
-          builder: (context, constraints) {
-            if (constraints.maxWidth > 600) {
-              return _buildLargeScreen(size, simpleUIController);
-            } else {
-              return _buildSmallScreen(size, simpleUIController);
-            }
-          },
+      child: ColoredSafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+
+          ),
+          backgroundColor: Colors.white,
+          resizeToAvoidBottomInset: false,
+          body: LayoutBuilder(
+            builder: (context, constraints) {
+              if (constraints.maxWidth > 600) {
+                return _buildLargeScreen(size,);
+              } else {
+                return _buildSmallScreen(size,);
+              }
+            },
+          ),
         ),
       ),
     );
@@ -59,7 +60,6 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
   /// For large screens
   Widget _buildLargeScreen(
     Size size,
-    SimpleUIController simpleUIController,
   ) {
     return Row(
       children: [
@@ -80,7 +80,6 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
           flex: 5,
           child: _buildMainBody(
             size,
-            simpleUIController,
           ),
         ),
       ],
@@ -90,12 +89,10 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
   /// For Small screens
   Widget _buildSmallScreen(
     Size size,
-    SimpleUIController simpleUIController,
   ) {
     return Center(
       child: _buildMainBody(
         size,
-        simpleUIController,
       ),
     );
   }
@@ -103,7 +100,6 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
   /// Main Body
   Widget _buildMainBody(
     Size size,
-    SimpleUIController simpleUIController,
   ) {
     return SingleChildScrollView(
       child: Column(
@@ -115,7 +111,7 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
           size.width > 600
               ? Container()
               : Lottie.asset(
-                  'assets/farmer.json',
+                  Assets.json.progressJson,
 
                   width: size.width,
                   fit: BoxFit.fill,
@@ -340,7 +336,6 @@ class _EnquiryDetailViewState extends State<EnquiryDetailView> {
                       emailController.clear();
                       phoneController.clear();
                       _formKey.currentState?.reset();
-                      simpleUIController.isObscure.value = true;
                     },
                     child: RichText(
                       text: TextSpan(

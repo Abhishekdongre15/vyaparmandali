@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
+import 'package:vyaparmandali/authentication/user_repository.dart';
 
 import '../views/profile_page_view.dart';
 class AppBarProfile extends StatelessWidget {
@@ -43,6 +44,15 @@ class AppBarProfile extends StatelessWidget {
           onPressed: () {},
           icon: const Icon(
             Icons.settings,
+            color: ToolkitColors.white,
+          ),
+        ),
+        IconButton(
+          onPressed: () {
+            UserRepository.of(context).logOutUser(context);
+          },
+          icon: const Icon(
+            Icons.exit_to_app,
             color: ToolkitColors.white,
           ),
         ),
