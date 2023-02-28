@@ -11,8 +11,6 @@ class ProjectConstant {
 
   static String name="Vyapar Mandali";
 
-  static String googleMapKey="AIzaSyBLngNjFUYyIbuNj5kxBC2k-2ePsWuPCyU ";
-
   static LinearGradient getGradient(gradientColor){
     return  LinearGradient(
       begin: Alignment.topRight,
