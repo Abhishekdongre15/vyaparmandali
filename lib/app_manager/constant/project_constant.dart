@@ -16,7 +16,6 @@ class ProjectConstant {
       begin: Alignment.topRight,
       end: Alignment.bottomLeft,
       colors: [
-
         gradientColor!.withOpacity(0.7),
         gradientColor!.withOpacity(0.8),
         gradientColor!,
