@@ -7,7 +7,7 @@ import 'package:vyaparmandali/app_manager/component/bottom_sheet/functional_shee
 import 'package:vyaparmandali/app_manager/constant/storage_constant.dart';
 import 'package:vyaparmandali/app_manager/helper/navigator.dart';
 import 'package:vyaparmandali/model/user.dart';
-import 'package:vyaparmandali/views/screen/login_screen_view.dart';
+import 'package:vyaparmandali/view/screen/login_screen_view.dart';
 
 class UserRepository extends ChangeNotifier {
   User? currentUser;

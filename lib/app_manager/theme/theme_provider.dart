@@ -56,11 +56,9 @@ class ThemeProvider with ChangeNotifier {
   static const Color _backgroundColor=AppColor.backgroundColor;
   static const Color _scaffoldBackgroundColor=_backgroundColor;
   static const typeTheme = Typography.whiteMountainView;
-  static  final TextTheme _textTheme=TextTheme(
+  static  const TextTheme _textTheme=TextTheme(
 
-    titleMedium: typeTheme.titleMedium!.copyWith( color: Colors.white),
- //   bodyMedium: typeTheme.bodyMedium!.copyWith( color: Colors.white),
-    //small
+
   );
   static const ListTileThemeData _listTileThemeData=ListTileThemeData(
     selectedColor: _primaryColor,
@@ -75,20 +73,25 @@ class ThemeProvider with ChangeNotifier {
   static const Color _primaryColorD=Colors.black54;
 
 
-  static const TextSelectionThemeData _textSelectionTheme=TextSelectionThemeData(cursorColor: AppColor.white);
+  static const TextSelectionThemeData _textSelectionTheme=TextSelectionThemeData(cursorColor: AppColor.black);
 
   static const AppBarTheme _appBarTheme=AppBarTheme(
     backgroundColor: Colors.transparent,
     centerTitle: true,
+    iconTheme: _iconTheme,
     elevation: 0
   );
 
   static const unselectedWidgetColor=Colors.white;
 
-
+  static const IconThemeData _iconTheme=IconThemeData(
+      color: Colors.black
+  );
 
   static ThemeData lightTheme(){
     return ThemeData(
+      iconTheme: _iconTheme,
+
       unselectedWidgetColor: unselectedWidgetColor,
       appBarTheme: _appBarTheme,
       textSelectionTheme: _textSelectionTheme,
@@ -100,12 +103,12 @@ class ThemeProvider with ChangeNotifier {
         primary: _primaryColor,
         secondary: _secondaryColor,
         brightness: Brightness.light,
-
+        background: _backgroundColor,
       ),
       primarySwatch: generateMaterialColor(color: _primaryColor),
       primaryColor: _primaryColor,
       secondaryHeaderColor: _secondaryColor,
-      backgroundColor: _backgroundColor,
+
       textTheme:  _textTheme,
       listTileTheme: _listTileThemeData,
       scaffoldBackgroundColor: _scaffoldBackgroundColor,
@@ -121,6 +124,7 @@ class ThemeProvider with ChangeNotifier {
 
   static ThemeData darkTheme(){
     return ThemeData(
+        iconTheme: _iconTheme,
         unselectedWidgetColor: unselectedWidgetColor,
         appBarTheme: _appBarTheme,
         textSelectionTheme: _textSelectionTheme,
@@ -130,11 +134,11 @@ class ThemeProvider with ChangeNotifier {
         primary: _primaryColorD,
         secondary: _secondaryColor,
         brightness: Brightness.dark,
+        background: _backgroundColor,
       ),
       primarySwatch: generateMaterialColor(color: _primaryColorD),
       primaryColor: _primaryColorD,
       secondaryHeaderColor: _secondaryColor,
-      backgroundColor: _backgroundColor,
       textTheme:  _textTheme,
       listTileTheme: _listTileThemeData,
       scaffoldBackgroundColor: _scaffoldBackgroundColor,

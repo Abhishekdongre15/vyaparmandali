@@ -1,25 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/app_manager/helper/navigator.dart';
-import 'package:vyaparmandali/views/master/codes/add_narration_view.dart';
+import 'package:vyaparmandali/view/add_list_data_view.dart';
 
-class NarrationView extends StatefulWidget {
-  const NarrationView({Key? key}) : super(key: key);
+class ItemView extends StatefulWidget {
+  const ItemView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return NarrationViewState();
+    return ItemViewState();
   }
 }
 
-class NarrationViewState extends State<NarrationView> {
+class ItemViewState extends State<ItemView> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title:Text("Narration View",style: ToolkitTypography.h2.copyWith(color: ToolkitColors.black)),
+        title:  Text("Item View",style: ToolkitTypography.h2.copyWith(color: ToolkitColors.black)),
         backgroundColor: ToolkitColors.primary,
       ),
       body: SingleChildScrollView(
@@ -43,14 +42,23 @@ class NarrationViewState extends State<NarrationView> {
                     Expanded(
                       flex: 1,
                       child: Text(
-                        "Detail",
+                        "Item Code",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
                       ),
-                    ),  Expanded(
+                    ),
+                    Expanded(
                       flex: 1,
                       child: Text(
-                        "Action",
+                        "Rate(Kg)",
+                        style: ToolkitTypography.h2
+                            .copyWith(color: ToolkitColors.black),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        "Actions",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
                       ),
@@ -76,9 +84,11 @@ class NarrationViewState extends State<NarrationView> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        MyNavigator.push(const AddNarrationView());
-      },child: const Icon(Icons.add),),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            (const AddItemsView());
+          },
+          child: const Icon(Icons.add)),
     );
   }
 
@@ -106,7 +116,11 @@ class NarrationViewState extends State<NarrationView> {
                 ),
                 const Expanded(
                   flex: 1,
-                  child: Text("Description"),
+                  child: Text("Item Code"),
+                ),
+                const Expanded(
+                  flex: 1,
+                  child: Text("Rate(Kg)"),
                 ),
                 Expanded(
                   flex: 1,

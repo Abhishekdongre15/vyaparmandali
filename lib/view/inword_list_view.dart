@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/views/data_entry/add_data_entry_view.dart';
+import 'package:vyaparmandali/view/add_inword_view.dart';
 
-class DataEntryView extends StatefulWidget {
-  const DataEntryView({Key? key}) : super(key: key);
+class InWordListView extends StatefulWidget {
+  const InWordListView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return DataEntryViewState();
+    return InWordListViewState();
   }
 }
 
-class DataEntryViewState extends State<DataEntryView> {
+class InWordListViewState extends State<InWordListView> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Data entry"),
+        title: const Text("InWord "),
         backgroundColor: ToolkitColors.primary,
       ),
       body: SingleChildScrollView(
@@ -34,7 +34,7 @@ class DataEntryViewState extends State<DataEntryView> {
                     Expanded(
                       flex: 1,
                       child: Text(
-                        "Code",
+                        "S.no",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
                       ),
@@ -42,7 +42,7 @@ class DataEntryViewState extends State<DataEntryView> {
                     Expanded(
                       flex: 1,
                       child: Text(
-                        "Galla Amount",
+                        "Date",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
                       ),
@@ -50,11 +50,20 @@ class DataEntryViewState extends State<DataEntryView> {
                     Expanded(
                       flex: 1,
                       child: Text(
-                        "Udhari Baki",
+                        "Vehicle No",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
                       ),
-                    ), Expanded(
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        "Total Quantity",
+                        style: ToolkitTypography.h2
+                            .copyWith(color: ToolkitColors.black),
+                      ),
+                    ),
+                    Expanded(
                       flex: 1,
                       child: Text(
                         "Actions",
@@ -62,7 +71,6 @@ class DataEntryViewState extends State<DataEntryView> {
                             .copyWith(color: ToolkitColors.black),
                       ),
                     ),
-
                   ],
                 ),
               ),
@@ -86,8 +94,10 @@ class DataEntryViewState extends State<DataEntryView> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const AddDataEntryView()));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const AddInWordListView()));
           },
           child: const Icon(Icons.add)),
     );
@@ -110,7 +120,7 @@ class DataEntryViewState extends State<DataEntryView> {
                 Expanded(
                   flex: 1,
                   child: Text(
-                    "Code",
+                    "S.no",
                     style: ToolkitTypography.body1A
                         .copyWith(color: ToolkitColors.black),
                   ),
@@ -118,16 +128,19 @@ class DataEntryViewState extends State<DataEntryView> {
                 Expanded(
                   flex: 1,
                   child: Text(
-                    "Galla Amount",
+                    "Date",
                     style: ToolkitTypography.body1A
                         .copyWith(color: ToolkitColors.black),
                   ),
                 ),
                 const Expanded(
                   flex: 1,
-                  child: Text("Udhaar baki"),
+                  child: Text("Vehicle No"),
                 ),
-
+                const Expanded(
+                  flex: 1,
+                  child: Text("Total Quantity"),
+                ),
                 Expanded(
                   flex: 1,
                   child: Row(
@@ -135,7 +148,7 @@ class DataEntryViewState extends State<DataEntryView> {
                       UIToolkitButtons.iconButton(
                           text: "",
                           onPressed: () {},
-                          icon: ToolkitAssets.iconEye44),
+                          icon: ToolkitAssets.editIcon44),
                       UIToolkitButtons.iconButton(
                           text: "",
                           onPressed: () {},

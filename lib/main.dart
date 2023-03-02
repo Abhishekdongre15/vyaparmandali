@@ -8,7 +8,9 @@ import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/app_manager/theme/theme_provider.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/user.dart';
-import 'package:vyaparmandali/views/screen/splash_screen_view.dart';
+import 'package:vyaparmandali/view/screen/splash_screen_view.dart';
+import 'package:vyaparmandali/view_model/login_view_model.dart';
+import 'package:vyaparmandali/view_model/registration_view_model.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -33,6 +35,10 @@ Future main() async {
         ChangeNotifierProvider<UserRepository>(
           create: (_) => UserRepository(currentUser: user),
         ),
+        ChangeNotifierProvider<RegistrationViewModel>(
+        create: (_) => RegistrationViewModel()),
+        ChangeNotifierProvider<LoginViewModel>(
+            create: (_) => LoginViewModel())
       ],
       child: const MyApp()));
 }

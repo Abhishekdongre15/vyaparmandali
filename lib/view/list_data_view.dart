@@ -1,24 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/views/add_list_data_view.dart';
+import 'package:vyaparmandali/view/add_list_data_view.dart';
 
-class ItemView extends StatefulWidget {
-  const ItemView({Key? key}) : super(key: key);
+class ListDataView extends StatefulWidget {
+  const ListDataView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return ItemViewState();
+    return ListDataViewState();
   }
 }
 
-class ItemViewState extends State<ItemView> {
+class ListDataViewState extends State<ListDataView> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title:  Text("Item View",style: ToolkitTypography.h2.copyWith(color: ToolkitColors.black)),
         backgroundColor: ToolkitColors.primary,
       ),
       body: SingleChildScrollView(
@@ -42,7 +41,7 @@ class ItemViewState extends State<ItemView> {
                     Expanded(
                       flex: 1,
                       child: Text(
-                        "Item Code",
+                        "Name",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
                       ),
@@ -86,7 +85,8 @@ class ItemViewState extends State<ItemView> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            (const AddItemsView());
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => const AddItemsView()));
           },
           child: const Icon(Icons.add)),
     );
@@ -116,7 +116,7 @@ class ItemViewState extends State<ItemView> {
                 ),
                 const Expanded(
                   flex: 1,
-                  child: Text("Item Code"),
+                  child: Text("Name"),
                 ),
                 const Expanded(
                   flex: 1,
@@ -129,7 +129,7 @@ class ItemViewState extends State<ItemView> {
                       UIToolkitButtons.iconButton(
                           text: "",
                           onPressed: () {},
-                          icon: ToolkitAssets.editIcon44),
+                          icon: ToolkitAssets.iconEye44),
                       UIToolkitButtons.iconButton(
                           text: "",
                           onPressed: () {},

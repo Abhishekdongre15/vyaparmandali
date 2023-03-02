@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/api/api_call.dart';
 import 'package:vyaparmandali/app_manager/component/progress_dialogue.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
@@ -6,10 +7,11 @@ import 'package:vyaparmandali/app_manager/helper/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/user.dart';
-import 'package:vyaparmandali/views/screen/dashboard_view.dart';
+import 'package:vyaparmandali/view/screen/dashboard_view.dart';
 
-class LoginViewModel {
+class LoginViewModel extends ChangeNotifier {
 
+  static LoginViewModel of(BuildContext context)=>Provider.of<LoginViewModel>(context,listen: false);
 
   final ApiCall _api=ApiCall();
 

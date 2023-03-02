@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/views/add_inword_view.dart';
+import 'package:vyaparmandali/view/master/codes/add_group_master_view.dart';
 
-class InWordListView extends StatefulWidget {
-  const InWordListView({Key? key}) : super(key: key);
+class GroupMasterListView extends StatefulWidget {
+  const GroupMasterListView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return InWordListViewState();
+    return GroupMasterListViewState();
   }
 }
 
-class InWordListViewState extends State<InWordListView> {
+class GroupMasterListViewState extends State<GroupMasterListView> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: const Text("InWord "),
+        title:  Text("Group Master View",style: ToolkitTypography.h2.copyWith(color: ToolkitColors.black)),
         backgroundColor: ToolkitColors.primary,
       ),
       body: SingleChildScrollView(
@@ -34,7 +34,7 @@ class InWordListViewState extends State<InWordListView> {
                     Expanded(
                       flex: 1,
                       child: Text(
-                        "S.no",
+                        "Code",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
                       ),
@@ -42,23 +42,7 @@ class InWordListViewState extends State<InWordListView> {
                     Expanded(
                       flex: 1,
                       child: Text(
-                        "Date",
-                        style: ToolkitTypography.h2
-                            .copyWith(color: ToolkitColors.black),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Text(
-                        "Vehicle No",
-                        style: ToolkitTypography.h2
-                            .copyWith(color: ToolkitColors.black),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Text(
-                        "Total Quantity",
+                        "Name",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
                       ),
@@ -95,9 +79,7 @@ class InWordListViewState extends State<InWordListView> {
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const AddInWordListView()));
+                context, MaterialPageRoute(builder: (context) => const AddGroupMasterView()));
           },
           child: const Icon(Icons.add)),
     );
@@ -120,26 +102,14 @@ class InWordListViewState extends State<InWordListView> {
                 Expanded(
                   flex: 1,
                   child: Text(
-                    "S.no",
-                    style: ToolkitTypography.body1A
-                        .copyWith(color: ToolkitColors.black),
-                  ),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Text(
-                    "Date",
+                    "Code",
                     style: ToolkitTypography.body1A
                         .copyWith(color: ToolkitColors.black),
                   ),
                 ),
                 const Expanded(
                   flex: 1,
-                  child: Text("Vehicle No"),
-                ),
-                const Expanded(
-                  flex: 1,
-                  child: Text("Total Quantity"),
+                  child: Text("Name"),
                 ),
                 Expanded(
                   flex: 1,

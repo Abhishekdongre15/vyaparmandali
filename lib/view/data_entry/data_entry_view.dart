@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/views/add_outword_litst_view.dart';
+import 'package:vyaparmandali/view/data_entry/add_data_entry_view.dart';
 
-class OutWardListView extends StatefulWidget {
-  const OutWardListView({Key? key}) : super(key: key);
+class DataEntryView extends StatefulWidget {
+  const DataEntryView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return OutWardListViewState();
+    return DataEntryViewState();
   }
 }
 
-class OutWardListViewState extends State<OutWardListView> {
+class DataEntryViewState extends State<DataEntryView> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title: const Text("OutWord "),
+        title: const Text("Data entry"),
         backgroundColor: ToolkitColors.primary,
       ),
       body: SingleChildScrollView(
@@ -34,7 +34,7 @@ class OutWardListViewState extends State<OutWardListView> {
                     Expanded(
                       flex: 1,
                       child: Text(
-                        "S.no",
+                        "Code",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
                       ),
@@ -42,7 +42,7 @@ class OutWardListViewState extends State<OutWardListView> {
                     Expanded(
                       flex: 1,
                       child: Text(
-                        "Date",
+                        "Galla Amount",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
                       ),
@@ -50,44 +50,11 @@ class OutWardListViewState extends State<OutWardListView> {
                     Expanded(
                       flex: 1,
                       child: Text(
-                        "Vehicle No",
+                        "Udhari Baki",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
                       ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Text(
-                        "Inword Date",
-                        style: ToolkitTypography.h2
-                            .copyWith(color: ToolkitColors.black),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Text(
-                        "Party Name",
-                        style: ToolkitTypography.h2
-                            .copyWith(color: ToolkitColors.black),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Text(
-                        "Lot Name",
-                        style: ToolkitTypography.h2
-                            .copyWith(color: ToolkitColors.black),
-                      ),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Text(
-                        "Balance Qty",
-                        style: ToolkitTypography.h2
-                            .copyWith(color: ToolkitColors.black),
-                      ),
-                    ),
-                    Expanded(
+                    ), Expanded(
                       flex: 1,
                       child: Text(
                         "Actions",
@@ -95,6 +62,7 @@ class OutWardListViewState extends State<OutWardListView> {
                             .copyWith(color: ToolkitColors.black),
                       ),
                     ),
+
                   ],
                 ),
               ),
@@ -118,10 +86,8 @@ class OutWardListViewState extends State<OutWardListView> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const AddOutWordLIstView()));
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => const AddDataEntryView()));
           },
           child: const Icon(Icons.add)),
     );
@@ -144,7 +110,7 @@ class OutWardListViewState extends State<OutWardListView> {
                 Expanded(
                   flex: 1,
                   child: Text(
-                    "S.no",
+                    "Code",
                     style: ToolkitTypography.body1A
                         .copyWith(color: ToolkitColors.black),
                   ),
@@ -152,30 +118,16 @@ class OutWardListViewState extends State<OutWardListView> {
                 Expanded(
                   flex: 1,
                   child: Text(
-                    "Date",
+                    "Galla Amount",
                     style: ToolkitTypography.body1A
                         .copyWith(color: ToolkitColors.black),
                   ),
                 ),
                 const Expanded(
                   flex: 1,
-                  child: Text("Vehicle No"),
+                  child: Text("Udhaar baki"),
                 ),
-                const Expanded(
-                  flex: 1,
-                  child: Text("Inword Date"),
-                ),  const Expanded(
-                  flex: 1,
-                  child: Text("Party Name"),
-                ),
-                const Expanded(
-                  flex: 1,
-                  child: Text("Lot"),
-                ),
-                const Expanded(
-                  flex: 1,
-                  child: Text("Balance Qty"),
-                ),
+
                 Expanded(
                   flex: 1,
                   child: Row(

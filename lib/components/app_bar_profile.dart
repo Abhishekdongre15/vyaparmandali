@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
+import 'package:vyaparmandali/view/profile_page_view.dart';
 
-import '../views/profile_page_view.dart';
 class AppBarProfile extends StatelessWidget {
   const AppBarProfile({Key? key}) : super(key: key);
 

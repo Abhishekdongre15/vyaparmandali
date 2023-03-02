@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/views/add_list_data_view.dart';
+import 'package:vyaparmandali/view/add_outword_litst_view.dart';
 
-class ListDataView extends StatefulWidget {
-  const ListDataView({Key? key}) : super(key: key);
+class OutWardListView extends StatefulWidget {
+  const OutWardListView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return ListDataViewState();
+    return OutWardListViewState();
   }
 }
 
-class ListDataViewState extends State<ListDataView> {
+class OutWardListViewState extends State<OutWardListView> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
+        title: const Text("OutWord "),
         backgroundColor: ToolkitColors.primary,
       ),
       body: SingleChildScrollView(
@@ -33,7 +34,7 @@ class ListDataViewState extends State<ListDataView> {
                     Expanded(
                       flex: 1,
                       child: Text(
-                        "Code",
+                        "S.no",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
                       ),
@@ -41,7 +42,7 @@ class ListDataViewState extends State<ListDataView> {
                     Expanded(
                       flex: 1,
                       child: Text(
-                        "Name",
+                        "Date",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
                       ),
@@ -49,7 +50,39 @@ class ListDataViewState extends State<ListDataView> {
                     Expanded(
                       flex: 1,
                       child: Text(
-                        "Rate(Kg)",
+                        "Vehicle No",
+                        style: ToolkitTypography.h2
+                            .copyWith(color: ToolkitColors.black),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        "Inword Date",
+                        style: ToolkitTypography.h2
+                            .copyWith(color: ToolkitColors.black),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        "Party Name",
+                        style: ToolkitTypography.h2
+                            .copyWith(color: ToolkitColors.black),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        "Lot Name",
+                        style: ToolkitTypography.h2
+                            .copyWith(color: ToolkitColors.black),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: Text(
+                        "Balance Qty",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
                       ),
@@ -86,7 +119,9 @@ class ListDataViewState extends State<ListDataView> {
       floatingActionButton: FloatingActionButton(
           onPressed: () {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => const AddItemsView()));
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const AddOutWordLIstView()));
           },
           child: const Icon(Icons.add)),
     );
@@ -109,18 +144,37 @@ class ListDataViewState extends State<ListDataView> {
                 Expanded(
                   flex: 1,
                   child: Text(
-                    "Code",
+                    "S.no",
+                    style: ToolkitTypography.body1A
+                        .copyWith(color: ToolkitColors.black),
+                  ),
+                ),
+                Expanded(
+                  flex: 1,
+                  child: Text(
+                    "Date",
                     style: ToolkitTypography.body1A
                         .copyWith(color: ToolkitColors.black),
                   ),
                 ),
                 const Expanded(
                   flex: 1,
-                  child: Text("Name"),
+                  child: Text("Vehicle No"),
                 ),
                 const Expanded(
                   flex: 1,
-                  child: Text("Rate(Kg)"),
+                  child: Text("Inword Date"),
+                ),  const Expanded(
+                  flex: 1,
+                  child: Text("Party Name"),
+                ),
+                const Expanded(
+                  flex: 1,
+                  child: Text("Lot"),
+                ),
+                const Expanded(
+                  flex: 1,
+                  child: Text("Balance Qty"),
                 ),
                 Expanded(
                   flex: 1,

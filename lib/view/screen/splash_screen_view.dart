@@ -6,8 +6,8 @@ import 'package:vyaparmandali/app_manager/helper/navigator.dart';
 import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/user.dart';
-import 'package:vyaparmandali/views/screen/dashboard_view.dart';
-import 'package:vyaparmandali/views/screen/login_screen_view.dart';
+import 'package:vyaparmandali/view/screen/dashboard_view.dart';
+import 'package:vyaparmandali/view/screen/login_screen_view.dart';
 
 class SplashScreenView extends StatefulWidget {
   const SplashScreenView({Key? key}) : super(key: key);

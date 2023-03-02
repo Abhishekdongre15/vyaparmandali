@@ -1,25 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/app_manager/helper/navigator.dart';
-import 'package:vyaparmandali/views/master/add_place_master.dart';
+import 'package:vyaparmandali/view/master/codes/add_narration_view.dart';
 
-class PlaceMasterView extends StatefulWidget {
-  const PlaceMasterView({Key? key}) : super(key: key);
+class NarrationView extends StatefulWidget {
+  const NarrationView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
     // TODO: implement createState
-    return PlaceMasterViewState();
+    return NarrationViewState();
   }
 }
 
-class PlaceMasterViewState extends State<PlaceMasterView> {
+class NarrationViewState extends State<NarrationView> {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return Scaffold(
       appBar: AppBar(
-        title:  Text("Place Master View",style: ToolkitTypography.h2.copyWith(color: ToolkitColors.black)),
+        title:Text("Narration View",style: ToolkitTypography.h2.copyWith(color: ToolkitColors.black)),
         backgroundColor: ToolkitColors.primary,
       ),
       body: SingleChildScrollView(
@@ -43,16 +43,14 @@ class PlaceMasterViewState extends State<PlaceMasterView> {
                     Expanded(
                       flex: 1,
                       child: Text(
-                        "Place",
+                        "Detail",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
                       ),
-                    ),
-
-                    Expanded(
+                    ),  Expanded(
                       flex: 1,
                       child: Text(
-                        "Actions",
+                        "Action",
                         style: ToolkitTypography.h2
                             .copyWith(color: ToolkitColors.black),
                       ),
@@ -78,11 +76,9 @@ class PlaceMasterViewState extends State<PlaceMasterView> {
           ),
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            MyNavigator.push(const AddPlaceMaster());
-          },
-          child: const Icon(Icons.add)),
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        MyNavigator.push(const AddNarrationView());
+      },child: const Icon(Icons.add),),
     );
   }
 
@@ -110,7 +106,7 @@ class PlaceMasterViewState extends State<PlaceMasterView> {
                 ),
                 const Expanded(
                   flex: 1,
-                  child: Text("mumbai"),
+                  child: Text("Description"),
                 ),
                 Expanded(
                   flex: 1,

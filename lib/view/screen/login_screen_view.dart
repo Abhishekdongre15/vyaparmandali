@@ -1,14 +1,16 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:vyaparmandali/app_manager/component/colored_safe_area.dart';
 import 'package:vyaparmandali/app_manager/component/password_field.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
+import 'package:vyaparmandali/app_manager/helper/navigator.dart';
 import 'package:vyaparmandali/app_manager/helper/responsive/responsive.dart';
 import 'package:vyaparmandali/app_manager/helper/responsive/widget/responsive_screen.dart';
 import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
+import 'package:vyaparmandali/app_manager/theme/widget_theme_data/custom_text_field_theme.dart';
 import 'package:vyaparmandali/util/email_validation.dart';
+import 'package:vyaparmandali/view/screen/registration_screen_view.dart';
 import 'package:vyaparmandali/view_model/login_view_model.dart';
-import 'package:vyaparmandali/views/enquiry_detail_view.dart';
 import '../forget_password_view.dart';
 
 class LoginScreenView extends StatefulWidget {
@@ -29,7 +31,7 @@ class _LoginScreenViewState extends State<LoginScreenView> {
     var size = MediaQuery.of(context).size;
     var theme = Theme.of(context);
 
-    LoginViewModel viewModel=LoginViewModel();
+    LoginViewModel viewModel=LoginViewModel.of(context);
 
     return GestureDetector(
       onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
@@ -91,10 +93,11 @@ class _LoginScreenViewState extends State<LoginScreenView> {
                               children: [
                                 TextFormField(
                                   controller: viewModel.emailC,
+                                  style: const TextStyle(color: AppColor.white),
                                   decoration:  InputDecoration(
                                       hintText: 'Please Enter Email ID',
                                       contentPadding: !Responsive.isSmallScreen(context)?  const EdgeInsets.all(20): null
-                                  ),
+                                  ).applyDefaults(CustomTextFieldTheme.secondary),
                                   validator: (String? val) {
                                     if (val == null || val.trim().isEmpty) {
                                       return "Required field";
@@ -110,6 +113,8 @@ class _LoginScreenViewState extends State<LoginScreenView> {
                                 ),
 
                                 PasswordField(
+                                  style: const TextStyle(color: AppColor.white),
+                                  theme: CustomTextFieldTheme.secondary,
                                   controller: viewModel.passwordC,
                                   hintText: 'Please Enter Password',
                                   validator: (String? val) {
@@ -143,15 +148,14 @@ class _LoginScreenViewState extends State<LoginScreenView> {
                                 ),          /// Navigate To Login Screen
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        CupertinoPageRoute(
-                                            builder: (ctx) => const EnquiryDetailView()));
+                                    MyNavigator.push(const RegistrationScreenView());
                                   },
                                   child: RichText(
                                     text: TextSpan(
                                       text: 'Need an Account?',
-                                      style: theme.textTheme.titleMedium,
+                                      style: theme.textTheme.titleMedium?.copyWith(
+                                        color: Colors.white
+                                      ),
                                       children: [
                                         TextSpan(
                                           text: " Fill Form",
@@ -167,15 +171,14 @@ class _LoginScreenViewState extends State<LoginScreenView> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.push(
-                                        context,
-                                        CupertinoPageRoute(
-                                            builder: (ctx) => const ForgetPasswordView()));
+                                    MyNavigator.push(const ForgetPasswordView());
                                   },
                                   child: RichText(
                                     text: TextSpan(
                                       text: 'Forget Your Password?',
-                                      style: theme.textTheme.titleMedium,
+                                      style: theme.textTheme.titleMedium?.copyWith(
+                                          color: Colors.white
+                                      ),
                                       children: [
                                         TextSpan(
                                           text: " Reset Here",

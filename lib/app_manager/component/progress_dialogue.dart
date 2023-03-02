@@ -73,7 +73,9 @@ _showProgressDialogue(message,) async{
                           ),
                           Text(message?? 'Please add a text',
                               textAlign: TextAlign.center,
-                              style: theme.textTheme.titleMedium
+                              style: theme.textTheme.titleMedium?.copyWith(
+                                color: Colors.white
+                              )
                           ),
                           // factsDialogue(),
                         ],
