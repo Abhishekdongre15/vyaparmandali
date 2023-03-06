@@ -1,14 +1,11 @@
-// Create the Widget for the row
 import 'package:flutter/material.dart';
-import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/app_manager/helper/navigator.dart';
 import 'package:vyaparmandali/view/balance_sheet/schedules_details_screen_view.dart';
 import 'package:vyaparmandali/view/balance_sheet/trial_balance_report_view.dart';
 import 'package:vyaparmandali/view/balance_sheet/eoy_kasar_dr_view.dart';
 import 'package:vyaparmandali/view/data_entry/data_entry_view.dart';
 import 'package:vyaparmandali/view/master/ac_master_view.dart';
-import 'package:vyaparmandali/view/master/codes/group_master_list_view.dart';
-import 'package:vyaparmandali/view/master/codes/narration_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/codes/group/group_master_view.dart';
 import 'package:vyaparmandali/view/master/items/hamali_exp_view.dart';
 import 'package:vyaparmandali/view/master/items/item_exp_view.dart';
 import 'package:vyaparmandali/view/master/items/item_view.dart';
@@ -64,6 +61,7 @@ import 'package:vyaparmandali/view/report/transport report/transportwise_patti_o
 import 'package:vyaparmandali/view/report/vacchat report/jama_nondh.dart';
 import 'package:vyaparmandali/view/report/vacchat report/jama_nondh_summery_monthly_view.dart';
 import 'package:vyaparmandali/view/report/vacchat report/jama_nondh_summery_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/codes/narrartion/narration_master_view.dart';
 import 'entry.dart';
 
 class EntryItem extends StatelessWidget {
@@ -96,8 +94,6 @@ class EntryItem extends StatelessWidget {
         key: PageStorageKey<Entry>(root),
         title: Text(
           root.title,
-          style: ToolkitTypography.body1A
-              .copyWith(color: ToolkitColors.black),
         ),
         children: root.children.map<Widget>(_buildTiles).toList(),
       );
@@ -112,14 +108,10 @@ class EntryItem extends StatelessWidget {
   void callPages(String pages) async{
     switch (pages) {
       case 'group':
-        await MyNavigator.push(const GroupMasterListView()).then((value) =>  Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const GroupMasterListView(),
-            )));
+        await MyNavigator.push(const GroupMasterView());
         break;
       case 'narration':
-        MyNavigator.push(const NarrationView());
+        MyNavigator.push(const NarrationMasterView());
         break;
       case 'a/c master':
         MyNavigator.push(const ACMasterListView());

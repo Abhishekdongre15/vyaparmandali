@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
+import 'package:vyaparmandali/app_manager/constant/project_constant.dart';
+import 'package:vyaparmandali/app_manager/helper/navigator.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
-import 'package:vyaparmandali/view/profile_page_view.dart';
+import 'package:vyaparmandali/view/screen/profile/profile_page_view.dart';
+import 'package:vyaparmandali/widget/user_avatar.dart';
 
 class AppBarProfile extends StatelessWidget {
   const AppBarProfile({Key? key}) : super(key: key);
@@ -9,13 +12,7 @@ class AppBarProfile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  AppBar(
-      backgroundColor: ToolkitColors.primary,
-      title: Text(
-        "Vyapar Mandali",
-        style: ToolkitTypography.body2A.copyWith(
-          color: ToolkitColors.black,
-        ),
-      ),
+      title:  Text(ProjectConstant.name,),
       centerTitle: false,
       actions: [
         IconButton(
@@ -34,11 +31,12 @@ class AppBarProfile extends StatelessWidget {
         ),
         InkWell(
           onTap: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfilePage(),));
+            MyNavigator.push(const ProfilePageView());
           },
-          child: const CircleAvatar(
-            backgroundImage: NetworkImage('https://media.istockphoto.com/photos/millennial-male-team-leader-organize-virtual-workshop-with-employees-picture-id1300972574?b=1&k=20&m=1300972574&s=170667a&w=0&h=2nBGC7tr0kWIU8zRQ3dMg-C5JLo9H2sNUuDjQ5mlYfo='),
-          ),
+          child: const UserAvatar(
+            errorWidget: Icon(Icons.error,
+              color: Colors.white,),
+          )
         ),
         IconButton(
           onPressed: () {},

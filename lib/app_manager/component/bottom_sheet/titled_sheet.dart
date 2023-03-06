@@ -44,8 +44,8 @@ class TitledSheet extends StatelessWidget {
               )),
               IconButton(onPressed: (){
                 MyNavigator.pop();
-              }, icon:  Icon(Icons.clear,
-              color: AppColor.secondaryColor,))
+              }, icon:  const Icon(Icons.clear,
+              color: AppColor.primaryColor,))
             ],
           ),
         ),
