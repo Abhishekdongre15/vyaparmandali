@@ -11,6 +11,7 @@ import 'package:vyaparmandali/model/user.dart';
 import 'package:vyaparmandali/view/screen/splash_screen_view.dart';
 import 'package:vyaparmandali/view_model/group_view_model.dart';
 import 'package:vyaparmandali/view_model/login_view_model.dart';
+import 'package:vyaparmandali/view_model/narration_view_model.dart';
 import 'package:vyaparmandali/view_model/registration_view_model.dart';
 
 class MyHttpOverrides extends HttpOverrides {
@@ -41,7 +42,9 @@ Future main() async {
         ChangeNotifierProvider<LoginViewModel>(
             create: (_) => LoginViewModel()),
         ChangeNotifierProvider<GroupViewModel>(
-            create: (_) => GroupViewModel())
+            create: (_) => GroupViewModel()),
+        ChangeNotifierProvider<NarrationViewModel>(
+            create: (_) => NarrationViewModel())
       ],
       child: const MyApp()));
 }
