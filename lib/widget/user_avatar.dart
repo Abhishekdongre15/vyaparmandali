@@ -6,7 +6,8 @@ import 'package:vyaparmandali/authentication/user_repository.dart';
 
 class UserAvatar extends StatelessWidget {
   final double? radius;
-  const UserAvatar({Key? key, this.radius}) : super(key: key);
+  final Widget? errorWidget;
+  const UserAvatar({Key? key, this.radius, this.errorWidget}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +23,7 @@ class UserAvatar extends StatelessWidget {
                   backgroundImage: imageProvider,
                 ),
             placeholder: (context, url) => ProjectConstant.placeHolder,
-            errorWidget: (context, url, error) =>
-            ProjectConstant.imageErrorIconWidget,
+            errorWidget: (context, url, error) => errorWidget??ProjectConstant.imageErrorIconWidget,
           );
         });
   }

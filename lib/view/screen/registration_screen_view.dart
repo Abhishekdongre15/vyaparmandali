@@ -7,6 +7,7 @@ import 'package:vyaparmandali/app_manager/component/password_field.dart';
 import 'package:vyaparmandali/app_manager/extension/valid_password.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/gen/assets.gen.dart';
+import 'package:vyaparmandali/model/user.dart';
 import 'package:vyaparmandali/util/email_validation.dart';
 import 'package:vyaparmandali/view_model/registration_view_model.dart';
 
@@ -14,7 +15,8 @@ import '../../util/constants.dart';
 
 
 class RegistrationScreenView extends StatefulWidget {
-  const RegistrationScreenView({Key? key}) : super(key: key);
+  final User? updateUser;
+  const RegistrationScreenView({Key? key, this.updateUser}) : super(key: key);
 
   @override
   State<RegistrationScreenView> createState() => _RegistrationScreenViewState();
@@ -30,7 +32,16 @@ class _RegistrationScreenViewState extends State<RegistrationScreenView> {
   }
 
   get(){
-    RegistrationViewModel.of(context).initiate();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      if(widget.updateUser!=null){
+        RegistrationViewModel.of(context).initiateUpdate(
+            widget.updateUser!
+        );
+      }else{
+        RegistrationViewModel.of(context).initiate();
+      }
+    });
+
   }
 
 
@@ -59,7 +70,7 @@ class _RegistrationScreenViewState extends State<RegistrationScreenView> {
           Padding(
             padding: const EdgeInsets.only(left: 20.0),
             child: Text(
-              'Fill Form',
+              widget.updateUser!=null? "Update":'Fill Form',
               style: kLoginTitleStyle(size),
             ),
           ),
@@ -69,7 +80,7 @@ class _RegistrationScreenViewState extends State<RegistrationScreenView> {
           Padding(
             padding: const EdgeInsets.only(left: 20.0),
             child: Text(
-              'Welcome Here',
+              widget.updateUser!=null? "profile":'Welcome Here',
               style: kLoginSubtitleStyle(size),
             ),
           ),
@@ -85,17 +96,18 @@ class _RegistrationScreenViewState extends State<RegistrationScreenView> {
                   Widget submitButton=TextButton(
                     onPressed: () {
                       if (Form.of(ctx).validate()) {
-                        viewModel.onPressSubmit();
+                          viewModel.onPressSubmit(widget.updateUser);
+
+
                       }
                       else{
                         Alert.show("Fields are Not validated");
                       }
                     },
-                    child: const Center(child: Text('Submit Form'),),
+                    child:  Center(child: Text(widget.updateUser!=null? "Update Profile":'Submit Form'),),
                   );
                   return Column(
                     children: [
-                      /// First name and Last name
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -207,11 +219,11 @@ class _RegistrationScreenViewState extends State<RegistrationScreenView> {
                           return null;
                         },
                       ),
-                      SizedBox(
+                      widget.updateUser!=null? Container():SizedBox(
                         height: size.height * 0.02,
                       ),
 
-                      PasswordField(
+                      widget.updateUser!=null? Container():PasswordField(
                         controller: viewModel.passwordC,
                         hintText: "Enter Password",
                         prefixIcon: const Icon(Icons.password),
@@ -227,9 +239,10 @@ class _RegistrationScreenViewState extends State<RegistrationScreenView> {
                       SizedBox(
                         height: size.height * 0.02,
                       ),
-
-                      ///Country Picker
                       CSCPicker(
+                        currentCountry: viewModel.country,
+                        currentState: viewModel.state,
+                        currentCity: viewModel.city,
                         layout: Layout.vertical,
                         // defaultCountry: DefaultCountry.India,
                         flagState: CountryFlag.ENABLE,
@@ -263,12 +276,13 @@ class _RegistrationScreenViewState extends State<RegistrationScreenView> {
 
                       /// Requirement
                       TextFormField(
-                        maxLines: 3,
+                        maxLines: 10,
+                        minLines: 1,
                         style: kTextFormFieldStyle(),
                         controller: viewModel.descriptionC,
                         decoration: const InputDecoration(
-                          hintText: 'Description',
-                          label: Text('Give Some Requirement'),
+                          hintText: 'Enter Description',
+                          label: Text('Description'),
                         ),
                         // The validator receives the text that the user has entered.
                         validator: (value) {
@@ -285,7 +299,7 @@ class _RegistrationScreenViewState extends State<RegistrationScreenView> {
                       SizedBox(
                         height: size.height * 0.02,
                       ),
-                      GestureDetector(
+                      widget.updateUser!=null? Container():GestureDetector(
                         onTap: () {
                           Navigator.pop(context);
                         },
@@ -304,7 +318,7 @@ class _RegistrationScreenViewState extends State<RegistrationScreenView> {
                           ),
                         ),
                       ),
-                      SizedBox(
+                      widget.updateUser!=null? Container():SizedBox(
                         height: size.height * 0.02,
                       ),
                     ],
@@ -348,7 +362,7 @@ class _RegistrationScreenViewState extends State<RegistrationScreenView> {
       child: ColoredSafeArea(
         child: Scaffold(
           appBar: AppBar(
-
+            title:  Text( widget.updateUser!=null? "Update Profile":"Register"),
           ),
           backgroundColor: Colors.white,
           body: LayoutBuilder(

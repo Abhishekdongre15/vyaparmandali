@@ -22,17 +22,15 @@ class MyDrawer extends StatelessWidget {
           children: <Widget>[
         SizedBox(
           height: 200,
-          child: DrawerHeader(
-            child: Column(
-              children:  [
-                const Expanded(
-                  child: UserAvatar(
-                    radius: 40,
-                  ),
+          child: Column(
+            children:  [
+              const Expanded(
+                child: UserAvatar(
+                  radius: 40,
                 ),
-
-                Padding(
-                  padding: const EdgeInsets.all(5),
+              ),
+              Padding(
+                padding: const EdgeInsets.all(10),
                 child: Selector<UserRepository, User>(
                     shouldRebuild: (prev, nex) => true,
                     selector: (buildContext, vm) => vm.getUser,
@@ -41,8 +39,7 @@ class MyDrawer extends StatelessWidget {
                         style: theme.textTheme.titleMedium,
                       );
                     }),)
-              ],
-            ),
+            ],
           ),
         ),
         Expanded(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 
-import '../components/app_bar_profile.dart';
+import '../widget/app_bar_profile.dart';
 import '../components/drawer_list.dart';
 import '../util/constants.dart';
 import '../util/my_box.dart';
