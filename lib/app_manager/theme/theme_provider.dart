@@ -76,9 +76,12 @@ class ThemeProvider with ChangeNotifier {
   static const TextSelectionThemeData _textSelectionTheme=TextSelectionThemeData(cursorColor: AppColor.black);
 
   static const AppBarTheme _appBarTheme=AppBarTheme(
-    backgroundColor: Colors.transparent,
+    backgroundColor: AppColor.primaryColor,
     centerTitle: true,
     iconTheme: _iconTheme,
+    titleTextStyle: TextStyle(
+      color: Colors.black
+    ),
     elevation: 0
   );
 
@@ -87,11 +90,14 @@ class ThemeProvider with ChangeNotifier {
   static const IconThemeData _iconTheme=IconThemeData(
       color: Colors.black
   );
+  static const FloatingActionButtonThemeData _floatingActionButtonThemeData=FloatingActionButtonThemeData(
+      backgroundColor: AppColor.primaryColor
+  );
 
   static ThemeData lightTheme(){
     return ThemeData(
       iconTheme: _iconTheme,
-
+      floatingActionButtonTheme: _floatingActionButtonThemeData,
       unselectedWidgetColor: unselectedWidgetColor,
       appBarTheme: _appBarTheme,
       textSelectionTheme: _textSelectionTheme,
@@ -124,6 +130,7 @@ class ThemeProvider with ChangeNotifier {
 
   static ThemeData darkTheme(){
     return ThemeData(
+        floatingActionButtonTheme: _floatingActionButtonThemeData,
         iconTheme: _iconTheme,
         unselectedWidgetColor: unselectedWidgetColor,
         appBarTheme: _appBarTheme,

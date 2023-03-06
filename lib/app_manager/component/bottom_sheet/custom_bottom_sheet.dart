@@ -1,29 +1,37 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:vyaparmandali/app_manager/component/shadow_container.dart';
+import 'package:vyaparmandali/app_manager/helper/responsive/responsive.dart';
+import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 
 class CustomBottomSheet {
 
 
-  static dynamic open(BuildContext context,{
-    Widget? child
+  static dynamic open({
+    required Widget child
   }) async{
-
-    final theme=Theme.of(context);
-    var data= await showBarModalBottomSheet (
+    BuildContext context=NavigationService.context!;
+    var data= await showModalBottomSheet<void> (
       context: context,
       isDismissible: true,
+        isScrollControlled: true,
+
+      constraints: Responsive.isSmallScreen(context)? null: BoxConstraints(
+        maxWidth: Responsive.smallScreenWidth
+      ),
       backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topRight: Radius.circular(10),
+          topLeft: Radius.circular(10),
+        )
+      ),
       builder: (context) => SingleChildScrollView(
         child: Padding(
           padding: MediaQuery.of(context).viewInsets,
-          child: child??ShadowContainer(
-            color: theme.primaryColor,
-          ),
+          child: child,
         ),
-      ),
+      )
     );
     return data;
   }

@@ -1,7 +1,6 @@
 import 'package:csc_picker/csc_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:provider/provider.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/app_manager/component/colored_safe_area.dart';
 import 'package:vyaparmandali/app_manager/component/password_field.dart';

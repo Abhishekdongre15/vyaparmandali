@@ -1,5 +1,4 @@
 import 'package:vyaparmandali/app_manager/helper/navigator.dart';
-import 'package:vyaparmandali/app_manager/helper/responsive/widget/responsive_row_column.dart';
 import 'package:vyaparmandali/app_manager/theme/widget_theme_data/custom_button_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -22,16 +21,11 @@ class FunctionalSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    return ResponsiveRowColumn(
-      rowIn: RowIn.bigScreen,
-      rowCrossAxisAlignment: CrossAxisAlignment.center,
-      rowFlex: const [
-        2,
-        1
-      ],
+    return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(20, 20, 20, 20),
+          padding: const EdgeInsets.fromLTRB(20, 40, 20, 20),
           child: Text(message.toString(),
               textAlign: textAlign ?? TextAlign.center,
               style: theme.textTheme.titleMedium!.copyWith(

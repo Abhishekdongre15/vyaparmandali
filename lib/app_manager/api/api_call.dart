@@ -115,15 +115,14 @@ class ApiCall {
       Alert.show("Add base url in while initiating reuse kit");
     }
     String myUrl = (newBaseUrl ?? ApiConstant.baseUrl) + url;
-    String accessToken = UserRepository.of(context).getUser.token.toString();
+    String accessToken = UserRepository.of(context).getUser.token??"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzQ5MzB9.4wWJLSYp-6U9xHcXHXssfB_wBZCMh7vCbGr4Un-ObpA";
     // String userId = "";
     Map body = apiCallType.body??{};
     Map<String,String>? header = token?{
-      'authorization': accessToken.toString(),
+      'Authorization': accessToken.toString(),
     }:{};
 
     header.addAll(apiCallType.header);
-
 
     if(onFoundStoredData!=null){
       var storedData=(await _localStorage.fetchData(key: url));
@@ -146,11 +145,14 @@ class ApiCall {
     try {
       switch (apiCallType.apiType) {
         case ApiType.post:
+
           response = await http.post(
               Uri.parse(myUrl),
               body: body,
               headers: header
           );
+
+
           break;
 
         case ApiType.get:
@@ -281,9 +283,6 @@ class ApiCall {
       }
     }
     catch (e) {
-
-
-
       if (showRetryEvent) {
         // ignore: use_build_context_synchronously
         var retry = await errorAlert(context, 'Alert', e.toString(),);
