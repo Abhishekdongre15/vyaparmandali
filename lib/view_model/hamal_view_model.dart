@@ -84,7 +84,7 @@ class HamalViewModel extends ChangeNotifier {
   Future<void> addHamal({
     String? id
   }) async{
-    PD.show(message: id==null? "Adding Haml":"Updating Hamal");
+    ProgressDialogue.show(message: id==null? "Adding Haml":"Updating Hamal");
     try {
       var data=
       id!=null?
@@ -105,7 +105,7 @@ class HamalViewModel extends ChangeNotifier {
           }),
           token: true
       );
-      PD.hide();
+      ProgressDialogue.hide();
       Alert.show(data['message']);
       if(data['code']==200 && data['status']==true){
         MyNavigator.pop();
@@ -116,7 +116,7 @@ class HamalViewModel extends ChangeNotifier {
     }
     catch (e){
       Alert.show(e.toString());
-      PD.hide();
+      ProgressDialogue.hide();
     }
   }
 
@@ -125,7 +125,7 @@ class HamalViewModel extends ChangeNotifier {
   Future<void> deleteHamal({
     required String id
   }) async{
-    PD.show(message: "Deleting Hamal");
+    ProgressDialogue.show(message: "Deleting Hamal");
     try {
       var data=await _api.call(
           url: "delete_hamal_master_data",
@@ -134,7 +134,7 @@ class HamalViewModel extends ChangeNotifier {
           }),
           token: true
       );
-      PD.hide();
+      ProgressDialogue.hide();
       Alert.show(data['message']);
       if(data['code']==200 && data['status']==true){
         fetchHamal();
@@ -144,7 +144,7 @@ class HamalViewModel extends ChangeNotifier {
     }
     catch (e){
       Alert.show(e.toString());
-      PD.hide();
+      ProgressDialogue.hide();
     }
   }
 

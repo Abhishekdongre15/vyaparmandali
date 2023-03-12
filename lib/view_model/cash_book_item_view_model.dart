@@ -83,7 +83,7 @@ class CashBookItemViewModel extends ChangeNotifier {
   Future<void> addGroup({
     String? id
   }) async{
-    PD.show(message: id==null? "Adding Group":"Updating Group");
+    ProgressDialogue.show(message: id==null? "Adding Group":"Updating Group");
     try {
       var data=
       id!=null?
@@ -104,7 +104,7 @@ class CashBookItemViewModel extends ChangeNotifier {
           }),
           token: true
       );
-      PD.hide();
+      ProgressDialogue.hide();
       Alert.show(data['message']);
       if(data['code']==200 && data['status']==true){
         MyNavigator.pop();
@@ -115,7 +115,7 @@ class CashBookItemViewModel extends ChangeNotifier {
     }
     catch (e){
       Alert.show(e.toString());
-      PD.hide();
+      ProgressDialogue.hide();
     }
   }
 
@@ -124,7 +124,7 @@ class CashBookItemViewModel extends ChangeNotifier {
   Future<void> deleteGroup({
     required String id
   }) async{
-    PD.show(message: "Deleting Group");
+    ProgressDialogue.show(message: "Deleting Group");
     try {
       var data=await _api.call(
           url: "delete_group_master_data",
@@ -133,7 +133,7 @@ class CashBookItemViewModel extends ChangeNotifier {
           }),
           token: true
       );
-      PD.hide();
+      ProgressDialogue.hide();
       Alert.show(data['message']);
       if(data['code']==200 && data['status']==true){
         fetchGroups();
@@ -143,7 +143,7 @@ class CashBookItemViewModel extends ChangeNotifier {
     }
     catch (e){
       Alert.show(e.toString());
-      PD.hide();
+      ProgressDialogue.hide();
     }
   }
 
