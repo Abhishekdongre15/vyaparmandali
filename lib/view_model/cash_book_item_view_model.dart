@@ -9,9 +9,9 @@ import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/group.dart';
 
-class GroupViewModel extends ChangeNotifier {
+class CashBookItemViewModel extends ChangeNotifier {
 
-  static GroupViewModel of(BuildContext context)=>Provider.of<GroupViewModel>(context,listen: false);
+  static CashBookItemViewModel of(BuildContext context)=>Provider.of<CashBookItemViewModel>(context,listen: false);
 
   final ApiCall _api=ApiCall();
 
@@ -63,9 +63,9 @@ class GroupViewModel extends ChangeNotifier {
       );
 
       if(data['code']==200 && data['status']==true){
-          groupDataResponse=ApiResponse<GroupData>.completed(
-              GroupData.fromJson(data)
-          );
+        groupDataResponse=ApiResponse<GroupData>.completed(
+            GroupData.fromJson(data)
+        );
       }
       else {
         groupDataResponse=ApiResponse<GroupData>.empty("Data Not found");
@@ -81,8 +81,8 @@ class GroupViewModel extends ChangeNotifier {
 
 
   Future<void> addGroup({
-  String? id
-}) async{
+    String? id
+  }) async{
     ProgressDialogue.show(message: id==null? "Adding Group":"Updating Group");
     try {
       var data=
@@ -96,7 +96,7 @@ class GroupViewModel extends ChangeNotifier {
           }),
           token: true
       )
-      :await _api.call(
+          :await _api.call(
           url: "add_group_master_data",
           apiCallType: ApiCallType.post(body: {
             "code": codeC.text,
@@ -122,8 +122,8 @@ class GroupViewModel extends ChangeNotifier {
 
 
   Future<void> deleteGroup({
-  required String id
-}) async{
+    required String id
+  }) async{
     ProgressDialogue.show(message: "Deleting Group");
     try {
       var data=await _api.call(

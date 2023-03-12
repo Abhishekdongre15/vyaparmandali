@@ -6,7 +6,6 @@ import 'package:vyaparmandali/view/balance_sheet/eoy_kasar_dr_view.dart';
 import 'package:vyaparmandali/view/data_entry/data_entry_view.dart';
 import 'package:vyaparmandali/view/master/ac_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/codes/group/group_master_view.dart';
-import 'package:vyaparmandali/view/master/codes/narration_view.dart';
 import 'package:vyaparmandali/view/master/items/hamali_exp_view.dart';
 import 'package:vyaparmandali/view/master/items/item_exp_view.dart';
 import 'package:vyaparmandali/view/master/items/item_view.dart';
@@ -62,6 +61,8 @@ import 'package:vyaparmandali/view/report/transport report/transportwise_patti_o
 import 'package:vyaparmandali/view/report/vacchat report/jama_nondh.dart';
 import 'package:vyaparmandali/view/report/vacchat report/jama_nondh_summery_monthly_view.dart';
 import 'package:vyaparmandali/view/report/vacchat report/jama_nondh_summery_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/codes/hamal/hamal_master_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/codes/narrartion/narration_master_view.dart';
 import 'entry.dart';
 
 class EntryItem extends StatelessWidget {
@@ -107,11 +108,14 @@ class EntryItem extends StatelessWidget {
 
   void callPages(String pages) async{
     switch (pages) {
+      case 'hamal':
+        await MyNavigator.push(const HamalMasterView());
+        break;
       case 'group':
         await MyNavigator.push(const GroupMasterView());
         break;
       case 'narration':
-        MyNavigator.push(const NarrationView());
+        MyNavigator.push(const NarrationMasterView());
         break;
       case 'a/c master':
         MyNavigator.push(const ACMasterListView());

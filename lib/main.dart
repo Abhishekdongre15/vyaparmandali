@@ -9,8 +9,11 @@ import 'package:vyaparmandali/app_manager/theme/theme_provider.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/user.dart';
 import 'package:vyaparmandali/view/screen/splash_screen_view.dart';
+import 'package:vyaparmandali/view_model/cash_book_item_view_model.dart';
 import 'package:vyaparmandali/view_model/group_view_model.dart';
+import 'package:vyaparmandali/view_model/hamal_view_model.dart';
 import 'package:vyaparmandali/view_model/login_view_model.dart';
+import 'package:vyaparmandali/view_model/narration_view_model.dart';
 import 'package:vyaparmandali/view_model/registration_view_model.dart';
 
 class MyHttpOverrides extends HttpOverrides {
@@ -41,7 +44,13 @@ Future main() async {
         ChangeNotifierProvider<LoginViewModel>(
             create: (_) => LoginViewModel()),
         ChangeNotifierProvider<GroupViewModel>(
-            create: (_) => GroupViewModel())
+            create: (_) => GroupViewModel()),
+        ChangeNotifierProvider<NarrationViewModel>(
+            create: (_) => NarrationViewModel()),
+        ChangeNotifierProvider<CashBookItemViewModel>(
+            create: (_) => CashBookItemViewModel()),
+        ChangeNotifierProvider<HamalViewModel>(
+            create: (_) => HamalViewModel())
       ],
       child: const MyApp()));
 }

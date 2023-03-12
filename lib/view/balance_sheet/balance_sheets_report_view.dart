@@ -11,7 +11,6 @@ class BalanceSheetReportView extends StatefulWidget {
 class _BalanceSheetReportViewState extends State<BalanceSheetReportView> {
   DateTime fdate = DateTime(2022, 11, 17);
 
-  // DateTime tdate = DateTime(2022, 11, 17);
 
   @override
   Widget build(BuildContext context) {

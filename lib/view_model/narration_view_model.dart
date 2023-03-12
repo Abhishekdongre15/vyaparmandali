@@ -7,20 +7,20 @@ import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/app_manager/helper/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
-import 'package:vyaparmandali/model/group.dart';
+import 'package:vyaparmandali/model/narration.dart';
 
-class GroupViewModel extends ChangeNotifier {
+class NarrationViewModel extends ChangeNotifier {
 
-  static GroupViewModel of(BuildContext context)=>Provider.of<GroupViewModel>(context,listen: false);
+  static NarrationViewModel of(BuildContext context)=>Provider.of<NarrationViewModel>(context,listen: false);
 
   final ApiCall _api=ApiCall();
 
   TextEditingController codeC = TextEditingController();
-  TextEditingController nameC = TextEditingController();
+  TextEditingController descriptionC = TextEditingController();
 
 
 
-  void initiateAddGroup(){
+  void initiateAddNarration(){
     _clearFields();
   }
 
@@ -28,34 +28,34 @@ class GroupViewModel extends ChangeNotifier {
 
   void _clearFields() {
     codeC.clear();
-    nameC.clear();
+    descriptionC.clear();
   }
 
 
-  void initiateUpdateGroup(Group thisGroup){
+  void initiateUpdateNarration(Narration thisNarration){
     _clearFields();
-    codeC.text=thisGroup.code??"";
-    nameC.text=thisGroup.name??"";
+    codeC.text=thisNarration.code??"";
+    descriptionC.text=thisNarration.description??"";
   }
 
 
 
-  ApiResponse<GroupData> _groupDataResponse=ApiResponse<GroupData>.initial("Initial");
-  ApiResponse<GroupData> get groupDataResponse=>_groupDataResponse;
-  set groupDataResponse(ApiResponse<GroupData> val){
-    _groupDataResponse=val;
+  ApiResponse<NarrationData> _narrationDataResponse=ApiResponse<NarrationData>.initial("Initial");
+  ApiResponse<NarrationData> get narrationDataResponse=>_narrationDataResponse;
+  set narrationDataResponse(ApiResponse<NarrationData> val){
+    _narrationDataResponse=val;
     notifyListeners();
   }
 
 
-  Future<void> fetchGroups() async {
-    if((groupDataResponse.data?.getAllData??[]).isEmpty){
-      groupDataResponse=ApiResponse<GroupData>.loading('Fetching Group');
+  Future<void> fetchNarrations() async {
+    if((narrationDataResponse.data?.getAllData??[]).isEmpty){
+      narrationDataResponse=ApiResponse<NarrationData>.loading('Fetching Narrations');
     }
 
     try{
       var data=await _api.call(
-          url: "get_group_master_data",
+          url: "get_narration_data",
           apiCallType: ApiCallType.post(body: {
             "id": UserRepository.of(NavigationService.context!).getUser.id.toString()
           }),
@@ -63,16 +63,16 @@ class GroupViewModel extends ChangeNotifier {
       );
 
       if(data['code']==200 && data['status']==true){
-          groupDataResponse=ApiResponse<GroupData>.completed(
-              GroupData.fromJson(data)
-          );
+        narrationDataResponse=ApiResponse<NarrationData>.completed(
+            NarrationData.fromJson(data)
+        );
       }
       else {
-        groupDataResponse=ApiResponse<GroupData>.empty("Data Not found");
+        narrationDataResponse=ApiResponse<NarrationData>.empty("Data Not found");
       }
     }
     catch(e){
-      groupDataResponse=ApiResponse<GroupData>.error(e.toString());
+      narrationDataResponse=ApiResponse<NarrationData>.error(e.toString());
     }
 
   }
@@ -80,27 +80,27 @@ class GroupViewModel extends ChangeNotifier {
 
 
 
-  Future<void> addGroup({
-  String? id
-}) async{
-    ProgressDialogue.show(message: id==null? "Adding Group":"Updating Group");
+  Future<void> addNarration({
+    String? id
+  }) async{
+    ProgressDialogue.show(message: id==null? "Adding Narration":"Updating Narration");
     try {
       var data=
       id!=null?
       await _api.call(
-          url: "update_group_master_data",
+          url: "update_narration_data",
           apiCallType: ApiCallType.post(body: {
             "code": codeC.text,
-            "name": nameC.text,
+            "description": descriptionC.text,
             "id": id
           }),
           token: true
       )
-      :await _api.call(
-          url: "add_group_master_data",
+          :await _api.call(
+          url: "add_narration_data",
           apiCallType: ApiCallType.post(body: {
             "code": codeC.text,
-            "name": nameC.text,
+            "description": descriptionC.text,
           }),
           token: true
       );
@@ -108,7 +108,7 @@ class GroupViewModel extends ChangeNotifier {
       Alert.show(data['message']);
       if(data['code']==200 && data['status']==true){
         MyNavigator.pop();
-        fetchGroups();
+        fetchNarrations();
       }
       else {
       }
@@ -121,13 +121,13 @@ class GroupViewModel extends ChangeNotifier {
 
 
 
-  Future<void> deleteGroup({
-  required String id
-}) async{
-    ProgressDialogue.show(message: "Deleting Group");
+  Future<void> deleteNarration({
+    required String id
+  }) async{
+    ProgressDialogue.show(message: "Deleting Narration");
     try {
       var data=await _api.call(
-          url: "delete_group_master_data",
+          url: "delete_narration_data",
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
           }),
@@ -136,7 +136,7 @@ class GroupViewModel extends ChangeNotifier {
       ProgressDialogue.hide();
       Alert.show(data['message']);
       if(data['code']==200 && data['status']==true){
-        fetchGroups();
+        fetchNarrations();
       }
       else {
       }

@@ -23,10 +23,14 @@ class LoginViewModel extends ChangeNotifier {
   Future<void> login({
   required String email,
   required String password,
+    bool updating=false,
 }) async{
 
     try  {
-      PD.show(message: "Processing Data");
+      if(updating==false){
+        ProgressDialogue.show(message: "Processing Data");
+      }
+
       var data= await _api.call(
           url: "user_login",
           apiCallType: ApiCallType.post(
@@ -35,12 +39,19 @@ class LoginViewModel extends ChangeNotifier {
                 "password": password,
               }
           ));
-      PD.hide();
+
+      if(updating==false){
+        ProgressDialogue.hide();
+      }
       if(data['code']==200 && data['status']==true){
         emailC.clear();
         passwordC.clear();
-        UserRepository.of(NavigationService.context!).updateUserData(User.fromJson(data['data'][0])).then((value) =>
-            MyNavigator.pushReplacement( const DashboardView())
+
+        UserRepository.of(NavigationService.context!).updateUserData(User.fromJson(data['data'][0])).then((value) {
+          if(updating==false){
+            MyNavigator.pushReplacement( const DashboardView());
+          }
+        }
         );
       }
       else {
@@ -48,7 +59,9 @@ class LoginViewModel extends ChangeNotifier {
       }
     }
     catch (e) {
-      PD.hide();
+      if(updating==false){
+        ProgressDialogue.hide();
+      }
       Alert.show(e.toString());
     }
   }
