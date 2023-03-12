@@ -83,7 +83,7 @@ class NarrationViewModel extends ChangeNotifier {
   Future<void> addNarration({
     String? id
   }) async{
-    PD.show(message: id==null? "Adding Narration":"Updating Narration");
+    ProgressDialogue.show(message: id==null? "Adding Narration":"Updating Narration");
     try {
       var data=
       id!=null?
@@ -104,7 +104,7 @@ class NarrationViewModel extends ChangeNotifier {
           }),
           token: true
       );
-      PD.hide();
+      ProgressDialogue.hide();
       Alert.show(data['message']);
       if(data['code']==200 && data['status']==true){
         MyNavigator.pop();
@@ -115,7 +115,7 @@ class NarrationViewModel extends ChangeNotifier {
     }
     catch (e){
       Alert.show(e.toString());
-      PD.hide();
+      ProgressDialogue.hide();
     }
   }
 
@@ -124,7 +124,7 @@ class NarrationViewModel extends ChangeNotifier {
   Future<void> deleteNarration({
     required String id
   }) async{
-    PD.show(message: "Deleting Narration");
+    ProgressDialogue.show(message: "Deleting Narration");
     try {
       var data=await _api.call(
           url: "delete_narration_data",
@@ -133,7 +133,7 @@ class NarrationViewModel extends ChangeNotifier {
           }),
           token: true
       );
-      PD.hide();
+      ProgressDialogue.hide();
       Alert.show(data['message']);
       if(data['code']==200 && data['status']==true){
         fetchNarrations();
@@ -143,7 +143,7 @@ class NarrationViewModel extends ChangeNotifier {
     }
     catch (e){
       Alert.show(e.toString());
-      PD.hide();
+      ProgressDialogue.hide();
     }
   }
 

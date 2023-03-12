@@ -28,7 +28,7 @@ class LoginViewModel extends ChangeNotifier {
 
     try  {
       if(updating==false){
-        PD.show(message: "Processing Data");
+        ProgressDialogue.show(message: "Processing Data");
       }
 
       var data= await _api.call(
@@ -41,7 +41,7 @@ class LoginViewModel extends ChangeNotifier {
           ));
 
       if(updating==false){
-        PD.hide();
+        ProgressDialogue.hide();
       }
       if(data['code']==200 && data['status']==true){
         emailC.clear();
@@ -60,7 +60,7 @@ class LoginViewModel extends ChangeNotifier {
     }
     catch (e) {
       if(updating==false){
-        PD.hide();
+        ProgressDialogue.hide();
       }
       Alert.show(e.toString());
     }

@@ -7,7 +7,7 @@ import 'package:vyaparmandali/gen/assets.gen.dart';
 late BuildContext currentContext;
 
 
-class PD{
+class ProgressDialogue{
 
 
   static show({
@@ -48,7 +48,7 @@ _showProgressDialogue(message,) async{
       currentContext= dialogContext;
       return WillPopScope(
         onWillPop: (){
-          PD.hide();
+          ProgressDialogue.hide();
           return Future.value(false);
         },
         child: Scaffold(

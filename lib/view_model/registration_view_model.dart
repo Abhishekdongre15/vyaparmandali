@@ -106,7 +106,7 @@ class RegistrationViewModel extends ChangeNotifier{
 
   Future<void> _register() async{
     try  {
-      PD.show(message: "Processing Data");
+      ProgressDialogue.show(message: "Processing Data");
       var data= await _api.call(
           url: "user_register",
           apiCallType: ApiCallType.post(
@@ -122,7 +122,7 @@ class RegistrationViewModel extends ChangeNotifier{
                 "city": city,
               }
           ));
-      PD.hide();
+      ProgressDialogue.hide();
       Alert.show(data['message']);
       if(data['code']==200 && data['status']==true){
         _clearFields();
@@ -133,7 +133,7 @@ class RegistrationViewModel extends ChangeNotifier{
       }
     }
     catch (e) {
-      PD.hide();
+      ProgressDialogue.hide();
       Alert.show(e.toString());
     }
   }
@@ -143,7 +143,7 @@ class RegistrationViewModel extends ChangeNotifier{
   required String id
 }) async{
     try  {
-      PD.show(message: "Updating Profile");
+      ProgressDialogue.show(message: "Updating Profile");
       var data= await _api.call(
           url: "update_profile",
           apiCallType: ApiCallType.post(
@@ -160,7 +160,7 @@ class RegistrationViewModel extends ChangeNotifier{
                 "id": id
               }
           ));
-      PD.hide();
+      ProgressDialogue.hide();
       Alert.show(data['message']);
       if(data['code']==200 && data['status']==true){
         LoginViewModel.of(NavigationService.context!).login(email: emailC.text, password: passwordC.text,
@@ -173,7 +173,7 @@ class RegistrationViewModel extends ChangeNotifier{
       }
     }
     catch (e) {
-      PD.hide();
+      ProgressDialogue.hide();
       Alert.show(e.toString());
     }
   }
