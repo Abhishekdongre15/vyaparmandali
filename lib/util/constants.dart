@@ -22,6 +22,12 @@ final List<Entry> data = <Entry>[
     'MASTER',
     <Entry>[
       Entry(
+        'NEW',
+        <Entry>[
+          Entry('HAMAL'),
+        ],
+      ),
+      Entry(
         'CODES',
         <Entry>[
           Entry('GROUP'),
