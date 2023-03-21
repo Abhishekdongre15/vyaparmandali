@@ -39,7 +39,8 @@ class LoginViewModel extends ChangeNotifier {
                 "password": password,
               }
           ),
-      token: true);
+      token: true,
+      newToken: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MjQzMDF9.-CmJlmBM1iY3-zSvrlgsGJVTL2EXoZWxXpgbZqbJPmU");
 
       if(updating==false){
         ProgressDialogue.hide();

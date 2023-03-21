@@ -62,6 +62,7 @@ import 'package:vyaparmandali/view/report/vacchat report/jama_nondh.dart';
 import 'package:vyaparmandali/view/report/vacchat report/jama_nondh_summery_monthly_view.dart';
 import 'package:vyaparmandali/view/report/vacchat report/jama_nondh_summery_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/codes/narrartion/narration_master_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/agent/agent_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/hamal/hamal_master_view.dart';
 import 'entry.dart';
 
@@ -92,6 +93,7 @@ class EntryItem extends StatelessWidget {
       );
     } else {
       return ExpansionTile(
+        collapsedIconColor: Colors.black,
         key: PageStorageKey<Entry>(root),
         title: Text(
           root.title,
@@ -108,6 +110,9 @@ class EntryItem extends StatelessWidget {
 
   void callPages(String pages) async{
     switch (pages) {
+      case 'agent':
+        await MyNavigator.push(const AgentMasterView());
+        break;
       case 'hamal':
         await MyNavigator.push(const HamalMasterView());
         break;
