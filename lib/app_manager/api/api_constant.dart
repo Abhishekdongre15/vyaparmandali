@@ -3,7 +3,7 @@
 import 'package:vyaparmandali/gen/assets.gen.dart';
 
 class ApiConstant {
-  static String baseUrl = "https://softonauts.in/vyapar/";
+  static String baseUrl = "http://jsdsoftwares.com/vyapar/";
   static const Map cancelResponse = {
     'responseCode': 0,
     'message': 'Try Again...'

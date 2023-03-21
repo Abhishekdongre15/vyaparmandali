@@ -56,7 +56,7 @@ class HamalViewModel extends ChangeNotifier {
 
     try{
       var data=await _api.call(
-          url: "get_hamal_master_data",
+          url: "get-hamal-master-data",
           apiCallType: ApiCallType.post(body: {
             "id": UserRepository.of(NavigationService.context!).getUser.id.toString()
           }),
@@ -89,7 +89,7 @@ class HamalViewModel extends ChangeNotifier {
       var data=
       id!=null?
       await _api.call(
-          url: "update_hamal_master_data",
+          url: "update-hamal-master-data",
           apiCallType: ApiCallType.post(body: {
             "hamal_name": hamalNameC.text,
             "date_of_joining": DateFormat("dd/MM/yyyy").format(DateTime.parse(dateOfJoiningC.text)),
@@ -98,7 +98,7 @@ class HamalViewModel extends ChangeNotifier {
           token: true
       )
           :await _api.call(
-          url: "add_hamal_master_data",
+          url: "add-hamal-master-data",
           apiCallType: ApiCallType.post(body: {
             "hamal_name": hamalNameC.text,
             "date_of_joining": DateFormat("dd/MM/yyyy").format(DateTime.parse(dateOfJoiningC.text)),
@@ -128,7 +128,7 @@ class HamalViewModel extends ChangeNotifier {
     ProgressDialogue.show(message: "Deleting Hamal");
     try {
       var data=await _api.call(
-          url: "delete_hamal_master_data",
+          url: "delete-hamal-master-data",
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
           }),

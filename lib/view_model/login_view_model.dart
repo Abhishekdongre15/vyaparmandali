@@ -32,13 +32,14 @@ class LoginViewModel extends ChangeNotifier {
       }
 
       var data= await _api.call(
-          url: "user_login",
+          url: "user-login",
           apiCallType: ApiCallType.post(
               body: {
                 "email": email,
                 "password": password,
               }
-          ));
+          ),
+      token: true);
 
       if(updating==false){
         ProgressDialogue.hide();

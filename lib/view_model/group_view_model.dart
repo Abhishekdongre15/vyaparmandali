@@ -55,7 +55,7 @@ class GroupViewModel extends ChangeNotifier {
 
     try{
       var data=await _api.call(
-          url: "get_group_master_data",
+          url: "get-group-master-data",
           apiCallType: ApiCallType.post(body: {
             "id": UserRepository.of(NavigationService.context!).getUser.id.toString()
           }),
@@ -88,7 +88,7 @@ class GroupViewModel extends ChangeNotifier {
       var data=
       id!=null?
       await _api.call(
-          url: "update_group_master_data",
+          url: "update-group-master-data",
           apiCallType: ApiCallType.post(body: {
             "code": codeC.text,
             "name": nameC.text,
@@ -97,7 +97,7 @@ class GroupViewModel extends ChangeNotifier {
           token: true
       )
       :await _api.call(
-          url: "add_group_master_data",
+          url: "add-group-master-data",
           apiCallType: ApiCallType.post(body: {
             "code": codeC.text,
             "name": nameC.text,
@@ -127,7 +127,7 @@ class GroupViewModel extends ChangeNotifier {
     ProgressDialogue.show(message: "Deleting Group");
     try {
       var data=await _api.call(
-          url: "delete_group_master_data",
+          url: "delete-group-master-data",
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
           }),

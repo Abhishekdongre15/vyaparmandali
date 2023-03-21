@@ -5,7 +5,6 @@ import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/gen/assets.gen.dart';
 import 'package:vyaparmandali/model/user.dart';
-import 'package:vyaparmandali/widget/user_avatar.dart';
 
 import 'widget/profile_info.dart';
 

@@ -55,7 +55,7 @@ class NarrationViewModel extends ChangeNotifier {
 
     try{
       var data=await _api.call(
-          url: "get_narration_data",
+          url: "get-narration-data",
           apiCallType: ApiCallType.post(body: {
             "id": UserRepository.of(NavigationService.context!).getUser.id.toString()
           }),
@@ -88,7 +88,7 @@ class NarrationViewModel extends ChangeNotifier {
       var data=
       id!=null?
       await _api.call(
-          url: "update_narration_data",
+          url: "update-narration-data",
           apiCallType: ApiCallType.post(body: {
             "code": codeC.text,
             "description": descriptionC.text,
@@ -97,7 +97,7 @@ class NarrationViewModel extends ChangeNotifier {
           token: true
       )
           :await _api.call(
-          url: "add_narration_data",
+          url: "add-narration-data",
           apiCallType: ApiCallType.post(body: {
             "code": codeC.text,
             "description": descriptionC.text,
@@ -127,7 +127,7 @@ class NarrationViewModel extends ChangeNotifier {
     ProgressDialogue.show(message: "Deleting Narration");
     try {
       var data=await _api.call(
-          url: "delete_narration_data",
+          url: "delete-narration-data",
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
           }),

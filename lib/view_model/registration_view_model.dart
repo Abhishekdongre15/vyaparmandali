@@ -108,7 +108,7 @@ class RegistrationViewModel extends ChangeNotifier{
     try  {
       ProgressDialogue.show(message: "Processing Data");
       var data= await _api.call(
-          url: "user_register",
+          url: "user-register",
           apiCallType: ApiCallType.post(
               body: {
                 "firstname": firstNameC.text,
@@ -145,7 +145,7 @@ class RegistrationViewModel extends ChangeNotifier{
     try  {
       ProgressDialogue.show(message: "Updating Profile");
       var data= await _api.call(
-          url: "update_profile",
+          url: "update-profile",
           apiCallType: ApiCallType.post(
               body: {
                 "edit_firstname": firstNameC.text,

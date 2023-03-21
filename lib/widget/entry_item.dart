@@ -61,8 +61,8 @@ import 'package:vyaparmandali/view/report/transport report/transportwise_patti_o
 import 'package:vyaparmandali/view/report/vacchat report/jama_nondh.dart';
 import 'package:vyaparmandali/view/report/vacchat report/jama_nondh_summery_monthly_view.dart';
 import 'package:vyaparmandali/view/report/vacchat report/jama_nondh_summery_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/codes/hamal/hamal_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/codes/narrartion/narration_master_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/hamal/hamal_master_view.dart';
 import 'entry.dart';
 
 class EntryItem extends StatelessWidget {
