@@ -7,21 +7,21 @@ import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_s
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/titled_sheet.dart';
 import 'package:vyaparmandali/app_manager/constant/project_constant.dart';
 import 'package:vyaparmandali/model/product.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/product/add_product_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/weight/add_product_view.dart';
 import 'package:vyaparmandali/view_model/product_view_model.dart';
 import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/data_sources/product_data_source.dart';
 import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/my_sf_data_grid.dart';
 
-class ProductMasterView extends StatefulWidget {
-  const ProductMasterView({Key? key}) : super(key: key);
+class WeightMasterView extends StatefulWidget {
+  const WeightMasterView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return ProductMasterViewState();
+    return WeightMasterViewState();
   }
 }
 
-class ProductMasterViewState extends State<ProductMasterView> {
+class WeightMasterViewState extends State<WeightMasterView> {
 
 
   @override
