@@ -28,6 +28,7 @@ final List<Entry> data = <Entry>[
           Entry('AGENT'),
           Entry('BANK'),
           Entry('PRODUCT'),
+          Entry('WEIGHT'),
         ],
       ),
       Entry(
