@@ -18,6 +18,7 @@ import 'package:vyaparmandali/view_model/login_view_model.dart';
 import 'package:vyaparmandali/view_model/narration_view_model.dart';
 import 'package:vyaparmandali/view_model/product_view_model.dart';
 import 'package:vyaparmandali/view_model/registration_view_model.dart';
+import 'package:vyaparmandali/view_model/weight_view_model.dart';
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -60,6 +61,8 @@ Future main() async {
             create: (_) => BankViewModel()),
         ChangeNotifierProvider<ProductViewModel>(
             create: (_) => ProductViewModel()),
+        ChangeNotifierProvider<WeightViewModel>(
+            create: (_) => WeightViewModel()),
       ],
       child: const MyApp()));
 }
