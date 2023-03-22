@@ -6,22 +6,22 @@ import 'package:vyaparmandali/app_manager/api/manage_response.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_sheet.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/titled_sheet.dart';
 import 'package:vyaparmandali/app_manager/constant/project_constant.dart';
-import 'package:vyaparmandali/model/Weight.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/weight/add_weight_view.dart';
-import 'package:vyaparmandali/view_model/weight_view_model.dart';
-import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/data_sources/weight_data_source.dart';
+import 'package:vyaparmandali/model/product.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/product/add_product_view.dart';
+import 'package:vyaparmandali/view_model/product_view_model.dart';
+import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/data_sources/product_data_source.dart';
 import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/my_sf_data_grid.dart';
 
-class WeightMasterView extends StatefulWidget {
-  const WeightMasterView({Key? key}) : super(key: key);
+class ProductMasterView extends StatefulWidget {
+  const ProductMasterView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return WeightMasterViewState();
+    return ProductMasterViewState();
   }
 }
 
-class WeightMasterViewState extends State<WeightMasterView> {
+class ProductMasterViewState extends State<ProductMasterView> {
 
 
   @override
@@ -32,7 +32,7 @@ class WeightMasterViewState extends State<WeightMasterView> {
 
   void get() async {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await WeightViewModel.of(context).fetchWeights();
+      await ProductViewModel.of(context).fetchProducts();
     });
   }
 
@@ -40,28 +40,28 @@ class WeightMasterViewState extends State<WeightMasterView> {
 
   @override
   Widget build(BuildContext context) {
-    WeightViewModel viewModel=WeightViewModel.of(context);
+    ProductViewModel viewModel=ProductViewModel.of(context);
     return Scaffold(
       appBar: AppBar(
-        title:  const Text("Weight Master View"),
+        title:  const Text("Product Master View"),
       ),
-      body: Selector<WeightViewModel,ApiResponse<WeightData>>(
+      body: Selector<ProductViewModel,ApiResponse<ProductData>>(
           shouldRebuild: (prev,nex)=>true,
-          selector: (buildContext , vm)=>vm.weightDataResponse,
-          builder: (context, ApiResponse<WeightData> data,child) {
-            List<Weight> weights=data.data?.getAllData??[];
+          selector: (buildContext , vm)=>vm.productDataResponse,
+          builder: (context, ApiResponse<ProductData> data,child) {
+            List<Product> products=data.data?.getAllData??[];
             return Column(
               children: [
                 Expanded(
                   child: ManageResponse(
                       response: data,
                       onPressRetry: (){
-                        viewModel.fetchWeights();
+                        viewModel.fetchProducts();
                       },
-                      child: weights.isNotEmpty? MySfDataGrid(
-                        headers: WeightDataSource.headers,
+                      child: products.isNotEmpty? MySfDataGrid(
+                        headers: ProductDataSource.headers,
                         columnWidthMode: ColumnWidthMode.fill,
-                        source: WeightDataSource(listOfDocs: weights),
+                        source: ProductDataSource(listOfDocs: products),
                       ): ProjectConstant.noDatFoundWidget),
                 ),
               ],
@@ -70,10 +70,10 @@ class WeightMasterViewState extends State<WeightMasterView> {
           }
       ),
       floatingActionButton: FloatingActionButton(
-          heroTag: "add_weight",
+          heroTag: "add_product",
           onPressed: () {
             CustomBottomSheet.open(
-                child: const TitledSheet(title: "Add Weight", child: AddWeightView()));
+                child: const TitledSheet(title: "Add Product", child: AddProductView()));
           },
           child: const Icon(Icons.add)),
     );

@@ -7,7 +7,7 @@ import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/app_manager/helper/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
-import 'package:vyaparmandali/model/weight.dart';
+import 'package:vyaparmandali/model/Weight.dart';
 
 class WeightViewModel extends ChangeNotifier {
 
@@ -19,7 +19,7 @@ class WeightViewModel extends ChangeNotifier {
 
 
 
-  void initiateAddWeightType(){
+  void initiateAddWeight(){
     _clearFields();
   }
 
