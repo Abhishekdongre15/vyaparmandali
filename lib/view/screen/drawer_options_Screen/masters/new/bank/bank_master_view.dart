@@ -7,22 +7,22 @@ import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_s
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/titled_sheet.dart';
 import 'package:vyaparmandali/app_manager/constant/project_constant.dart';
 import 'package:vyaparmandali/app_manager/helper/responsive/responsive.dart';
-import 'package:vyaparmandali/model/agent.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/agent/add_agent_view.dart';
-import 'package:vyaparmandali/view_model/agent_view_model.dart';
-import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/data_sources/agent_data_source.dart';
+import 'package:vyaparmandali/model/bank.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/bank/add_bank_view.dart';
+import 'package:vyaparmandali/view_model/bank_view_model.dart';
+import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/data_sources/bank_data_source.dart';
 import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/my_sf_data_grid.dart';
 
-class AgentMasterView extends StatefulWidget {
-  const AgentMasterView({Key? key}) : super(key: key);
+class BankMasterView extends StatefulWidget {
+  const BankMasterView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return AgentMasterViewState();
+    return BankMasterViewState();
   }
 }
 
-class AgentMasterViewState extends State<AgentMasterView> {
+class BankMasterViewState extends State<BankMasterView> {
 
 
   @override
@@ -33,7 +33,7 @@ class AgentMasterViewState extends State<AgentMasterView> {
 
   void get() async {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await AgentViewModel.of(context).fetchAgents();
+      await BankViewModel.of(context).fetchBanks();
     });
   }
 
@@ -41,28 +41,28 @@ class AgentMasterViewState extends State<AgentMasterView> {
 
   @override
   Widget build(BuildContext context) {
-    AgentViewModel viewModel=AgentViewModel.of(context);
+    BankViewModel viewModel=BankViewModel.of(context);
     return Scaffold(
       appBar: AppBar(
-        title:  const Text("Agent Master View"),
+        title:  const Text("Bank Master View"),
       ),
-      body: Selector<AgentViewModel,ApiResponse<AgentData>>(
+      body: Selector<BankViewModel,ApiResponse<BankData>>(
           shouldRebuild: (prev,nex)=>true,
-          selector: (buildContext , vm)=>vm.agentDataResponse,
-          builder: (context, ApiResponse<AgentData> data,child) {
-            List<Agent> agents=data.data?.getAllData??[];
+          selector: (buildContext , vm)=>vm.bankDataResponse,
+          builder: (context, ApiResponse<BankData> data,child) {
+            List<Bank> banks=data.data?.getAllData??[];
             return Column(
               children: [
                 Expanded(
                   child: ManageResponse(
                       response: data,
                       onPressRetry: (){
-                        viewModel.fetchAgents();
+                        viewModel.fetchBanks();
                       },
-                      child: agents.isNotEmpty? MySfDataGrid(
-                        headers: AgentDataSource.headers,
+                      child: banks.isNotEmpty? MySfDataGrid(
+                        headers: BankDataSource.headers,
                         columnWidthMode: Responsive.isSmallScreen(context)? ColumnWidthMode.auto:ColumnWidthMode.fill,
-                        source: AgentDataSource(listOfDocs: agents),
+                        source: BankDataSource(listOfDocs: banks),
                       ): ProjectConstant.noDatFoundWidget),
                 ),
               ],
@@ -71,10 +71,10 @@ class AgentMasterViewState extends State<AgentMasterView> {
           }
       ),
       floatingActionButton: FloatingActionButton(
-          heroTag: "add_agent",
+          heroTag: "add_bank",
           onPressed: () {
             CustomBottomSheet.open(
-                child: const TitledSheet(title: "Add Agent", child: AddAgentView()));
+                child: const TitledSheet(title: "Add Bank", child: AddBankView()));
           },
           child: const Icon(Icons.add)),
     );

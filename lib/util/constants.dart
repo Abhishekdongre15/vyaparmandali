@@ -26,6 +26,7 @@ final List<Entry> data = <Entry>[
         <Entry>[
           Entry('HAMAL'),
           Entry('AGENT'),
+          Entry('BANK'),
         ],
       ),
       Entry(

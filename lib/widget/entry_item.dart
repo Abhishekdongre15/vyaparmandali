@@ -63,6 +63,7 @@ import 'package:vyaparmandali/view/report/vacchat report/jama_nondh_summery_mont
 import 'package:vyaparmandali/view/report/vacchat report/jama_nondh_summery_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/codes/narrartion/narration_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/agent/agent_master_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/bank/bank_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/hamal/hamal_master_view.dart';
 import 'entry.dart';
 
@@ -112,6 +113,9 @@ class EntryItem extends StatelessWidget {
     switch (pages) {
       case 'agent':
         await MyNavigator.push(const AgentMasterView());
+        break;
+      case 'bank':
+        await MyNavigator.push(const BankMasterView());
         break;
       case 'hamal':
         await MyNavigator.push(const HamalMasterView());

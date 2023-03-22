@@ -10,6 +10,7 @@ import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/user.dart';
 import 'package:vyaparmandali/view/screen/splash_screen_view.dart';
 import 'package:vyaparmandali/view_model/agent_view_model.dart';
+import 'package:vyaparmandali/view_model/bank_view_model.dart';
 import 'package:vyaparmandali/view_model/cash_book_item_view_model.dart';
 import 'package:vyaparmandali/view_model/group_view_model.dart';
 import 'package:vyaparmandali/view_model/hamal_view_model.dart';
@@ -54,6 +55,8 @@ Future main() async {
             create: (_) => HamalViewModel()),
         ChangeNotifierProvider<AgentViewModel>(
             create: (_) => AgentViewModel()),
+        ChangeNotifierProvider<BankViewModel>(
+            create: (_) => BankViewModel()),
       ],
       child: const MyApp()));
 }
