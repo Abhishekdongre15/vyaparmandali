@@ -66,6 +66,7 @@ import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/agen
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/bank/bank_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/hamal/hamal_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/product/product_master_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vehicle/vehicle_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/weight/weight_master_view.dart';
 import 'entry.dart';
 
@@ -115,6 +116,9 @@ class EntryItem extends StatelessWidget {
     switch (pages) {
       case 'product':
         await MyNavigator.push(const ProductMasterView());
+        break;
+      case 'vehicle':
+        await MyNavigator.push(const VehicleMasterView());
         break;
       case 'weight':
         await MyNavigator.push(const WeightMasterView());

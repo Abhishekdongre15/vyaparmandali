@@ -7,51 +7,58 @@ import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/app_manager/helper/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
+import 'package:vyaparmandali/model/vehicle.dart';
 
-class VehicalViewModel extends ChangeNotifier {
+class VehicleViewModel extends ChangeNotifier {
 
-  static VehicalViewModel of(BuildContext context)=>Provider.of<VehicalViewModel>(context,listen: false);
+  static VehicleViewModel of(BuildContext context)=>Provider.of<VehicleViewModel>(context,listen: false);
 
   final ApiCall _api=ApiCall();
 
-  TextEditingController VehicalNameC = TextEditingController();
+  TextEditingController ownerNameC = TextEditingController();
+  TextEditingController vehicleNameC = TextEditingController();
+  TextEditingController vehicleNumberC = TextEditingController();
 
 
 
-  void initiateAddVehical(){
+  void initiateAddVehicle(){
     _clearFields();
   }
 
 
 
   void _clearFields() {
-    VehicalNameC.clear();
+    ownerNameC.clear();
+    vehicleNameC.clear();
+    vehicleNumberC.clear();
   }
 
 
-  void initiateUpdateVehical(Vehical thisVehical){
+  void initiateUpdateVehicle(Vehicle thisVehicle){
     _clearFields();
-    VehicalNameC.text=thisVehical.VehicalName??"";
+    ownerNameC.text=thisVehicle.ownerName??"";
+    vehicleNameC.text=thisVehicle.vehicalName??"";
+    vehicleNumberC.text=thisVehicle.vehicalNumber??"";
   }
 
 
 
-  ApiResponse<VehicalData> _VehicalDataResponse=ApiResponse<VehicalData>.initial("Initial");
-  ApiResponse<VehicalData> get VehicalDataResponse=>_VehicalDataResponse;
-  set VehicalDataResponse(ApiResponse<VehicalData> val){
-    _VehicalDataResponse=val;
+  ApiResponse<VehicleData> _vehicleDataResponse=ApiResponse<VehicleData>.initial("Initial");
+  ApiResponse<VehicleData> get vehicleDataResponse=>_vehicleDataResponse;
+  set vehicleDataResponse(ApiResponse<VehicleData> val){
+    _vehicleDataResponse=val;
     notifyListeners();
   }
 
 
-  Future<void> fetchVehicals() async {
-    if((VehicalDataResponse.data?.getAllData??[]).isEmpty){
-      VehicalDataResponse=ApiResponse<VehicalData>.loading('Fetching Vehicals');
+  Future<void> fetchVehicles() async {
+    if((vehicleDataResponse.data?.getAllData??[]).isEmpty){
+      vehicleDataResponse=ApiResponse<VehicleData>.loading('Fetching Vehicles');
     }
 
     try{
       var data=await _api.call(
-          url: "get-Vehical-type-master-data",
+          url: "get-vehical-master-data",
           apiCallType: ApiCallType.post(body: {
             "id": UserRepository.of(NavigationService.context!).getUser.id.toString()
           }),
@@ -59,16 +66,16 @@ class VehicalViewModel extends ChangeNotifier {
       );
 
       if(data['code']==200 && data['status']==true){
-        VehicalDataResponse=ApiResponse<VehicalData>.completed(
-            VehicalData.fromJson(data)
+        vehicleDataResponse=ApiResponse<VehicleData>.completed(
+            VehicleData.fromJson(data)
         );
       }
       else {
-        VehicalDataResponse=ApiResponse<VehicalData>.empty("Data Not found");
+        vehicleDataResponse=ApiResponse<VehicleData>.empty("Data Not found");
       }
     }
     catch(e){
-      VehicalDataResponse=ApiResponse<VehicalData>.error(e.toString());
+      vehicleDataResponse=ApiResponse<VehicleData>.error(e.toString());
     }
 
   }
@@ -76,20 +83,22 @@ class VehicalViewModel extends ChangeNotifier {
 
 
 
-  Future<void> addVehical({
+  Future<void> addVehicle({
     String? id
   }) async{
-    ProgressDialogue.show(message: id==null? "Adding Vehical":"Updating Vehical");
+    ProgressDialogue.show(message: id==null? "Adding Vehicle":"Updating Vehicle");
     try {
 
       Map bod={
-        "Vehical_name": VehicalNameC.text,
+        "owner_name": ownerNameC.text,
+        "vehical_name": vehicleNameC.text,
+        "vehical_number": vehicleNumberC.text,
       };
       if(id!=null){
         bod['id']=id;
       }
       var data= await _api.call(
-          url: id!=null? "update-Vehical-type-master-data":"add-Vehical-type-master-data",
+          url: id!=null? "update-vehical-master-data":"add-vehical-master-data",
           apiCallType: ApiCallType.post(body: bod),
           token: true
       );
@@ -97,7 +106,7 @@ class VehicalViewModel extends ChangeNotifier {
       Alert.show(data['message']);
       if(data['code']==200 && data['status']==true){
         MyNavigator.pop();
-        fetchVehicals();
+        fetchVehicles();
       }
       else {
       }
@@ -110,13 +119,13 @@ class VehicalViewModel extends ChangeNotifier {
 
 
 
-  Future<void> deleteVehical({
+  Future<void> deleteVehicle({
     required String id
   }) async{
-    ProgressDialogue.show(message: "Deleting Vehical");
+    ProgressDialogue.show(message: "Deleting Vehicle");
     try {
       var data=await _api.call(
-          url: "delete-Vehical-type-master-data",
+          url: "delete-vehical-master-data",
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
           }),
@@ -125,7 +134,7 @@ class VehicalViewModel extends ChangeNotifier {
       ProgressDialogue.hide();
       Alert.show(data['message']);
       if(data['code']==200 && data['status']==true){
-        fetchVehicals();
+        fetchVehicles();
       }
       else {
       }

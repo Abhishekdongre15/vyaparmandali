@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
-import 'package:vyaparmandali/model/Weight.dart';
-import 'package:vyaparmandali/view_model/weight_view_model.dart';
+import 'package:vyaparmandali/model/vehicle.dart';
+import 'package:vyaparmandali/view_model/vehicle_view_model.dart';
 
-class AddWeightView extends StatefulWidget {
-  final Weight? weightToUpdate;
-  const AddWeightView({Key? key, this.weightToUpdate}) : super(key: key);
+class AddVehicleView extends StatefulWidget {
+  final Vehicle? vehicleToUpdate;
+  const AddVehicleView({Key? key, this.vehicleToUpdate}) : super(key: key);
 
   @override
-  State<AddWeightView> createState() => _AddWeightViewState();
+  State<AddVehicleView> createState() => _AddVehicleViewState();
 }
 
-class _AddWeightViewState extends State<AddWeightView> {
+class _AddVehicleViewState extends State<AddVehicleView> {
 
 
   @override
@@ -22,11 +22,11 @@ class _AddWeightViewState extends State<AddWeightView> {
 
   void get() async {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      if(widget.weightToUpdate==null){
-        WeightViewModel.of(context).initiateAddWeight();
+      if(widget.vehicleToUpdate==null){
+        VehicleViewModel.of(context).initiateAddVehicle();
       }
       else {
-        WeightViewModel.of(context).initiateUpdateWeight(widget.weightToUpdate!);
+        VehicleViewModel.of(context).initiateUpdateVehicle(widget.vehicleToUpdate!);
       }
 
     });
@@ -35,7 +35,7 @@ class _AddWeightViewState extends State<AddWeightView> {
 
   @override
   Widget build(BuildContext context) {
-    WeightViewModel viewModel=WeightViewModel.of(context);
+    VehicleViewModel viewModel=VehicleViewModel.of(context);
     final theme=Theme.of(context);
     return Column(
       mainAxisSize: MainAxisSize.max,
@@ -48,15 +48,56 @@ class _AddWeightViewState extends State<AddWeightView> {
               return  Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Weight Name",
+
+                  Text("Owner Name",
                     style: theme.textTheme.titleSmall?.copyWith(
                         fontWeight: FontWeight.w500
                     ),),
                   const SizedBox(height: 5,),
                   TextFormField(
-                    controller: viewModel.weightNameC,
+                    controller: viewModel.ownerNameC,
                     decoration: const InputDecoration(
-                      hintText: "Enter Weight Name",
+                      hintText: "Enter Owner Name",
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Required field !';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 15,),
+
+
+                  Text("Vehicle Name",
+                    style: theme.textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.w500
+                    ),),
+                  const SizedBox(height: 5,),
+                  TextFormField(
+                    controller: viewModel.vehicleNameC,
+                    decoration: const InputDecoration(
+                      hintText: "Enter Vehicle Name",
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Required field !';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 15,),
+
+
+                  Text("Vehicle Number",
+                    style: theme.textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.w500
+                    ),),
+                  const SizedBox(height: 5,),
+                  TextFormField(
+                    controller: viewModel.vehicleNumberC,
+                    decoration: const InputDecoration(
+                      hintText: "Enter Vehicle Number",
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -66,20 +107,21 @@ class _AddWeightViewState extends State<AddWeightView> {
                     },
                   ),
 
+
                   const SizedBox(height: 10,),
                   Center(
                     child: TextButton(
                       onPressed: () {
                         if (Form.of(ctx).validate()) {
-                          viewModel.addWeight(
-                              id: widget.weightToUpdate?.id
+                          viewModel.addVehicle(
+                              id: widget.vehicleToUpdate?.id
                           );
                         }
                         else {
                           Alert.show("Fill all fields");
                         }
                       },
-                      child:  Text(widget.weightToUpdate==null? 'Submit':"Update"),
+                      child:  Text(widget.vehicleToUpdate==null? 'Submit':"Update"),
                     ),
                   )
 
