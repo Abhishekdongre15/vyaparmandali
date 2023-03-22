@@ -65,6 +65,7 @@ import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/codes/na
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/agent/agent_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/bank/bank_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/hamal/hamal_master_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/product/product_master_view.dart';
 import 'entry.dart';
 
 class EntryItem extends StatelessWidget {
@@ -111,6 +112,9 @@ class EntryItem extends StatelessWidget {
 
   void callPages(String pages) async{
     switch (pages) {
+      case 'product':
+        await MyNavigator.push(const ProductMasterView());
+        break;
       case 'agent':
         await MyNavigator.push(const AgentMasterView());
         break;
