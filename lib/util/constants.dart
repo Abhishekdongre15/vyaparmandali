@@ -33,6 +33,7 @@ final List<Entry> data = <Entry>[
           Entry('FARMER'),
           Entry('VACCHAT'),
           Entry('DHADA BOOK'),
+          Entry('CASH BOOK ITEM'),
         ],
       ),
       Entry(

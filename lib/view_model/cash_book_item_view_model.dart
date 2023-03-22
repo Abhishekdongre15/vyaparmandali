@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/api/api_call.dart';
 import 'package:vyaparmandali/app_manager/api/api_response.dart';
@@ -7,7 +8,7 @@ import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/app_manager/helper/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
-import 'package:vyaparmandali/model/group.dart';
+import 'package:vyaparmandali/model/cash_book_item.dart';
 
 class CashBookItemViewModel extends ChangeNotifier {
 
@@ -15,12 +16,18 @@ class CashBookItemViewModel extends ChangeNotifier {
 
   final ApiCall _api=ApiCall();
 
+
   TextEditingController codeC = TextEditingController();
-  TextEditingController nameC = TextEditingController();
+  TextEditingController dateC = TextEditingController();
+  TextEditingController srNumberC = TextEditingController();
+  TextEditingController bankNameC = TextEditingController();
+  TextEditingController totalLineItemC = TextEditingController();
+  TextEditingController gallaAmountC = TextEditingController();
+  TextEditingController udhariAmountC = TextEditingController();
 
 
 
-  void initiateAddGroup(){
+  void initiateAddCashBookItem(){
     _clearFields();
   }
 
@@ -28,34 +35,44 @@ class CashBookItemViewModel extends ChangeNotifier {
 
   void _clearFields() {
     codeC.clear();
-    nameC.clear();
+    dateC.clear();
+    srNumberC.clear();
+    bankNameC.clear();
+    totalLineItemC.clear();
+    gallaAmountC.clear();
+    udhariAmountC.clear();
   }
 
 
-  void initiateUpdateGroup(Group thisGroup){
+  void initiateUpdateCashBookItem(CashBookItem thisCashBookItem){
     _clearFields();
-    codeC.text=thisGroup.code??"";
-    nameC.text=thisGroup.name??"";
+    codeC.text=thisCashBookItem.code??"";
+    dateC.text= DateFormat("dd/MM/yyyy").parse(thisCashBookItem.date??"").toString();
+    srNumberC.text=thisCashBookItem.srNo??"";
+    bankNameC.text=thisCashBookItem.bankName??"";
+    totalLineItemC.text=thisCashBookItem.totalItem??"";
+    gallaAmountC.text=thisCashBookItem.gallaAmt??"";
+    udhariAmountC.text=thisCashBookItem.udhariAmt??"";
   }
 
 
 
-  ApiResponse<GroupData> _groupDataResponse=ApiResponse<GroupData>.initial("Initial");
-  ApiResponse<GroupData> get groupDataResponse=>_groupDataResponse;
-  set groupDataResponse(ApiResponse<GroupData> val){
-    _groupDataResponse=val;
+  ApiResponse<CashBookItemData> _cashBookItemDataResponse=ApiResponse<CashBookItemData>.initial("Initial");
+  ApiResponse<CashBookItemData> get cashBookItemDataResponse=>_cashBookItemDataResponse;
+  set cashBookItemDataResponse(ApiResponse<CashBookItemData> val){
+    _cashBookItemDataResponse=val;
     notifyListeners();
   }
 
 
-  Future<void> fetchGroups() async {
-    if((groupDataResponse.data?.getAllData??[]).isEmpty){
-      groupDataResponse=ApiResponse<GroupData>.loading('Fetching Group');
+  Future<void> fetchCashBookItem() async {
+    if((cashBookItemDataResponse.data?.getAllData??[]).isEmpty){
+      cashBookItemDataResponse=ApiResponse<CashBookItemData>.loading('Fetching CashBookItem');
     }
 
     try{
       var data=await _api.call(
-          url: "get_group_master_data",
+          url: "get-cashbook-item",
           apiCallType: ApiCallType.post(body: {
             "id": UserRepository.of(NavigationService.context!).getUser.id.toString()
           }),
@@ -63,16 +80,16 @@ class CashBookItemViewModel extends ChangeNotifier {
       );
 
       if(data['code']==200 && data['status']==true){
-        groupDataResponse=ApiResponse<GroupData>.completed(
-            GroupData.fromJson(data)
+        cashBookItemDataResponse=ApiResponse<CashBookItemData>.completed(
+            CashBookItemData.fromJson(data)
         );
       }
       else {
-        groupDataResponse=ApiResponse<GroupData>.empty("Data Not found");
+        cashBookItemDataResponse=ApiResponse<CashBookItemData>.empty("Data Not found");
       }
     }
     catch(e){
-      groupDataResponse=ApiResponse<GroupData>.error(e.toString());
+      cashBookItemDataResponse=ApiResponse<CashBookItemData>.error(e.toString());
     }
 
   }
@@ -80,35 +97,33 @@ class CashBookItemViewModel extends ChangeNotifier {
 
 
 
-  Future<void> addGroup({
+  Future<void> addCashBookItem({
     String? id
   }) async{
-    ProgressDialogue.show(message: id==null? "Adding Group":"Updating Group");
+    ProgressDialogue.show(message: id==null? "Adding CashBookItem":"Updating CashBookItem");
     try {
-      var data=
-      id!=null?
-      await _api.call(
-          url: "update_group_master_data",
-          apiCallType: ApiCallType.post(body: {
-            "code": codeC.text,
-            "name": nameC.text,
-            "id": id
-          }),
-          token: true
-      )
-          :await _api.call(
-          url: "add_group_master_data",
-          apiCallType: ApiCallType.post(body: {
-            "code": codeC.text,
-            "name": nameC.text,
-          }),
+      Map bod={
+        "code": codeC.text,
+        "date": DateFormat("dd/MM/yyyy").format(DateTime.parse(dateC.text)),
+        "sr_no": srNumberC.text,
+        "bank_name": bankNameC.text,
+        "total_line_item": totalLineItemC.text,
+        "galla_amt": gallaAmountC.text,
+        "udhari_amt": udhariAmountC.text,
+      };
+      if(id!=null){
+        bod['id']=id;
+      }
+      var data= await _api.call(
+          url: id!=null? "update_CashBookItem_main_data":"add_CashBookItem_main_data",
+          apiCallType: ApiCallType.post(body: bod),
           token: true
       );
       ProgressDialogue.hide();
       Alert.show(data['message']);
       if(data['code']==200 && data['status']==true){
         MyNavigator.pop();
-        fetchGroups();
+        fetchCashBookItem();
       }
       else {
       }
@@ -121,13 +136,13 @@ class CashBookItemViewModel extends ChangeNotifier {
 
 
 
-  Future<void> deleteGroup({
+  Future<void> deleteCashBookItem({
     required String id
   }) async{
-    ProgressDialogue.show(message: "Deleting Group");
+    ProgressDialogue.show(message: "Deleting CashBookItem");
     try {
       var data=await _api.call(
-          url: "delete_group_master_data",
+          url: "delete-cashbook-item",
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
           }),
@@ -136,7 +151,7 @@ class CashBookItemViewModel extends ChangeNotifier {
       ProgressDialogue.hide();
       Alert.show(data['message']);
       if(data['code']==200 && data['status']==true){
-        fetchGroups();
+        fetchCashBookItem();
       }
       else {
       }

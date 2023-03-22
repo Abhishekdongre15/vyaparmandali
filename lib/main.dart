@@ -75,6 +75,8 @@ Future main() async {
             create: (_) => VacchatViewModel()),
         ChangeNotifierProvider<DhadaBookViewModel>(
             create: (_) => DhadaBookViewModel()),
+        ChangeNotifierProvider<CashBookItemViewModel>(
+            create: (_) => CashBookItemViewModel()),
       ],
       child: const MyApp()));
 }
