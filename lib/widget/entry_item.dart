@@ -1,77 +1,80 @@
 import 'package:flutter/material.dart';
 import 'package:vyaparmandali/app_manager/helper/navigator.dart';
-import 'package:vyaparmandali/view/balance_sheet/schedules_details_screen_view.dart';
-import 'package:vyaparmandali/view/balance_sheet/trial_balance_report_view.dart';
+import 'package:vyaparmandali/view/balance_sheet/balance_sheets_report_view.dart';
+import 'package:vyaparmandali/view/balance_sheet/eoy_kasar_cr_view.dart';
 import 'package:vyaparmandali/view/balance_sheet/eoy_kasar_dr_view.dart';
+import 'package:vyaparmandali/view/balance_sheet/p_and_l_statement_view.dart';
+import 'package:vyaparmandali/view/balance_sheet/schedules_details_screen_view.dart';
+import 'package:vyaparmandali/view/balance_sheet/schedules_report_view.dart';
+import 'package:vyaparmandali/view/balance_sheet/trial_balance_detail_screen_view.dart';
+import 'package:vyaparmandali/view/balance_sheet/trial_balance_report_view.dart';
 import 'package:vyaparmandali/view/data_entry/data_entry_view.dart';
 import 'package:vyaparmandali/view/master/ac_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/codes/group/group_master_view.dart';
+import 'package:vyaparmandali/view/master/items/account_setting_view.dart';
 import 'package:vyaparmandali/view/master/items/hamali_exp_view.dart';
 import 'package:vyaparmandali/view/master/items/item_exp_view.dart';
 import 'package:vyaparmandali/view/master/items/item_view.dart';
 import 'package:vyaparmandali/view/master/place_master_view.dart';
+import 'package:vyaparmandali/view/report/additional report/monthwise_pnl_report_view.dart';
+import 'package:vyaparmandali/view/report/additional report/vachatwise_report_view.dart';
+import 'package:vyaparmandali/view/report/additional report/vachatwise_summery_report_view.dart';
 import 'package:vyaparmandali/view/report/additional%20report/apmc_daily_report_view.dart';
 import 'package:vyaparmandali/view/report/additional%20report/gb_daily_report_view.dart';
 import 'package:vyaparmandali/view/report/additional%20report/gb_monthly_entry_report_view.dart';
 import 'package:vyaparmandali/view/report/additional%20report/vachatwise_daily_report_view.dart';
+import 'package:vyaparmandali/view/report/cash bank book/day_wise_bank_book_view.dart';
+import 'package:vyaparmandali/view/report/cash bank book/rojmel_ac_view.dart';
 import 'package:vyaparmandali/view/report/cash%20bank%20book/bank_book_view.dart';
 import 'package:vyaparmandali/view/report/cash%20bank%20book/bank_reco_view.dart';
 import 'package:vyaparmandali/view/report/cash%20bank%20book/cash_limit_view.dart';
 import 'package:vyaparmandali/view/report/cash%20bank%20book/cashbook_view.dart';
 import 'package:vyaparmandali/view/report/cash%20bank%20book/daily_cash_balance_view.dart';
 import 'package:vyaparmandali/view/report/cash%20bank%20book/rojmel_as_book_view.dart';
+import 'package:vyaparmandali/view/report/customer report/ledger_sales_os_90_day_report_view.dart';
+import 'package:vyaparmandali/view/report/customer report/partywise_sales_report_view.dart';
 import 'package:vyaparmandali/view/report/customer%20report/ledger_sale_os_report_view.dart';
 import 'package:vyaparmandali/view/report/customer%20report/ledger_sales_os_label_report_view.dart';
 import 'package:vyaparmandali/view/report/ledgers/customer_ledger_view.dart';
 import 'package:vyaparmandali/view/report/ledgers/daywise_ledger_view.dart';
+import 'package:vyaparmandali/view/report/ledgers/detail_ledger_view.dart';
 import 'package:vyaparmandali/view/report/ledgers/general_ledger_view.dart';
 import 'package:vyaparmandali/view/report/ledgers/group_ledger_view.dart';
 import 'package:vyaparmandali/view/report/ledgers/itemwise_ledger_view.dart';
 import 'package:vyaparmandali/view/report/ledgers/monthlywise_ledger_view.dart';
 import 'package:vyaparmandali/view/report/ledgers/screen_ledger_view.dart';
+import 'package:vyaparmandali/view/report/ledgers/statement_of_account_view.dart';
 import 'package:vyaparmandali/view/report/ledgers/supplier_ledger_view.dart';
 import 'package:vyaparmandali/view/report/registers/aavak_register_view.dart';
+import 'package:vyaparmandali/view/report/registers/dhada_register_view.dart';
 import 'package:vyaparmandali/view/report/registers/itemwise_sales_repost_view.dart';
 import 'package:vyaparmandali/view/report/registers/lotwise_dhara_register_view.dart';
 import 'package:vyaparmandali/view/report/registers/purchase_register_view.dart';
 import 'package:vyaparmandali/view/report/registers/sales_register_view.dart';
 import 'package:vyaparmandali/view/report/registers/sales_summery_monthly_repost_view.dart';
-import 'package:vyaparmandali/view/report/transport%20report/transportwise_patti_date_os_view.dart';
-import 'package:vyaparmandali/view/report/vacchat%20report/patti_register_view.dart';
-import 'package:vyaparmandali/view/balance_sheet/balance_sheets_report_view.dart';
-import 'package:vyaparmandali/view/balance_sheet/eoy_kasar_cr_view.dart';
-import 'package:vyaparmandali/view/balance_sheet/p_and_l_statement_view.dart';
-import 'package:vyaparmandali/view/balance_sheet/schedules_report_view.dart';
-import 'package:vyaparmandali/view/balance_sheet/trial_balance_detail_screen_view.dart';
-import 'package:vyaparmandali/view/master/items/account_setting_view.dart';
-import 'package:vyaparmandali/view/report/additional report/monthwise_pnl_report_view.dart';
-import 'package:vyaparmandali/view/report/additional report/vachatwise_report_view.dart';
-import 'package:vyaparmandali/view/report/additional report/vachatwise_summery_report_view.dart';
-import 'package:vyaparmandali/view/report/cash bank book/day_wise_bank_book_view.dart';
-import 'package:vyaparmandali/view/report/cash bank book/rojmel_ac_view.dart';
-import 'package:vyaparmandali/view/report/customer report/ledger_sales_os_90_day_report_view.dart';
-import 'package:vyaparmandali/view/report/customer report/partywise_sales_report_view.dart';
-import 'package:vyaparmandali/view/report/ledgers/detail_ledger_view.dart';
-import 'package:vyaparmandali/view/report/ledgers/statement_of_account_view.dart';
-import 'package:vyaparmandali/view/report/registers/dhada_register_view.dart';
 import 'package:vyaparmandali/view/report/registers/sales_summery_repost_view.dart';
 import 'package:vyaparmandali/view/report/transport report/transport_comm_report_view.dart';
 import 'package:vyaparmandali/view/report/transport report/transport_report_view.dart';
 import 'package:vyaparmandali/view/report/transport report/transportwise_patti_os_view.dart';
+import 'package:vyaparmandali/view/report/transport%20report/transportwise_patti_date_os_view.dart';
 import 'package:vyaparmandali/view/report/vacchat report/jama_nondh.dart';
 import 'package:vyaparmandali/view/report/vacchat report/jama_nondh_summery_monthly_view.dart';
 import 'package:vyaparmandali/view/report/vacchat report/jama_nondh_summery_view.dart';
+import 'package:vyaparmandali/view/report/vacchat%20report/patti_register_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/codes/group/group_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/codes/narrartion/narration_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/agent/agent_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/bank/bank_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/cash_book_item/cash_book_item_master_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/customer/customer_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/dhada_book/dhada_book_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/farmer/farmer_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/hamal/hamal_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/product/product_master_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/rojmel/rojmel_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vacchat/vacchat_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vehicle/vehicle_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/weight/weight_master_view.dart';
+
 import 'entry.dart';
 
 class EntryItem extends StatelessWidget {
@@ -148,6 +151,9 @@ class EntryItem extends StatelessWidget {
       case 'hamal':
         await MyNavigator.push(const HamalMasterView());
         break;
+      case 'customer':
+        await MyNavigator.push(const CustomerMasterView());
+        break;
       case 'group':
         await MyNavigator.push(const GroupMasterView());
         break;
@@ -156,6 +162,9 @@ class EntryItem extends StatelessWidget {
         break;
       case 'a/c master':
         MyNavigator.push(const ACMasterListView());
+        break;
+     case 'rojmel':
+        MyNavigator.push(const RojmelMasterView());
         break;
       case 'item name':
         MyNavigator.push(const ItemView());
