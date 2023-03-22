@@ -12,6 +12,7 @@ import 'package:vyaparmandali/view/screen/splash_screen_view.dart';
 import 'package:vyaparmandali/view_model/agent_view_model.dart';
 import 'package:vyaparmandali/view_model/bank_view_model.dart';
 import 'package:vyaparmandali/view_model/cash_book_item_view_model.dart';
+import 'package:vyaparmandali/view_model/farmer_view_model.dart';
 import 'package:vyaparmandali/view_model/group_view_model.dart';
 import 'package:vyaparmandali/view_model/hamal_view_model.dart';
 import 'package:vyaparmandali/view_model/login_view_model.dart';
@@ -66,6 +67,8 @@ Future main() async {
             create: (_) => WeightViewModel()),
         ChangeNotifierProvider<VehicleViewModel>(
             create: (_) => VehicleViewModel()),
+        ChangeNotifierProvider<FarmerViewModel>(
+            create: (_) => FarmerViewModel()),
       ],
       child: const MyApp()));
 }
