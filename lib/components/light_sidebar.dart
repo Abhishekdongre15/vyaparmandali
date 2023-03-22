@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 
 class LightSidebar extends StatelessWidget {
@@ -16,8 +18,9 @@ class LightSidebar extends StatelessWidget {
     return Card(
       elevation: 3,
       child: Container(
+        width: 200,
+        height: 200,
         padding: const EdgeInsets.all(20),
-        height: MediaQuery.of(context).size.height * 0.3,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -27,13 +30,13 @@ class LightSidebar extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
-                    Text("$headName"),
+                    Text(headName),
                     const SizedBox(
                       height: 10,
                     ),
                     Text(
-                      '$totalValue',
-                      style: TextStyle(fontSize: 30),
+                      totalValue,
+                      style: const TextStyle(fontSize: 30),
                     ),
                   ],
                 ),
@@ -44,8 +47,8 @@ class LightSidebar extends StatelessWidget {
                 ),
               ],
             ),
-            Row(
-              children: [
+            Wrap(
+              children: const [
                 Text(
                   '2.4+',
                   style: TextStyle(color: Colors.blue),

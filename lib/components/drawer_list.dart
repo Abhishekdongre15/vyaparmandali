@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:vyaparmandali/Entry.dart';
+import 'package:vyaparmandali/widget/entry.dart';
 
-import '../../EntryItem.dart';
+import '../widget/entry_item.dart';
+// ignore: must_be_immutable
 class DrawerList extends StatelessWidget {
   List<Entry> entry;
 
@@ -15,8 +16,8 @@ class DrawerList extends StatelessWidget {
       itemCount: entry.length,
       itemBuilder: (BuildContext context, int index) => EntryItem(
         entry[index],
+        context
       ),
     );
   }
 }
-/// Make Multiple widgets in this same file
