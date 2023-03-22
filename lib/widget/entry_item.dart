@@ -64,6 +64,7 @@ import 'package:vyaparmandali/view/report/vacchat report/jama_nondh_summery_view
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/codes/narrartion/narration_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/agent/agent_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/bank/bank_master_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/dhada_book/dhada_book_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/farmer/farmer_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/hamal/hamal_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/product/product_master_view.dart';
@@ -118,6 +119,9 @@ class EntryItem extends StatelessWidget {
     switch (pages) {
       case 'vacchat':
         await MyNavigator.push(const VacchatMasterView());
+        break;
+      case 'dhada book':
+        await MyNavigator.push(const DhadaBookMasterView());
         break;
       case 'farmer':
         await MyNavigator.push(const FarmerMasterView());
