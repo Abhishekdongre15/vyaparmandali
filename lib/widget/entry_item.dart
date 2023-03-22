@@ -67,6 +67,7 @@ import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/bank
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/farmer/farmer_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/hamal/hamal_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/product/product_master_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vacchat/vacchat_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vehicle/vehicle_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/weight/weight_master_view.dart';
 import 'entry.dart';
@@ -115,6 +116,9 @@ class EntryItem extends StatelessWidget {
 
   void callPages(String pages) async{
     switch (pages) {
+      case 'vacchat':
+        await MyNavigator.push(const VacchatMasterView());
+        break;
       case 'farmer':
         await MyNavigator.push(const FarmerMasterView());
         break;

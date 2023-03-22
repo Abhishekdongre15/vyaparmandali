@@ -19,6 +19,7 @@ import 'package:vyaparmandali/view_model/login_view_model.dart';
 import 'package:vyaparmandali/view_model/narration_view_model.dart';
 import 'package:vyaparmandali/view_model/product_view_model.dart';
 import 'package:vyaparmandali/view_model/registration_view_model.dart';
+import 'package:vyaparmandali/view_model/vacchat_view_model.dart';
 import 'package:vyaparmandali/view_model/vehicle_view_model.dart';
 import 'package:vyaparmandali/view_model/weight_view_model.dart';
 
@@ -69,6 +70,8 @@ Future main() async {
             create: (_) => VehicleViewModel()),
         ChangeNotifierProvider<FarmerViewModel>(
             create: (_) => FarmerViewModel()),
+        ChangeNotifierProvider<VacchatViewModel>(
+            create: (_) => VacchatViewModel()),
       ],
       child: const MyApp()));
 }
