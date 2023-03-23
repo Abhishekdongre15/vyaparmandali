@@ -152,4 +152,51 @@ class FarmerViewModel extends ChangeNotifier {
 
 
 
+
+
+
+  ApiResponse<List<Farmer>> _searchedFarmerResponse=ApiResponse<List<Farmer>>.initial("Initial");
+  ApiResponse<List<Farmer>> get searchedFarmerResponse=>_searchedFarmerResponse;
+  set searchedFarmerResponse(ApiResponse<List<Farmer>> val){
+    _searchedFarmerResponse=val;
+    notifyListeners();
+  }
+
+
+  Future<void> fetchFarmerByName({
+  required String farmerName
+}) async {
+      searchedFarmerResponse=ApiResponse<List<Farmer>>.loading('Fetching Farmers');
+    try{
+      var data=await _api.call(
+          url: "fetch-farmer-by-name-data",
+          apiCallType: ApiCallType.post(body: {
+            "farmer_name": farmerName
+          }),
+          token: true
+      );
+
+      if(data['code']==200 && data['status']==true){
+
+        searchedFarmerResponse=ApiResponse<List<Farmer>>.completed(
+            List<Farmer>.from(
+                (data['fetch_farmer_by_name_data'] as List).map((e) => Farmer.fromJson(e))
+            )
+        );
+        print("hiiiiii");
+      }
+      else {
+        searchedFarmerResponse=ApiResponse<List<Farmer>>.empty("Data Not found");
+      }
+    }
+    catch(e){
+      searchedFarmerResponse=ApiResponse<List<Farmer>>.error(e.toString());
+    }
+
+  }
+
+
+
+
+
 }

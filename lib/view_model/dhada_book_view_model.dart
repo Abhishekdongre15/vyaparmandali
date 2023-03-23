@@ -9,6 +9,7 @@ import 'package:vyaparmandali/app_manager/helper/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/dhada_book.dart';
+import 'package:vyaparmandali/model/farmer.dart';
 
 class DhadaBookViewModel extends ChangeNotifier {
 
@@ -20,11 +21,19 @@ class DhadaBookViewModel extends ChangeNotifier {
   TextEditingController dateC = TextEditingController();
   TextEditingController inWardDateC = TextEditingController();
   TextEditingController vehicleNumberC = TextEditingController();
-  TextEditingController farmerNameC = TextEditingController();
-  TextEditingController farmerPlaceC = TextEditingController();
+  // TextEditingController farmerNameC = TextEditingController();
+  // TextEditingController farmerPlaceC = TextEditingController();
   TextEditingController lotNumberC = TextEditingController();
   TextEditingController packageC = TextEditingController();
 
+
+  TextEditingController farmerC = TextEditingController();
+  Farmer? _selectedFarmer;
+  Farmer? get selectedFarmer=>_selectedFarmer;
+  set selectedFarmer(Farmer? val){
+    _selectedFarmer=val;
+    notifyListeners();
+  }
 
 
   void initiateAddDhadaBook(){
@@ -37,10 +46,12 @@ class DhadaBookViewModel extends ChangeNotifier {
     dateC.clear();
     inWardDateC.clear();
     vehicleNumberC.clear();
-    farmerNameC.clear();
-    farmerPlaceC.clear();
+    farmerC.clear();
+    // farmerNameC.clear();
+    // farmerPlaceC.clear();
     lotNumberC.clear();
     packageC.clear();
+    selectedFarmer=null;
   }
 
 
@@ -48,9 +59,14 @@ class DhadaBookViewModel extends ChangeNotifier {
     _clearFields();
     dateC.text= DateFormat("dd/MM/yyyy").parse(thisDhadaBook.date??"").toString();
     inWardDateC.text= DateFormat("dd/MM/yyyy").parse(thisDhadaBook.inwardDate??"").toString();
-    vehicleNumberC.text=thisDhadaBook.vehicalNo??"";
-    farmerNameC.text=thisDhadaBook.farmerName??"";
-    farmerPlaceC.text=thisDhadaBook.farmerPlace??"";
+     vehicleNumberC.text=thisDhadaBook.vehicalNo??"";
+    // farmerNameC.text=thisDhadaBook.farmerName??"";
+    // farmerPlaceC.text=thisDhadaBook.farmerPlace??"";
+    selectedFarmer=Farmer(
+      farmerName: thisDhadaBook.farmerName??"",
+      address: thisDhadaBook.farmerPlace??"",
+    );
+    farmerC.text=selectedFarmer?.farmerName??"";
     lotNumberC.text=thisDhadaBook.lotNo??"";
     packageC.text=thisDhadaBook.package??"";
   }
@@ -106,8 +122,8 @@ class DhadaBookViewModel extends ChangeNotifier {
         "date": DateFormat("dd/MM/yyyy").format(DateTime.parse(dateC.text)),
         "inward_date": DateFormat("dd/MM/yyyy").format(DateTime.parse(inWardDateC.text)),
         "vehical_no": vehicleNumberC.text,
-        "farmer_name": farmerNameC.text,
-        "farmer_place": farmerPlaceC.text,
+        "farmer_name": selectedFarmer?.farmerName??"",
+        "farmer_place": selectedFarmer?.address??"",
         "lot_no": lotNumberC.text,
         "package": packageC.text,
       };

@@ -1,7 +1,10 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/model/dhada_book.dart';
+import 'package:vyaparmandali/model/farmer.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/farmer/widget/farmer_selection_widget.dart';
 import 'package:vyaparmandali/view_model/dhada_book_view_model.dart';
 
 class AddDhadaBookView extends StatefulWidget {
@@ -114,46 +117,71 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                   const SizedBox(height: 15,),
 
 
-                  Text("Farmer Name",
+
+
+                  Text("Select Farmer",
                     style: theme.textTheme.titleSmall?.copyWith(
                         fontWeight: FontWeight.w500
                     ),),
                   const SizedBox(height: 5,),
-                  TextFormField(
-                    controller: viewModel.farmerNameC,
-                    decoration: const InputDecoration(
-                      hintText: "Enter Farmer Name",
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Required field !';
-                      }
-                      return null;
-                    },
+                  Selector<DhadaBookViewModel,Farmer?>(
+                      shouldRebuild: (prev,nex)=>true,
+                      selector: (buildContext , vm)=>vm.selectedFarmer,
+                      builder: (context, Farmer? data,child) {
+                      return FarmerSelectionWidget(
+                        controller: viewModel.farmerC,
+                        onFarmerSelected: (Farmer? selectedFarmer) {
+                          viewModel.selectedFarmer=selectedFarmer;
+                      },
+                      selectedFarmer: data,
+                      );
+                    }
                   ),
                   const SizedBox(height: 15,),
 
 
+                  // Uncomment For Text field for farmer input
 
-
-                  Text("Farmer Place",
-                    style: theme.textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.w500
-                    ),),
-                  const SizedBox(height: 5,),
-                  TextFormField(
-                    controller: viewModel.farmerPlaceC,
-                    decoration: const InputDecoration(
-                      hintText: "Enter Farmer Place",
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Required field !';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 15,),
+                  // Text("Farmer Name",
+                  //   style: theme.textTheme.titleSmall?.copyWith(
+                  //       fontWeight: FontWeight.w500
+                  //   ),),
+                  // const SizedBox(height: 5,),
+                  // TextFormField(
+                  //   controller: viewModel.farmerNameC,
+                  //   decoration: const InputDecoration(
+                  //     hintText: "Enter Farmer Name",
+                  //   ),
+                  //   validator: (value) {
+                  //     if (value == null || value.isEmpty) {
+                  //       return 'Required field !';
+                  //     }
+                  //     return null;
+                  //   },
+                  // ),
+                  // const SizedBox(height: 15,),
+                  //
+                  //
+                  //
+                  //
+                  // Text("Farmer Place",
+                  //   style: theme.textTheme.titleSmall?.copyWith(
+                  //       fontWeight: FontWeight.w500
+                  //   ),),
+                  // const SizedBox(height: 5,),
+                  // TextFormField(
+                  //   controller: viewModel.farmerPlaceC,
+                  //   decoration: const InputDecoration(
+                  //     hintText: "Enter Farmer Place",
+                  //   ),
+                  //   validator: (value) {
+                  //     if (value == null || value.isEmpty) {
+                  //       return 'Required field !';
+                  //     }
+                  //     return null;
+                  //   },
+                  // ),
+                  // const SizedBox(height: 15,),
 
 
                   Text("Lot Number",
@@ -205,9 +233,15 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                     child: TextButton(
                       onPressed: () {
                         if (Form.of(ctx).validate()) {
-                          viewModel.addDhadaBook(
-                              id: widget.dhadaBookToUpdate?.id
-                          );
+                          if(viewModel.selectedFarmer?.address==null || viewModel.selectedFarmer?.farmerName==null){
+                            Alert.show("Select Farmer");
+                          }
+                          else {
+                            viewModel.addDhadaBook(
+                                id: widget.dhadaBookToUpdate?.id
+                            );
+                          }
+
                         }
                         else {
                           Alert.show("Fill all fields");
