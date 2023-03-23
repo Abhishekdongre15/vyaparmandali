@@ -24,7 +24,7 @@ class FarmerSelectionWidget extends StatelessWidget {
           controller: controller,
           showLoader: data.status==Status.loading,
           decoration: const InputDecoration(
-            hintText: "Select Farmer",
+            hintText: "Search Farmer Here",
           ),
           onChanged: (val) {
            if(val!=null){
