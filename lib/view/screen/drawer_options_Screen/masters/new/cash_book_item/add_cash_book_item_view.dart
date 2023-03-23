@@ -167,7 +167,7 @@ class _AddCashBookItemViewState extends State<AddCashBookItemView> {
                     controller: viewModel.gallaAmountC,
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
-                      hintText: "Enter Lot Number",
+                      hintText: "Enter Galla Amount",
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -189,7 +189,7 @@ class _AddCashBookItemViewState extends State<AddCashBookItemView> {
                     controller: viewModel.udhariAmountC,
                     keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
-                      hintText: "Enter Package",
+                      hintText: "Enter Udhari Amount",
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
