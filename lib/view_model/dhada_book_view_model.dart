@@ -90,6 +90,8 @@ class DhadaBookViewModel extends ChangeNotifier {
       var data=await _api.call(
           url: "get_dhadabook_main_data",
           apiCallType: ApiCallType.post(body: {
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
             "id": UserRepository.of(NavigationService.context!).getUser.id.toString()
           }),
           token: true
@@ -126,6 +128,8 @@ class DhadaBookViewModel extends ChangeNotifier {
         "farmer_place": selectedFarmer?.address??"",
         "lot_no": lotNumberC.text,
         "package": packageC.text,
+        "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
       };
       if(id!=null){
         bod['id']=id;
@@ -161,6 +165,8 @@ class DhadaBookViewModel extends ChangeNotifier {
           url: "delete_dhadabook_main_data",
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
           }),
           token: true
       );

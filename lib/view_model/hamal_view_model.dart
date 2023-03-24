@@ -58,7 +58,8 @@ class HamalViewModel extends ChangeNotifier {
       var data=await _api.call(
           url: "get-hamal-master-data",
           apiCallType: ApiCallType.post(body: {
-            "id": UserRepository.of(NavigationService.context!).getUser.id.toString()
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
           }),
           token: true
       );
@@ -92,6 +93,8 @@ class HamalViewModel extends ChangeNotifier {
           url: "update-hamal-master-data",
           apiCallType: ApiCallType.post(body: {
             "hamal_name": hamalNameC.text,
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
             "date_of_joining": DateFormat("dd/MM/yyyy").format(DateTime.parse(dateOfJoiningC.text)),
             "id": id
           }),
@@ -101,6 +104,8 @@ class HamalViewModel extends ChangeNotifier {
           url: "add-hamal-master-data",
           apiCallType: ApiCallType.post(body: {
             "hamal_name": hamalNameC.text,
+
+            'user_id' : UserRepository.of(NavigationService.context!).getUser.id.toString(),
             "date_of_joining": DateFormat("dd/MM/yyyy").format(DateTime.parse(dateOfJoiningC.text)),
           }),
           token: true
@@ -131,6 +136,8 @@ class HamalViewModel extends ChangeNotifier {
           url: "delete-hamal-master-data",
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString()
+
           }),
           token: true
       );

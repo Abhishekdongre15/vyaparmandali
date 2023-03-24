@@ -75,7 +75,9 @@ class AgentViewModel extends ChangeNotifier {
       var data=await _api.call(
           url: "get-agent-master-data",
           apiCallType: ApiCallType.post(body: {
-            "id": UserRepository.of(NavigationService.context!).getUser.id.toString()
+            "id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
           }),
           token: true
       );
@@ -113,6 +115,8 @@ class AgentViewModel extends ChangeNotifier {
         "branch_name": branchNameC.text,
         "ifsc_code": ifscC.text,
         "account_number": accountNumberC.text,
+        "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
       };
       if(id!=null){
         bod['id']=id;
@@ -147,6 +151,8 @@ class AgentViewModel extends ChangeNotifier {
       var data=await _api.call(
           url: "delete-agent-master-data",
           apiCallType: ApiCallType.post(body: {
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
             "id": id.toString(),
           }),
           token: true

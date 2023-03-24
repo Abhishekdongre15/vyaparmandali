@@ -57,6 +57,8 @@ class GroupViewModel extends ChangeNotifier {
       var data=await _api.call(
           url: "get-group-master-data",
           apiCallType: ApiCallType.post(body: {
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
             "id": UserRepository.of(NavigationService.context!).getUser.id.toString()
           }),
           token: true
@@ -92,6 +94,8 @@ class GroupViewModel extends ChangeNotifier {
           apiCallType: ApiCallType.post(body: {
             "code": codeC.text,
             "name": nameC.text,
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
             "id": id
           }),
           token: true
@@ -101,6 +105,10 @@ class GroupViewModel extends ChangeNotifier {
           apiCallType: ApiCallType.post(body: {
             "code": codeC.text,
             "name": nameC.text,
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
+            'id' : id,
+
           }),
           token: true
       );
@@ -130,6 +138,8 @@ class GroupViewModel extends ChangeNotifier {
           url: "delete-group-master-data",
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
           }),
           token: true
       );

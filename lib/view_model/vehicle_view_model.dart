@@ -60,7 +60,9 @@ class VehicleViewModel extends ChangeNotifier {
       var data=await _api.call(
           url: "get-vehical-master-data",
           apiCallType: ApiCallType.post(body: {
-            "id": UserRepository.of(NavigationService.context!).getUser.id.toString()
+            "id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
           }),
           token: true
       );
@@ -93,10 +95,12 @@ class VehicleViewModel extends ChangeNotifier {
         "owner_name": ownerNameC.text,
         "vehical_name": vehicleNameC.text,
         "vehical_number": vehicleNumberC.text,
+        "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
       };
       if(id!=null){
         bod['id']=id;
-      }
+     }
       var data= await _api.call(
           url: id!=null? "update-vehical-master-data":"add-vehical-master-data",
           apiCallType: ApiCallType.post(body: bod),
@@ -128,6 +132,8 @@ class VehicleViewModel extends ChangeNotifier {
           url: "delete-vehical-master-data",
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
           }),
           token: true
       );

@@ -74,6 +74,8 @@ class CashBookItemViewModel extends ChangeNotifier {
       var data=await _api.call(
           url: "get-cashbook-item",
           apiCallType: ApiCallType.post(body: {
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
             "id": UserRepository.of(NavigationService.context!).getUser.id.toString()
           }),
           token: true
@@ -110,6 +112,8 @@ class CashBookItemViewModel extends ChangeNotifier {
         "total_line_item": totalLineItemC.text,
         "galla_amt": gallaAmountC.text,
         "udhari_amt": udhariAmountC.text,
+        "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
       };
       if(id!=null){
         bod['id']=id;
@@ -145,6 +149,8 @@ class CashBookItemViewModel extends ChangeNotifier {
           url: "delete-cashbook-item",
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
           }),
           token: true
       );

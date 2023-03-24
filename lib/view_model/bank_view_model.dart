@@ -60,6 +60,8 @@ class BankViewModel extends ChangeNotifier {
       var data=await _api.call(
           url: "get-bank-master-data",
           apiCallType: ApiCallType.post(body: {
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
             "id": UserRepository.of(NavigationService.context!).getUser.id.toString()
           }),
           token: true
@@ -93,6 +95,8 @@ class BankViewModel extends ChangeNotifier {
         "bank_name": bankNameC.text,
         "branch_code": branchCode.text,
         "ifsc_code": ifscC.text,
+        "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
       };
       if(id!=null){
         bod['id']=id;
@@ -127,6 +131,8 @@ class BankViewModel extends ChangeNotifier {
       var data=await _api.call(
           url: "delete-bank-master-data",
           apiCallType: ApiCallType.post(body: {
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
             "id": id.toString(),
           }),
           token: true

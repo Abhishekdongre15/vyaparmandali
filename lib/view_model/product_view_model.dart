@@ -54,6 +54,8 @@ class ProductViewModel extends ChangeNotifier {
       var data=await _api.call(
           url: "get-product-master-data",
           apiCallType: ApiCallType.post(body: {
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
             "id": UserRepository.of(NavigationService.context!).getUser.id.toString()
           }),
           token: true
@@ -85,6 +87,8 @@ class ProductViewModel extends ChangeNotifier {
 
       Map bod={
         "product_name": productNameC.text,
+        "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
       };
       if(id!=null){
         bod['id']=id;
@@ -120,6 +124,8 @@ class ProductViewModel extends ChangeNotifier {
           url: "delete-product-master-data",
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
           }),
           token: true
       );

@@ -54,7 +54,9 @@ class WeightViewModel extends ChangeNotifier {
       var data=await _api.call(
           url: "get-weight-type-master-data",
           apiCallType: ApiCallType.post(body: {
-            "id": UserRepository.of(NavigationService.context!).getUser.id.toString()
+            "id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
           }),
           token: true
       );
@@ -85,6 +87,8 @@ class WeightViewModel extends ChangeNotifier {
 
       Map bod={
         "weight_name": weightNameC.text,
+        "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
       };
       if(id!=null){
         bod['id']=id;
@@ -120,6 +124,8 @@ class WeightViewModel extends ChangeNotifier {
           url: "delete-weight-type-master-data",
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
           }),
           token: true
       );

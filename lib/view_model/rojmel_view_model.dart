@@ -87,7 +87,9 @@ class RojmelViewModel extends ChangeNotifier {
             "id": UserRepository.of(NavigationService.context!)
                 .getUser
                 .id
-                .toString()
+                .toString(),
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
           }),
           token: true);
 
@@ -122,6 +124,8 @@ class RojmelViewModel extends ChangeNotifier {
                 "amount": amount.text,
                 "cheq_no": cheqNo.text,
                 "description": description.text,
+                "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
                 "id": id
               }),
               token: true)
@@ -139,6 +143,8 @@ class RojmelViewModel extends ChangeNotifier {
                 "amount": amount.text,
                 "cheq_no": cheqNo.text,
                 "description": description.text,
+                "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
               }),
               token: true);
       ProgressDialogue.hide();
@@ -160,6 +166,8 @@ class RojmelViewModel extends ChangeNotifier {
           url: "delete_rojmel_data",
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
           }),
           token: true);
       ProgressDialogue.hide();

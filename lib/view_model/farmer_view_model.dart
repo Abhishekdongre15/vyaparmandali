@@ -63,6 +63,8 @@ class FarmerViewModel extends ChangeNotifier {
       var data=await _api.call(
           url: "get-farmer-master-data",
           apiCallType: ApiCallType.post(body: {
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
             "id": UserRepository.of(NavigationService.context!).getUser.id.toString()
           }),
           token: true
@@ -98,9 +100,9 @@ class FarmerViewModel extends ChangeNotifier {
         "city": cityC.text,
         "phone_number": phoneC.text,
       };
-      if(id!=null){
+    //  if(id!=null){
         bod['id']=id;
-      }
+    //  }
       var data= await _api.call(
           url: id!=null? "update-farmer-master-data":"add-farmer-master-data",
           apiCallType: ApiCallType.post(body: bod),
@@ -132,6 +134,8 @@ class FarmerViewModel extends ChangeNotifier {
           url: "delete-farmer-master-data",
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
           }),
           token: true
       );
@@ -171,6 +175,8 @@ class FarmerViewModel extends ChangeNotifier {
       var data=await _api.call(
           url: "fetch-farmer-by-name-data",
           apiCallType: ApiCallType.post(body: {
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
             "farmer_name": farmerName
           }),
           token: true

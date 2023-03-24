@@ -74,10 +74,13 @@ class CustomerViewModel extends ChangeNotifier {
       var data = await _api.call(
           url: "get_customer_data",
           apiCallType: ApiCallType.post(body: {
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
             "id": UserRepository.of(NavigationService.context!)
                 .getUser
                 .id
                 .toString()
+
           }),
           token: true);
 
@@ -110,7 +113,10 @@ class CustomerViewModel extends ChangeNotifier {
                 "address": address.text,
                 "email": email.text,
                 "contact_no": contact_no.text,
+                "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
                 "id": id
+
               }),
               token: true)
           : await _api.call(
@@ -125,6 +131,8 @@ class CustomerViewModel extends ChangeNotifier {
                 "address": address.text,
                 "email": email.text,
                 "contact_no": contact_no.text,
+                "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
               }),
               token: true);
       ProgressDialogue.hide();
@@ -146,6 +154,8 @@ class CustomerViewModel extends ChangeNotifier {
           url: "delete_customer_data",
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
           }),
           token: true);
       ProgressDialogue.hide();

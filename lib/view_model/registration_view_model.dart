@@ -120,6 +120,7 @@ class RegistrationViewModel extends ChangeNotifier{
                 "country": country,
                 "state": state,
                 "city": city,
+
               }
           ));
       ProgressDialogue.hide();

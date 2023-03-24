@@ -65,7 +65,9 @@ class VacchatViewModel extends ChangeNotifier {
       var data=await _api.call(
           url: "get-vacchat-main-data",
           apiCallType: ApiCallType.post(body: {
-            "id": UserRepository.of(NavigationService.context!).getUser.id.toString()
+            "id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
           }),
           token: true
       );
@@ -98,6 +100,8 @@ class VacchatViewModel extends ChangeNotifier {
         "vehical_no": vehicleNumberC.text,
         "total_package": totalPackageC.text,
         "vasuli_dar": vasuliDarC.text,
+        "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
       };
       if(id!=null){
         bod['id']=id;
@@ -133,6 +137,8 @@ class VacchatViewModel extends ChangeNotifier {
           url: "delete-vacchat-main-data",
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
           }),
           token: true
       );

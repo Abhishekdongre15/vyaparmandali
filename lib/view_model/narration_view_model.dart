@@ -57,6 +57,8 @@ class NarrationViewModel extends ChangeNotifier {
       var data=await _api.call(
           url: "get-narration-data",
           apiCallType: ApiCallType.post(body: {
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
             "id": UserRepository.of(NavigationService.context!).getUser.id.toString()
           }),
           token: true
@@ -92,6 +94,8 @@ class NarrationViewModel extends ChangeNotifier {
           apiCallType: ApiCallType.post(body: {
             "code": codeC.text,
             "description": descriptionC.text,
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
             "id": id
           }),
           token: true
@@ -100,6 +104,9 @@ class NarrationViewModel extends ChangeNotifier {
           url: "add-narration-data",
           apiCallType: ApiCallType.post(body: {
             "code": codeC.text,
+            'id' : id,
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
             "description": descriptionC.text,
           }),
           token: true
@@ -130,6 +137,8 @@ class NarrationViewModel extends ChangeNotifier {
           url: "delete-narration-data",
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
           }),
           token: true
       );
