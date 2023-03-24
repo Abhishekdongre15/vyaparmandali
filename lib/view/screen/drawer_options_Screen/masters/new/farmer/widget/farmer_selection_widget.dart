@@ -20,40 +20,55 @@ class FarmerSelectionWidget extends StatelessWidget {
         selector: (buildContext , vm)=>vm.searchedFarmerResponse,
         builder: (context, ApiResponse<List<Farmer>> data,child) {
           List<Farmer> farmers=data.data??[];
-        return  SearchableTextField<Farmer>(
-          controller: controller,
-          showLoader: data.status==Status.loading,
-          decoration: const InputDecoration(
-            hintText: "Search Farmer Here",
-          ),
-          onChanged: (val) {
-           if(val!=null){
-             onFarmerSelected(null);
-             FarmerViewModel.of(context).fetchFarmerByName(farmerName: val);
-           }
-          },
-          onSelectedItem: (Farmer selectedFarmer){
-            onFarmerSelected(selectedFarmer);
-            FarmerViewModel.of(context).searchedFarmerResponse=ApiResponse<List<Farmer>>.initial("");
-          },
-          validator: (val) {
-            if(val==null || val.toString().isEmpty){
-              return "Required Field !!";
-            }
-            else if(selectedFarmer==null){
-              return "Please Select Farmer";
-            }
-            else {
-              return null;
-            }
-          },
-          items: farmers.map((e) =>
-          SearchableItem<Farmer>(
-              value: e,
-              title: (e.farmerName??""))
-          ).toList(),
-        );
-      }
+
+          SearchableTextFieldStatus status=
+          controller.text.trim().isEmpty?
+          SearchableTextFieldStatus.none :
+          selectedFarmer!=null?
+          SearchableTextFieldStatus.itemSelected :
+          data.status==Status.loading?
+          SearchableTextFieldStatus.loading :
+          farmers.isEmpty?
+          SearchableTextFieldStatus.noItemFound :
+          farmers.isNotEmpty?
+          SearchableTextFieldStatus.itemFound :
+          SearchableTextFieldStatus.none;
+
+          return  SearchableTextField<Farmer>(
+            controller: controller,
+            status: status,
+            decoration: const InputDecoration(
+              hintText: "Search Farmer Here",
+            ),
+            noItemWidget: const Center(child: Text("No Farmer Found")),
+            onChanged: (val) {
+              if(val!=null){
+                onFarmerSelected(null);
+                FarmerViewModel.of(context).fetchFarmerByName(farmerName: val);
+              }
+            },
+            onSelectedItem: (Farmer selectedFarmer){
+              onFarmerSelected(selectedFarmer);
+              FarmerViewModel.of(context).searchedFarmerResponse=ApiResponse<List<Farmer>>.initial("");
+            },
+            validator: (val) {
+              if(val==null || val.toString().isEmpty){
+                return "Required Field !!";
+              }
+              else if(selectedFarmer==null){
+                return "Please Select Farmer";
+              }
+              else {
+                return null;
+              }
+            },
+            items: farmers.map((e) =>
+                SearchableItem<Farmer>(
+                    value: e,
+                    title: (e.farmerName??""),)
+            ).toList(),
+          );
+        }
     );
   }
 }
