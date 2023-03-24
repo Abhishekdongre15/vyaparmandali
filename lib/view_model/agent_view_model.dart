@@ -67,7 +67,7 @@ class AgentViewModel extends ChangeNotifier {
 
 
   Future<void> fetchAgents() async {
-    if((agentDataResponse.data?.getAllData??[]).isEmpty){
+    if((agentDataResponse.data?.getData??[]).isEmpty){
       agentDataResponse=ApiResponse<AgentData>.loading('Fetching Agents');
     }
 

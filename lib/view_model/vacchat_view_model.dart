@@ -57,7 +57,7 @@ class VacchatViewModel extends ChangeNotifier {
 
 
   Future<void> fetchVacchat() async {
-    if((vacchatDataResponse.data?.getAllData??[]).isEmpty){
+    if((vacchatDataResponse.data?.getData??[]).isEmpty){
       vacchatDataResponse=ApiResponse<VacchatData>.loading('Fetching Vacchat');
     }
 

@@ -50,7 +50,7 @@ class VehicleMasterViewState extends State<VehicleMasterView> {
           shouldRebuild: (prev,nex)=>true,
           selector: (buildContext , vm)=>vm.vehicleDataResponse,
           builder: (context, ApiResponse<VehicleData> data,child) {
-            List<Vehicle> vehicles=data.data?.getAllData??[];
+            List<Vehicle> vehicles=data.data?.getData??[];
             return Column(
               children: [
                 Expanded(

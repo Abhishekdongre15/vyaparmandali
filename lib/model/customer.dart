@@ -2,29 +2,29 @@ class CustomerData {
   int? code;
   bool? status;
   String? message;
-  List<Customer>? getAllData;
+  List<Customer>? getData;
 
-  CustomerData({this.code, this.status, this.message, this.getAllData});
+  CustomerData({this.code, this.status, this.message, this.getData});
 
   CustomerData.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     status = json['status'];
     message = json['message'];
-    if (json['get_all_data'] != null) {
-      getAllData = <Customer>[];
-      json['get_all_data'].forEach((v) {
-        getAllData!.add(Customer.fromJson(v));
+    if (json['get_data'] != null) {
+      getData = <Customer>[];
+      json['get_data'].forEach((v) {
+        getData!.add( Customer.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data =  <String, dynamic>{};
     data['code'] = code;
     data['status'] = status;
     data['message'] = message;
-    if (getAllData != null) {
-      data['get_all_data'] = getAllData!.map((v) => v.toJson()).toList();
+    if (getData != null) {
+      data['get_data'] = getData!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -32,6 +32,7 @@ class CustomerData {
 
 class Customer {
   String? id;
+  String? userId;
   String? firstName;
   String? middleName;
   String? lastName;
@@ -47,6 +48,7 @@ class Customer {
 
   Customer(
       {id,
+        userId,
         firstName,
         middleName,
         lastName,
@@ -62,6 +64,7 @@ class Customer {
 
   Customer.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    userId = json['user_id'];
     firstName = json['first_name'];
     middleName = json['middle_name'];
     lastName = json['last_name'];
@@ -77,8 +80,9 @@ class Customer {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data =  <String, dynamic>{};
     data['id'] = id;
+    data['user_id'] = userId;
     data['first_name'] = firstName;
     data['middle_name'] = middleName;
     data['last_name'] = lastName;

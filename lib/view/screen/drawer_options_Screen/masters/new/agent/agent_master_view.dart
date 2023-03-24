@@ -50,7 +50,7 @@ class AgentMasterViewState extends State<AgentMasterView> {
           shouldRebuild: (prev,nex)=>true,
           selector: (buildContext , vm)=>vm.agentDataResponse,
           builder: (context, ApiResponse<AgentData> data,child) {
-            List<Agent> agents=data.data?.getAllData??[];
+            List<Agent> agents=data.data?.getData??[];
             return Column(
               children: [
                 Expanded(

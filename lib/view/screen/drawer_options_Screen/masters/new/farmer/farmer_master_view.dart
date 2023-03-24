@@ -50,7 +50,7 @@ class FarmerMasterViewState extends State<FarmerMasterView> {
           shouldRebuild: (prev,nex)=>true,
           selector: (buildContext , vm)=>vm.farmerDataResponse,
           builder: (context, ApiResponse<FarmerData> data,child) {
-            List<Farmer> farmers=data.data?.getAllData??[];
+            List<Farmer> farmers=data.data?.getData??[];
             return Column(
               children: [
                 Expanded(

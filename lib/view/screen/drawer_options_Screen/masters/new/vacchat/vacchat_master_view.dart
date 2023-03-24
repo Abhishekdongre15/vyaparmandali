@@ -50,7 +50,7 @@ class VacchatMasterViewState extends State<VacchatMasterView> {
           shouldRebuild: (prev,nex)=>true,
           selector: (buildContext , vm)=>vm.vacchatDataResponse,
           builder: (context, ApiResponse<VacchatData> data,child) {
-            List<Vacchat> vacchats=data.data?.getAllData??[];
+            List<Vacchat> vacchats=data.data?.getData??[];
             return Column(
               children: [
                 Expanded(

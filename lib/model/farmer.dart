@@ -2,29 +2,29 @@ class FarmerData {
   int? code;
   bool? status;
   String? message;
-  List<Farmer>? getAllData;
+  List<Farmer>? getData;
 
-  FarmerData({this.code, this.status, this.message, this.getAllData});
+  FarmerData({this.code, this.status, this.message, this.getData});
 
   FarmerData.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     status = json['status'];
     message = json['message'];
-    if (json['get_all_data'] != null) {
-      getAllData = <Farmer>[];
-      json['get_all_data'].forEach((v) {
-        getAllData!.add(Farmer.fromJson(v));
+    if (json['get_data'] != null) {
+      getData = <Farmer>[];
+      json['get_data'].forEach((v) {
+        getData!.add( Farmer.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data =  Map<String, dynamic>();
     data['code'] = code;
     data['status'] = status;
     data['message'] = message;
-    if (getAllData != null) {
-      data['get_all_data'] = getAllData!.map((v) => v.toJson()).toList();
+    if (getData != null) {
+      data['get_data'] = getData!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -32,6 +32,7 @@ class FarmerData {
 
 class Farmer {
   String? id;
+  String? userId;
   String? farmerName;
   String? address;
   String? city;
@@ -41,17 +42,19 @@ class Farmer {
   String? delStatus;
 
   Farmer(
-      {this.id,
-        this.farmerName,
-        this.address,
-        this.city,
-        this.phoneNumber,
-        this.createdAt,
-        this.updatedAt,
-        this.delStatus});
+      {id,
+        userId,
+        farmerName,
+        address,
+        city,
+        phoneNumber,
+        createdAt,
+        updatedAt,
+        delStatus});
 
   Farmer.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    userId = json['user_id'];
     farmerName = json['farmer_name'];
     address = json['address'];
     city = json['city'];
@@ -62,8 +65,9 @@ class Farmer {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data = new Map<String, dynamic>();
     data['id'] = id;
+    data['user_id'] = userId;
     data['farmer_name'] = farmerName;
     data['address'] = address;
     data['city'] = city;

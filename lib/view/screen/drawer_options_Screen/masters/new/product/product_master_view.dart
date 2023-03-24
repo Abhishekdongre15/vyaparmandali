@@ -49,7 +49,7 @@ class ProductMasterViewState extends State<ProductMasterView> {
           shouldRebuild: (prev,nex)=>true,
           selector: (buildContext , vm)=>vm.productDataResponse,
           builder: (context, ApiResponse<ProductData> data,child) {
-            List<Product> products=data.data?.getAllData??[];
+            List<Product> products=data.data?.getData??[];
             return Column(
               children: [
                 Expanded(

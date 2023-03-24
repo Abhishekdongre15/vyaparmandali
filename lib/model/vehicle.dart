@@ -2,29 +2,29 @@ class VehicleData {
   int? code;
   bool? status;
   String? message;
-  List<Vehicle>? getAllData;
+  List<Vehicle>? getData;
 
-  VehicleData({this.code, this.status, this.message, this.getAllData});
+  VehicleData({this.code, this.status, this.message, this.getData});
 
   VehicleData.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     status = json['status'];
     message = json['message'];
-    if (json['get_all_data'] != null) {
-      getAllData = <Vehicle>[];
-      json['get_all_data'].forEach((v) {
-        getAllData!.add(Vehicle.fromJson(v));
+    if (json['get_data'] != null) {
+      getData = <Vehicle>[];
+      json['get_data'].forEach((v) {
+        getData!.add( Vehicle.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data =  <String, dynamic>{};
     data['code'] = code;
     data['status'] = status;
     data['message'] = message;
-    if (getAllData != null) {
-      data['get_all_data'] = getAllData!.map((v) => v.toJson()).toList();
+    if (getData != null) {
+      data['get_data'] = getData!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -32,6 +32,7 @@ class VehicleData {
 
 class Vehicle {
   String? id;
+  String? userId;
   String? ownerName;
   String? vehicalName;
   String? vehicalNumber;
@@ -40,16 +41,18 @@ class Vehicle {
   String? delStatus;
 
   Vehicle(
-      {this.id,
-        this.ownerName,
-        this.vehicalName,
-        this.vehicalNumber,
-        this.createdAt,
-        this.updatedAt,
-        this.delStatus});
+      {id,
+        userId,
+        ownerName,
+        vehicalName,
+        vehicalNumber,
+        createdAt,
+        updatedAt,
+        delStatus});
 
   Vehicle.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    userId = json['user_id'];
     ownerName = json['owner_name'];
     vehicalName = json['vehical_name'];
     vehicalNumber = json['vehical_number'];
@@ -59,8 +62,9 @@ class Vehicle {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data =  <String, dynamic>{};
     data['id'] = id;
+    data['user_id'] = userId;
     data['owner_name'] = ownerName;
     data['vehical_name'] = vehicalName;
     data['vehical_number'] = vehicalNumber;

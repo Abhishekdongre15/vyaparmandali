@@ -65,7 +65,7 @@ class CustomerViewModel extends ChangeNotifier {
   }
 
   Future<void> fetchCustomer() async {
-    if ((customerDataResponse.data?.getAllData ?? []).isEmpty) {
+    if ((customerDataResponse.data?.getData ?? []).isEmpty) {
       customerDataResponse =
           ApiResponse<CustomerData>.loading('Fetching Customer');
     }

@@ -46,7 +46,7 @@ class ProductViewModel extends ChangeNotifier {
 
 
   Future<void> fetchProducts() async {
-    if((_productDataResponse.data?.getAllData??[]).isEmpty){
+    if((_productDataResponse.data?.getData??[]).isEmpty){
       productDataResponse=ApiResponse<ProductData>.loading('Fetching Products');
     }
 

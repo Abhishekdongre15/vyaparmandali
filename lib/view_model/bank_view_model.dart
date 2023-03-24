@@ -52,7 +52,7 @@ class BankViewModel extends ChangeNotifier {
 
 
   Future<void> fetchBanks() async {
-    if((bankDataResponse.data?.getAllData??[]).isEmpty){
+    if((bankDataResponse.data?.getData??[]).isEmpty){
       bankDataResponse=ApiResponse<BankData>.loading('Fetching Banks');
     }
 

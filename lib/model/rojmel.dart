@@ -2,18 +2,18 @@ class RojmelData {
   int? code;
   bool? status;
   String? message;
-  List<Rojmel>? getAllData;
+  List<Rojmel>? getData;
 
-  RojmelData({this.code, this.status, this.message, this.getAllData});
+  RojmelData({this.code, this.status, this.message, this.getData});
 
   RojmelData.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     status = json['status'];
     message = json['message'];
-    if (json['get_all_data'] != null) {
-      getAllData = <Rojmel>[];
-      json['get_all_data'].forEach((v) {
-        getAllData!.add(Rojmel.fromJson(v));
+    if (json['get_data'] != null) {
+      getData = <Rojmel>[];
+      json['get_data'].forEach((v) {
+        getData!.add( Rojmel.fromJson(v));
       });
     }
   }
@@ -23,8 +23,8 @@ class RojmelData {
     data['code'] = code;
     data['status'] = status;
     data['message'] = message;
-    if (getAllData != null) {
-      data['get_all_data'] = getAllData!.map((v) => v.toJson()).toList();
+    if (getData != null) {
+      data['get_data'] = getData!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -32,6 +32,7 @@ class RojmelData {
 
 class Rojmel {
   String? id;
+  String? userId;
   String? type;
   String? date;
   String? transactionType;
@@ -49,6 +50,7 @@ class Rojmel {
 
   Rojmel(
       {id,
+        userId,
         type,
         date,
         transactionType,
@@ -66,6 +68,7 @@ class Rojmel {
 
   Rojmel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    userId = json['user_id'];
     type = json['type'];
     date = json['date'];
     transactionType = json['transaction_type'];
@@ -83,8 +86,9 @@ class Rojmel {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data =  <String, dynamic>{};
     data['id'] = id;
+    data['user_id'] = userId;
     data['type'] = type;
     data['date'] = date;
     data['transaction_type'] = transactionType;

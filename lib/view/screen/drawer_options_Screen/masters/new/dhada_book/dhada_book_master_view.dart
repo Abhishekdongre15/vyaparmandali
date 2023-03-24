@@ -50,7 +50,7 @@ class DhadaBookMasterViewState extends State<DhadaBookMasterView> {
           shouldRebuild: (prev,nex)=>true,
           selector: (buildContext , vm)=>vm.dhadaBookDataResponse,
           builder: (context, ApiResponse<DhadaBookData> data,child) {
-            List<DhadaBook> dhadaBooks=data.data?.getAllData??[];
+            List<DhadaBook> dhadaBooks=data.data?.getData??[];
             return Column(
               children: [
                 Expanded(

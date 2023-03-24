@@ -2,29 +2,29 @@ class BankData {
   int? code;
   bool? status;
   String? message;
-  List<Bank>? getAllData;
+  List<Bank>? getData;
 
-  BankData({this.code, this.status, this.message, this.getAllData});
+  BankData({this.code, this.status, this.message, this.getData});
 
   BankData.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     status = json['status'];
     message = json['message'];
-    if (json['get_all_data'] != null) {
-      getAllData = <Bank>[];
-      json['get_all_data'].forEach((v) {
-        getAllData!.add(Bank.fromJson(v));
+    if (json['get_data'] != null) {
+      getData = <Bank>[];
+      json['get_data'].forEach((v) {
+        getData!.add(new Bank.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data = new Map<String, dynamic>();
     data['code'] = code;
     data['status'] = status;
     data['message'] = message;
-    if (getAllData != null) {
-      data['get_all_data'] = getAllData!.map((v) => v.toJson()).toList();
+    if (getData != null) {
+      data['get_data'] = getData!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -32,6 +32,7 @@ class BankData {
 
 class Bank {
   String? id;
+  String? userId;
   String? bankName;
   String? ifscCode;
   String? branchCode;
@@ -40,16 +41,18 @@ class Bank {
   String? delStatus;
 
   Bank(
-      {this.id,
-        this.bankName,
-        this.ifscCode,
-        this.branchCode,
-        this.createdAt,
-        this.updatedAt,
-        this.delStatus});
+      {id,
+        userId,
+        bankName,
+        ifscCode,
+        branchCode,
+        createdAt,
+        updatedAt,
+        delStatus});
 
   Bank.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    userId = json['user_id'];
     bankName = json['bank_name'];
     ifscCode = json['ifsc_code'];
     branchCode = json['branch_code'];
@@ -59,8 +62,9 @@ class Bank {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data =  Map<String, dynamic>();
     data['id'] = id;
+    data['user_id'] = userId;
     data['bank_name'] = bankName;
     data['ifsc_code'] = ifscCode;
     data['branch_code'] = branchCode;

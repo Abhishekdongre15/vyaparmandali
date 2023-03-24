@@ -75,7 +75,7 @@ class RojmelViewModel extends ChangeNotifier {
   }
 
   Future<void> fetchRojmel() async {
-    if ((customerDataResponse.data?.getAllData ?? []).isEmpty) {
+    if ((customerDataResponse.data?.getData ?? []).isEmpty) {
       customerDataResponse =
           ApiResponse<RojmelData>.loading('Fetching Rojmel');
     }

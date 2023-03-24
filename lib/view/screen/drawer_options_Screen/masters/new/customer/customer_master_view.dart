@@ -55,7 +55,7 @@ class CustomerMasterViewState extends State<CustomerMasterView> {
           shouldRebuild: (prev,nex)=>true,
           selector: (buildContext , vm)=>vm.customerDataResponse,
           builder: (context, ApiResponse<CustomerData> data,child) {
-            List<Customer> customers=data.data?.getAllData??[];
+            List<Customer> customers=data.data?.getData??[];
             return Column(
               children: [
                 Expanded(

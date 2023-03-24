@@ -2,29 +2,29 @@ class AgentData {
   int? code;
   bool? status;
   String? message;
-  List<Agent>? getAllData;
+  List<Agent>? getData;
 
-  AgentData({this.code, this.status, this.message, this.getAllData});
+  AgentData({this.code, this.status, this.message, this.getData});
 
   AgentData.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     status = json['status'];
     message = json['message'];
-    if (json['get_all_data'] != null) {
-      getAllData = <Agent>[];
-      json['get_all_data'].forEach((v) {
-        getAllData!.add(Agent.fromJson(v));
+    if (json['get_data'] != null) {
+      getData = <Agent>[];
+      json['get_data'].forEach((v) {
+        getData!.add(Agent.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data =  <String, dynamic>{};
     data['code'] = code;
     data['status'] = status;
     data['message'] = message;
-    if (getAllData != null) {
-      data['get_all_data'] = getAllData!.map((v) => v.toJson()).toList();
+    if (getData != null) {
+      data['get_data'] = getData!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -32,6 +32,7 @@ class AgentData {
 
 class Agent {
   String? id;
+  String? userId;
   String? agentCode;
   String? name;
   String? address;
@@ -45,21 +46,23 @@ class Agent {
   String? delStatus;
 
   Agent(
-      {this.id,
-        this.agentCode,
-        this.name,
-        this.address,
-        this.phone,
-        this.bankName,
-        this.branchName,
-        this.ifscCode,
-        this.accountNumber,
-        this.createdAt,
-        this.updatedAt,
-        this.delStatus});
+      {id,
+        userId,
+        agentCode,
+        name,
+        address,
+        phone,
+        bankName,
+        branchName,
+        ifscCode,
+        accountNumber,
+        createdAt,
+        updatedAt,
+        delStatus});
 
   Agent.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    userId = json['user_id'];
     agentCode = json['agent_code'];
     name = json['name'];
     address = json['address'];
@@ -76,6 +79,7 @@ class Agent {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
+    data['user_id'] = userId;
     data['agent_code'] = agentCode;
     data['name'] = name;
     data['address'] = address;

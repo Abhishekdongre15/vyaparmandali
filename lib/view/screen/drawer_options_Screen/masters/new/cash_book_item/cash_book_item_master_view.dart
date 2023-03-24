@@ -50,7 +50,7 @@ class CashBookItemMasterViewState extends State<CashBookItemMasterView> {
           shouldRebuild: (prev,nex)=>true,
           selector: (buildContext , vm)=>vm.cashBookItemDataResponse,
           builder: (context, ApiResponse<CashBookItemData> data,child) {
-            List<CashBookItem> cashBookItems=data.data?.getAllData??[];
+            List<CashBookItem> cashBookItems=data.data?.getData??[];
             return Column(
               children: [
                 Expanded(

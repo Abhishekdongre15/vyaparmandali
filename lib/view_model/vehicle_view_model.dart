@@ -52,7 +52,7 @@ class VehicleViewModel extends ChangeNotifier {
 
 
   Future<void> fetchVehicles() async {
-    if((vehicleDataResponse.data?.getAllData??[]).isEmpty){
+    if((vehicleDataResponse.data?.getData??[]).isEmpty){
       vehicleDataResponse=ApiResponse<VehicleData>.loading('Fetching Vehicles');
     }
 

@@ -55,7 +55,7 @@ class FarmerViewModel extends ChangeNotifier {
 
 
   Future<void> fetchFarmers() async {
-    if((farmerDataResponse.data?.getAllData??[]).isEmpty){
+    if((farmerDataResponse.data?.getData??[]).isEmpty){
       farmerDataResponse=ApiResponse<FarmerData>.loading('Fetching Farmers');
     }
 
@@ -99,10 +99,12 @@ class FarmerViewModel extends ChangeNotifier {
         "address": addressC.text,
         "city": cityC.text,
         "phone_number": phoneC.text,
+        "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+
       };
-    //  if(id!=null){
+      if(id!=null){
         bod['id']=id;
-    //  }
+      }
       var data= await _api.call(
           url: id!=null? "update-farmer-master-data":"add-farmer-master-data",
           apiCallType: ApiCallType.post(body: bod),

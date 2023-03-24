@@ -2,29 +2,29 @@ class CashBookItemData {
   int? code;
   bool? status;
   String? message;
-  List<CashBookItem>? getAllData;
+  List<CashBookItem>? getData;
 
-  CashBookItemData({this.code, this.status, this.message, this.getAllData});
+  CashBookItemData({this.code, this.status, this.message, this.getData});
 
   CashBookItemData.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     status = json['status'];
     message = json['message'];
-    if (json['get_all_data'] != null) {
-      getAllData = <CashBookItem>[];
-      json['get_all_data'].forEach((v) {
-        getAllData!.add(CashBookItem.fromJson(v));
+    if (json['get_data'] != null) {
+      getData = <CashBookItem>[];
+      json['get_data'].forEach((v) {
+        getData!.add( CashBookItem.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data =  <String, dynamic>{};
     data['code'] = code;
     data['status'] = status;
     data['message'] = message;
-    if (getAllData != null) {
-      data['get_all_data'] = getAllData!.map((v) => v.toJson()).toList();
+    if (getData != null) {
+      data['get_data'] = getData!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -32,6 +32,7 @@ class CashBookItemData {
 
 class CashBookItem {
   String? id;
+  String? userId;
   String? code;
   String? date;
   String? srNo;
@@ -44,20 +45,22 @@ class CashBookItem {
   String? delStatus;
 
   CashBookItem(
-      {this.id,
-        this.code,
-        this.date,
-        this.srNo,
-        this.bankName,
-        this.totalItem,
-        this.gallaAmt,
-        this.udhariAmt,
-        this.createdAt,
-        this.updatedAt,
-        this.delStatus});
+      {id,
+        userId,
+        code,
+        date,
+        srNo,
+        bankName,
+        totalItem,
+        gallaAmt,
+        udhariAmt,
+        createdAt,
+        updatedAt,
+        delStatus});
 
   CashBookItem.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    userId = json['user_id'];
     code = json['code'];
     date = json['date'];
     srNo = json['sr_no'];
@@ -71,8 +74,9 @@ class CashBookItem {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
+    final Map<String, dynamic> data =  <String, dynamic>{};
     data['id'] = id;
+    data['user_id'] = userId;
     data['code'] = code;
     data['date'] = date;
     data['sr_no'] = srNo;

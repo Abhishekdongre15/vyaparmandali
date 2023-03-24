@@ -55,7 +55,7 @@ class RojmelMasterViewState extends State<RojmelMasterView> {
           shouldRebuild: (prev,nex)=>true,
           selector: (buildContext , vm)=>vm.customerDataResponse,
           builder: (context, ApiResponse<RojmelData> data,child) {
-            List<Rojmel> customers=data.data?.getAllData??[];
+            List<Rojmel> customers=data.data?.getData??[];
             return Column(
               children: [
                 Expanded(

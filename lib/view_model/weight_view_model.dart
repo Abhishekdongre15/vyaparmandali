@@ -46,7 +46,7 @@ class WeightViewModel extends ChangeNotifier {
 
 
   Future<void> fetchWeights() async {
-    if((weightDataResponse.data?.getAllData??[]).isEmpty){
+    if((weightDataResponse.data?.getData??[]).isEmpty){
       weightDataResponse=ApiResponse<WeightData>.loading('Fetching Weights');
     }
 

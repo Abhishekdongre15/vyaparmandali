@@ -82,7 +82,7 @@ class DhadaBookViewModel extends ChangeNotifier {
 
 
   Future<void> fetchDhadaBook() async {
-    if((dhadaBookDataResponse.data?.getAllData??[]).isEmpty){
+    if((dhadaBookDataResponse.data?.getData??[]).isEmpty){
       dhadaBookDataResponse=ApiResponse<DhadaBookData>.loading('Fetching DhadaBook');
     }
 

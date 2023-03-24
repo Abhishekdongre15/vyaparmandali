@@ -66,7 +66,7 @@ class CashBookItemViewModel extends ChangeNotifier {
 
 
   Future<void> fetchCashBookItem() async {
-    if((cashBookItemDataResponse.data?.getAllData??[]).isEmpty){
+    if((cashBookItemDataResponse.data?.getData??[]).isEmpty){
       cashBookItemDataResponse=ApiResponse<CashBookItemData>.loading('Fetching CashBookItem');
     }
 

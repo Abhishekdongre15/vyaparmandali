@@ -50,7 +50,7 @@ class BankMasterViewState extends State<BankMasterView> {
           shouldRebuild: (prev,nex)=>true,
           selector: (buildContext , vm)=>vm.bankDataResponse,
           builder: (context, ApiResponse<BankData> data,child) {
-            List<Bank> banks=data.data?.getAllData??[];
+            List<Bank> banks=data.data?.getData??[];
             return Column(
               children: [
                 Expanded(

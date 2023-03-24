@@ -49,7 +49,7 @@ class WeightMasterViewState extends State<WeightMasterView> {
           shouldRebuild: (prev,nex)=>true,
           selector: (buildContext , vm)=>vm.weightDataResponse,
           builder: (context, ApiResponse<WeightData> data,child) {
-            List<Weight> weights=data.data?.getAllData??[];
+            List<Weight> weights=data.data?.getData??[];
             return Column(
               children: [
                 Expanded(
