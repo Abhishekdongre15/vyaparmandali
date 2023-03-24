@@ -6,12 +6,38 @@ import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:flutter/material.dart';
 
 class MyNavigator {
-  
+
   static final BuildContext _context=NavigationService.context!;
 
   static void  pop() {
     Navigator.pop(_context);
   }
+
+
+  static Future  pushNamed(String route,{
+    Object? arguments
+}) async{
+    var data=await Navigator.pushNamed(_context, route,
+    arguments: arguments);
+    return data;
+  }
+
+  static Future pushReplacementNamed(String route) async{
+    var data=await Navigator.pushReplacementNamed(_context, route);
+    return data;
+  }
+
+  static pushNamedAndRemoveUntil(String route) async{
+    var data=await   Navigator.pushNamedAndRemoveUntil(
+      _context,
+      route,
+          (route) => false,
+    );
+    return data;
+  }
+
+
+
 
   static Future  push(Widget route,{
     Object? arguments

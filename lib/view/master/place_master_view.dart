@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/app_manager/helper/navigator.dart';
-import 'package:vyaparmandali/view/master/add_place_master.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/route_name.dart';
 
 class PlaceMasterView extends StatefulWidget {
   const PlaceMasterView({Key? key}) : super(key: key);
@@ -80,7 +80,7 @@ class PlaceMasterViewState extends State<PlaceMasterView> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            MyNavigator.push(const AddPlaceMaster());
+            MyNavigator.pushNamed(RouteName.addPlaceMaster);
           },
           child: const Icon(Icons.add)),
     );

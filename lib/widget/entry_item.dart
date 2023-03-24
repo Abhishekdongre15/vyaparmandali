@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vyaparmandali/app_manager/helper/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/route_name.dart';
 import 'package:vyaparmandali/view/balance_sheet/balance_sheets_report_view.dart';
 import 'package:vyaparmandali/view/balance_sheet/eoy_kasar_cr_view.dart';
 import 'package:vyaparmandali/view/balance_sheet/eoy_kasar_dr_view.dart';
@@ -90,7 +91,7 @@ class EntryItem extends StatelessWidget {
         title: GestureDetector(
             onTap: () {
               /* if (root.title.toLowerCase() == 'GROUP'.toLowerCase()) {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const GroupMasterListView(),));
+                Navigator.pushNamed(context, MaterialPageRoute(builder: (context) => const GroupMasterListView(),));
 
               }else if() {
 
@@ -122,52 +123,52 @@ class EntryItem extends StatelessWidget {
   void callPages(String pages) async{
     switch (pages) {
       case 'cash book item':
-        await MyNavigator.push(const CashBookItemMasterView());
+        await MyNavigator.pushNamed(RouteName.cashBookItemMasterView);
         break;
       case 'vacchat':
-        await MyNavigator.push(const VacchatMasterView());
+        await MyNavigator.pushNamed(RouteName.vacchatMasterView);
         break;
       case 'dhada book':
-        await MyNavigator.push(const DhadaBookMasterView());
+        await MyNavigator.pushNamed(RouteName.dhadaBookMasterView);
         break;
       case 'farmer':
-        await MyNavigator.push(const FarmerMasterView());
+        await MyNavigator.pushNamed(RouteName.farmerMasterView);
         break;
       case 'product':
-        await MyNavigator.push(const ProductMasterView());
+        await MyNavigator.pushNamed(RouteName.productMasterView);
         break;
       case 'vehicle':
-        await MyNavigator.push(const VehicleMasterView());
+        await MyNavigator.pushNamed(RouteName.vehicleMasterView);
         break;
       case 'weight':
-        await MyNavigator.push(const WeightMasterView());
+        await MyNavigator.pushNamed(RouteName.weightMasterView);
         break;
       case 'agent':
-        await MyNavigator.push(const AgentMasterView());
+        await MyNavigator.pushNamed(RouteName.agentMasterView);
         break;
       case 'bank':
-        await MyNavigator.push(const BankMasterView());
+        await MyNavigator.pushNamed(RouteName.bankMasterView);
         break;
       case 'hamal':
-        await MyNavigator.push(const HamalMasterView());
+        await MyNavigator.pushNamed(RouteName.hamalMasterView);
         break;
       case 'customer':
-        await MyNavigator.push(const CustomerMasterView());
+        await MyNavigator.pushNamed(RouteName.customerMasterView);
         break;
       case 'group':
-        await MyNavigator.push(const GroupMasterView());
+        await MyNavigator.pushNamed(RouteName.groupMasterView);
         break;
       case 'narration':
-        MyNavigator.push(const NarrationMasterView());
+        MyNavigator.pushNamed(RouteName.narrationMasterView);
         break;
       case 'a/c master':
-        MyNavigator.push(const ACMasterListView());
+        MyNavigator.pushNamed(RouteName.acMasterListView);
         break;
      case 'rojmel':
-        MyNavigator.push(const RojmelMasterView());
+        MyNavigator.pushNamed(RouteName.rojmelMasterView);
         break;
       case 'item name':
-        MyNavigator.push(const ItemView());
+        MyNavigator.pushNamed(RouteName.itemView);
         break;
       case 'item exp':
         MyNavigator.push(const ItemExpView());

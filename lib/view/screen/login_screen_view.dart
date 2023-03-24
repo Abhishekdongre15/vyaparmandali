@@ -3,15 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:vyaparmandali/app_manager/component/colored_safe_area.dart';
 import 'package:vyaparmandali/app_manager/component/password_field.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
-import 'package:vyaparmandali/app_manager/helper/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/route_name.dart';
 import 'package:vyaparmandali/app_manager/helper/responsive/responsive.dart';
 import 'package:vyaparmandali/app_manager/helper/responsive/widget/responsive_screen.dart';
 import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
 import 'package:vyaparmandali/app_manager/theme/widget_theme_data/custom_text_field_theme.dart';
 import 'package:vyaparmandali/util/email_validation.dart';
-import 'package:vyaparmandali/view/screen/registration_screen_view.dart';
 import 'package:vyaparmandali/view_model/login_view_model.dart';
-import '../forget_password_view.dart';
 
 class LoginScreenView extends StatefulWidget {
   const LoginScreenView({Key? key}) : super(key: key);
@@ -148,7 +147,7 @@ class _LoginScreenViewState extends State<LoginScreenView> {
                                 ),          /// Navigate To Login Screen
                                 GestureDetector(
                                   onTap: () {
-                                    MyNavigator.push(const RegistrationScreenView());
+                                    Navigator.pushNamed(context,RouteName.registrationScreenView);
                                   },
                                   child: RichText(
                                     text: TextSpan(
@@ -171,7 +170,7 @@ class _LoginScreenViewState extends State<LoginScreenView> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    MyNavigator.push(const ForgetPasswordView());
+                                    MyNavigator.pushNamed(RouteName.forgetPasswordView);
                                   },
                                   child: RichText(
                                     text: TextSpan(

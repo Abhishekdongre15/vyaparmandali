@@ -1,4 +1,4 @@
-import 'package:vyaparmandali/app_manager/helper/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/theme/widget_theme_data/custom_button_theme.dart';
 import 'package:flutter/material.dart';
 

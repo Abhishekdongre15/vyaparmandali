@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/app_manager/constant/project_constant.dart';
-import 'package:vyaparmandali/app_manager/helper/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/route_name.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
-import 'package:vyaparmandali/view/screen/profile/profile_page_view.dart';
 import 'package:vyaparmandali/widget/user_avatar.dart';
 
 class AppBarProfile extends StatelessWidget {
@@ -31,7 +31,7 @@ class AppBarProfile extends StatelessWidget {
         ),
         InkWell(
           onTap: (){
-            MyNavigator.push(const ProfilePageView());
+            MyNavigator.pushNamed(RouteName.profilePageView);
           },
           child: const UserAvatar(
             errorWidget: Icon(Icons.error,

@@ -15,15 +15,14 @@ import '../../util/constants.dart';
 
 
 class RegistrationScreenView extends StatefulWidget {
-  final User? updateUser;
-  const RegistrationScreenView({Key? key, this.updateUser}) : super(key: key);
+  const RegistrationScreenView({Key? key}) : super(key: key);
 
   @override
   State<RegistrationScreenView> createState() => _RegistrationScreenViewState();
 }
 
 class _RegistrationScreenViewState extends State<RegistrationScreenView> {
-
+  User? updateUser;
   @override
   void initState() {
     // TODO: implement initState
@@ -32,10 +31,12 @@ class _RegistrationScreenViewState extends State<RegistrationScreenView> {
   }
 
   get(){
+
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      if(widget.updateUser!=null){
+      updateUser = ModalRoute.of(context)!.settings.arguments as User?;
+      if(updateUser!=null){
         RegistrationViewModel.of(context).initiateUpdate(
-            widget.updateUser!
+            updateUser!
         );
       }else{
         RegistrationViewModel.of(context).initiate();
@@ -70,7 +71,7 @@ class _RegistrationScreenViewState extends State<RegistrationScreenView> {
           Padding(
             padding: const EdgeInsets.only(left: 20.0),
             child: Text(
-              widget.updateUser!=null? "Update":'Fill Form',
+              updateUser!=null? "Update":'Fill Form',
               style: kLoginTitleStyle(size),
             ),
           ),
@@ -80,7 +81,7 @@ class _RegistrationScreenViewState extends State<RegistrationScreenView> {
           Padding(
             padding: const EdgeInsets.only(left: 20.0),
             child: Text(
-              widget.updateUser!=null? "profile":'Welcome Here',
+              updateUser!=null? "profile":'Welcome Here',
               style: kLoginSubtitleStyle(size),
             ),
           ),
@@ -96,7 +97,7 @@ class _RegistrationScreenViewState extends State<RegistrationScreenView> {
                   Widget submitButton=TextButton(
                     onPressed: () {
                       if (Form.of(ctx).validate()) {
-                          viewModel.onPressSubmit(widget.updateUser);
+                          viewModel.onPressSubmit(updateUser);
 
 
                       }
@@ -104,7 +105,7 @@ class _RegistrationScreenViewState extends State<RegistrationScreenView> {
                         Alert.show("Fields are Not validated");
                       }
                     },
-                    child:  Center(child: Text(widget.updateUser!=null? "Update Profile":'Submit Form'),),
+                    child:  Center(child: Text(updateUser!=null? "Update Profile":'Submit Form'),),
                   );
                   return Column(
                     children: [
@@ -219,11 +220,11 @@ class _RegistrationScreenViewState extends State<RegistrationScreenView> {
                           return null;
                         },
                       ),
-                      widget.updateUser!=null? Container():SizedBox(
+                      updateUser!=null? Container():SizedBox(
                         height: size.height * 0.02,
                       ),
 
-                      widget.updateUser!=null? Container():PasswordField(
+                      updateUser!=null? Container():PasswordField(
                         controller: viewModel.passwordC,
                         hintText: "Enter Password",
                         prefixIcon: const Icon(Icons.password),
@@ -299,7 +300,7 @@ class _RegistrationScreenViewState extends State<RegistrationScreenView> {
                       SizedBox(
                         height: size.height * 0.02,
                       ),
-                      widget.updateUser!=null? Container():GestureDetector(
+                      updateUser!=null? Container():GestureDetector(
                         onTap: () {
                           Navigator.pop(context);
                         },
@@ -318,7 +319,7 @@ class _RegistrationScreenViewState extends State<RegistrationScreenView> {
                           ),
                         ),
                       ),
-                      widget.updateUser!=null? Container():SizedBox(
+                      updateUser!=null? Container():SizedBox(
                         height: size.height * 0.02,
                       ),
                     ],
@@ -362,7 +363,7 @@ class _RegistrationScreenViewState extends State<RegistrationScreenView> {
       child: ColoredSafeArea(
         child: Scaffold(
           appBar: AppBar(
-            title:  Text( widget.updateUser!=null? "Update Profile":"Register"),
+            title:  Text( updateUser!=null? "Update Profile":"Register"),
           ),
           backgroundColor: Colors.white,
           body: LayoutBuilder(

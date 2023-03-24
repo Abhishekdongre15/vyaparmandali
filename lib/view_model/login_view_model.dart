@@ -3,7 +3,8 @@ import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/api/api_call.dart';
 import 'package:vyaparmandali/app_manager/component/progress_dialogue.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
-import 'package:vyaparmandali/app_manager/helper/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/route_name.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/user.dart';
@@ -51,7 +52,7 @@ class LoginViewModel extends ChangeNotifier {
 
         UserRepository.of(NavigationService.context!).updateUserData(User.fromJson(data['data'][0])).then((value) {
           if(updating==false){
-            MyNavigator.pushReplacement( const DashboardView());
+            MyNavigator.pushReplacementNamed(RouteName.dashboard);
           }
         }
         );
