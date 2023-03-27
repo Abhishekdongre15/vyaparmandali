@@ -10,11 +10,9 @@ import 'package:vyaparmandali/view/balance_sheet/schedules_report_view.dart';
 import 'package:vyaparmandali/view/balance_sheet/trial_balance_detail_screen_view.dart';
 import 'package:vyaparmandali/view/balance_sheet/trial_balance_report_view.dart';
 import 'package:vyaparmandali/view/data_entry/data_entry_view.dart';
-import 'package:vyaparmandali/view/master/ac_master_view.dart';
 import 'package:vyaparmandali/view/master/items/account_setting_view.dart';
 import 'package:vyaparmandali/view/master/items/hamali_exp_view.dart';
 import 'package:vyaparmandali/view/master/items/item_exp_view.dart';
-import 'package:vyaparmandali/view/master/items/item_view.dart';
 import 'package:vyaparmandali/view/master/place_master_view.dart';
 import 'package:vyaparmandali/view/report/additional report/monthwise_pnl_report_view.dart';
 import 'package:vyaparmandali/view/report/additional report/vachatwise_report_view.dart';
@@ -123,40 +121,40 @@ class EntryItem extends StatelessWidget {
   void callPages(String pages) async{
     switch (pages) {
       case 'cash book item':
-        await MyNavigator.pushNamed(RouteName.cashBookItemMasterView);
+         MyNavigator.pushNamed(RouteName.cashBookItemMasterView);
         break;
       case 'vacchat':
-        await MyNavigator.pushNamed(RouteName.vacchatMasterView);
+        MyNavigator.pushNamed(RouteName.vacchatMasterView);
         break;
       case 'dhada book':
-        await MyNavigator.pushNamed(RouteName.dhadaBookMasterView);
+        MyNavigator.pushNamed(RouteName.dhadaBookMasterView);
         break;
       case 'farmer':
-        await MyNavigator.pushNamed(RouteName.farmerMasterView);
+        MyNavigator.pushNamed(RouteName.farmerMasterView);
         break;
       case 'product':
-        await MyNavigator.pushNamed(RouteName.productMasterView);
+        MyNavigator.pushNamed(RouteName.productMasterView);
         break;
       case 'vehicle':
-        await MyNavigator.pushNamed(RouteName.vehicleMasterView);
+        MyNavigator.pushNamed(RouteName.vehicleMasterView);
         break;
       case 'weight':
-        await MyNavigator.pushNamed(RouteName.weightMasterView);
+        MyNavigator.pushNamed(RouteName.weightMasterView);
         break;
       case 'agent':
-        await MyNavigator.pushNamed(RouteName.agentMasterView);
+        MyNavigator.pushNamed(RouteName.agentMasterView);
         break;
       case 'bank':
-        await MyNavigator.pushNamed(RouteName.bankMasterView);
+        MyNavigator.pushNamed(RouteName.bankMasterView);
         break;
       case 'hamal':
-        await MyNavigator.pushNamed(RouteName.hamalMasterView);
+        MyNavigator.pushNamed(RouteName.hamalMasterView);
         break;
       case 'customer':
-        await MyNavigator.pushNamed(RouteName.customerMasterView);
+        MyNavigator.pushNamed(RouteName.customerMasterView);
         break;
       case 'group':
-        await MyNavigator.pushNamed(RouteName.groupMasterView);
+        MyNavigator.pushNamed(RouteName.groupMasterView);
         break;
       case 'narration':
         MyNavigator.pushNamed(RouteName.narrationMasterView);

@@ -147,7 +147,7 @@ class _LoginScreenViewState extends State<LoginScreenView> {
                                 ),          /// Navigate To Login Screen
                                 GestureDetector(
                                   onTap: () {
-                                    Navigator.pushNamed(context,RouteName.registrationScreenView);
+                                    MyNavigator.pushNamed(RouteName.registrationScreenView);
                                   },
                                   child: RichText(
                                     text: TextSpan(

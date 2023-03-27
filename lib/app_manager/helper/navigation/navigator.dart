@@ -2,6 +2,7 @@
 
 
 
+import 'package:get/get.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:flutter/material.dart';
 
@@ -17,13 +18,13 @@ class MyNavigator {
   static Future  pushNamed(String route,{
     Object? arguments
 }) async{
-    var data=await Navigator.pushNamed(_context, route,
+    var data=await Get.toNamed(route,
     arguments: arguments);
     return data;
   }
 
   static Future pushReplacementNamed(String route) async{
-    var data=await Navigator.pushReplacementNamed(_context, route);
+    var data=await Get.offNamed( route);
     return data;
   }
 

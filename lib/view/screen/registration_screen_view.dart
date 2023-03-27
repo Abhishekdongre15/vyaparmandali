@@ -93,7 +93,6 @@ class _RegistrationScreenViewState extends State<RegistrationScreenView> {
             child: Form(
               child: Builder(
                 builder: (ctx) {
-
                   Widget submitButton=TextButton(
                     onPressed: () {
                       if (Form.of(ctx).validate()) {
