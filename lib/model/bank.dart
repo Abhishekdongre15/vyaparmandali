@@ -13,13 +13,13 @@ class BankData {
     if (json['get_data'] != null) {
       getData = <Bank>[];
       json['get_data'].forEach((v) {
-        getData!.add(new Bank.fromJson(v));
+        getData!.add(Bank.fromJson(v));
       });
     }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['code'] = code;
     data['status'] = status;
     data['message'] = message;
@@ -62,7 +62,7 @@ class Bank {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
+    final Map<String, dynamic> data =  <String, dynamic>{};
     data['id'] = id;
     data['user_id'] = userId;
     data['bank_name'] = bankName;

@@ -2,6 +2,7 @@ import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/model/vacchat.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vacchat/widgets/vacchat_details_widget.dart';
 import 'package:vyaparmandali/view_model/vacchat_view_model.dart';
 
 class AddVacchatView extends StatefulWidget {
@@ -128,8 +129,7 @@ class _AddVacchatViewState extends State<AddVacchatView> {
                       return null;
                     },
                   ),
-
-
+                  const VacchatDetailsWidget(),
                   const SizedBox(height: 10,),
                   Center(
                     child: TextButton(

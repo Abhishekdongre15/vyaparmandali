@@ -19,7 +19,7 @@ class FarmerData {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
+    final Map<String, dynamic> data =  <String, dynamic>{};
     data['code'] = code;
     data['status'] = status;
     data['message'] = message;
@@ -65,7 +65,7 @@ class Farmer {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['user_id'] = userId;
     data['farmer_name'] = farmerName;

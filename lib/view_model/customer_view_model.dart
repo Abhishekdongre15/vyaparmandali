@@ -4,7 +4,7 @@ import 'package:vyaparmandali/app_manager/api/api_call.dart';
 import 'package:vyaparmandali/app_manager/api/api_response.dart';
 import 'package:vyaparmandali/app_manager/component/progress_dialogue.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
-import 'package:vyaparmandali/app_manager/helper/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/customer.dart';
@@ -23,7 +23,7 @@ class CustomerViewModel extends ChangeNotifier {
   TextEditingController state = TextEditingController();
   TextEditingController address = TextEditingController();
   TextEditingController email = TextEditingController();
-  TextEditingController contact_no = TextEditingController();
+  TextEditingController contactNo = TextEditingController();
 
   void initiateAddCustomer() {
     _clearFields();
@@ -37,7 +37,7 @@ class CustomerViewModel extends ChangeNotifier {
     city.clear();
     state.clear();
     address.clear();
-    contact_no.clear();
+    contactNo.clear();
     email.clear();
   }
 
@@ -51,7 +51,7 @@ class CustomerViewModel extends ChangeNotifier {
     address.text = thisCustomer.address ?? "";
     state.text = thisCustomer.state ?? "";
     email.text = thisCustomer.email ?? "";
-    contact_no.text = thisCustomer.contactNo ?? "";
+    contactNo.text = thisCustomer.contactNo ?? "";
   }
 
   ApiResponse<CustomerData> _customerDataResponse =
@@ -112,7 +112,7 @@ class CustomerViewModel extends ChangeNotifier {
                 "state": state.text,
                 "address": address.text,
                 "email": email.text,
-                "contact_no": contact_no.text,
+                "contact_no": contactNo.text,
                 "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
 
                 "id": id
@@ -130,7 +130,7 @@ class CustomerViewModel extends ChangeNotifier {
                 "state": state.text,
                 "address": address.text,
                 "email": email.text,
-                "contact_no": contact_no.text,
+                "contact_no": contactNo.text,
                 "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
 
               }),

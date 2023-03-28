@@ -5,9 +5,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_sheet.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/functional_sheet.dart';
 import 'package:vyaparmandali/app_manager/constant/storage_constant.dart';
-import 'package:vyaparmandali/app_manager/helper/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/route_name.dart';
 import 'package:vyaparmandali/model/user.dart';
-import 'package:vyaparmandali/view/screen/login_screen_view.dart';
 
 class UserRepository extends ChangeNotifier {
   User? currentUser;
@@ -49,7 +49,7 @@ class UserRepository extends ChangeNotifier {
 
   Future directLogOut() async {
     await updateUserData(User()).then((value) {
-      MyNavigator.pushAndRemoveUntil( const LoginScreenView());
+      MyNavigator.pushNamedAndRemoveUntil( RouteName.login);
     });
     notifyListeners();
   }

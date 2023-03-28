@@ -4,7 +4,7 @@ import 'package:vyaparmandali/app_manager/api/api_call.dart';
 import 'package:vyaparmandali/app_manager/api/api_response.dart';
 import 'package:vyaparmandali/app_manager/component/progress_dialogue.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
-import 'package:vyaparmandali/app_manager/helper/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/farmer.dart';
@@ -191,7 +191,6 @@ class FarmerViewModel extends ChangeNotifier {
                 (data['fetch_farmer_by_name_data'] as List).map((e) => Farmer.fromJson(e))
             )
         );
-        print("hiiiiii");
       }
       else {
         searchedFarmerResponse=ApiResponse<List<Farmer>>.empty("Data Not found");

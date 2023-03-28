@@ -1,4 +1,4 @@
-import 'package:vyaparmandali/app_manager/helper/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:vyaparmandali/app_manager/api/api_constant.dart';

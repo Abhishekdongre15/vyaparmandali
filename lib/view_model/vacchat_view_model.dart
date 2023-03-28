@@ -5,7 +5,7 @@ import 'package:vyaparmandali/app_manager/api/api_call.dart';
 import 'package:vyaparmandali/app_manager/api/api_response.dart';
 import 'package:vyaparmandali/app_manager/component/progress_dialogue.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
-import 'package:vyaparmandali/app_manager/helper/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/vacchat.dart';
@@ -22,6 +22,17 @@ class VacchatViewModel extends ChangeNotifier {
   TextEditingController totalPackageC = TextEditingController();
   TextEditingController vasuliDarC = TextEditingController();
 
+  List<VacchatDetails> details=[];
+
+  void addDetails() {
+    details.add(VacchatDetails());
+    notifyListeners();
+  }
+
+  void clearDetailOnIndex(int index){
+    details.removeAt(index);
+    notifyListeners();
+  }
 
 
   void initiateAddVacchat(){
@@ -35,6 +46,8 @@ class VacchatViewModel extends ChangeNotifier {
     vehicleNumberC.clear();
     totalPackageC.clear();
     vasuliDarC.clear();
+    details.clear();
+    notifyListeners();
   }
 
 
@@ -95,20 +108,24 @@ class VacchatViewModel extends ChangeNotifier {
   }) async{
     ProgressDialogue.show(message: id==null? "Adding Vacchat":"Updating Vacchat");
     try {
-      Map bod={
-        "date": DateFormat("dd/MM/yyyy").format(DateTime.parse(dateC.text)),
-        "vehical_no": vehicleNumberC.text,
-        "total_package": totalPackageC.text,
-        "vasuli_dar": vasuliDarC.text,
-        "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+      List body=[
+        {
+          "date": DateFormat("dd/MM/yyyy").format(DateTime.parse(dateC.text)),
+          "vehical_no": vehicleNumberC.text,
+          "total_package": totalPackageC.text,
+          "vasuli_dar": vasuliDarC.text,
+          "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
 
-      };
+        },{
+        "vacchat_details": details.map((e) => e.toJson()).toList()
+        }
+      ];
       if(id!=null){
-        bod['id']=id;
+       // body['id']=id;
       }
       var data= await _api.call(
-          url: id!=null? "update-vacchat-main-data":"add-vacchat-main-data",
-          apiCallType: ApiCallType.post(body: bod),
+          url: id!=null? "update-vacchat-main-data":"add-vacchat-main-and-details-data",
+          apiCallType: ApiCallType.rawPost(body: body),
           token: true
       );
       ProgressDialogue.hide();
@@ -138,7 +155,6 @@ class VacchatViewModel extends ChangeNotifier {
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
             "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
-
           }),
           token: true
       );

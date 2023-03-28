@@ -1,9 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:readmore/readmore.dart';
-import 'package:vyaparmandali/app_manager/helper/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/route_name.dart';
 import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
 import 'package:vyaparmandali/model/user.dart';
-import 'package:vyaparmandali/view/screen/registration_screen_view.dart';
 import 'package:vyaparmandali/widget/user_avatar.dart';
 
 class ProfileInfoView extends StatelessWidget {
@@ -38,9 +39,8 @@ class ProfileInfoView extends StatelessWidget {
                   TextButton(
                     child: const Text('Edit'),
                     onPressed: () {
-                      MyNavigator.push( RegistrationScreenView(
-                        updateUser: user
-                      ));
+                      MyNavigator.pushNamed( RouteName.registrationScreenView,
+                      arguments: user);
                     },
                   ),
                   const Spacer(flex: 1),

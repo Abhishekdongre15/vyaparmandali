@@ -229,7 +229,7 @@ class _AddCustomerViewState extends State<AddCustomerView> {
                     height: 5,
                   ),
                   TextFormField(
-                    controller: viewModel.contact_no,
+                    controller: viewModel.contactNo,
                     decoration: const InputDecoration(
                       hintText: "Enter Contact No",
                     ),

@@ -40,7 +40,7 @@ Map<String,String> rawHeader={
 
 
 class ApiCallType {
-  Map? body;
+  dynamic body;
   String? fileParameter;
   String? filePath;
   ApiType apiType;
@@ -118,7 +118,7 @@ class ApiCall {
     String myUrl = (newBaseUrl ?? ApiConstant.baseUrl) + url;
     String accessToken = newToken?? UserRepository.of(context).getUser.token??"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MzQ5MzB9.4wWJLSYp-6U9xHcXHXssfB_wBZCMh7vCbGr4Un-ObpA";
     // String userId = "";
-    Map body = apiCallType.body??{};
+    dynamic body = apiCallType.body??{};
     Map<String,String>? header = token?{
       'Authorization': accessToken.toString(),
     }:{};
@@ -168,6 +168,7 @@ class ApiCall {
           request.body = json.encode(body);
           request.headers.addAll(header);
           response= await http.Response.fromStream((await request.send()));
+
           break;
 
 

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:uitoolkit/uitoolkit.dart';
-import 'package:vyaparmandali/app_manager/helper/navigator.dart';
-
-import 'add_hamali_exp_view.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/route_name.dart';
 
 class HamaliExpView extends StatefulWidget {
   const HamaliExpView({Key? key}) : super(key: key);
@@ -95,7 +94,7 @@ class HamaliExpViewState extends State<HamaliExpView> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-            MyNavigator.push(const AddHamaliExpView());
+            MyNavigator.pushNamed(RouteName.addHamaliExpView);
           },
           child: const Icon(Icons.add)),
     );

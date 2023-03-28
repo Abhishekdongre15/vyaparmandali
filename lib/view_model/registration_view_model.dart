@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/api/api_call.dart';
 import 'package:vyaparmandali/app_manager/component/progress_dialogue.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
-import 'package:vyaparmandali/app_manager/helper/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/model/user.dart';
 import 'package:vyaparmandali/view_model/login_view_model.dart';
