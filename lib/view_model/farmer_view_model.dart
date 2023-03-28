@@ -191,7 +191,6 @@ class FarmerViewModel extends ChangeNotifier {
                 (data['fetch_farmer_by_name_data'] as List).map((e) => Farmer.fromJson(e))
             )
         );
-        print("hiiiiii");
       }
       else {
         searchedFarmerResponse=ApiResponse<List<Farmer>>.empty("Data Not found");

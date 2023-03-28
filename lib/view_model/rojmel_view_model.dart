@@ -8,7 +8,6 @@ import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
-import 'package:vyaparmandali/model/customer.dart';
 
 import '../model/rojmel.dart';
 

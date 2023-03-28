@@ -8,7 +8,6 @@ import 'package:vyaparmandali/app_manager/helper/navigation/route_name.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/user.dart';
-import 'package:vyaparmandali/view/screen/dashboard_view.dart';
 
 class LoginViewModel extends ChangeNotifier {
 

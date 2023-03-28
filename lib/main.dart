@@ -27,6 +27,7 @@ import 'package:vyaparmandali/view_model/rojmel_view_model.dart';
 import 'package:vyaparmandali/view_model/vacchat_view_model.dart';
 import 'package:vyaparmandali/view_model/vehicle_view_model.dart';
 import 'package:vyaparmandali/view_model/weight_view_model.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_web_plugins/url_strategy.dart';
 
 class MyHttpOverrides extends HttpOverrides {
@@ -105,18 +106,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       initialRoute: RouteName.initial,
       getPages: getPages,
-      navigatorObservers: [
-        MyNavigatorObserver(),
-      ],
     );
-  }
-}
-
-class MyNavigatorObserver extends NavigatorObserver {
-  @override
-  void didPush(Route<dynamic> route, Route<dynamic>? previousRoute) {
-    print("previousRoute to: ${previousRoute}");
-    print("navigated to: ${route.settings.name}");
   }
 }
 

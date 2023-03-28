@@ -59,21 +59,6 @@ import 'package:vyaparmandali/view/report/vacchat report/jama_nondh.dart';
 import 'package:vyaparmandali/view/report/vacchat report/jama_nondh_summery_monthly_view.dart';
 import 'package:vyaparmandali/view/report/vacchat report/jama_nondh_summery_view.dart';
 import 'package:vyaparmandali/view/report/vacchat%20report/patti_register_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/codes/group/group_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/codes/narrartion/narration_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/agent/agent_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/bank/bank_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/cash_book_item/cash_book_item_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/customer/customer_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/dhada_book/dhada_book_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/farmer/farmer_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/hamal/hamal_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/product/product_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/rojmel/rojmel_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vacchat/vacchat_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vehicle/vehicle_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/weight/weight_master_view.dart';
-
 import 'entry.dart';
 
 class EntryItem extends StatelessWidget {
@@ -183,7 +168,7 @@ class EntryItem extends StatelessWidget {
 
       /// Master Screen Ended
 
-      case 'rojmel':
+      case 'dat entry':
         MyNavigator.push(const DataEntryView());
         break;
       case 'rojmel as a/c':
