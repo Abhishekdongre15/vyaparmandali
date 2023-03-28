@@ -53,18 +53,18 @@ packages:
     dependency: transitive
     description:
       name: auto_route
-      sha256: "70b2461cc58d6a46c20859f23148b370165da183d21a82b783156f9a91d9c38b"
+      sha256: "89a5fcc4ea1bb13a13e3c0cf965a6600c2879c6c0719b57075bb5e9039559998"
       url: "https://pub.dev"
     source: hosted
-    version: "6.0.1"
+    version: "6.0.3"
   auto_route_generator:
     dependency: "direct main"
     description:
       name: auto_route_generator
-      sha256: a3f11c3b1e6e884d1592924f3b7212855f1c7c8791c12d3b41b87ab81fb9d3b8
+      sha256: "0c97f3c413924216a5f290811e78742ef45924d28ffa7fa3ac41af5e3a9e4fa2"
       url: "https://pub.dev"
     source: hosted
-    version: "6.0.0"
+    version: "6.0.1"
   back_button_interceptor:
     dependency: transitive
     description:
@@ -424,6 +424,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.2.0"
+  get:
+    dependency: "direct main"
+    description:
+      name: get
+      sha256: "2ba20a47c8f1f233bed775ba2dd0d3ac97b4cf32fc17731b3dfc672b06b0e92a"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.6.5"
   glob:
     dependency: transitive
     description:

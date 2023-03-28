@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:vyaparmandali/app_manager/helper/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/route_name.dart';
 import 'package:vyaparmandali/view/balance_sheet/balance_sheets_report_view.dart';
 import 'package:vyaparmandali/view/balance_sheet/eoy_kasar_cr_view.dart';
 import 'package:vyaparmandali/view/balance_sheet/eoy_kasar_dr_view.dart';
@@ -9,11 +10,9 @@ import 'package:vyaparmandali/view/balance_sheet/schedules_report_view.dart';
 import 'package:vyaparmandali/view/balance_sheet/trial_balance_detail_screen_view.dart';
 import 'package:vyaparmandali/view/balance_sheet/trial_balance_report_view.dart';
 import 'package:vyaparmandali/view/data_entry/data_entry_view.dart';
-import 'package:vyaparmandali/view/master/ac_master_view.dart';
 import 'package:vyaparmandali/view/master/items/account_setting_view.dart';
 import 'package:vyaparmandali/view/master/items/hamali_exp_view.dart';
 import 'package:vyaparmandali/view/master/items/item_exp_view.dart';
-import 'package:vyaparmandali/view/master/items/item_view.dart';
 import 'package:vyaparmandali/view/master/place_master_view.dart';
 import 'package:vyaparmandali/view/report/additional report/monthwise_pnl_report_view.dart';
 import 'package:vyaparmandali/view/report/additional report/vachatwise_report_view.dart';
@@ -90,7 +89,7 @@ class EntryItem extends StatelessWidget {
         title: GestureDetector(
             onTap: () {
               /* if (root.title.toLowerCase() == 'GROUP'.toLowerCase()) {
-                Navigator.push(context, MaterialPageRoute(builder: (context) => const GroupMasterListView(),));
+                Navigator.pushNamed(context, MaterialPageRoute(builder: (context) => const GroupMasterListView(),));
 
               }else if() {
 
@@ -122,52 +121,52 @@ class EntryItem extends StatelessWidget {
   void callPages(String pages) async{
     switch (pages) {
       case 'cash book item':
-        await MyNavigator.push(const CashBookItemMasterView());
+         MyNavigator.pushNamed(RouteName.cashBookItemMasterView);
         break;
       case 'vacchat':
-        await MyNavigator.push(const VacchatMasterView());
+        MyNavigator.pushNamed(RouteName.vacchatMasterView);
         break;
       case 'dhada book':
-        await MyNavigator.push(const DhadaBookMasterView());
+        MyNavigator.pushNamed(RouteName.dhadaBookMasterView);
         break;
       case 'farmer':
-        await MyNavigator.push(const FarmerMasterView());
+        MyNavigator.pushNamed(RouteName.farmerMasterView);
         break;
       case 'product':
-        await MyNavigator.push(const ProductMasterView());
+        MyNavigator.pushNamed(RouteName.productMasterView);
         break;
       case 'vehicle':
-        await MyNavigator.push(const VehicleMasterView());
+        MyNavigator.pushNamed(RouteName.vehicleMasterView);
         break;
       case 'weight':
-        await MyNavigator.push(const WeightMasterView());
+        MyNavigator.pushNamed(RouteName.weightMasterView);
         break;
       case 'agent':
-        await MyNavigator.push(const AgentMasterView());
+        MyNavigator.pushNamed(RouteName.agentMasterView);
         break;
       case 'bank':
-        await MyNavigator.push(const BankMasterView());
+        MyNavigator.pushNamed(RouteName.bankMasterView);
         break;
       case 'hamal':
-        await MyNavigator.push(const HamalMasterView());
+        MyNavigator.pushNamed(RouteName.hamalMasterView);
         break;
       case 'customer':
-        await MyNavigator.push(const CustomerMasterView());
+        MyNavigator.pushNamed(RouteName.customerMasterView);
         break;
       case 'group':
-        await MyNavigator.push(const GroupMasterView());
+        MyNavigator.pushNamed(RouteName.groupMasterView);
         break;
       case 'narration':
-        MyNavigator.push(const NarrationMasterView());
+        MyNavigator.pushNamed(RouteName.narrationMasterView);
         break;
       case 'a/c master':
-        MyNavigator.push(const ACMasterListView());
+        MyNavigator.pushNamed(RouteName.acMasterListView);
         break;
      case 'rojmel':
-        MyNavigator.push(const RojmelMasterView());
+        MyNavigator.pushNamed(RouteName.rojmelMasterView);
         break;
       case 'item name':
-        MyNavigator.push(const ItemView());
+        MyNavigator.pushNamed(RouteName.itemView);
         break;
       case 'item exp':
         MyNavigator.push(const ItemExpView());
