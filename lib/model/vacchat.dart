@@ -78,3 +78,46 @@ class Vacchat {
     return data;
   }
 }
+
+
+
+class VacchatDetails {
+  String? vacchatName;
+  String? item;
+  String? qty;
+  String? freight;
+  String? advance;
+  String? vasuli;
+  String? hundekariCode;
+
+  VacchatDetails(
+      {this.vacchatName,
+        this.item,
+        this.qty,
+        this.freight,
+        this.advance,
+        this.vasuli,
+        this.hundekariCode});
+
+  VacchatDetails.fromJson(Map<String, dynamic> json) {
+    vacchatName = json['vacchat_name'];
+    item = json['item'];
+    qty = json['qty'];
+    freight = json['freight'];
+    advance = json['advance'];
+    vasuli = json['vasuli'];
+    hundekariCode = json['hundekari_code'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['vacchat_name'] = vacchatName;
+    data['item'] = item;
+    data['qty'] = qty;
+    data['freight'] = freight;
+    data['advance'] = advance;
+    data['vasuli'] = vasuli;
+    data['hundekari_code'] = hundekariCode;
+    return data;
+  }
+}
