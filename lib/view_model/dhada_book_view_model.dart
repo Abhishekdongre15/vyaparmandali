@@ -78,10 +78,9 @@ class DhadaBookViewModel extends ChangeNotifier {
      vehicleNumberC.text=thisDhadaBook.vehicalNo??"";
     // farmerNameC.text=thisDhadaBook.farmerName??"";
     // farmerPlaceC.text=thisDhadaBook.farmerPlace??"";
-    selectedFarmer=Farmer(
-      farmerName: thisDhadaBook.farmerName??"",
-      address: thisDhadaBook.farmerPlace??"",
-    );
+    selectedFarmer=Farmer();
+    selectedFarmer?.farmerName= thisDhadaBook.farmerName??"";
+    selectedFarmer?.address= thisDhadaBook.farmerPlace??"";
     farmerC.text=selectedFarmer?.farmerName??"";
     lotNumberC.text=thisDhadaBook.lotNo??"";
     packageC.text=thisDhadaBook.package??"";
