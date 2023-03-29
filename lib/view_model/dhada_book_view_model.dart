@@ -85,8 +85,8 @@ class DhadaBookViewModel extends ChangeNotifier {
     lotNumberC.text=thisDhadaBook.lotNo??"";
     packageC.text=thisDhadaBook.package??"";
 
-    for(int i=0; i<(thisDhadaBook?.dhadabookDetails??[]).length; i++){
-      DhadabookDetails thiDetail=(thisDhadaBook!.dhadabookDetails??[])[i];
+    for(int i=0; i<(thisDhadaBook.dhadabookDetails??[]).length; i++){
+      DhadabookDetails thiDetail=(thisDhadaBook.dhadabookDetails??[])[i];
       details.add(
           thiDetail
       );

@@ -57,8 +57,8 @@ class VacchatViewModel extends ChangeNotifier {
     vehicleNumberC.text=thisVacchat.vehicalNo??"";
     totalPackageC.text=thisVacchat.totalPackage??"";
     vasuliDarC.text=thisVacchat.vasuliDar??"";
-    for(int i=0; i<(thisVacchat?.vacchatDetails??[]).length; i++){
-      VacchatDetails thiDetail=(thisVacchat?.vacchatDetails??[])[i];
+    for(int i=0; i<(thisVacchat.vacchatDetails??[]).length; i++){
+      VacchatDetails thiDetail=(thisVacchat.vacchatDetails??[])[i];
       details.add(
           thiDetail
       );
