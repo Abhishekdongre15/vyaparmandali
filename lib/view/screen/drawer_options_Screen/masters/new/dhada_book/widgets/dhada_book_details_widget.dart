@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
-import 'package:vyaparmandali/model/vacchat.dart';
-import 'package:vyaparmandali/view_model/vacchat_view_model.dart';
+import 'package:vyaparmandali/model/dhada_book.dart';
+import 'package:vyaparmandali/view_model/dhada_book_view_model.dart';
 
-class VacchatDetailsWidget extends StatelessWidget {
-  const VacchatDetailsWidget({Key? key}) : super(key: key);
+class DhadaBookDetailsWidget extends StatelessWidget {
+  const DhadaBookDetailsWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final VacchatViewModel viewModel = VacchatViewModel.of(context);
+    final DhadaBookViewModel viewModel = DhadaBookViewModel.of(context);
     final theme=Theme.of(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Selector<VacchatViewModel,List<VacchatDetails>>(
+        Selector<DhadaBookViewModel,List<DhadabookDetails>>(
             shouldRebuild: (prev,nex)=>true,
             selector: (buildContext , vm)=>vm.details,
-            builder: (context, List<VacchatDetails> details,child) {
+            builder: (context, List<DhadabookDetails> details,child) {
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: List.generate(details.length, (index) {
-                VacchatDetails detail=details[index];
+                DhadabookDetails detail=details[index];
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
@@ -46,7 +46,7 @@ class VacchatDetailsWidget extends StatelessWidget {
                               ),
                               InkWell(onTap: (){
                                 if(detail.id!=null){
-                                  viewModel.subDeleteVacchatDetails(
+                                  viewModel.subDeleteDhadaBookDetails(
                                     id: detail.id.toString(),
                                     index: index
                                   );
@@ -59,37 +59,16 @@ class VacchatDetailsWidget extends StatelessWidget {
                             ],
                           ),
                           const SizedBox(height: 10,),
-                          Text("Vacchat Name",
-                            style: theme.textTheme.titleSmall?.copyWith(
-                                fontWeight: FontWeight.w500
-                            ),),
-                          const SizedBox(height: 5,),
-                          TextFormField(
-                            initialValue: detail.vacchatName,
-                            decoration: const InputDecoration(
-                              hintText: "Enter Vacchat Name",
-                            ),
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Required field !';
-                              }
-                              return null;
-                            },
-                            onChanged: (String val){
-                              viewModel.details[index].vacchatName=val;
-                            },
-                          ),
-                          const SizedBox(height: 10,),
-                          Text("Item",
+                          Text("Item Code",
                             style: theme.textTheme.titleSmall?.copyWith(
                                 fontWeight: FontWeight.w500
                             ),),
                           const SizedBox(height: 5,),
                           TextFormField(
                             keyboardType: TextInputType.number,
-                            initialValue: detail.item,
+                            initialValue: detail.itemCode,
                             decoration: const InputDecoration(
-                              hintText: "Enter Item",
+                              hintText: "Enter Item Code",
                             ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
@@ -98,22 +77,46 @@ class VacchatDetailsWidget extends StatelessWidget {
                               return null;
                             },
                             onChanged: (String val){
-                              viewModel.details[index].item=val;
+                              viewModel.details[index].itemCode=val;
                             },
                           ),
 
 
                           const SizedBox(height: 10,),
-                          Text("Quantity",
+                          Text("Name",
+                            style: theme.textTheme.titleSmall?.copyWith(
+                                fontWeight: FontWeight.w500
+                            ),),
+                          const SizedBox(height: 5,),
+                          TextFormField(
+                            initialValue: detail.name,
+                            decoration: const InputDecoration(
+                              hintText: "Enter Name",
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Required field !';
+                              }
+                              return null;
+                            },
+                            onChanged: (String val){
+                              viewModel.details[index].name=val;
+                            },
+                          ),
+
+
+
+                          const SizedBox(height: 10,),
+                          Text("Package",
                             style: theme.textTheme.titleSmall?.copyWith(
                                 fontWeight: FontWeight.w500
                             ),),
                           const SizedBox(height: 5,),
                           TextFormField(
                             keyboardType: TextInputType.number,
-                            initialValue: detail.qty,
+                            initialValue: detail.package,
                             decoration: const InputDecoration(
-                              hintText: "Enter Quantity",
+                              hintText: "Enter Package",
                             ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
@@ -122,23 +125,23 @@ class VacchatDetailsWidget extends StatelessWidget {
                               return null;
                             },
                             onChanged: (String val){
-                              viewModel.details[index].qty=val;
+                              viewModel.details[index].package=val;
                             },
                           ),
 
 
 
                           const SizedBox(height: 10,),
-                          Text("Freight",
+                          Text("Gross",
                             style: theme.textTheme.titleSmall?.copyWith(
                                 fontWeight: FontWeight.w500
                             ),),
                           const SizedBox(height: 5,),
                           TextFormField(
                             keyboardType: TextInputType.number,
-                            initialValue: detail.freight,
+                            initialValue: detail.gross,
                             decoration: const InputDecoration(
-                              hintText: "Enter Freight",
+                              hintText: "Enter Gross",
                             ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
@@ -147,22 +150,22 @@ class VacchatDetailsWidget extends StatelessWidget {
                               return null;
                             },
                             onChanged: (String val){
-                              viewModel.details[index].freight=val;
+                              viewModel.details[index].gross=val;
                             },
                           ),
 
 
                           const SizedBox(height: 10,),
-                          Text("Advance",
+                          Text("PB",
                             style: theme.textTheme.titleSmall?.copyWith(
                                 fontWeight: FontWeight.w500
                             ),),
                           const SizedBox(height: 5,),
                           TextFormField(
                             keyboardType: TextInputType.number,
-                            initialValue: detail.advance,
+                            initialValue: detail.pB,
                             decoration: const InputDecoration(
-                              hintText: "Enter Advance",
+                              hintText: "Enter PB",
                             ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
@@ -171,22 +174,22 @@ class VacchatDetailsWidget extends StatelessWidget {
                               return null;
                             },
                             onChanged: (String val){
-                              viewModel.details[index].advance=val;
+                              viewModel.details[index].pB=val;
                             },
                           ),
 
 
                           const SizedBox(height: 10,),
-                          Text("Vasuli",
+                          Text("Average",
                             style: theme.textTheme.titleSmall?.copyWith(
                                 fontWeight: FontWeight.w500
                             ),),
                           const SizedBox(height: 5,),
                           TextFormField(
                             keyboardType: TextInputType.number,
-                            initialValue: detail.vasuli,
+                            initialValue: detail.average,
                             decoration: const InputDecoration(
-                              hintText: "Enter Vasuli",
+                              hintText: "Enter Average",
                             ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
@@ -195,21 +198,21 @@ class VacchatDetailsWidget extends StatelessWidget {
                               return null;
                             },
                             onChanged: (String val){
-                              viewModel.details[index].vasuli=val;
+                              viewModel.details[index].average=val;
                             },
                           ),
 
 
                           const SizedBox(height: 10,),
-                          Text("Hundekari Code",
+                          Text("Rate",
                             style: theme.textTheme.titleSmall?.copyWith(
                                 fontWeight: FontWeight.w500
                             ),),
                           const SizedBox(height: 5,),
                           TextFormField(
-                            initialValue: detail.hundekariCode,
+                            initialValue: detail.rate,
                             decoration: const InputDecoration(
-                              hintText: "Enter Hundekari Code",
+                              hintText: "Enter Rate",
                             ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
@@ -218,7 +221,30 @@ class VacchatDetailsWidget extends StatelessWidget {
                               return null;
                             },
                             onChanged: (String val){
-                              viewModel.details[index].hundekariCode=val;
+                              viewModel.details[index].rate=val;
+                            },
+                          ),
+
+
+                          const SizedBox(height: 10,),
+                          Text("Amount",
+                            style: theme.textTheme.titleSmall?.copyWith(
+                                fontWeight: FontWeight.w500
+                            ),),
+                          const SizedBox(height: 5,),
+                          TextFormField(
+                            initialValue: detail.amount,
+                            decoration: const InputDecoration(
+                              hintText: "Enter Amount",
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Required field !';
+                              }
+                              return null;
+                            },
+                            onChanged: (String val){
+                              viewModel.details[index].amount=val;
                             },
                           ),
 

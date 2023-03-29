@@ -10,7 +10,7 @@ import 'package:vyaparmandali/app_manager/helper/responsive/responsive.dart';
 import 'package:vyaparmandali/model/vacchat.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vacchat/add_vacchat_view.dart';
 import 'package:vyaparmandali/view_model/vacchat_view_model.dart';
-import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/data_sources/vacchat_data_source.dart';
+import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/data_sources/vacchat/vacchat_data_source.dart';
 import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/my_sf_data_grid.dart';
 
 class VacchatMasterView extends StatefulWidget {

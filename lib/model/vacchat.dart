@@ -40,6 +40,7 @@ class Vacchat {
   String? createdAt;
   String? updatedAt;
   String? delStatus;
+  List<VacchatDetails>? vacchatDetails;
 
   Vacchat(
       {this.id,
@@ -50,7 +51,8 @@ class Vacchat {
         this.vasuliDar,
         this.createdAt,
         this.updatedAt,
-        this.delStatus});
+        this.delStatus,
+        this.vacchatDetails});
 
   Vacchat.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -62,6 +64,12 @@ class Vacchat {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     delStatus = json['del_status'];
+    if (json['vacchat_details'] != null && json['vacchat_details']!=false) {
+      vacchatDetails = <VacchatDetails>[];
+      json['vacchat_details'].forEach((v) {
+        vacchatDetails!.add(VacchatDetails.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
@@ -75,13 +83,17 @@ class Vacchat {
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
     data['del_status'] = delStatus;
+    if (vacchatDetails != null) {
+      data['vacchat_details'] =
+          vacchatDetails!.map((v) => v.toJson()).toList();
+    }
     return data;
   }
 }
 
-
-
 class VacchatDetails {
+  String? id;
+  String? fkVacchatMainId;
   String? vacchatName;
   String? item;
   String? qty;
@@ -89,17 +101,27 @@ class VacchatDetails {
   String? advance;
   String? vasuli;
   String? hundekariCode;
+  String? createdAt;
+  String? updatedAt;
+  String? delStatus;
 
   VacchatDetails(
-      {this.vacchatName,
+      {this.id,
+        this.fkVacchatMainId,
+        this.vacchatName,
         this.item,
         this.qty,
         this.freight,
         this.advance,
         this.vasuli,
-        this.hundekariCode});
+        this.hundekariCode,
+        this.createdAt,
+        this.updatedAt,
+        this.delStatus});
 
   VacchatDetails.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    fkVacchatMainId = json['fk_vacchat_main_id'];
     vacchatName = json['vacchat_name'];
     item = json['item'];
     qty = json['qty'];
@@ -107,10 +129,15 @@ class VacchatDetails {
     advance = json['advance'];
     vasuli = json['vasuli'];
     hundekariCode = json['hundekari_code'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    delStatus = json['del_status'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['fk_vacchat_main_id'] = fkVacchatMainId;
     data['vacchat_name'] = vacchatName;
     data['item'] = item;
     data['qty'] = qty;
@@ -118,6 +145,9 @@ class VacchatDetails {
     data['advance'] = advance;
     data['vasuli'] = vasuli;
     data['hundekari_code'] = hundekariCode;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['del_status'] = delStatus;
     return data;
   }
 }

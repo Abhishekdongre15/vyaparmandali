@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_sheet.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/functional_sheet.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
 import 'package:vyaparmandali/model/dhada_book.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/dhada_book/add_dhada_book_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/dhada_book/dhada_book_details_view.dart';
 import 'package:vyaparmandali/view_model/dhada_book_view_model.dart';
 import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/my_data_grid_row_adapter.dart';
 
-import '../../../../app_manager/component/bottom_sheet/titled_sheet.dart';
+import '../../../../../app_manager/component/bottom_sheet/titled_sheet.dart';
 
 class DhadaBookDataSource extends DataGridSource {
 
@@ -21,7 +23,7 @@ class DhadaBookDataSource extends DataGridSource {
     "      Farmer Place     ",
     "      Lot Number     ",
     "      Package     ",
-    "      Action     ",
+    "            Action           ",
   ];
 
   DhadaBookDataSource({required List<DhadaBook> listOfDocs}) {
@@ -55,6 +57,27 @@ class DhadaBookDataSource extends DataGridSource {
   Widget actionButton(DhadaBook docs){
     return Row(
       children: [
+        Expanded(
+            child:  IconButton(
+                icon:  Padding(
+                  padding: const EdgeInsets.all(1.0),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle
+                    ),
+                    child: const Center(
+                      child: Icon(Icons.remove_red_eye_rounded,
+                        size: 15,
+                        color: AppColor.primaryColor,),
+                    ),
+                  ),
+                ),
+                onPressed: () async{
+                  MyNavigator.push(DhadaBookDetailsView(dhadabook: docs));
+                })
+        ),
+        const SizedBox(width: 5,),
         Expanded(
             child:  IconButton(
 

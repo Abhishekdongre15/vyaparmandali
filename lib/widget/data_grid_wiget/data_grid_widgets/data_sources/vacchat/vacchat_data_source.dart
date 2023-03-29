@@ -9,14 +9,16 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_sheet.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/functional_sheet.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
 import 'package:vyaparmandali/model/vacchat.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vacchat/add_vacchat_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vacchat/vacchat_details_view.dart';
 import 'package:vyaparmandali/view_model/vacchat_view_model.dart';
 import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/my_data_grid_row_adapter.dart';
 
-import '../../../../app_manager/component/bottom_sheet/titled_sheet.dart';
+import '../../../../../app_manager/component/bottom_sheet/titled_sheet.dart';
 
 class VacchatDataSource extends DataGridSource {
 
@@ -25,7 +27,7 @@ class VacchatDataSource extends DataGridSource {
     "      Vehical No     ",
     "      Total Package     ",
     "      Vasuli Dar     ",
-    "      Action     ",
+    "            Action           ",
   ];
 
   VacchatDataSource({required List<Vacchat> listOfDocs}) {
@@ -56,6 +58,27 @@ class VacchatDataSource extends DataGridSource {
   Widget actionButton(Vacchat docs){
     return Row(
       children: [
+        Expanded(
+            child:  IconButton(
+                icon:  Padding(
+                  padding: const EdgeInsets.all(1.0),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle
+                    ),
+                    child: const Center(
+                      child: Icon(Icons.remove_red_eye_rounded,
+                        size: 15,
+                        color: AppColor.primaryColor,),
+                    ),
+                  ),
+                ),
+                onPressed: () async{
+                  MyNavigator.push(VacchatDetailsView(vacchat: docs));
+                })
+        ),
+        const SizedBox(width: 5,),
         Expanded(
             child:  IconButton(
 

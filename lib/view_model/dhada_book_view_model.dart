@@ -36,6 +36,20 @@ class DhadaBookViewModel extends ChangeNotifier {
   }
 
 
+
+  List<DhadabookDetails> details=[];
+
+  void addDetails() {
+    details.add(DhadabookDetails());
+    notifyListeners();
+  }
+
+  void clearDetailOnIndex(int index){
+    details.removeAt(index);
+    notifyListeners();
+  }
+
+
   void initiateAddDhadaBook(){
     _clearFields();
   }
@@ -52,6 +66,8 @@ class DhadaBookViewModel extends ChangeNotifier {
     lotNumberC.clear();
     packageC.clear();
     selectedFarmer=null;
+    details.clear();
+    notifyListeners();
   }
 
 
@@ -69,6 +85,14 @@ class DhadaBookViewModel extends ChangeNotifier {
     farmerC.text=selectedFarmer?.farmerName??"";
     lotNumberC.text=thisDhadaBook.lotNo??"";
     packageC.text=thisDhadaBook.package??"";
+
+    for(int i=0; i<(thisDhadaBook?.dhadabookDetails??[]).length; i++){
+      DhadabookDetails thiDetail=(thisDhadaBook!.dhadabookDetails??[])[i];
+      details.add(
+          thiDetail
+      );
+    }
+    notifyListeners();
   }
 
 
@@ -88,10 +112,9 @@ class DhadaBookViewModel extends ChangeNotifier {
 
     try{
       var data=await _api.call(
-          url: "get_dhadabook_main_data",
+          url: "get-dhadabook-main-and-details-data",
           apiCallType: ApiCallType.post(body: {
             "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
-
             "id": UserRepository.of(NavigationService.context!).getUser.id.toString()
           }),
           token: true
@@ -129,14 +152,14 @@ class DhadaBookViewModel extends ChangeNotifier {
         "lot_no": lotNumberC.text,
         "package": packageC.text,
         "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
-
+        "dhadabook_details": details.map((e) => e.toJson()).toList()
       };
       if(id!=null){
         bod['id']=id;
       }
       var data= await _api.call(
-          url: id!=null? "update_dhadabook_main_data":"add_dhadabook_main_data",
-          apiCallType: ApiCallType.post(body: bod),
+          url: id!=null? "update-dhadabook-main-and-details-data":"add-dhadabook-main-and-details-data",
+          apiCallType: ApiCallType.rawPost(body: bod),
           token: true
       );
       ProgressDialogue.hide();
@@ -162,7 +185,7 @@ class DhadaBookViewModel extends ChangeNotifier {
     ProgressDialogue.show(message: "Deleting DhadaBook");
     try {
       var data=await _api.call(
-          url: "delete_dhadabook_main_data",
+          url: "delete-dhadabook-main-and-details-data",
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
             "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
@@ -184,6 +207,38 @@ class DhadaBookViewModel extends ChangeNotifier {
     }
   }
 
+
+
+  Future<void> subDeleteDhadaBookDetails({
+    required String id,
+    int? index,
+  }) async{
+    ProgressDialogue.show(message: "Deleting Dhada Book Detail");
+    try {
+      var data=await _api.call(
+          url: "sub-delete-dhadabook-main-and-details-data",
+          apiCallType: ApiCallType.post(body: {
+            "id": id.toString(),
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+          }),
+          token: true
+      );
+      ProgressDialogue.hide();
+      Alert.show(data['message']);
+      if(data['code']==200 && data['status']==true){
+        if(index!=null){
+          clearDetailOnIndex(index);
+        }
+        fetchDhadaBook();
+      }
+      else {
+      }
+    }
+    catch (e){
+      Alert.show(e.toString());
+      ProgressDialogue.hide();
+    }
+  }
 
 
 

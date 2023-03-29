@@ -43,18 +43,7 @@ class MyNavigator {
   static Future  push(Widget route,{
     Object? arguments
   }) async{
-    var data=await Navigator.push(_context, MaterialPageRoute(
-
-      builder: (BuildContext context)
-      {
-        return route;
-      },
-      settings: RouteSettings(
-        arguments: arguments,
-      ),
-    ),
-
-    );
+    var data=await Get.to(route,);
     return data;
   }
 

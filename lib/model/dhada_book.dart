@@ -19,7 +19,7 @@ class DhadaBookData {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  <String, dynamic>{};
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['code'] = code;
     data['status'] = status;
     data['message'] = message;
@@ -43,20 +43,22 @@ class DhadaBook {
   String? createdAt;
   String? updatedAt;
   String? delStatus;
+  List<DhadabookDetails>? dhadabookDetails;
 
   DhadaBook(
-      {id,
-        userId,
-        date,
-        inwardDate,
-        vehicalNo,
-        farmerName,
-        farmerPlace,
-        lotNo,
-        package,
-        createdAt,
-        updatedAt,
-        delStatus});
+      {this.id,
+        this.userId,
+        this.date,
+        this.inwardDate,
+        this.vehicalNo,
+        this.farmerName,
+        this.farmerPlace,
+        this.lotNo,
+        this.package,
+        this.createdAt,
+        this.updatedAt,
+        this.delStatus,
+        this.dhadabookDetails});
 
   DhadaBook.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -71,10 +73,16 @@ class DhadaBook {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     delStatus = json['del_status'];
+    if (json['dhadabook_details'] != null  && json['dhadabook_details'] != false) {
+      dhadabookDetails = <DhadabookDetails>[];
+      json['dhadabook_details'].forEach((v) {
+        dhadabookDetails!.add(DhadabookDetails.fromJson(v));
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  <String, dynamic>{};
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['user_id'] = userId;
     data['date'] = date;
@@ -84,6 +92,75 @@ class DhadaBook {
     data['farmer_place'] = farmerPlace;
     data['lot_no'] = lotNo;
     data['package'] = package;
+    data['created_at'] = createdAt;
+    data['updated_at'] = updatedAt;
+    data['del_status'] = delStatus;
+    if (dhadabookDetails != null) {
+      data['dhadabook_details'] =
+          dhadabookDetails!.map((v) => v.toJson()).toList();
+    }
+    return data;
+  }
+}
+
+class DhadabookDetails {
+  String? id;
+  String? fkDhadabookMainId;
+  String? itemCode;
+  String? name;
+  String? package;
+  String? gross;
+  String? pB;
+  String? average;
+  String? rate;
+  String? amount;
+  String? createdAt;
+  String? updatedAt;
+  String? delStatus;
+
+  DhadabookDetails(
+      {this.id,
+        this.fkDhadabookMainId,
+        this.itemCode,
+        this.name,
+        this.package,
+        this.gross,
+        this.pB,
+        this.average,
+        this.rate,
+        this.amount,
+        this.createdAt,
+        this.updatedAt,
+        this.delStatus});
+
+  DhadabookDetails.fromJson(Map<String, dynamic> json) {
+    id = json['id'];
+    fkDhadabookMainId = json['fk_dhadabook_main_id'];
+    itemCode = json['item_code'];
+    name = json['name'];
+    package = json['package'];
+    gross = json['gross'];
+    pB = json['p_b'];
+    average = json['average'];
+    rate = json['rate'];
+    amount = json['amount'];
+    createdAt = json['created_at'];
+    updatedAt = json['updated_at'];
+    delStatus = json['del_status'];
+  }
+
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = <String, dynamic>{};
+    data['id'] = id;
+    data['fk_dhadabook_main_id'] = fkDhadabookMainId;
+    data['item_code'] = itemCode;
+    data['name'] = name;
+    data['package'] = package;
+    data['gross'] = gross;
+    data['p_b'] = pB;
+    data['average'] = average;
+    data['rate'] = rate;
+    data['amount'] = amount;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
     data['del_status'] = delStatus;

@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/model/dhada_book.dart';
 import 'package:vyaparmandali/model/farmer.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/dhada_book/widgets/dhada_book_details_widget.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/farmer/widget/farmer_selection_widget.dart';
 import 'package:vyaparmandali/view_model/dhada_book_view_model.dart';
 
@@ -134,6 +135,7 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                           viewModel.selectedFarmer=selectedFarmer;
                       },
                       selectedFarmer: data,
+
                       );
                     }
                   ),
@@ -225,8 +227,7 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                     },
                   ),
                   const SizedBox(height: 15,),
-
-
+                  const DhadaBookDetailsWidget(),
 
                   const SizedBox(height: 10,),
                   Center(
