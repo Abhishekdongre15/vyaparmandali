@@ -6,10 +6,12 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_sheet.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/functional_sheet.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
+import 'package:vyaparmandali/app_manager/helper/navigation/route_name.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
 import 'package:vyaparmandali/model/vacchat.dart';
@@ -75,7 +77,8 @@ class VacchatDataSource extends DataGridSource {
                   ),
                 ),
                 onPressed: () async{
-                  MyNavigator.push(VacchatDetailsView(vacchat: docs));
+                  NavigationService.context!.push<Vacchat>(RoutePath.vacchatDetailsView,
+                  extra: docs);
                 })
         ),
         const SizedBox(width: 5,),

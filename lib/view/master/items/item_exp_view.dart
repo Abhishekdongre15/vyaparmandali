@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/route_name.dart';
@@ -125,7 +126,7 @@ class ItemExpViewState extends State<ItemExpView> {
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
-           MyNavigator.pushNamed(RouteName.addItemExp);
+           context.go(RoutePath.addItemExp);
           },
           child: const Icon(Icons.add)),
     );

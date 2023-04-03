@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/api/api_call.dart';
 import 'package:vyaparmandali/app_manager/component/progress_dialogue.dart';
@@ -51,7 +52,7 @@ class LoginViewModel extends ChangeNotifier {
 
         UserRepository.of(NavigationService.context!).updateUserData(User.fromJson(data['data'][0])).then((value) {
           if(updating==false){
-            MyNavigator.pushReplacementNamed(RouteName.dashboard);
+            NavigationService.context!.pushReplacement(RoutePath.dashboard);
           }
         }
         );

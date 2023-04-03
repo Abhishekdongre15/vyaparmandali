@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:uitoolkit/uitoolkit.dart';
 import 'package:vyaparmandali/app_manager/constant/project_constant.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
@@ -31,7 +32,7 @@ class AppBarProfile extends StatelessWidget {
         ),
         InkWell(
           onTap: (){
-            MyNavigator.pushNamed(RouteName.profilePageView);
+            context.go(RoutePath.profilePageView);
           },
           child: const UserAvatar(
             errorWidget: Icon(Icons.error,

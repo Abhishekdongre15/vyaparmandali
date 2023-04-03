@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:readmore/readmore.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/route_name.dart';
@@ -39,8 +40,8 @@ class ProfileInfoView extends StatelessWidget {
                   TextButton(
                     child: const Text('Edit'),
                     onPressed: () {
-                      MyNavigator.pushNamed( RouteName.registrationScreenView,
-                      arguments: user);
+                      context.push<User?>( RoutePath.registrationScreenView,
+                      extra: user);
                     },
                   ),
                   const Spacer(flex: 1),

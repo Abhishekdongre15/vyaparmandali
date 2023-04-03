@@ -26,7 +26,7 @@ import 'package:vyaparmandali/view/screen/profile/profile_page_view.dart';
 import 'package:vyaparmandali/view/screen/registration_screen_view.dart';
 import 'package:vyaparmandali/view/screen/splash_screen_view.dart';
 
-class RouteName {
+class RoutePath {
 
   static String initial="/";
   static String login="/login";
@@ -54,39 +54,7 @@ class RouteName {
   static String rojmelMasterView="/rojmelMasterView";
   static String itemView="/itemView";
   static String registeredUserMasterView="/registeredUserMasterView";
+  static String vacchatDetailsView="/vacchatDetailsView";
+  static String dhadaBookDetailsView="/dhadaBookDetailsView";
 
 }
-
-
-
-Map<String, WidgetBuilder> routesValue = {
-  RouteName.initial: (context)=> const SplashScreenView(),
-  RouteName.login: (context)=> const LoginScreenView(),
-  RouteName.dashboard: (context)=> const DashboardView(),
-  RouteName.addHamaliExpView: (context)=> const AddHamaliExpView(),
-  RouteName.addItemExp: (context)=> const AddItemExp(),
-  RouteName.addPlaceMaster: (context)=> const AddPlaceMaster(),
-  RouteName.registrationScreenView: (context)=> const RegistrationScreenView(),
-  RouteName.forgetPasswordView: (context)=> const ForgetPasswordView(),
-  RouteName.profilePageView: (context)=> const ProfilePageView(),
-  RouteName.cashBookItemMasterView: (context)=> const CashBookItemMasterView(),
-  RouteName.vacchatMasterView: (context)=> const VacchatMasterView(),
-  RouteName.dhadaBookMasterView: (context)=> const DhadaBookMasterView(),
-  RouteName.farmerMasterView: (context)=> const FarmerMasterView(),
-  RouteName.productMasterView: (context)=> const ProductMasterView(),
-  RouteName.vehicleMasterView: (context)=> const VehicleMasterView(),
-  RouteName.weightMasterView: (context)=> const WeightMasterView(),
-  RouteName.agentMasterView: (context)=> const AgentMasterView(),
-  RouteName.bankMasterView: (context)=> const BankMasterView(),
-  RouteName.hamalMasterView: (context)=> const HamalMasterView(),
-  RouteName.customerMasterView: (context)=> const CustomerMasterView(),
-  RouteName.groupMasterView: (context)=> const GroupMasterView(),
-  RouteName.narrationMasterView: (context)=> const NarrationMasterView(),
-  RouteName.acMasterListView: (context)=> const ACMasterListView(),
-  RouteName.rojmelMasterView: (context)=> const RojmelMasterView(),
-  RouteName.itemView: (context)=> const ItemView(),
-  RouteName.registeredUserMasterView: (context)=> const RegisteredUserMasterView(),
-};
-
-
-

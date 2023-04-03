@@ -7,6 +7,7 @@ import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_s
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/titled_sheet.dart';
 import 'package:vyaparmandali/app_manager/constant/project_constant.dart';
 import 'package:vyaparmandali/app_manager/helper/responsive/responsive.dart';
+import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/model/bank.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/bank/add_bank_view.dart';
 import 'package:vyaparmandali/view_model/bank_view_model.dart';
@@ -73,7 +74,8 @@ class BankMasterViewState extends State<BankMasterView> {
       floatingActionButton: FloatingActionButton(
           heroTag: "add_bank",
           onPressed: () {
-            CustomBottomSheet.open(
+            CustomBottomSheet.openWithContext(
+              NavigationService.context,
                 child: const TitledSheet(title: "Add Bank", child: AddBankView()));
           },
           child: const Icon(Icons.add)),

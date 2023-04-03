@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:vyaparmandali/app_manager/component/colored_safe_area.dart';
 import 'package:vyaparmandali/app_manager/component/password_field.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
@@ -147,7 +148,7 @@ class _LoginScreenViewState extends State<LoginScreenView> {
                                 ),          /// Navigate To Login Screen
                                 GestureDetector(
                                   onTap: () {
-                                    MyNavigator.pushNamed(RouteName.registrationScreenView);
+                                    context.go(RoutePath.registrationScreenView);
                                   },
                                   child: RichText(
                                     text: TextSpan(
@@ -170,7 +171,7 @@ class _LoginScreenViewState extends State<LoginScreenView> {
                                 ),
                                 GestureDetector(
                                   onTap: () {
-                                    MyNavigator.pushNamed(RouteName.forgetPasswordView);
+                                    context.go(RoutePath.forgetPasswordView);
                                   },
                                   child: RichText(
                                     text: TextSpan(

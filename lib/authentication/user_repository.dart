@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_sheet.dart';
@@ -41,15 +42,15 @@ class UserRepository extends ChangeNotifier {
             message: "Do you want to logout?",
             buttonName: "Logout",
             onPressButton: () async {
-              directLogOut();
+              directLogOut(context);
             }));
   }
 
 
 
-  Future directLogOut() async {
+  Future directLogOut(BuildContext context) async {
     await updateUserData(User()).then((value) {
-      MyNavigator.pushNamedAndRemoveUntil( RouteName.login);
+      context.replace( RoutePath.login);
     });
     notifyListeners();
   }

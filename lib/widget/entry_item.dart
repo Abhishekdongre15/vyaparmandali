@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/route_name.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
@@ -115,55 +116,55 @@ class EntryItem extends StatelessWidget {
   void callPages(String pages) async{
     switch (pages) {
       case 'cash book item':
-         MyNavigator.pushNamed(RouteName.cashBookItemMasterView);
+         context.push(RoutePath.cashBookItemMasterView);
         break;
       case 'registered user':
-        MyNavigator.pushNamed(RouteName.registeredUserMasterView);
+        context.push(RoutePath.registeredUserMasterView);
         break;
       case 'vacchat':
-        MyNavigator.pushNamed(RouteName.vacchatMasterView);
+        context.push(RoutePath.vacchatMasterView);
         break;
       case 'dhada book':
-        MyNavigator.pushNamed(RouteName.dhadaBookMasterView);
+        context.push(RoutePath.dhadaBookMasterView);
         break;
       case 'farmer':
-        MyNavigator.pushNamed(RouteName.farmerMasterView);
+        context.push(RoutePath.farmerMasterView);
         break;
       case 'product':
-        MyNavigator.pushNamed(RouteName.productMasterView);
+        context.push(RoutePath.productMasterView);
         break;
       case 'vehicle':
-        MyNavigator.pushNamed(RouteName.vehicleMasterView);
+        context.push(RoutePath.vehicleMasterView);
         break;
       case 'weight':
-        MyNavigator.pushNamed(RouteName.weightMasterView);
+        context.push(RoutePath.weightMasterView);
         break;
       case 'agent':
-        MyNavigator.pushNamed(RouteName.agentMasterView);
+        context.push(RoutePath.agentMasterView);
         break;
       case 'bank':
-        MyNavigator.pushNamed(RouteName.bankMasterView);
+        context.push(RoutePath.bankMasterView);
         break;
       case 'hamal':
-        MyNavigator.pushNamed(RouteName.hamalMasterView);
+        context.push(RoutePath.hamalMasterView);
         break;
       case 'customer':
-        MyNavigator.pushNamed(RouteName.customerMasterView);
+        context.push(RoutePath.customerMasterView);
         break;
       case 'group':
-        MyNavigator.pushNamed(RouteName.groupMasterView);
+        context.push(RoutePath.groupMasterView);
         break;
       case 'narration':
-        MyNavigator.pushNamed(RouteName.narrationMasterView);
+        context.push(RoutePath.narrationMasterView);
         break;
       case 'a/c master':
-        MyNavigator.pushNamed(RouteName.acMasterListView);
+        context.push(RoutePath.acMasterListView);
         break;
      case 'rojmel':
-        MyNavigator.pushNamed(RouteName.rojmelMasterView);
+        context.push(RoutePath.rojmelMasterView);
         break;
       case 'item name':
-        MyNavigator.pushNamed(RouteName.itemView);
+        context.push(RoutePath.itemView);
         break;
       case 'item exp':
         MyNavigator.push(const ItemExpView());

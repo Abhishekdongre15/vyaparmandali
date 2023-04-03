@@ -16,7 +16,7 @@ class CustomBottomSheet {
       isDismissible: true,
         isScrollControlled: true,
 
-      constraints: Responsive.isSmallScreen(context)? null: BoxConstraints(
+      constraints: BoxConstraints(
         maxWidth: Responsive.smallScreenWidth
       ),
       backgroundColor: Colors.white,
@@ -36,6 +36,34 @@ class CustomBottomSheet {
     return data;
   }
 
+
+  static dynamic openWithContext(context,{
+    required Widget child,
+  }) async{
+    var data= await showModalBottomSheet<void> (
+        context: context,
+        isDismissible: true,
+        isScrollControlled: true,
+
+        constraints: BoxConstraints(
+            maxWidth: Responsive.smallScreenWidth
+        ),
+        backgroundColor: Colors.white,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(10),
+              topLeft: Radius.circular(10),
+            )
+        ),
+        builder: (context) => SingleChildScrollView(
+          child: Padding(
+            padding: MediaQuery.of(context).viewInsets,
+            child: child,
+          ),
+        )
+    );
+    return data;
+  }
 
 
 }

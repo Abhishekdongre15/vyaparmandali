@@ -335,7 +335,7 @@ class ApiCall {
 
       if(decodeData['message']=="You are not authorized to access this resource."){
         Future.delayed(const Duration(seconds: 1), () {
-          UserRepository.of(NavigationService.context!).directLogOut();
+          UserRepository.of(NavigationService.context!).directLogOut(NavigationService.context!);
           Alert.show(decodeData['message']);
         });
 
