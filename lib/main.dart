@@ -24,6 +24,7 @@ import 'package:vyaparmandali/view_model/narration_view_model.dart';
 import 'package:vyaparmandali/view_model/product_view_model.dart';
 import 'package:vyaparmandali/view_model/registration_view_model.dart';
 import 'package:vyaparmandali/view_model/rojmel_view_model.dart';
+import 'package:vyaparmandali/view_model/user_registration_master_view_model.dart';
 import 'package:vyaparmandali/view_model/vacchat_view_model.dart';
 import 'package:vyaparmandali/view_model/vehicle_view_model.dart';
 import 'package:vyaparmandali/view_model/weight_view_model.dart';
@@ -88,6 +89,8 @@ Future main() async {
             create: (_) => DhadaBookViewModel()),
         ChangeNotifierProvider<CashBookItemViewModel>(
             create: (_) => CashBookItemViewModel()),
+        ChangeNotifierProvider<UserRegistrationMasterViewModel>(
+            create: (_) => UserRegistrationMasterViewModel()),
       ],
       child: const MyApp()));
 }

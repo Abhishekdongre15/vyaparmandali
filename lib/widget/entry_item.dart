@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/route_name.dart';
+import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/view/balance_sheet/balance_sheets_report_view.dart';
 import 'package:vyaparmandali/view/balance_sheet/eoy_kasar_cr_view.dart';
 import 'package:vyaparmandali/view/balance_sheet/eoy_kasar_dr_view.dart';
@@ -67,46 +68,57 @@ class EntryItem extends StatelessWidget {
   final Entry entry;
   final BuildContext context;
 
+
+  @override
+  Widget build(BuildContext context) {
+
+    bool isAdmin=UserRepository.of(context).getUser.fkUserTypeId.toString()=="1";
+
+
+
 // This function recursively creates the multi-level list rows.
-  Widget _buildTiles(Entry root) {
-    if (root.children.isEmpty) {
-      return ListTile(
-        title: GestureDetector(
-            onTap: () {
-              /* if (root.title.toLowerCase() == 'GROUP'.toLowerCase()) {
+    Widget buildTiles(Entry root) {
+      if (root.children.isEmpty) {
+        return ListTile(
+          title: GestureDetector(
+              onTap: () {
+                /* if (root.title.toLowerCase() == 'GROUP'.toLowerCase()) {
                 Navigator.pushNamed(context, MaterialPageRoute(builder: (context) => const GroupMasterListView(),));
 
               }else if() {
 
               }*/
 
-              callPages(root.title.toLowerCase());
-            },
-            child: Text(
-              root.title,
-            )),
-      );
-    } else {
-      return ExpansionTile(
-        collapsedIconColor: Colors.black,
-        key: PageStorageKey<Entry>(root),
-        title: Text(
-          root.title,
-        ),
-        children: root.children.map<Widget>(_buildTiles).toList(),
-      );
+                callPages(root.title.toLowerCase());
+              },
+              child: Text(
+                root.title,
+              )),
+        );
+      } else {
+        return root.title=="FOR ADMIN"? Container():ExpansionTile(
+          collapsedIconColor: Colors.black,
+          key: PageStorageKey<Entry>(root),
+          title: Text(
+            root.title,
+          ),
+          children: root.children.map<Widget>(buildTiles).toList(),
+        );
+      }
     }
-  }
 
-  @override
-  Widget build(BuildContext context) {
-    return _buildTiles(entry);
+
+
+    return buildTiles(entry);
   }
 
   void callPages(String pages) async{
     switch (pages) {
       case 'cash book item':
          MyNavigator.pushNamed(RouteName.cashBookItemMasterView);
+        break;
+      case 'registered user':
+        MyNavigator.pushNamed(RouteName.registeredUserMasterView);
         break;
       case 'vacchat':
         MyNavigator.pushNamed(RouteName.vacchatMasterView);

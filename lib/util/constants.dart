@@ -22,6 +22,12 @@ final List<Entry> data = <Entry>[
     'MASTER',
     <Entry>[
       Entry(
+        "FOR ADMIN",
+          <Entry>[
+            Entry('REGISTERED USER'),
+          ],
+      ),
+      Entry(
         'NEW',
         <Entry>[
           Entry('HAMAL'),

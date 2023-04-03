@@ -16,6 +16,7 @@ import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/dhad
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/farmer/farmer_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/hamal/hamal_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/product/product_master_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/registered_user/registered_user_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/rojmel/rojmel_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vacchat/vacchat_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vehicle/vehicle_master_view.dart';
@@ -52,6 +53,7 @@ class RouteName {
   static String acMasterListView="/acMasterListView";
   static String rojmelMasterView="/rojmelMasterView";
   static String itemView="/itemView";
+  static String registeredUserMasterView="/registeredUserMasterView";
 
 }
 
@@ -83,6 +85,7 @@ Map<String, WidgetBuilder> routesValue = {
   RouteName.acMasterListView: (context)=> const ACMasterListView(),
   RouteName.rojmelMasterView: (context)=> const RojmelMasterView(),
   RouteName.itemView: (context)=> const ItemView(),
+  RouteName.registeredUserMasterView: (context)=> const RegisteredUserMasterView(),
 };
 
 

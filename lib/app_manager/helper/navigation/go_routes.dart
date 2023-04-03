@@ -17,6 +17,7 @@ import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/dhad
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/farmer/farmer_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/hamal/hamal_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/product/product_master_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/registered_user/registered_user_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/rojmel/rojmel_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vacchat/vacchat_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vehicle/vehicle_master_view.dart';
@@ -175,6 +176,12 @@ final List<GetPage> getPages = [
     name: RouteName.itemView,
     page: () {
       return const ItemView();
+    },
+  ),
+  GetPage(
+    name: RouteName.registeredUserMasterView,
+    page: () {
+      return const RegisteredUserMasterView();
     },
   ),
 ];
