@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
-import 'package:vyaparmandali/app_manager/helper/navigation/route_name.dart';
+import 'package:vyaparmandali/route_name.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/view/balance_sheet/balance_sheets_report_view.dart';
 import 'package:vyaparmandali/view/balance_sheet/eoy_kasar_cr_view.dart';

@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:vyaparmandali/app_manager/constant/project_constant.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
-import 'package:vyaparmandali/app_manager/helper/navigation/route_name.dart';
+import 'package:vyaparmandali/route_name.dart';
 import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/user.dart';
@@ -30,9 +30,9 @@ class _SplashScreenViewState extends State<SplashScreenView> {
       if(mounted){
         User user = UserRepository.of(context).getUser;
         if (user.id == null) {
-          context.go(RoutePath.login);
+          context.pushReplacement(RoutePath.login);
         } else {
-          context.go(RoutePath.dashboard);
+          context.pushReplacement(RoutePath.dashboard);
         }
       }
     });

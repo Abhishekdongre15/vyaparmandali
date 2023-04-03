@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/constant/project_constant.dart';
-import 'package:vyaparmandali/app_manager/helper/navigation/route_name.dart';
+import 'package:vyaparmandali/route_name.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/app_manager/theme/theme_provider.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
@@ -86,7 +86,7 @@ Future main() async {
           create: (_) => UserRepository(currentUser: user),
         ),
         ChangeNotifierProvider<RegistrationViewModel>(
-        create: (_) => RegistrationViewModel()),
+            create: (_) => RegistrationViewModel()),
         ChangeNotifierProvider<LoginViewModel>(
             create: (_) => LoginViewModel()),
         ChangeNotifierProvider<GroupViewModel>(
@@ -151,177 +151,176 @@ final GoRouter _router = GoRouter(
       builder: (BuildContext context, GoRouterState state) {
         return const SplashScreenView();
       },
-      routes: <RouteBase>[
-        GoRoute(
-          path: RoutePath.login.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const LoginScreenView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.dashboard.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const DashboardView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.addHamaliExpView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const AddHamaliExpView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.addItemExp.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const AddItemExp();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.addPlaceMaster.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const AddPlaceMaster();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.registrationScreenView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            User? user = state.extra as User?;
-            return  RegistrationScreenView(
-              updateUser: user
-            );
-          },
-        ),
-        GoRoute(
-          path: RoutePath.forgetPasswordView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const ForgetPasswordView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.profilePageView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const ProfilePageView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.cashBookItemMasterView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const CashBookItemMasterView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.vacchatMasterView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const VacchatMasterView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.dhadaBookMasterView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const DhadaBookMasterView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.farmerMasterView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const FarmerMasterView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.productMasterView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const ProductMasterView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.vehicleMasterView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const VehicleMasterView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.weightMasterView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const WeightMasterView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.agentMasterView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const AgentMasterView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.bankMasterView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const BankMasterView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.hamalMasterView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const HamalMasterView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.customerMasterView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const CustomerMasterView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.groupMasterView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const GroupMasterView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.narrationMasterView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const NarrationMasterView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.acMasterListView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const ACMasterListView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.rojmelMasterView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const RojmelMasterView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.itemView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const ItemView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.registeredUserMasterView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            return const RegisteredUserMasterView();
-          },
-        ),
-        GoRoute(
-          path: RoutePath.vacchatDetailsView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            Vacchat vacchat = state.extra as Vacchat;
-            return VacchatDetailsView(vacchat: vacchat);
-          },
-        ),
-        GoRoute(
-          path: RoutePath.dhadaBookDetailsView.replaceAll("/", ""),
-          builder: (BuildContext context, GoRouterState state) {
-            DhadaBook dhadabook = state.extra as DhadaBook;
-            return DhadaBookDetailsView(dhadabook: dhadabook);
-          },
-        ),
-      ],
+    ),
+    GoRoute(
+      path: RoutePath.login,
+      builder: (BuildContext context, GoRouterState state) {
+        return const LoginScreenView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.registrationScreenView,
+      builder: (BuildContext context, GoRouterState state) {
+        User? user = state.extra as User?;
+        return  RegistrationScreenView(
+            updateUser: user
+        );
+      },
     ),
 
+
+    GoRoute(
+      path: RoutePath.dashboard,
+      builder: (BuildContext context, GoRouterState state) {
+        return const DashboardView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.addHamaliExpView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const AddHamaliExpView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.addItemExp,
+      builder: (BuildContext context, GoRouterState state) {
+        return const AddItemExp();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.addPlaceMaster,
+      builder: (BuildContext context, GoRouterState state) {
+        return const AddPlaceMaster();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.forgetPasswordView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const ForgetPasswordView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.profilePageView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const ProfilePageView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.cashBookItemMasterView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const CashBookItemMasterView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.vacchatMasterView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const VacchatMasterView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.dhadaBookMasterView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const DhadaBookMasterView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.farmerMasterView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const FarmerMasterView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.productMasterView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const ProductMasterView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.vehicleMasterView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const VehicleMasterView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.weightMasterView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const WeightMasterView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.agentMasterView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const AgentMasterView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.bankMasterView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const BankMasterView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.hamalMasterView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const HamalMasterView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.customerMasterView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const CustomerMasterView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.groupMasterView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const GroupMasterView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.narrationMasterView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const NarrationMasterView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.acMasterListView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const ACMasterListView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.rojmelMasterView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const RojmelMasterView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.itemView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const ItemView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.registeredUserMasterView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const RegisteredUserMasterView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.vacchatDetailsView,
+      builder: (BuildContext context, GoRouterState state) {
+        Vacchat vacchat = state.extra as Vacchat;
+        return VacchatDetailsView(vacchat: vacchat);
+      },
+    ),
+    GoRoute(
+      path: RoutePath.dhadaBookDetailsView,
+      builder: (BuildContext context, GoRouterState state) {
+        DhadaBook dhadabook = state.extra as DhadaBook;
+        return DhadaBookDetailsView(dhadabook: dhadabook);
+      },
+    ),
   ],
 );
 

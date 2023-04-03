@@ -7,7 +7,7 @@ import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_s
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/functional_sheet.dart';
 import 'package:vyaparmandali/app_manager/constant/storage_constant.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
-import 'package:vyaparmandali/app_manager/helper/navigation/route_name.dart';
+import 'package:vyaparmandali/route_name.dart';
 import 'package:vyaparmandali/model/user.dart';
 
 class UserRepository extends ChangeNotifier {
