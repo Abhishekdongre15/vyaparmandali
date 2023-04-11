@@ -1,9 +1,16 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:searchable_text_field/searchable_text_field.dart';
+import 'package:tuple/tuple.dart';
+import 'package:vyaparmandali/app_manager/api/api_response.dart';
+import 'package:vyaparmandali/app_manager/api/manage_response.dart';
+import 'package:vyaparmandali/app_manager/component/drop_down.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/model/dhada_book.dart';
 import 'package:vyaparmandali/model/farmer.dart';
+import 'package:vyaparmandali/model/inward_date.dart';
+import 'package:vyaparmandali/model/vehicle_number.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/dhada_book/widgets/dhada_book_details_widget.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/farmer/widget/farmer_selection_widget.dart';
 import 'package:vyaparmandali/view_model/dhada_book_view_model.dart';
@@ -105,18 +112,42 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                         fontWeight: FontWeight.w500
                     ),),
                   const SizedBox(height: 5,),
-                  TextFormField(
-                    enabled: false,
-                    controller: viewModel.vehicleNumberC,
-                    decoration: const InputDecoration(
-                      hintText: "Farmer Vehicle Number",
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Required field !';
-                      }
-                      return null;
-                    },
+                  Selector<DhadaBookViewModel,Tuple2<ApiResponse<VehicleNumberData>,VehicleNo?>>(
+                      shouldRebuild: (prev,nex)=>true,
+                      selector: (buildContext , vm)=>Tuple2(vm.vehiclesDataResponse, vm.selectedVehicleNumber),
+                      builder: (context, Tuple2<ApiResponse<VehicleNumberData>,VehicleNo?> data,child) {
+
+                        ApiResponse<VehicleNumberData> response=data.item1;
+
+                        List<VehicleNo> vehicles=response.data?.vehicalNo??[];
+
+
+
+                        VehicleNo? selectedVehicleNumber=data.item2;
+                      return ManageResponse(
+                        response: response,
+                        axis: Axis.horizontal,
+                        showImage: false,
+                        initialWidget: Center(
+                          child: Text("Select Farmer",
+                          style: theme.textTheme.bodySmall,),
+                        ),
+                        child: MyDropDown<VehicleNo>(
+                          hint: "Select Vehicle Number",
+                          value: selectedVehicleNumber,
+                          isExpanded: true,
+                          items: List.generate(vehicles.length, (index) =>
+                              DropdownMenuItem(
+                                  value: vehicles[index],
+                                  child: Text(vehicles[index].vehicalNo??""))
+                          ),
+                          onChanged: (VehicleNo? vehicleNo){
+
+                              viewModel.selectedVehicleNumber=vehicleNo;
+                          },
+                        ),
+                      );
+                    }
                   ),
                   const SizedBox(height: 15,),
 
@@ -127,20 +158,42 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                         fontWeight: FontWeight.w500
                     ),),
                   const SizedBox(height: 5,),
-                  DateTimePicker(
-                    firstDate: DateTime(DateTime.now().year-10, DateTime.now().month, DateTime.now().day),
-                    lastDate: DateTime.now(),
-                    enabled: false,
-                    controller: viewModel.inWardDateC,
-                    decoration: const InputDecoration(
-                      hintText: "Inward Date",
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Required field !';
+                  Selector<DhadaBookViewModel,Tuple2<ApiResponse<InWardDateData>,InwardDate?>>(
+                      shouldRebuild: (prev,nex)=>true,
+                      selector: (buildContext , vm)=>Tuple2(vm.inwardDateDataResponse, vm.selectedInWardDate),
+                      builder: (context, Tuple2<ApiResponse<InWardDateData>,InwardDate?> data,child) {
+
+                        ApiResponse<InWardDateData> response=data.item1;
+
+                        List<InwardDate> dates=response.data?.inwardDatesData??[];
+
+
+
+                        InwardDate? selectedVehicleNumber=data.item2;
+                        return ManageResponse(
+                          response: response,
+                          axis: Axis.horizontal,
+                          showImage: false,
+                          initialWidget: Center(
+                            child: Text("Select Vehicle Number",
+                              style: theme.textTheme.bodySmall,),
+                          ),
+                          child: MyDropDown<InwardDate>(
+                            hint: "Select InWard Date",
+                            value: selectedVehicleNumber,
+                            isExpanded: true,
+                            items: List.generate(dates.length, (index) =>
+                                DropdownMenuItem(
+                                    value: dates[index],
+                                    child: Text(dates[index].date??""))
+                            ),
+                            onChanged: (InwardDate? inwDate){
+
+                              viewModel.selectedInWardDate=inwDate;
+                            },
+                          ),
+                        );
                       }
-                      return null;
-                    },
                   ),
                   const SizedBox(height: 15,),
 
@@ -239,6 +292,12 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                         if (Form.of(ctx).validate()) {
                           if(viewModel.selectedFarmer?.address==null || viewModel.selectedFarmer?.firstName==null){
                             Alert.show("Select Farmer");
+                          }
+                          else  if(viewModel.selectedVehicleNumber==null){
+                            Alert.show("Select Vehicle Number");
+                          }
+                          else  if(viewModel.selectedInWardDate==null){
+                            Alert.show("Select InWard Date");
                           }
                           else {
                             viewModel.addDhadaBook(

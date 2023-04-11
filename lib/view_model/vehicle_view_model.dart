@@ -158,23 +158,27 @@ class VehicleViewModel extends ChangeNotifier {
   Future<dynamic> fetchVehicleNumberForFarmer({
   required String id
 }) async {
-      var data=await _api.call(
-          url: "fetch-vehical-no-data-by-farmer-id-vacchat-main",
-          apiCallType: ApiCallType.post(body: {
-            "farmer_id": id,
-          }),
-          token: true
-      );
-      return data;
+      try {
+        var data=await _api.call(
+            url: "fetch-vehical-no-data-by-farmer-id-vacchat-main",
+            apiCallType: ApiCallType.post(body: {
+              "farmer_id": id,
+            }),
+            token: true
+        );
+        return data;
+      }
+      catch (e){
+        rethrow;
+      }
   }
 
 
 
-  Future<DateTime?> fetchInwardDateUsingVehicleNumber({
+  Future<dynamic> fetchInwardDateUsingVehicleNumber({
     required String vehicleNumber
   }) async {
-    try{
-      ProgressDialogue.show(message: "Fetching Inward Date For $vehicleNumber");
+    try {
       var data=await _api.call(
           url: "fetch-inward-date-data-by-vehical-no-vacchat-main",
           apiCallType: ApiCallType.post(body: {
@@ -182,22 +186,11 @@ class VehicleViewModel extends ChangeNotifier {
           }),
           token: true
       );
-      ProgressDialogue.hide();
-
-      Alert.show(data['message']);
-      if(data['code']==200 && data['status']==true){
-        return DateFormat("dd/MM/yyy").parse(data['inward_dates_data'][0]['date']);
-      }
-      else {
-        Alert.show(data['message']);
-      }
-
+      return data;
     }
-    catch(e){
-      ProgressDialogue.hide();
+    catch (e){
+      rethrow;
     }
-    return null;
-
   }
 
 

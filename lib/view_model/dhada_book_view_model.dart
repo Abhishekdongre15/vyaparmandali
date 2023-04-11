@@ -10,7 +10,8 @@ import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/dhada_book.dart';
 import 'package:vyaparmandali/model/farmer.dart';
-import 'package:vyaparmandali/util/constants.dart';
+import 'package:vyaparmandali/model/inward_date.dart';
+import 'package:vyaparmandali/model/vehicle_number.dart';
 import 'package:vyaparmandali/view_model/vehicle_view_model.dart';
 
 class DhadaBookViewModel extends ChangeNotifier {
@@ -22,7 +23,39 @@ class DhadaBookViewModel extends ChangeNotifier {
 
   TextEditingController dateC = TextEditingController();
   TextEditingController inWardDateC = TextEditingController();
+
+
+
   TextEditingController vehicleNumberC = TextEditingController();
+  VehicleNo? _selectedVehicleNumber;
+  VehicleNo? get selectedVehicleNumber=>_selectedVehicleNumber;
+  set selectedVehicleNumber(VehicleNo? val){
+    _selectedVehicleNumber=val;
+    notifyListeners();
+    if(selectedVehicleNumber==null){
+      inWardDateC.clear();
+      selectedInWardDate=null;
+      inwardDateDataResponse=ApiResponse<InWardDateData>.initial("Initial");
+      notifyListeners();
+    }
+    else {
+      fetchInwardDate((selectedVehicleNumber?.vehicalNo??"").toString());
+    }
+
+  }
+
+
+
+  InwardDate? _selectedInWardDate;
+  InwardDate? get selectedInWardDate=>_selectedInWardDate;
+  set selectedInWardDate(InwardDate? val){
+    _selectedInWardDate=val;
+    notifyListeners();
+  }
+
+
+
+
   // TextEditingController farmerNameC = TextEditingController();
   // TextEditingController farmerPlaceC = TextEditingController();
   TextEditingController lotNumberC = TextEditingController();
@@ -37,27 +70,14 @@ class DhadaBookViewModel extends ChangeNotifier {
     notifyListeners();
     if(selectedFarmer==null){
       vehicleNumberC.clear();
+      selectedVehicleNumber=null;
+      vehiclesDataResponse=ApiResponse<VehicleNumberData>.initial("Initial");
       notifyListeners();
     }
     else {
       fetchVehicleNumber((selectedFarmer?.id??"").toString());
     }
 
-  }
-
-
-
-
-
-
-  void fetchInwardDate(String vehicleNumber) async{
-    DateTime? inDate=( await VehicleViewModel.of(NavigationService.context!).fetchInwardDateUsingVehicleNumber(vehicleNumber: vehicleNumber));
-
-    if(inDate!=null){
-      inWardDateC.text=inDate.toString();
-    }
-
-    notifyListeners();
   }
 
 
@@ -94,6 +114,10 @@ class DhadaBookViewModel extends ChangeNotifier {
     packageC.clear();
     selectedFarmer=null;
     details.clear();
+    vehiclesDataResponse=ApiResponse<VehicleNumberData>.initial("Initial");
+    selectedVehicleNumber=null;
+    inwardDateDataResponse=ApiResponse<InWardDateData>.initial("Initial");
+    selectedInWardDate=null;
     notifyListeners();
   }
 
@@ -272,9 +296,9 @@ class DhadaBookViewModel extends ChangeNotifier {
 
 
 
-  ApiResponse<DhadaBookData> _vehiclesDataResponse=ApiResponse<DhadaBookData>.initial("Initial");
-  ApiResponse<DhadaBookData> get vehiclesDataResponse=>_vehiclesDataResponse;
-  set vehiclesDataResponse(ApiResponse<DhadaBookData> val){
+  ApiResponse<VehicleNumberData> _vehiclesDataResponse=ApiResponse<VehicleNumberData>.initial("Initial");
+  ApiResponse<VehicleNumberData> get vehiclesDataResponse=>_vehiclesDataResponse;
+  set vehiclesDataResponse(ApiResponse<VehicleNumberData> val){
     _vehiclesDataResponse=val;
     notifyListeners();
   }
@@ -282,26 +306,60 @@ class DhadaBookViewModel extends ChangeNotifier {
 
 
   void fetchVehicleNumber(String id) async{
-    if((vehiclesDataResponse.data?.getData??[]).isEmpty){
-      vehiclesDataResponse=ApiResponse<DhadaBookData>.loading('Fetching DhadaBook');
-    }
+
+      vehiclesDataResponse=ApiResponse<VehicleNumberData>.loading('Fetching Vehicles');
+
 
     try{
       var data= ( await VehicleViewModel.of(NavigationService.context!).fetchVehicleNumberForFarmer(id: id))??"";
 
       if(data['code']==200 && data['status']==true){
-        vehiclesDataResponse=ApiResponse<DhadaBookData>.completed(
-            DhadaBookData.fromJson(data)
+        vehiclesDataResponse=ApiResponse<VehicleNumberData>.completed(
+            VehicleNumberData.fromJson(data)
         );
       }
       else {
-        vehiclesDataResponse=ApiResponse<DhadaBookData>.empty("Data Not found");
+        vehiclesDataResponse=ApiResponse<VehicleNumberData>.empty("Vehicles Not found");
       }
     }
     catch(e){
-      vehiclesDataResponse=ApiResponse<DhadaBookData>.error(e.toString());
+      vehiclesDataResponse=ApiResponse<VehicleNumberData>.error(e.toString());
     }
   }
+
+
+
+
+  ApiResponse<InWardDateData> _inwardDateDataResponse=ApiResponse<InWardDateData>.initial("Initial");
+  ApiResponse<InWardDateData> get inwardDateDataResponse=>_inwardDateDataResponse;
+  set inwardDateDataResponse(ApiResponse<InWardDateData> val){
+    _inwardDateDataResponse=val;
+    notifyListeners();
+  }
+
+
+
+  void fetchInwardDate(String vehicleNumber) async{
+
+      inwardDateDataResponse=ApiResponse<InWardDateData>.loading('Fetching InWard Date');
+
+
+    try{
+      var data= await VehicleViewModel.of(NavigationService.context!).fetchInwardDateUsingVehicleNumber(vehicleNumber: vehicleNumber);
+      if(data['code']==200 && data['status']==true){
+        inwardDateDataResponse=ApiResponse<InWardDateData>.completed(
+            InWardDateData.fromJson(data)
+        );
+      }
+      else {
+        inwardDateDataResponse=ApiResponse<InWardDateData>.empty("InWard Date Not Found");
+      }
+    }
+    catch(e){
+      inwardDateDataResponse=ApiResponse<InWardDateData>.error(e.toString());
+    }
+  }
+
 
 
 }
