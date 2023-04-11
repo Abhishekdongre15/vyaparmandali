@@ -29,6 +29,8 @@ class CashBookItemViewModel extends ChangeNotifier {
 
   void initiateAddCashBookItem(){
     _clearFields();
+    dateC.text=DateTime.now().toString();
+    notifyListeners();
   }
 
 

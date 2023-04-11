@@ -37,6 +37,8 @@ class VacchatViewModel extends ChangeNotifier {
 
   void initiateAddVacchat(){
     _clearFields();
+    dateC.text=DateTime.now().toString();
+    notifyListeners();
   }
 
 
