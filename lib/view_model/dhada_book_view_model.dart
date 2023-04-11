@@ -10,6 +10,7 @@ import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/dhada_book.dart';
 import 'package:vyaparmandali/model/farmer.dart';
+import 'package:vyaparmandali/util/constants.dart';
 import 'package:vyaparmandali/view_model/vehicle_view_model.dart';
 
 class DhadaBookViewModel extends ChangeNotifier {
@@ -45,9 +46,17 @@ class DhadaBookViewModel extends ChangeNotifier {
   }
 
 
-  void fetchVehicleNumber(String id) async{
-    String vehicleNumber=( await VehicleViewModel.of(NavigationService.context!).fetchVehicleNumberForFarmer(id: id))??"";
-    vehicleNumberC.text=vehicleNumber;
+
+
+
+
+  void fetchInwardDate(String vehicleNumber) async{
+    DateTime? inDate=( await VehicleViewModel.of(NavigationService.context!).fetchInwardDateUsingVehicleNumber(vehicleNumber: vehicleNumber));
+
+    if(inDate!=null){
+      inWardDateC.text=inDate.toString();
+    }
+
     notifyListeners();
   }
 
@@ -257,6 +266,42 @@ class DhadaBookViewModel extends ChangeNotifier {
     }
   }
 
+
+
+
+
+
+
+  ApiResponse<DhadaBookData> _vehiclesDataResponse=ApiResponse<DhadaBookData>.initial("Initial");
+  ApiResponse<DhadaBookData> get vehiclesDataResponse=>_vehiclesDataResponse;
+  set vehiclesDataResponse(ApiResponse<DhadaBookData> val){
+    _vehiclesDataResponse=val;
+    notifyListeners();
+  }
+
+
+
+  void fetchVehicleNumber(String id) async{
+    if((vehiclesDataResponse.data?.getData??[]).isEmpty){
+      vehiclesDataResponse=ApiResponse<DhadaBookData>.loading('Fetching DhadaBook');
+    }
+
+    try{
+      var data= ( await VehicleViewModel.of(NavigationService.context!).fetchVehicleNumberForFarmer(id: id))??"";
+
+      if(data['code']==200 && data['status']==true){
+        vehiclesDataResponse=ApiResponse<DhadaBookData>.completed(
+            DhadaBookData.fromJson(data)
+        );
+      }
+      else {
+        vehiclesDataResponse=ApiResponse<DhadaBookData>.empty("Data Not found");
+      }
+    }
+    catch(e){
+      vehiclesDataResponse=ApiResponse<DhadaBookData>.error(e.toString());
+    }
+  }
 
 
 }

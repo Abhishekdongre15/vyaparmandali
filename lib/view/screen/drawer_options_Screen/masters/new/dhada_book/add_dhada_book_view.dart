@@ -76,28 +76,6 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                   const SizedBox(height: 15,),
 
 
-                  Text("Inward Date",
-                    style: theme.textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.w500
-                    ),),
-                  const SizedBox(height: 5,),
-                  DateTimePicker(
-                    firstDate: DateTime(DateTime.now().year-10, DateTime.now().month, DateTime.now().day),
-                    lastDate: DateTime.now(),
-                    controller: viewModel.inWardDateC,
-                    decoration: const InputDecoration(
-                      hintText: "Enter Inward Date",
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Required field !';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 15,),
-
-
                   Text("Select Farmer",
                     style: theme.textTheme.titleSmall?.copyWith(
                         fontWeight: FontWeight.w500
@@ -141,6 +119,31 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                     },
                   ),
                   const SizedBox(height: 15,),
+
+
+
+                  Text("Inward Date",
+                    style: theme.textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.w500
+                    ),),
+                  const SizedBox(height: 5,),
+                  DateTimePicker(
+                    firstDate: DateTime(DateTime.now().year-10, DateTime.now().month, DateTime.now().day),
+                    lastDate: DateTime.now(),
+                    enabled: false,
+                    controller: viewModel.inWardDateC,
+                    decoration: const InputDecoration(
+                      hintText: "Inward Date",
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Required field !';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 15,),
+
 
                   // Uncomment For Text field for farmer input
 

@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/api/api_call.dart';
 import 'package:vyaparmandali/app_manager/api/api_response.dart';
@@ -154,11 +155,9 @@ class VehicleViewModel extends ChangeNotifier {
 
 
 
-  Future<String?> fetchVehicleNumberForFarmer({
+  Future<dynamic> fetchVehicleNumberForFarmer({
   required String id
 }) async {
-    try{
-      ProgressDialogue.show(message: "Fetching Farmer's Vehicle Number");
       var data=await _api.call(
           url: "fetch-vehical-no-data-by-farmer-id-vacchat-main",
           apiCallType: ApiCallType.post(body: {
@@ -166,11 +165,28 @@ class VehicleViewModel extends ChangeNotifier {
           }),
           token: true
       );
+      return data;
+  }
+
+
+
+  Future<DateTime?> fetchInwardDateUsingVehicleNumber({
+    required String vehicleNumber
+  }) async {
+    try{
+      ProgressDialogue.show(message: "Fetching Inward Date For $vehicleNumber");
+      var data=await _api.call(
+          url: "fetch-inward-date-data-by-vehical-no-vacchat-main",
+          apiCallType: ApiCallType.post(body: {
+            "vehical_no": vehicleNumber,
+          }),
+          token: true
+      );
       ProgressDialogue.hide();
 
       Alert.show(data['message']);
       if(data['code']==200 && data['status']==true){
-        return data['vehical_no'];
+        return DateFormat("dd/MM/yyy").parse(data['inward_dates_data'][0]['date']);
       }
       else {
         Alert.show(data['message']);
