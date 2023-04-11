@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:readmore/readmore.dart';
-import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/route_name.dart';
 import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
 import 'package:vyaparmandali/model/user.dart';

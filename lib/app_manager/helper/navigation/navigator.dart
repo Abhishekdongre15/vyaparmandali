@@ -48,10 +48,10 @@ class MyNavigator {
   }
 
   static pushReplacement(route,{
-    String? RoutePath
+    String? routePath
   }) async{
     var data=await Navigator.pushReplacement(_context, MaterialPageRoute(
-        settings: RoutePath!=null? RouteSettings(name: RoutePath): null,
+        settings: routePath!=null? RouteSettings(name: routePath): null,
         builder: (BuildContext context)
         {
           return route;

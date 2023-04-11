@@ -10,6 +10,7 @@ import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/dhada_book.dart';
 import 'package:vyaparmandali/model/farmer.dart';
+import 'package:vyaparmandali/view_model/vehicle_view_model.dart';
 
 class DhadaBookViewModel extends ChangeNotifier {
 
@@ -33,6 +34,21 @@ class DhadaBookViewModel extends ChangeNotifier {
   set selectedFarmer(Farmer? val){
     _selectedFarmer=val;
     notifyListeners();
+    if(selectedFarmer==null){
+      vehicleNumberC.clear();
+      notifyListeners();
+    }
+    else {
+      fetchVehicleNumber((selectedFarmer?.id??"").toString());
+    }
+
+  }
+
+
+  void fetchVehicleNumber(String id) async{
+    String vehicleNumber=( await VehicleViewModel.of(NavigationService.context!).fetchVehicleNumberForFarmer(id: id))??"";
+    vehicleNumberC.text=vehicleNumber;
+    notifyListeners();
   }
 
 
@@ -52,6 +68,8 @@ class DhadaBookViewModel extends ChangeNotifier {
 
   void initiateAddDhadaBook(){
     _clearFields();
+    dateC.text=DateTime.now().toString();
+    notifyListeners();
   }
 
 
@@ -146,7 +164,7 @@ class DhadaBookViewModel extends ChangeNotifier {
         "date": DateFormat("dd/MM/yyyy").format(DateTime.parse(dateC.text)),
         "inward_date": DateFormat("dd/MM/yyyy").format(DateTime.parse(inWardDateC.text)),
         "vehical_no": vehicleNumberC.text,
-       // "farmer_name": selectedFarmer?.farmerName??"",
+        "farmer_id": selectedFarmer?.id??"",
         "farmer_place": selectedFarmer?.address??"",
         "lot_no": lotNumberC.text,
         "package": packageC.text,

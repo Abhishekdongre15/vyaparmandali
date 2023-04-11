@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/route_name.dart';
-import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/view/balance_sheet/balance_sheets_report_view.dart';
 import 'package:vyaparmandali/view/balance_sheet/eoy_kasar_cr_view.dart';
 import 'package:vyaparmandali/view/balance_sheet/eoy_kasar_dr_view.dart';
@@ -72,10 +71,6 @@ class EntryItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
-    bool isAdmin=UserRepository.of(context).getUser.fkUserTypeId.toString()=="1";
-
-
 
 // This function recursively creates the multi-level list rows.
     Widget buildTiles(Entry root) {

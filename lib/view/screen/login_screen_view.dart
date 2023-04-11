@@ -4,7 +4,6 @@ import 'package:go_router/go_router.dart';
 import 'package:vyaparmandali/app_manager/component/colored_safe_area.dart';
 import 'package:vyaparmandali/app_manager/component/password_field.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
-import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/route_name.dart';
 import 'package:vyaparmandali/app_manager/helper/responsive/responsive.dart';
 import 'package:vyaparmandali/app_manager/helper/responsive/widget/responsive_screen.dart';

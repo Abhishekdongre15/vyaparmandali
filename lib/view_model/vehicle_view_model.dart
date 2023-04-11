@@ -85,6 +85,7 @@ class VehicleViewModel extends ChangeNotifier {
 
 
 
+
   Future<void> addVehicle({
     String? id
   }) async{
@@ -151,6 +152,37 @@ class VehicleViewModel extends ChangeNotifier {
     }
   }
 
+
+
+  Future<String?> fetchVehicleNumberForFarmer({
+  required String id
+}) async {
+    try{
+      ProgressDialogue.show(message: "Fetching Farmer's Vehicle Number");
+      var data=await _api.call(
+          url: "fetch-vehical-no-data-by-farmer-id-vacchat-main",
+          apiCallType: ApiCallType.post(body: {
+            "farmer_id": id,
+          }),
+          token: true
+      );
+      ProgressDialogue.hide();
+
+      Alert.show(data['message']);
+      if(data['code']==200 && data['status']==true){
+        return data['vehical_no'];
+      }
+      else {
+        Alert.show(data['message']);
+      }
+
+    }
+    catch(e){
+      ProgressDialogue.hide();
+    }
+    return null;
+
+  }
 
 
 

@@ -98,28 +98,6 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                   const SizedBox(height: 15,),
 
 
-                  Text("Vehicle Number",
-                    style: theme.textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.w500
-                    ),),
-                  const SizedBox(height: 5,),
-                  TextFormField(
-                    controller: viewModel.vehicleNumberC,
-                    decoration: const InputDecoration(
-                      hintText: "Enter Vehicle Number",
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Required field !';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 15,),
-
-
-
-
                   Text("Select Farmer",
                     style: theme.textTheme.titleSmall?.copyWith(
                         fontWeight: FontWeight.w500
@@ -141,6 +119,28 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                   ),
                   const SizedBox(height: 15,),
 
+
+
+
+                  Text("Vehicle Number",
+                    style: theme.textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.w500
+                    ),),
+                  const SizedBox(height: 5,),
+                  TextFormField(
+                    enabled: false,
+                    controller: viewModel.vehicleNumberC,
+                    decoration: const InputDecoration(
+                      hintText: "Farmer Vehicle Number",
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Required field !';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 15,),
 
                   // Uncomment For Text field for farmer input
 

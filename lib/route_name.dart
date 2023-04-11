@@ -1,30 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:vyaparmandali/view/forget_password_view.dart';
-import 'package:vyaparmandali/view/master/ac_master_view.dart';
-import 'package:vyaparmandali/view/master/add_place_master.dart';
-import 'package:vyaparmandali/view/master/items/add_hamali_exp_view.dart';
-import 'package:vyaparmandali/view/master/items/add_item_exp.dart';
-import 'package:vyaparmandali/view/master/items/item_view.dart';
-import 'package:vyaparmandali/view/screen/dashboard_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/codes/group/group_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/codes/narrartion/narration_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/agent/agent_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/bank/bank_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/cash_book_item/cash_book_item_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/customer/customer_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/dhada_book/dhada_book_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/farmer/farmer_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/hamal/hamal_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/product/product_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/registered_user/registered_user_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/rojmel/rojmel_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vacchat/vacchat_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vehicle/vehicle_master_view.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/weight/weight_master_view.dart';
-import 'package:vyaparmandali/view/screen/login_screen_view.dart';
-import 'package:vyaparmandali/view/screen/profile/profile_page_view.dart';
-import 'package:vyaparmandali/view/screen/registration_screen_view.dart';
-import 'package:vyaparmandali/view/screen/splash_screen_view.dart';
+
 
 class RoutePath {
 

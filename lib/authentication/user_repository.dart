@@ -6,7 +6,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_sheet.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/functional_sheet.dart';
 import 'package:vyaparmandali/app_manager/constant/storage_constant.dart';
-import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/route_name.dart';
 import 'package:vyaparmandali/model/user.dart';
 
