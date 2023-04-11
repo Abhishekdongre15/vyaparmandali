@@ -234,7 +234,7 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                     child: TextButton(
                       onPressed: () {
                         if (Form.of(ctx).validate()) {
-                          if(viewModel.selectedFarmer?.address==null || viewModel.selectedFarmer?.farmerName==null){
+                          if(viewModel.selectedFarmer?.address==null || viewModel.selectedFarmer?.firstName==null){
                             Alert.show("Select Farmer");
                           }
                           else {

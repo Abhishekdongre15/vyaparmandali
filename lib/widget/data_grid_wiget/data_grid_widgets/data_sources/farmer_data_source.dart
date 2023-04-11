@@ -26,7 +26,7 @@ class FarmerDataSource extends DataGridSource {
   FarmerDataSource({required List<Farmer> listOfDocs}) {
     dataGridRows = listOfDocs
         .map<DataGridRow>((dataGridRow) => DataGridRow(cells: [
-      DataGridCell<String>(columnName: headers[0], value: (dataGridRow.farmerName??"").toString()),
+      DataGridCell<String>(columnName: headers[0], value: ("${dataGridRow.firstName??""} ${dataGridRow.middleName??""} ${dataGridRow.lastName??""}").toString()),
       DataGridCell<String>(columnName: headers[1], value: dataGridRow.address??""),
       DataGridCell<String>(columnName: headers[2], value: dataGridRow.city??""),
       DataGridCell<String>(columnName: headers[3], value: dataGridRow.phoneNumber??""),

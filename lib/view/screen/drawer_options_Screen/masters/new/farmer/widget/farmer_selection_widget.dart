@@ -65,7 +65,7 @@ class FarmerSelectionWidget extends StatelessWidget {
             items: farmers.map((e) =>
                 SearchableItem<Farmer>(
                     value: e,
-                    title: (e.farmerName??""),)
+                    title: "${e.firstName??""} ${e.middleName??""} ${e.lastName??""}",)
             ).toList(),
           );
         }

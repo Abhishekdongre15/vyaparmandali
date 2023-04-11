@@ -79,9 +79,9 @@ class DhadaBookViewModel extends ChangeNotifier {
     // farmerNameC.text=thisDhadaBook.farmerName??"";
     // farmerPlaceC.text=thisDhadaBook.farmerPlace??"";
     selectedFarmer=Farmer();
-    selectedFarmer?.farmerName= thisDhadaBook.farmerName??"";
+    selectedFarmer?.firstName= thisDhadaBook.farmerName??"";
     selectedFarmer?.address= thisDhadaBook.farmerPlace??"";
-    farmerC.text=selectedFarmer?.farmerName??"";
+    farmerC.text='${selectedFarmer?.firstName??""} ${selectedFarmer?.middleName??""} ${selectedFarmer?.lastName??""}';
     lotNumberC.text=thisDhadaBook.lotNo??"";
     packageC.text=thisDhadaBook.package??"";
 
@@ -146,7 +146,7 @@ class DhadaBookViewModel extends ChangeNotifier {
         "date": DateFormat("dd/MM/yyyy").format(DateTime.parse(dateC.text)),
         "inward_date": DateFormat("dd/MM/yyyy").format(DateTime.parse(inWardDateC.text)),
         "vehical_no": vehicleNumberC.text,
-        "farmer_name": selectedFarmer?.farmerName??"",
+       // "farmer_name": selectedFarmer?.farmerName??"",
         "farmer_place": selectedFarmer?.address??"",
         "lot_no": lotNumberC.text,
         "package": packageC.text,

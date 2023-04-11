@@ -49,15 +49,15 @@ class _AddFarmerViewState extends State<AddFarmerView> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
-                  Text("Farmer Name",
+                  Text("First Name",
                     style: theme.textTheme.titleSmall?.copyWith(
                         fontWeight: FontWeight.w500
                     ),),
                   const SizedBox(height: 5,),
                   TextFormField(
-                    controller: viewModel.farmerNameC,
+                    controller: viewModel.firstNameC,
                     decoration: const InputDecoration(
-                      hintText: "Enter Farmer Name",
+                      hintText: "Enter First Name",
                     ),
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -67,6 +67,51 @@ class _AddFarmerViewState extends State<AddFarmerView> {
                     },
                   ),
                   const SizedBox(height: 15,),
+
+
+                  Text("Middle Name",
+                    style: theme.textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.w500
+                    ),),
+                  const SizedBox(height: 5,),
+                  TextFormField(
+                    controller: viewModel.middleNameC,
+                    decoration: const InputDecoration(
+                      hintText: "Enter Middle Name",
+                    ),
+
+                    // Uncomment to validate middle name field
+
+                    // validator: (value) {
+                    //   if (value == null || value.isEmpty) {
+                    //     return 'Required field !';
+                    //   }
+                    //   return null;
+                    // },
+                  ),
+                  const SizedBox(height: 15,),
+
+
+                  Text("Last Name",
+                    style: theme.textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.w500
+                    ),),
+                  const SizedBox(height: 5,),
+                  TextFormField(
+                    controller: viewModel.lastNameC,
+                    decoration: const InputDecoration(
+                      hintText: "Enter Last Name",
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Required field !';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 15,),
+
+
 
                   Text("Address",
                     style: theme.textTheme.titleSmall?.copyWith(

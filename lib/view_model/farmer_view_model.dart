@@ -15,7 +15,9 @@ class FarmerViewModel extends ChangeNotifier {
 
   final ApiCall _api=ApiCall();
 
-  TextEditingController farmerNameC = TextEditingController();
+  TextEditingController firstNameC = TextEditingController();
+  TextEditingController middleNameC = TextEditingController();
+  TextEditingController lastNameC = TextEditingController();
   TextEditingController addressC = TextEditingController();
   TextEditingController cityC = TextEditingController();
   TextEditingController phoneC = TextEditingController();
@@ -29,7 +31,9 @@ class FarmerViewModel extends ChangeNotifier {
 
 
   void _clearFields() {
-    farmerNameC.clear();
+    firstNameC.clear();
+    middleNameC.clear();
+    lastNameC.clear();
     cityC.clear();
     addressC.clear();
     phoneC.clear();
@@ -38,7 +42,9 @@ class FarmerViewModel extends ChangeNotifier {
 
   void initiateUpdateFarmer(Farmer thisFarmer){
     _clearFields();
-    farmerNameC.text=thisFarmer.farmerName??"";
+    firstNameC.text=thisFarmer.firstName??"";
+    middleNameC.text=thisFarmer.middleName??"";
+    lastNameC.text=thisFarmer.lastName??"";
     addressC.text=thisFarmer.address??"";
     cityC.text=thisFarmer.city??"";
     phoneC.text=thisFarmer.phoneNumber??"";
@@ -95,7 +101,9 @@ class FarmerViewModel extends ChangeNotifier {
     try {
 
       Map bod={
-        "farmer_name": farmerNameC.text,
+        "first_name": firstNameC.text,
+        "middle_name": middleNameC.text,
+        "last_name": lastNameC.text,
         "address": addressC.text,
         "city": cityC.text,
         "phone_number": phoneC.text,
