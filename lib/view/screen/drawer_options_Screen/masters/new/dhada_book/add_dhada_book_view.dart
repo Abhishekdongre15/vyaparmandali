@@ -1,5 +1,6 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:searchable_text_field/searchable_text_field.dart';
 import 'package:tuple/tuple.dart';
@@ -49,6 +50,36 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
   Widget build(BuildContext context) {
     DhadaBookViewModel viewModel=DhadaBookViewModel.of(context);
     final theme=Theme.of(context);
+
+
+    Widget itemCodeWidget=Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text("Item Code",
+          style: theme.textTheme.titleSmall?.copyWith(
+              fontWeight: FontWeight.w500
+          ),),
+        const SizedBox(height: 5,),
+        TextFormField(
+          enabled: false,
+          keyboardType: TextInputType.number,
+          controller: viewModel.itemNumberC,
+          decoration: const InputDecoration(
+            hintText: "Item Code",
+          ),
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Required field !';
+            }
+            return null;
+          },
+          onChanged: (String val){
+          },
+        ),
+      ],
+    );
+
+
     return Column(
       mainAxisSize: MainAxisSize.max,
       crossAxisAlignment: CrossAxisAlignment.center,
@@ -242,24 +273,7 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                   // const SizedBox(height: 15,),
 
 
-                  Text("Lot Number",
-                    style: theme.textTheme.titleSmall?.copyWith(
-                        fontWeight: FontWeight.w500
-                    ),),
-                  const SizedBox(height: 5,),
-                  TextFormField(
-                    controller: viewModel.lotNumberC,
-                    keyboardType: TextInputType.number,
-                    decoration: const InputDecoration(
-                      hintText: "Enter Lot Number",
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Required field !';
-                      }
-                      return null;
-                    },
-                  ),
+                  itemCodeWidget,
                   const SizedBox(height: 15,),
 
 
@@ -270,8 +284,12 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                     ),),
                   const SizedBox(height: 5,),
                   TextFormField(
+                    enabled: false,
                     controller: viewModel.packageC,
                     keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.digitsOnly
+                    ], // Only numbers can be entered
                     decoration: const InputDecoration(
                       hintText: "Enter Package",
                     ),
@@ -283,7 +301,9 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                     },
                   ),
                   const SizedBox(height: 15,),
-                  const DhadaBookDetailsWidget(),
+                   DhadaBookDetailsWidget(
+                    itemCodeWidget: itemCodeWidget,
+                  ),
 
                   const SizedBox(height: 10,),
                   Center(
@@ -298,6 +318,9 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                           }
                           else  if(viewModel.selectedInWardDate==null){
                             Alert.show("Select InWard Date");
+                          }
+                          else  if(viewModel.packageDifference!=0){
+                            Alert.show("Distribute packages properly");
                           }
                           else {
                             viewModel.addDhadaBook(

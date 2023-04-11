@@ -22,18 +22,15 @@ class DhadaBookViewModel extends ChangeNotifier {
 
 
   TextEditingController dateC = TextEditingController();
-  TextEditingController inWardDateC = TextEditingController();
 
 
 
-  TextEditingController vehicleNumberC = TextEditingController();
   VehicleNo? _selectedVehicleNumber;
   VehicleNo? get selectedVehicleNumber=>_selectedVehicleNumber;
   set selectedVehicleNumber(VehicleNo? val){
     _selectedVehicleNumber=val;
     notifyListeners();
     if(selectedVehicleNumber==null){
-      inWardDateC.clear();
       selectedInWardDate=null;
       inwardDateDataResponse=ApiResponse<InWardDateData>.initial("Initial");
       notifyListeners();
@@ -51,6 +48,13 @@ class DhadaBookViewModel extends ChangeNotifier {
   set selectedInWardDate(InwardDate? val){
     _selectedInWardDate=val;
     notifyListeners();
+    if(selectedInWardDate!=null){
+      packageC.text=selectedInWardDate?.totalPackage??"";
+    }
+    else {
+      packageC.clear();
+    }
+
   }
 
 
@@ -58,8 +62,24 @@ class DhadaBookViewModel extends ChangeNotifier {
 
   // TextEditingController farmerNameC = TextEditingController();
   // TextEditingController farmerPlaceC = TextEditingController();
-  TextEditingController lotNumberC = TextEditingController();
+  TextEditingController itemNumberC = TextEditingController();
   TextEditingController packageC = TextEditingController();
+  int get totalPackageInInt => packageC.text.trim().isEmpty?0:int.parse(packageC.text.trim());
+
+  int _packageDifference=0;
+  int get packageDifference=>_packageDifference;
+  set packageDifference(int val){
+    _packageDifference=val;
+    notifyListeners();
+  }
+
+
+  calculatePackageDifference() {
+    List<int> numbers = details.map((e) => int.parse(e.package==null? "0":e.package!.isEmpty? "0":e.package??"0")).toList();
+    int sum = numbers.fold(0, (a, b) => a + b);
+    packageDifference=totalPackageInInt-sum;
+  }
+
 
 
   TextEditingController farmerC = TextEditingController();
@@ -69,7 +89,6 @@ class DhadaBookViewModel extends ChangeNotifier {
     _selectedFarmer=val;
     notifyListeners();
     if(selectedFarmer==null){
-      vehicleNumberC.clear();
       selectedVehicleNumber=null;
       vehiclesDataResponse=ApiResponse<VehicleNumberData>.initial("Initial");
       notifyListeners();
@@ -85,7 +104,8 @@ class DhadaBookViewModel extends ChangeNotifier {
   List<DhadabookDetails> details=[];
 
   void addDetails() {
-    details.add(DhadabookDetails());
+    details[0].name="ddd";
+    // details.add(DhadabookDetails());
     notifyListeners();
   }
 
@@ -105,12 +125,10 @@ class DhadaBookViewModel extends ChangeNotifier {
 
   void _clearFields() {
     dateC.clear();
-    inWardDateC.clear();
-    vehicleNumberC.clear();
     farmerC.clear();
     // farmerNameC.clear();
     // farmerPlaceC.clear();
-    lotNumberC.clear();
+    itemNumberC.clear();
     packageC.clear();
     selectedFarmer=null;
     details.clear();
@@ -125,15 +143,13 @@ class DhadaBookViewModel extends ChangeNotifier {
   void initiateUpdateDhadaBook(DhadaBook thisDhadaBook){
     _clearFields();
     dateC.text= DateFormat("dd/MM/yyyy").parse(thisDhadaBook.date??"").toString();
-    inWardDateC.text= DateFormat("dd/MM/yyyy").parse(thisDhadaBook.inwardDate??"").toString();
-     vehicleNumberC.text=thisDhadaBook.vehicalNo??"";
     // farmerNameC.text=thisDhadaBook.farmerName??"";
     // farmerPlaceC.text=thisDhadaBook.farmerPlace??"";
     selectedFarmer=Farmer();
     selectedFarmer?.firstName= thisDhadaBook.farmerName??"";
     selectedFarmer?.address= thisDhadaBook.farmerPlace??"";
     farmerC.text='${selectedFarmer?.firstName??""} ${selectedFarmer?.middleName??""} ${selectedFarmer?.lastName??""}';
-    lotNumberC.text=thisDhadaBook.lotNo??"";
+    itemNumberC.text=thisDhadaBook.lotNo??"";
     packageC.text=thisDhadaBook.package??"";
 
     for(int i=0; i<(thisDhadaBook.dhadabookDetails??[]).length; i++){
@@ -195,11 +211,10 @@ class DhadaBookViewModel extends ChangeNotifier {
     try {
       Map bod={
         "date": DateFormat("dd/MM/yyyy").format(DateTime.parse(dateC.text)),
-        "inward_date": DateFormat("dd/MM/yyyy").format(DateTime.parse(inWardDateC.text)),
-        "vehical_no": vehicleNumberC.text,
+        "inward_date": DateFormat("dd/MM/yyyy").format(DateTime.parse(selectedInWardDate?.date??"")),
+        "vehical_no": selectedVehicleNumber?.vehicalNo??"",
         "farmer_id": selectedFarmer?.id??"",
-        "farmer_place": selectedFarmer?.address??"",
-        "lot_no": lotNumberC.text,
+        "item_no": itemNumberC.text,
         "package": packageC.text,
         "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
         "dhadabook_details": details.map((e) => e.toJson()).toList()

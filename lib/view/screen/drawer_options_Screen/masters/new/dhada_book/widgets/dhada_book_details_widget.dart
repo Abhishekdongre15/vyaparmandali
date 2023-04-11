@@ -1,11 +1,15 @@
+// ignore_for_file: invalid_use_of_protected_member
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
 import 'package:vyaparmandali/model/dhada_book.dart';
 import 'package:vyaparmandali/view_model/dhada_book_view_model.dart';
 
 class DhadaBookDetailsWidget extends StatelessWidget {
-  const DhadaBookDetailsWidget({Key? key}) : super(key: key);
+  final Widget? itemCodeWidget;
+  const DhadaBookDetailsWidget({Key? key, this.itemCodeWidget}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +22,29 @@ class DhadaBookDetailsWidget extends StatelessWidget {
             shouldRebuild: (prev,nex)=>true,
             selector: (buildContext , vm)=>vm.details,
             builder: (context, List<DhadabookDetails> details,child) {
+
+
+
             return Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: List.generate(details.length, (index) {
                 DhadabookDetails detail=details[index];
+
+
+                Widget differenceWidget=Selector<DhadaBookViewModel,int>(
+                    shouldRebuild: (prev,nex)=>true,
+                    selector: (buildContext , vm)=>vm.packageDifference,
+                    builder: (context,int difference,child) {
+                    return Padding(
+                      padding: const EdgeInsets.only(top: 8),
+                      child: Text(difference==0? "Package Distribution Complete":"Remaining package $difference",
+                        style:  TextStyle(
+                            color: difference<0? Colors.red:Colors.green
+                        ),),
+                    );
+                  }
+                );
+
                 return Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Container(
@@ -45,6 +68,7 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                                   ),),
                               ),
                               InkWell(onTap: (){
+
                                 if(detail.id!=null){
                                   viewModel.subDeleteDhadaBookDetails(
                                     id: detail.id.toString(),
@@ -53,37 +77,18 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                                 }else {
                                   viewModel.clearDetailOnIndex(index);
                                 }
+                                viewModel.calculatePackageDifference();
 
                               }, child: const Icon(Icons.close,
                                 color: AppColor.primaryColor,)),
                             ],
                           ),
                           const SizedBox(height: 10,),
-                          Text("Item Code",
-                            style: theme.textTheme.titleSmall?.copyWith(
-                                fontWeight: FontWeight.w500
-                            ),),
-                          const SizedBox(height: 5,),
-                          TextFormField(
-                            keyboardType: TextInputType.number,
-                            initialValue: detail.itemCode,
-                            decoration: const InputDecoration(
-                              hintText: "Enter Item Code",
-                            ),
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Required field !';
-                              }
-                              return null;
-                            },
-                            onChanged: (String val){
-                              viewModel.details[index].itemCode=val;
-                            },
-                          ),
+                          itemCodeWidget??Container(),
 
 
                           const SizedBox(height: 10,),
-                          Text("Name",
+                          Text("Customer Name",
                             style: theme.textTheme.titleSmall?.copyWith(
                                 fontWeight: FontWeight.w500
                             ),),
@@ -91,7 +96,7 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                           TextFormField(
                             initialValue: detail.name,
                             decoration: const InputDecoration(
-                              hintText: "Enter Name",
+                              hintText: "Enter Customer Name",
                             ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
@@ -114,6 +119,9 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                           const SizedBox(height: 5,),
                           TextFormField(
                             keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly
+                            ], // Only numbers can be entered
                             initialValue: detail.package,
                             decoration: const InputDecoration(
                               hintText: "Enter Package",
@@ -126,10 +134,11 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                             },
                             onChanged: (String val){
                               viewModel.details[index].package=val;
-                            },
+                              viewModel.calculatePackageDifference();
+                              },
                           ),
 
-
+                          differenceWidget,
 
                           const SizedBox(height: 10,),
                           Text("Gross",
