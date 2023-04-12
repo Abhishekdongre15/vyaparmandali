@@ -2,12 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/api/api_call.dart';
 import 'package:vyaparmandali/app_manager/api/api_response.dart';
+import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_sheet.dart';
+import 'package:vyaparmandali/app_manager/component/bottom_sheet/titled_sheet.dart';
 import 'package:vyaparmandali/app_manager/component/progress_dialogue.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/customer.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/customer/add_customer_view.dart';
 
 class CustomerViewModel extends ChangeNotifier {
   static CustomerViewModel of(BuildContext context) =>
@@ -168,4 +171,58 @@ class CustomerViewModel extends ChangeNotifier {
       ProgressDialogue.hide();
     }
   }
+
+
+  ApiResponse<List<Customer>> _searchedCustomerResponse=ApiResponse<List<Customer>>.initial("Initial");
+  ApiResponse<List<Customer>> get searchedCustomerResponse=>_searchedCustomerResponse;
+  set searchedCustomerResponse(ApiResponse<List<Customer>> val){
+    _searchedCustomerResponse=val;
+    notifyListeners();
+  }
+
+
+  Future<void> fetchCustomerByName({
+    required String customerName
+  }) async {
+    searchedCustomerResponse=ApiResponse<List<Customer>>.loading('Fetching Customers');
+    try{
+      var data=await _api.call(
+          url: "fetch-customer-by-name-data",
+          apiCallType: ApiCallType.post(body: {
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+            "customer_name": customerName
+          }),
+          token: true
+      );
+
+      if(data['code']==200 && data['status']==true){
+
+        searchedCustomerResponse=ApiResponse<List<Customer>>.completed(
+            List<Customer>.from(
+                (data['fetch_customer_by_name_data'] as List).map((e) => Customer.fromJson(e))
+            )
+        );
+      }
+      else {
+        searchedCustomerResponse=ApiResponse<List<Customer>>.empty("Data Not found");
+      }
+    }
+    catch(e){
+      searchedCustomerResponse=ApiResponse<List<Customer>>.error(e.toString());
+    }
+
+  }
+
+
+
+
+
+
+
+  static void onPressAddCustomer(){
+    CustomBottomSheet.open(
+        child: const TitledSheet(title: "Add Customer", child: AddCustomerView()));
+  }
+
+
 }

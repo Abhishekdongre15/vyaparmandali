@@ -74,8 +74,7 @@ class CustomerMasterViewState extends State<CustomerMasterView> {
       floatingActionButton: FloatingActionButton(
           heroTag: "add_hamal",
           onPressed: () {
-            CustomBottomSheet.open(
-                child: const TitledSheet(title: "Add Customer", child: AddCustomerView()));
+           CustomerViewModel.onPressAddCustomer();
           },
           child: const Icon(Icons.add)),
     );

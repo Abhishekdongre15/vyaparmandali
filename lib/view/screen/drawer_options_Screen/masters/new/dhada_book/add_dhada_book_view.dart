@@ -11,6 +11,7 @@ import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/model/dhada_book.dart';
 import 'package:vyaparmandali/model/farmer.dart';
 import 'package:vyaparmandali/model/inward_date.dart';
+import 'package:vyaparmandali/model/item.dart';
 import 'package:vyaparmandali/model/vehicle_number.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/dhada_book/widgets/dhada_book_details_widget.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/farmer/widget/farmer_selection_widget.dart';
@@ -55,26 +56,47 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
     Widget itemCodeWidget=Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Item Code",
+        Text("Item",
           style: theme.textTheme.titleSmall?.copyWith(
               fontWeight: FontWeight.w500
           ),),
         const SizedBox(height: 5,),
-        TextFormField(
-          enabled: false,
-          keyboardType: TextInputType.number,
-          controller: viewModel.itemNumberC,
-          decoration: const InputDecoration(
-            hintText: "Item Code",
-          ),
-          validator: (value) {
-            if (value == null || value.isEmpty) {
-              return 'Required field !';
+        Selector<DhadaBookViewModel,Tuple2<ApiResponse<ItemData>,Item?>>(
+            shouldRebuild: (prev,nex)=>true,
+            selector: (buildContext , vm)=>Tuple2(vm.itemResponse, vm.selectedItem),
+            builder: (context, Tuple2<ApiResponse<ItemData>,Item?> data,child) {
+
+              ApiResponse<ItemData> response=data.item1;
+
+              List<Item> items=response.data?.itemsData??[];
+
+
+
+              Item? selectedItem=data.item2;
+              return ManageResponse(
+                response: response,
+                axis: Axis.horizontal,
+                showImage: false,
+                initialWidget: Center(
+                  child: Text("Select Vehicle Number and Inward Date",
+                    style: theme.textTheme.bodySmall,),
+                ),
+                child: MyDropDown<Item>(
+                  hint: "Select Item",
+                  value: selectedItem,
+                  isExpanded: true,
+                  items: List.generate(items.length, (index) =>
+                      DropdownMenuItem(
+                          value: items[index],
+                          child: Text(items[index].item??""))
+                  ),
+                  onChanged: (Item? selectedVal){
+
+                    viewModel.selectedItem=selectedVal;
+                  },
+                ),
+              );
             }
-            return null;
-          },
-          onChanged: (String val){
-          },
         ),
       ],
     );
@@ -301,9 +323,7 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                     },
                   ),
                   const SizedBox(height: 15,),
-                   DhadaBookDetailsWidget(
-                    itemCodeWidget: itemCodeWidget,
-                  ),
+                   const DhadaBookDetailsWidget(),
 
                   const SizedBox(height: 10,),
                   Center(

@@ -3,13 +3,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:vyaparmandali/app_manager/extension/custom_int_parse.dart';
 import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
+import 'package:vyaparmandali/model/customer.dart';
 import 'package:vyaparmandali/model/dhada_book.dart';
+import 'package:vyaparmandali/model/item.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/customer/widget/customer_selection_widget.dart';
 import 'package:vyaparmandali/view_model/dhada_book_view_model.dart';
 
 class DhadaBookDetailsWidget extends StatelessWidget {
-  final Widget? itemCodeWidget;
-  const DhadaBookDetailsWidget({Key? key, this.itemCodeWidget}) : super(key: key);
+  const DhadaBookDetailsWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +33,8 @@ class DhadaBookDetailsWidget extends StatelessWidget {
               children: List.generate(details.length, (index) {
                 DhadabookDetails detail=details[index];
 
+
+                TextEditingController customerC=TextEditingController();
 
                 Widget differenceWidget=Selector<DhadaBookViewModel,int>(
                     shouldRebuild: (prev,nex)=>true,
@@ -83,8 +88,21 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                                 color: AppColor.primaryColor,)),
                             ],
                           ),
+
+
+
                           const SizedBox(height: 10,),
-                          itemCodeWidget??Container(),
+                          Text("Item",
+                            style: theme.textTheme.titleSmall?.copyWith(
+                                fontWeight: FontWeight.w500
+                            ),),
+                          const SizedBox(height: 5,),
+                          Selector<DhadaBookViewModel, Item?>(
+                              shouldRebuild: (prev, nex) => true,
+                              selector: (buildContext, vm) => vm.selectedItem,
+                              builder: (context, Item? data, child) {
+                                return data==null? const Text("Select Item"):Text(data.item??"");
+                              }),
 
 
                           const SizedBox(height: 10,),
@@ -93,21 +111,33 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                                 fontWeight: FontWeight.w500
                             ),),
                           const SizedBox(height: 5,),
-                          TextFormField(
-                            initialValue: detail.name,
-                            decoration: const InputDecoration(
-                              hintText: "Enter Customer Name",
-                            ),
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Required field !';
-                              }
-                              return null;
-                            },
-                            onChanged: (String val){
-                              viewModel.details[index].name=val;
-                            },
-                          ),
+                          detail.customerId!=null?
+
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: Text(detail.customerName.toString(),
+                                    style: const TextStyle(
+                                    ),),
+                                  ),
+                                  InkWell(onTap: (){
+                                      viewModel.clearCustomerFromIndex(
+                                          index: index
+                                      );
+
+                                  }, child: const Icon(Icons.close,
+                                    color: AppColor.primaryColor,))
+                                ],
+                              )
+                              :CustomerSelectionWidget(
+                              onCustomerSelected: (Customer? val){
+                                if(val!=null){
+                                  viewModel.selectedThisCustomer(index: index,
+                                      customerName: "${val.firstName??""} ${val.middleName??""} ${val.lastName??""}",
+                                      customerId: (val.id??"").toString()
+                                  );
+                                }
+                          }, controller: customerC),
 
 
 
@@ -135,22 +165,29 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                             onChanged: (String val){
                               viewModel.details[index].package=val;
                               viewModel.calculatePackageDifference();
+                              viewModel.calculatePBForIndex(
+                                index: index,
+                                package: val.toIntCustom()
+                              );
                               },
                           ),
 
                           differenceWidget,
 
                           const SizedBox(height: 10,),
-                          Text("Gross",
+                          Text("V Weight",
                             style: theme.textTheme.titleSmall?.copyWith(
                                 fontWeight: FontWeight.w500
                             ),),
                           const SizedBox(height: 5,),
                           TextFormField(
                             keyboardType: TextInputType.number,
-                            initialValue: detail.gross,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly
+                            ], //
+                            initialValue: detail.vWeight,
                             decoration: const InputDecoration(
-                              hintText: "Enter Gross",
+                              hintText: "Enter V Weight",
                             ),
                             validator: (value) {
                               if (value == null || value.isEmpty) {
@@ -159,9 +196,39 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                               return null;
                             },
                             onChanged: (String val){
-                              viewModel.details[index].gross=val;
+                              viewModel.details[index].vWeight=val;
+                              viewModel.calculateVAmountForIndex(index: index, rate: detail.rate.toIntCustom(), vW: val.toIntCustom());
                             },
                           ),
+
+
+                          const SizedBox(height: 10,),
+                          Text("C Weight",
+                            style: theme.textTheme.titleSmall?.copyWith(
+                                fontWeight: FontWeight.w500
+                            ),),
+                          const SizedBox(height: 5,),
+                          TextFormField(
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly
+                            ], //
+                            initialValue: detail.cWeight,
+                            decoration: const InputDecoration(
+                              hintText: "Enter C Weight",
+                            ),
+                            validator: (value) {
+                              if (value == null || value.isEmpty) {
+                                return 'Required field !';
+                              }
+                              return null;
+                            },
+                            onChanged: (String val){
+                              viewModel.details[index].cWeight=val;
+                              viewModel.calculateCAmountForIndex(index: index, rate: detail.rate.toIntCustom(), cW: val.toIntCustom());
+                            },
+                          ),
+
 
 
                           const SizedBox(height: 10,),
@@ -170,22 +237,7 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                                 fontWeight: FontWeight.w500
                             ),),
                           const SizedBox(height: 5,),
-                          TextFormField(
-                            keyboardType: TextInputType.number,
-                            initialValue: detail.pB,
-                            decoration: const InputDecoration(
-                              hintText: "Enter PB",
-                            ),
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Required field !';
-                              }
-                              return null;
-                            },
-                            onChanged: (String val){
-                              viewModel.details[index].pB=val;
-                            },
-                          ),
+                          Center(child: Text((detail?.pB==null? "Write down package":(detail.pB??"")))),
 
 
                           const SizedBox(height: 10,),
@@ -219,6 +271,10 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                             ),),
                           const SizedBox(height: 5,),
                           TextFormField(
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.digitsOnly
+                            ], //
                             initialValue: detail.rate,
                             decoration: const InputDecoration(
                               hintText: "Enter Rate",
@@ -231,31 +287,27 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                             },
                             onChanged: (String val){
                               viewModel.details[index].rate=val;
+                              viewModel.calculateCAmountForIndex(index: index, rate: val.toIntCustom(), cW: detail.cWeight.toIntCustom());
+                              viewModel.calculateVAmountForIndex(index: index, rate: val.toIntCustom(), vW: detail.vWeight.toIntCustom());
                             },
                           ),
 
 
                           const SizedBox(height: 10,),
-                          Text("Amount",
+                          Text("V Amount",
                             style: theme.textTheme.titleSmall?.copyWith(
                                 fontWeight: FontWeight.w500
                             ),),
                           const SizedBox(height: 5,),
-                          TextFormField(
-                            initialValue: detail.amount,
-                            decoration: const InputDecoration(
-                              hintText: "Enter Amount",
-                            ),
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Required field !';
-                              }
-                              return null;
-                            },
-                            onChanged: (String val){
-                              viewModel.details[index].amount=val;
-                            },
-                          ),
+                          Center(child: Text((detail?.vAmount==null? "Add Rate and V Weight":(detail.vAmount??"")))),
+
+                          const SizedBox(height: 10,),
+                          Text("C Amount",
+                            style: theme.textTheme.titleSmall?.copyWith(
+                                fontWeight: FontWeight.w500
+                            ),),
+                          const SizedBox(height: 5,),
+                          Center(child: Text((detail?.cAmount==null? "Add Rate and C Weight":(detail.cAmount??"")))),
 
                         ],
                       ),

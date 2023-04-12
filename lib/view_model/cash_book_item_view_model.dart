@@ -171,6 +171,28 @@ class CashBookItemViewModel extends ChangeNotifier {
   }
 
 
+  Future<dynamic> fetItemDataUsing({
+    required String inwardDate,
+    required String vehicleNumber,
+  }) async {
+    try {
+      var data=await _api.call(
+          url: "fetch-item-data-by-inward-date-vacchat-main",
+          apiCallType: ApiCallType.post(body: {
+            "inward_date": inwardDate,
+            "vehical_no": vehicleNumber,
+          }),
+          token: true
+      );
+      return data;
+    }
+    catch (e){
+      rethrow;
+    }
+  }
+
+
+
 
 
 }

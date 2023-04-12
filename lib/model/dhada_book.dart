@@ -105,65 +105,63 @@ class DhadaBook {
 
 class DhadabookDetails {
   String? id;
-  String? fkDhadabookMainId;
   String? itemCode;
-  String? name;
+  String? customerId;
+  String? customerName;
   String? package;
-  String? gross;
+  String? vWeight;
+  String? cWeight;
   String? pB;
   String? average;
   String? rate;
-  String? amount;
-  String? createdAt;
-  String? updatedAt;
-  String? delStatus;
+  String? vAmount;
+  String? cAmount;
 
   DhadabookDetails(
-      {this.id,
-        this.fkDhadabookMainId,
+      {
+        this.id,
         this.itemCode,
-        this.name,
+        this.customerId,
+        this.customerName,
         this.package,
-        this.gross,
+        this.vWeight,
+        this.cWeight,
         this.pB,
         this.average,
         this.rate,
-        this.amount,
-        this.createdAt,
-        this.updatedAt,
-        this.delStatus});
+        this.vAmount,
+        this.cAmount});
 
   DhadabookDetails.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    fkDhadabookMainId = json['fk_dhadabook_main_id'];
     itemCode = json['item_code'];
-    name = json['name'];
+    customerId = json['customer_id'];
+    customerName = json['customer_name'];
     package = json['package'];
-    gross = json['gross'];
+    vWeight = json['v_weight'];
+    cWeight = json['c_weight'];
     pB = json['p_b'];
     average = json['average'];
     rate = json['rate'];
-    amount = json['amount'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
-    delStatus = json['del_status'];
+    vAmount = json['v_amount'];
+    cAmount = json['c_amount'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
-    data['fk_dhadabook_main_id'] = fkDhadabookMainId;
     data['item_code'] = itemCode;
-    data['name'] = name;
+    data['customer_id'] = customerId;
+    data['customer_name'] = customerName;
     data['package'] = package;
-    data['gross'] = gross;
+    data['v_weight'] = vWeight;
+    data['c_weight'] = cWeight;
     data['p_b'] = pB;
     data['average'] = average;
     data['rate'] = rate;
-    data['amount'] = amount;
-    data['created_at'] = createdAt;
-    data['updated_at'] = updatedAt;
-    data['del_status'] = delStatus;
+    data['v_amount'] = vAmount;
+    data['c_amount'] = cAmount;
     return data;
   }
 }
+

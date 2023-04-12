@@ -11,7 +11,9 @@ import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/dhada_book.dart';
 import 'package:vyaparmandali/model/farmer.dart';
 import 'package:vyaparmandali/model/inward_date.dart';
+import 'package:vyaparmandali/model/item.dart';
 import 'package:vyaparmandali/model/vehicle_number.dart';
+import 'package:vyaparmandali/view_model/cash_book_item_view_model.dart';
 import 'package:vyaparmandali/view_model/vehicle_view_model.dart';
 
 class DhadaBookViewModel extends ChangeNotifier {
@@ -24,38 +26,6 @@ class DhadaBookViewModel extends ChangeNotifier {
   TextEditingController dateC = TextEditingController();
 
 
-
-  VehicleNo? _selectedVehicleNumber;
-  VehicleNo? get selectedVehicleNumber=>_selectedVehicleNumber;
-  set selectedVehicleNumber(VehicleNo? val){
-    _selectedVehicleNumber=val;
-    notifyListeners();
-    if(selectedVehicleNumber==null){
-      selectedInWardDate=null;
-      inwardDateDataResponse=ApiResponse<InWardDateData>.initial("Initial");
-      notifyListeners();
-    }
-    else {
-      fetchInwardDate((selectedVehicleNumber?.vehicalNo??"").toString());
-    }
-
-  }
-
-
-
-  InwardDate? _selectedInWardDate;
-  InwardDate? get selectedInWardDate=>_selectedInWardDate;
-  set selectedInWardDate(InwardDate? val){
-    _selectedInWardDate=val;
-    notifyListeners();
-    if(selectedInWardDate!=null){
-      packageC.text=selectedInWardDate?.totalPackage??"";
-    }
-    else {
-      packageC.clear();
-    }
-
-  }
 
 
 
@@ -74,11 +44,69 @@ class DhadaBookViewModel extends ChangeNotifier {
   }
 
 
-  calculatePackageDifference() {
+  void calculatePackageDifference() {
     List<int> numbers = details.map((e) => int.parse(e.package==null? "0":e.package!.isEmpty? "0":e.package??"0")).toList();
     int sum = numbers.fold(0, (a, b) => a + b);
     packageDifference=totalPackageInInt-sum;
   }
+
+
+  void calculatePBForIndex({
+    required int index,
+    required int package,
+}) {
+    if(package<71){
+     details[index].pB="P";
+    }
+    else {
+      details[index].pB="B";
+    }
+    notifyListeners();
+  }
+
+
+
+
+  void calculateVAmountForIndex({
+    required int index,
+    required int rate,
+    required int vW,
+  }) {
+      details[index].vAmount=(rate*vW).toString();
+    notifyListeners();
+  }
+
+  void calculateCAmountForIndex({
+    required int index,
+    required int rate,
+    required int cW,
+  }) {
+    details[index].cAmount=(rate*cW).toString();
+    notifyListeners();
+  }
+
+
+
+  void selectedThisCustomer({
+    required int index,
+    required String customerName,
+    required String customerId,
+  }) {
+    details[index].customerId=customerId;
+    details[index].customerName=customerName;
+    notifyListeners();
+  }
+
+
+  void clearCustomerFromIndex({
+    required int index,
+  }) {
+    details[index].customerId=null;
+    details[index].customerName=null;
+    notifyListeners();
+  }
+
+
 
 
 
@@ -100,13 +128,12 @@ class DhadaBookViewModel extends ChangeNotifier {
   }
 
 
-
   List<DhadabookDetails> details=[];
 
   void addDetails() {
-    details[0].name="ddd";
-    // details.add(DhadabookDetails());
+     details.add(DhadabookDetails());
     notifyListeners();
+     calculatePackageDifference();
   }
 
   void clearDetailOnIndex(int index){
@@ -136,6 +163,8 @@ class DhadaBookViewModel extends ChangeNotifier {
     selectedVehicleNumber=null;
     inwardDateDataResponse=ApiResponse<InWardDateData>.initial("Initial");
     selectedInWardDate=null;
+    itemResponse=ApiResponse<ItemData>.initial("Initial");
+    selectedItem=null;
     notifyListeners();
   }
 
@@ -214,7 +243,9 @@ class DhadaBookViewModel extends ChangeNotifier {
         "inward_date": DateFormat("dd/MM/yyyy").format(DateTime.parse(selectedInWardDate?.date??"")),
         "vehical_no": selectedVehicleNumber?.vehicalNo??"",
         "farmer_id": selectedFarmer?.id??"",
-        "item_no": itemNumberC.text,
+        "farmer_name": "${selectedFarmer?.firstName??""} ${selectedFarmer?.middleName??""} ${selectedFarmer?.lastName??""}",
+        "farmer_place": selectedFarmer?.address??"",
+        "item_code": selectedItem?.id??"",
         "package": packageC.text,
         "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
         "dhadabook_details": details.map((e) => e.toJson()).toList()
@@ -310,6 +341,24 @@ class DhadaBookViewModel extends ChangeNotifier {
 
 
 
+  VehicleNo? _selectedVehicleNumber;
+  VehicleNo? get selectedVehicleNumber=>_selectedVehicleNumber;
+  set selectedVehicleNumber(VehicleNo? val){
+    _selectedVehicleNumber=val;
+    notifyListeners();
+    if(selectedVehicleNumber==null){
+      selectedInWardDate=null;
+      inwardDateDataResponse=ApiResponse<InWardDateData>.initial("Initial");
+      notifyListeners();
+    }
+    else {
+      fetchInwardDate((selectedVehicleNumber?.vehicalNo??"").toString());
+    }
+
+  }
+
+
+
 
   ApiResponse<VehicleNumberData> _vehiclesDataResponse=ApiResponse<VehicleNumberData>.initial("Initial");
   ApiResponse<VehicleNumberData> get vehiclesDataResponse=>_vehiclesDataResponse;
@@ -352,6 +401,24 @@ class DhadaBookViewModel extends ChangeNotifier {
     notifyListeners();
   }
 
+  InwardDate? _selectedInWardDate;
+  InwardDate? get selectedInWardDate=>_selectedInWardDate;
+  set selectedInWardDate(InwardDate? val){
+    _selectedInWardDate=val;
+    notifyListeners();
+    if(selectedInWardDate==null){
+      selectedItem=null;
+      itemResponse=ApiResponse<ItemData>.initial("Initial");
+      notifyListeners();
+    }
+    else {
+      fetchItemData(
+        vehicleNumber: (selectedVehicleNumber?.vehicalNo??"").toString(),
+        inwardDate: (selectedInWardDate?.date??"").toString(),
+      );
+    }
+
+  }
 
 
   void fetchInwardDate(String vehicleNumber) async{
@@ -374,6 +441,59 @@ class DhadaBookViewModel extends ChangeNotifier {
       inwardDateDataResponse=ApiResponse<InWardDateData>.error(e.toString());
     }
   }
+
+
+
+
+  Item? _selectedItem;
+  Item? get selectedItem=>_selectedItem;
+  set selectedItem(Item? val){
+    _selectedItem=val;
+    notifyListeners();
+    if(selectedItem!=null){
+      packageC.text=selectedItem?.qty??"";
+    }
+    else {
+      packageC.clear();
+    }
+
+  }
+
+  ApiResponse<ItemData> _itemResponse=ApiResponse<ItemData>.initial("Initial");
+  ApiResponse<ItemData> get itemResponse=>_itemResponse;
+  set itemResponse(ApiResponse<ItemData> val){
+    _itemResponse=val;
+    notifyListeners();
+  }
+
+
+  void fetchItemData({
+    required String vehicleNumber,
+    required String inwardDate,
+}) async{
+
+    itemResponse=ApiResponse<ItemData>.loading('Fetching Item Date');
+
+
+    try{
+      var data= await CashBookItemViewModel.of(NavigationService.context!).fetItemDataUsing(
+          vehicleNumber: vehicleNumber,
+          inwardDate: inwardDate);
+      if(data['code']==200 && data['status']==true){
+        itemResponse=ApiResponse<ItemData>.completed(
+            ItemData.fromJson(data)
+        );
+      }
+      else {
+        itemResponse=ApiResponse<ItemData>.empty("Item Data Not Found");
+      }
+    }
+    catch(e){
+      itemResponse=ApiResponse<ItemData>.error(e.toString());
+    }
+  }
+
+
 
 
 
