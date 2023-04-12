@@ -165,9 +165,10 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                             onChanged: (String val){
                               viewModel.details[index].package=val;
                               viewModel.calculatePackageDifference();
-                              viewModel.calculatePBForIndex(
+                              viewModel.calculatePBAndAverageForIndex(
                                 index: index,
-                                package: val.toIntCustom()
+                                package: val.toIntCustom(),
+                                cWeight: detail.cWeight.toIntCustom()
                               );
                               },
                           ),
@@ -226,6 +227,11 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                             onChanged: (String val){
                               viewModel.details[index].cWeight=val;
                               viewModel.calculateCAmountForIndex(index: index, rate: detail.rate.toIntCustom(), cW: val.toIntCustom());
+                              viewModel.calculatePBAndAverageForIndex(
+                                  index: index,
+                                  package: detail.package.toIntCustom(),
+                                  cWeight: val.toIntCustom()
+                              );
                             },
                           ),
 
@@ -246,22 +252,7 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                                 fontWeight: FontWeight.w500
                             ),),
                           const SizedBox(height: 5,),
-                          TextFormField(
-                            keyboardType: TextInputType.number,
-                            initialValue: detail.average,
-                            decoration: const InputDecoration(
-                              hintText: "Enter Average",
-                            ),
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Required field !';
-                              }
-                              return null;
-                            },
-                            onChanged: (String val){
-                              viewModel.details[index].average=val;
-                            },
-                          ),
+                          Center(child: Text((detail?.average=="0.0"? "Add Package and C Weight":(detail.average??"")))),
 
 
                           const SizedBox(height: 10,),

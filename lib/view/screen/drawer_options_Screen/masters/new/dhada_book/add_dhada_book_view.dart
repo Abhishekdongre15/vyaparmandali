@@ -339,7 +339,7 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                           else  if(viewModel.selectedInWardDate==null){
                             Alert.show("Select InWard Date");
                           }
-                          else  if(viewModel.packageDifference!=0){
+                          else  if(viewModel.packageDifference<0){
                             Alert.show("Distribute packages properly");
                           }
                           else {

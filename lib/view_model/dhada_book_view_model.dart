@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/api/api_call.dart';
 import 'package:vyaparmandali/app_manager/api/api_response.dart';
 import 'package:vyaparmandali/app_manager/component/progress_dialogue.dart';
+import 'package:vyaparmandali/app_manager/extension/custom_int_parse.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
@@ -51,11 +52,13 @@ class DhadaBookViewModel extends ChangeNotifier {
   }
 
 
-  void calculatePBForIndex({
+  void calculatePBAndAverageForIndex({
     required int index,
     required int package,
+    required int cWeight,
 }) {
-    if(package<71){
+    details[index].average=(cWeight/package).toString();
+    if(details[index].average.toDoubleCustom()<70){
      details[index].pB="P";
     }
     else {
@@ -181,6 +184,19 @@ class DhadaBookViewModel extends ChangeNotifier {
     itemNumberC.text=thisDhadaBook.lotNo??"";
     packageC.text=thisDhadaBook.package??"";
 
+    selectedVehicleNumber=VehicleNo();
+    selectedVehicleNumber?.vehicalNo= thisDhadaBook.vehicalNo??"";
+
+
+
+    selectedInWardDate=InwardDate();
+    selectedInWardDate?.date= thisDhadaBook.inwardDate??"";
+
+    selectedItem=Item();
+    selectedItem?.item= thisDhadaBook.lotNo??"";
+
+
+
     for(int i=0; i<(thisDhadaBook.dhadabookDetails??[]).length; i++){
       DhadabookDetails thiDetail=(thisDhadaBook.dhadabookDetails??[])[i];
       details.add(
@@ -238,17 +254,30 @@ class DhadaBookViewModel extends ChangeNotifier {
   }) async{
     ProgressDialogue.show(message: id==null? "Adding DhadaBook":"Updating DhadaBook");
     try {
+
+
+      List detailsInMap=[];
+
+
+      for(int i=0; i<details.length; i++){
+        DhadabookDetails data=details[i];
+        data.itemCode=selectedItem?.id??"";
+        detailsInMap.add(data.toJson());
+      }
+
       Map bod={
         "date": DateFormat("dd/MM/yyyy").format(DateTime.parse(dateC.text)),
-        "inward_date": DateFormat("dd/MM/yyyy").format(DateTime.parse(selectedInWardDate?.date??"")),
+        "inward_date": selectedInWardDate?.date??"",
         "vehical_no": selectedVehicleNumber?.vehicalNo??"",
         "farmer_id": selectedFarmer?.id??"",
         "farmer_name": "${selectedFarmer?.firstName??""} ${selectedFarmer?.middleName??""} ${selectedFarmer?.lastName??""}",
         "farmer_place": selectedFarmer?.address??"",
+        "item_id": selectedItem?.id??"",
+        "lot_no": selectedItem?.id??"",
         "item_code": selectedItem?.id??"",
         "package": packageC.text,
         "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
-        "dhadabook_details": details.map((e) => e.toJson()).toList()
+        "dhadabook_details": detailsInMap
       };
       if(id!=null){
         bod['id']=id;
