@@ -21,7 +21,7 @@ class DhadaBookDataSource extends DataGridSource {
     "      Vehical Number     ",
     "      Farmer Name     ",
     "      Farmer Place     ",
-    "      Lot Number     ",
+    "      Item Code     ",
     "      Package     ",
     "            Action           ",
   ];
@@ -34,7 +34,7 @@ class DhadaBookDataSource extends DataGridSource {
       DataGridCell<String>(columnName: headers[2], value: dataGridRow.vehicalNo??""),
       DataGridCell<String>(columnName: headers[3], value: dataGridRow.farmerName??""),
       DataGridCell<String>(columnName: headers[4], value: dataGridRow.farmerPlace??""),
-      DataGridCell<String>(columnName: headers[5], value: dataGridRow.lotNo??""),
+      DataGridCell<String>(columnName: headers[5], value: dataGridRow.itemCode??""),
       DataGridCell<String>(columnName: headers[6], value: dataGridRow.package??""),
       DataGridCell<Widget>(columnName: headers[7], value: actionButton(dataGridRow)),
     ]))
@@ -75,7 +75,7 @@ class DhadaBookDataSource extends DataGridSource {
                 ),
                 onPressed: () async{
 
-                  NavigationService.context!.push<DhadaBook>(RoutePath.vacchatDetailsView,
+                  NavigationService.context!.push<DhadaBook>(RoutePath.dhadaBookDetailsView,
                       extra: docs);
                 })
         ),

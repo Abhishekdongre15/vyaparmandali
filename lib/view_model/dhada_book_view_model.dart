@@ -168,6 +168,7 @@ class DhadaBookViewModel extends ChangeNotifier {
     selectedInWardDate=null;
     itemResponse=ApiResponse<ItemData>.initial("Initial");
     selectedItem=null;
+
     notifyListeners();
   }
 
@@ -177,23 +178,24 @@ class DhadaBookViewModel extends ChangeNotifier {
     dateC.text= DateFormat("dd/MM/yyyy").parse(thisDhadaBook.date??"").toString();
     // farmerNameC.text=thisDhadaBook.farmerName??"";
     // farmerPlaceC.text=thisDhadaBook.farmerPlace??"";
-    selectedFarmer=Farmer();
-    selectedFarmer?.firstName= thisDhadaBook.farmerName??"";
-    selectedFarmer?.address= thisDhadaBook.farmerPlace??"";
+    _selectedFarmer=Farmer();
+    _selectedFarmer?.firstName= thisDhadaBook.farmerName??"";
+    _selectedFarmer?.address= thisDhadaBook.farmerPlace??"";
     farmerC.text='${selectedFarmer?.firstName??""} ${selectedFarmer?.middleName??""} ${selectedFarmer?.lastName??""}';
-    itemNumberC.text=thisDhadaBook.lotNo??"";
+    itemNumberC.text=thisDhadaBook.itemCode??"";
     packageC.text=thisDhadaBook.package??"";
 
-    selectedVehicleNumber=VehicleNo();
-    selectedVehicleNumber?.vehicalNo= thisDhadaBook.vehicalNo??"";
+    _selectedVehicleNumber=VehicleNo();
+    _selectedVehicleNumber?.vehicalNo= thisDhadaBook.vehicalNo??"";
 
 
 
-    selectedInWardDate=InwardDate();
-    selectedInWardDate?.date= thisDhadaBook.inwardDate??"";
+    _selectedInWardDate=InwardDate();
+    _selectedInWardDate?.date= thisDhadaBook.inwardDate??"";
 
-    selectedItem=Item();
-    selectedItem?.item= thisDhadaBook.lotNo??"";
+    _selectedItem=Item();
+    _selectedItem?.item= thisDhadaBook.itemCode??"";
+
 
 
 
@@ -203,6 +205,7 @@ class DhadaBookViewModel extends ChangeNotifier {
           thiDetail
       );
     }
+    calculatePackageDifference();
     notifyListeners();
   }
 

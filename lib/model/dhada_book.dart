@@ -38,7 +38,7 @@ class DhadaBook {
   String? vehicalNo;
   String? farmerName;
   String? farmerPlace;
-  String? lotNo;
+  String? itemCode;
   String? package;
   String? createdAt;
   String? updatedAt;
@@ -53,7 +53,7 @@ class DhadaBook {
         this.vehicalNo,
         this.farmerName,
         this.farmerPlace,
-        this.lotNo,
+        this.itemCode,
         this.package,
         this.createdAt,
         this.updatedAt,
@@ -68,7 +68,7 @@ class DhadaBook {
     vehicalNo = json['vehical_no'];
     farmerName = json['farmer_name'];
     farmerPlace = json['farmer_place'];
-    lotNo = json['lot_no'];
+    itemCode = json['itemCode'];
     package = json['package'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
@@ -90,7 +90,7 @@ class DhadaBook {
     data['vehical_no'] = vehicalNo;
     data['farmer_name'] = farmerName;
     data['farmer_place'] = farmerPlace;
-    data['lot_no'] = lotNo;
+    data['itemCode'] = itemCode;
     data['package'] = package;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;

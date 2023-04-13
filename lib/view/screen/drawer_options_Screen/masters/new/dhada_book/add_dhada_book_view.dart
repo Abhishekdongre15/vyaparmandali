@@ -8,6 +8,7 @@ import 'package:vyaparmandali/app_manager/api/api_response.dart';
 import 'package:vyaparmandali/app_manager/api/manage_response.dart';
 import 'package:vyaparmandali/app_manager/component/drop_down.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
+import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
 import 'package:vyaparmandali/model/dhada_book.dart';
 import 'package:vyaparmandali/model/farmer.dart';
 import 'package:vyaparmandali/model/inward_date.dart';
@@ -73,7 +74,23 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
 
 
               Item? selectedItem=data.item2;
-              return ManageResponse(
+              return selectedItem!=null?
+
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(selectedItem?.item??"",
+                      style: const TextStyle(
+                      ),),
+                  ),
+                  InkWell(onTap: (){
+                    viewModel.selectedItem=null;
+
+                  }, child: const Icon(Icons.close,
+                    color: AppColor.primaryColor,))
+                ],
+              )
+                  :ManageResponse(
                 response: response,
                 axis: Axis.horizontal,
                 showImage: false,
@@ -145,7 +162,24 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                       shouldRebuild: (prev,nex)=>true,
                       selector: (buildContext , vm)=>vm.selectedFarmer,
                       builder: (context, Farmer? data,child) {
-                      return FarmerSelectionWidget(
+                      return data!=null?
+
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text("${data?.firstName??""} ${data?.middleName??""} ${data?.lastName??""}",
+                              style: const TextStyle(
+                              ),),
+                          ),
+                          InkWell(onTap: (){
+                            viewModel.farmerC.clear();
+                            viewModel.selectedFarmer=null;
+
+                          }, child: const Icon(Icons.close,
+                            color: AppColor.primaryColor,))
+                        ],
+                      )
+                          :FarmerSelectionWidget(
                         controller: viewModel.farmerC,
                         onFarmerSelected: (Farmer? selectedFarmer) {
                           viewModel.selectedFarmer=selectedFarmer;
@@ -177,7 +211,23 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
 
 
                         VehicleNo? selectedVehicleNumber=data.item2;
-                      return ManageResponse(
+                      return selectedVehicleNumber!=null?
+
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Text(selectedVehicleNumber?.vehicalNo??"",
+                              style: const TextStyle(
+                              ),),
+                          ),
+                          InkWell(onTap: (){
+                            viewModel.selectedVehicleNumber=null;
+
+                          }, child: const Icon(Icons.close,
+                            color: AppColor.primaryColor,))
+                        ],
+                      )
+                          :ManageResponse(
                         response: response,
                         axis: Axis.horizontal,
                         showImage: false,
@@ -222,8 +272,24 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
 
 
 
-                        InwardDate? selectedVehicleNumber=data.item2;
-                        return ManageResponse(
+                        InwardDate? selectedInWardDate=data.item2;
+                        return selectedInWardDate!=null?
+
+                        Row(
+                          children: [
+                            Expanded(
+                              child: Text(selectedInWardDate?.date??"",
+                                style: const TextStyle(
+                                ),),
+                            ),
+                            InkWell(onTap: (){
+                              viewModel.selectedInWardDate=null;
+
+                            }, child: const Icon(Icons.close,
+                              color: AppColor.primaryColor,))
+                          ],
+                        )
+                            :ManageResponse(
                           response: response,
                           axis: Axis.horizontal,
                           showImage: false,
@@ -233,7 +299,7 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                           ),
                           child: MyDropDown<InwardDate>(
                             hint: "Select InWard Date",
-                            value: selectedVehicleNumber,
+                            value: selectedInWardDate,
                             isExpanded: true,
                             items: List.generate(dates.length, (index) =>
                                 DropdownMenuItem(
