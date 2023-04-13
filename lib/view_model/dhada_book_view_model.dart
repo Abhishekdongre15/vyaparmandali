@@ -261,7 +261,7 @@ class DhadaBookViewModel extends ChangeNotifier {
 
       for(int i=0; i<details.length; i++){
         DhadabookDetails data=details[i];
-        data.itemCode=selectedItem?.id??"";
+        data.itemCode=selectedItem?.item??"";
         detailsInMap.add(data.toJson());
       }
 
@@ -272,9 +272,8 @@ class DhadaBookViewModel extends ChangeNotifier {
         "farmer_id": selectedFarmer?.id??"",
         "farmer_name": "${selectedFarmer?.firstName??""} ${selectedFarmer?.middleName??""} ${selectedFarmer?.lastName??""}",
         "farmer_place": selectedFarmer?.address??"",
-        "item_id": selectedItem?.id??"",
-        "lot_no": selectedItem?.id??"",
-        "item_code": selectedItem?.id??"",
+        "item_code": selectedItem?.item??"",
+        "lot_no": "",
         "package": packageC.text,
         "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
         "dhadabook_details": detailsInMap
