@@ -5,7 +5,6 @@ import 'package:vyaparmandali/app_manager/api/api_call.dart';
 import 'package:vyaparmandali/app_manager/component/progress_dialogue.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/route_name.dart';
-import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/user.dart';
 
@@ -20,7 +19,9 @@ class LoginViewModel extends ChangeNotifier {
 
 
 
-  Future<void> login({
+  Future<void> login(
+      BuildContext context,
+      {
   required String email,
   required String password,
     bool updating=false,
@@ -49,9 +50,10 @@ class LoginViewModel extends ChangeNotifier {
         emailC.clear();
         passwordC.clear();
 
-        UserRepository.of(NavigationService.context!).updateUserData(User.fromJson(data['data'][0])).then((value) {
+        // ignore: use_build_context_synchronously
+        UserRepository.of(context).updateUserData(User.fromJson(data['data'][0])).then((value) {
           if(updating==false){
-            NavigationService.context!.pushReplacement(RoutePath.dashboard);
+            context.pushReplacement(RoutePath.dashboard);
           }
         }
         );

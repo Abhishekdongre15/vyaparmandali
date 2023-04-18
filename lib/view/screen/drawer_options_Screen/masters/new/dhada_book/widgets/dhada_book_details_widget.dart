@@ -243,7 +243,7 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                                 fontWeight: FontWeight.w500
                             ),),
                           const SizedBox(height: 5,),
-                          Center(child: Text((detail?.pB==null? "Write down package":(detail.pB??"")))),
+                          Center(child: Text((detail.pB==null? "Write down package":(detail.pB??"")))),
 
 
                           const SizedBox(height: 10,),
@@ -252,7 +252,7 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                                 fontWeight: FontWeight.w500
                             ),),
                           const SizedBox(height: 5,),
-                          Center(child: Text((detail?.average=="0.0"? "Add Package and C Weight":(detail.average??"")))),
+                          Center(child: Text((detail.average=="0.0"? "Add Package and C Weight":(detail.average??"")))),
 
 
                           const SizedBox(height: 10,),
@@ -290,7 +290,7 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                                 fontWeight: FontWeight.w500
                             ),),
                           const SizedBox(height: 5,),
-                          Center(child: Text((detail?.vAmount==null? "Add Rate and V Weight":(detail.vAmount??"")))),
+                          Center(child: Text((detail.vAmount==null? "Add Rate and V Weight":(detail.vAmount??"")))),
 
                           const SizedBox(height: 10,),
                           Text("C Amount",
@@ -298,7 +298,7 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                                 fontWeight: FontWeight.w500
                             ),),
                           const SizedBox(height: 5,),
-                          Center(child: Text((detail?.cAmount==null? "Add Rate and C Weight":(detail.cAmount??"")))),
+                          Center(child: Text((detail.cAmount==null? "Add Rate and C Weight":(detail.cAmount??"")))),
 
                         ],
                       ),

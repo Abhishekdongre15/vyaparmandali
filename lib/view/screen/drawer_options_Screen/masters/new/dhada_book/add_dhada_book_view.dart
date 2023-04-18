@@ -2,7 +2,6 @@ import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:searchable_text_field/searchable_text_field.dart';
 import 'package:tuple/tuple.dart';
 import 'package:vyaparmandali/app_manager/api/api_response.dart';
 import 'package:vyaparmandali/app_manager/api/manage_response.dart';
@@ -79,7 +78,7 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
               Row(
                 children: [
                   Expanded(
-                    child: Text(selectedItem?.item??"",
+                    child: Text(selectedItem.item??"",
                       style: const TextStyle(
                       ),),
                   ),
@@ -167,7 +166,7 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                       Row(
                         children: [
                           Expanded(
-                            child: Text("${data?.firstName??""} ${data?.middleName??""} ${data?.lastName??""}",
+                            child: Text("${data.firstName??""} ${data.middleName??""} ${data.lastName??""}",
                               style: const TextStyle(
                               ),),
                           ),
@@ -216,7 +215,7 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                       Row(
                         children: [
                           Expanded(
-                            child: Text(selectedVehicleNumber?.vehicalNo??"",
+                            child: Text(selectedVehicleNumber.vehicalNo??"",
                               style: const TextStyle(
                               ),),
                           ),
@@ -278,7 +277,7 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                         Row(
                           children: [
                             Expanded(
-                              child: Text(selectedInWardDate?.date??"",
+                              child: Text(selectedInWardDate.date??"",
                                 style: const TextStyle(
                                 ),),
                             ),

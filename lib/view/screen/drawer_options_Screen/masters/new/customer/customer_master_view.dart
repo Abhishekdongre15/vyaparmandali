@@ -3,8 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:vyaparmandali/app_manager/api/api_response.dart';
 import 'package:vyaparmandali/app_manager/api/manage_response.dart';
-import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_sheet.dart';
-import 'package:vyaparmandali/app_manager/component/bottom_sheet/titled_sheet.dart';
 import 'package:vyaparmandali/app_manager/constant/project_constant.dart';
 import 'package:vyaparmandali/model/customer.dart';
 import 'package:vyaparmandali/view_model/customer_view_model.dart';
@@ -12,8 +10,6 @@ import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/my_sf_dat
 
 import '../../../../../../app_manager/helper/responsive/responsive.dart';
 import '../../../../../../widget/data_grid_wiget/data_grid_widgets/data_sources/customer_data_source.dart';
-import 'add_customer_view.dart';
-
 class CustomerMasterView extends StatefulWidget {
   const CustomerMasterView({Key? key}) : super(key: key);
 

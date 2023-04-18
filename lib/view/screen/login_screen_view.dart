@@ -134,6 +134,7 @@ class _LoginScreenViewState extends State<LoginScreenView> {
                                     onPressed: () {
                                       if (_formKey.currentState!.validate()) {
                                         viewModel.login(
+                                          context,
                                           email: viewModel.emailC.text,
                                           password: viewModel.passwordC.text,
                                         );

@@ -164,7 +164,9 @@ class RegistrationViewModel extends ChangeNotifier{
       ProgressDialogue.hide();
       Alert.show(data['message']);
       if(data['code']==200 && data['status']==true){
-        LoginViewModel.of(NavigationService.context!).login(email: emailC.text, password: passwordC.text,
+        LoginViewModel.of(NavigationService.context!).login(
+            NavigationService.context!,
+            email: emailC.text, password: passwordC.text,
         updating: true);
         _clearFields();
         MyNavigator.pop();
