@@ -52,6 +52,7 @@ final List<Entry> data = <Entry>[
           Entry('NARRATION'),
         ],
       ),
+
       // Entry(
       //   'ITEM',
       //   <Entry>[
@@ -66,6 +67,8 @@ final List<Entry> data = <Entry>[
       // Entry('ACCOUNT MERGE'),
     ],
   ),
+
+  Entry('REPORTS'),
 // Second Row
 //   Entry('DATA ENTERY', <Entry>[
 //     Entry('ROJMEL'),

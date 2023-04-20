@@ -2,6 +2,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/constant/project_constant.dart';
@@ -27,6 +28,7 @@ import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/cust
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/dhada_book/dhada_book_details_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/hamal/hamal_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vacchat/vacchat_details_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/reports/report_view.dart';
 import 'package:vyaparmandali/view/screen/login_screen_view.dart';
 import 'package:vyaparmandali/view/screen/profile/profile_page_view.dart';
 import 'package:vyaparmandali/view/screen/splash_screen_view.dart';
@@ -42,6 +44,7 @@ import 'package:vyaparmandali/view_model/login_view_model.dart';
 import 'package:vyaparmandali/view_model/narration_view_model.dart';
 import 'package:vyaparmandali/view_model/product_view_model.dart';
 import 'package:vyaparmandali/view_model/registration_view_model.dart';
+import 'package:vyaparmandali/view_model/report_view_model.dart';
 import 'package:vyaparmandali/view_model/rojmel_view_model.dart';
 import 'package:vyaparmandali/view_model/user_registration_master_view_model.dart';
 import 'package:vyaparmandali/view_model/vacchat_view_model.dart';
@@ -60,6 +63,7 @@ import 'view/screen/drawer_options_Screen/masters/new/vacchat/vacchat_master_vie
 import 'view/screen/drawer_options_Screen/masters/new/vehicle/vehicle_master_view.dart';
 import 'view/screen/drawer_options_Screen/masters/new/weight/weight_master_view.dart';
 import 'view/screen/registration_screen_view.dart';
+import 'package:flutter/foundation.dart' show kIsWeb;
 
 class MyHttpOverrides extends HttpOverrides {
   @override
@@ -72,7 +76,16 @@ class MyHttpOverrides extends HttpOverrides {
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  usePathUrlStrategy();
+  if(kIsWeb){
+    usePathUrlStrategy();
+  }
+  else {
+    await FlutterDownloader.initialize(
+        debug: true,
+        ignoreSsl: true
+    );
+  }
+
   HttpOverrides.global = MyHttpOverrides();
   bool isLightTheme = await ThemeProvider().retrieveStoredTheme();
   User user = await UserRepository.fetchUserData();
@@ -121,6 +134,8 @@ Future main() async {
             create: (_) => CashBookItemViewModel()),
         ChangeNotifierProvider<UserRegistrationMasterViewModel>(
             create: (_) => UserRegistrationMasterViewModel()),
+        ChangeNotifierProvider<ReportViewModel>(
+            create: (_) => ReportViewModel()),
       ],
       child: const MyApp()));
 }
@@ -145,9 +160,7 @@ class MyApp extends StatelessWidget {
 
 final GoRouter _router = GoRouter(
   navigatorKey: NavigationService.navigatorKey,
-  // redirect: (BuildContext context, GoRouterState state){
-  //   return RoutePath.dashboard;
-  // },
+
   routes: <RouteBase>[
     GoRoute(
       path: RoutePath.initial,
@@ -322,6 +335,12 @@ final GoRouter _router = GoRouter(
       builder: (BuildContext context, GoRouterState state) {
         DhadaBook dhadabook = state.extra as DhadaBook;
         return DhadaBookDetailsView(dhadabook: dhadabook);
+      },
+    ),
+    GoRoute(
+      path: RoutePath.reportView,
+      builder: (BuildContext context, GoRouterState state) {
+        return const ReportView();
       },
     ),
   ],

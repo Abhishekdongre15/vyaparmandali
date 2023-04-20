@@ -110,6 +110,9 @@ class EntryItem extends StatelessWidget {
 
   void callPages(String pages) async{
     switch (pages) {
+      case 'reports':
+        context.push(RoutePath.reportView);
+        break;
       case 'cash book item':
          context.push(RoutePath.cashBookItemMasterView);
         break;
