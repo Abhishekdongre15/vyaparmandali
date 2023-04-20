@@ -145,9 +145,12 @@ class MyApp extends StatelessWidget {
 
 final GoRouter _router = GoRouter(
   navigatorKey: NavigationService.navigatorKey,
+  // redirect: (BuildContext context, GoRouterState state){
+  //   return RoutePath.dashboard;
+  // },
   routes: <RouteBase>[
     GoRoute(
-      path: '/',
+      path: RoutePath.initial,
       builder: (BuildContext context, GoRouterState state) {
         return const SplashScreenView();
       },
