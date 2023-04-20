@@ -5,7 +5,6 @@ import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/component/drop_down.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
-import 'package:vyaparmandali/app_manager/helper/download_file.dart';
 import 'package:vyaparmandali/app_manager/helper/responsive/widget/responsive_screen.dart';
 import 'package:vyaparmandali/model/report_link.dart';
 import 'package:vyaparmandali/view_model/report_view_model.dart';

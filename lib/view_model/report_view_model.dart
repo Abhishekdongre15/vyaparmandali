@@ -10,7 +10,6 @@ import 'package:vyaparmandali/app_manager/component/progress_dialogue.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/app_manager/helper/download_file.dart';
 import 'package:vyaparmandali/model/report_link.dart';
-import 'package:flutter/foundation.dart' show kIsWeb;
 
 class ReportViewModel extends ChangeNotifier {
 
