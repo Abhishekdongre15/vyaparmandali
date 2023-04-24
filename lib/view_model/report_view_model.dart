@@ -25,8 +25,12 @@ class ReportViewModel extends ChangeNotifier {
   static List<ReportLink> links=[
     ReportLink(
       title: "Vacchat Report",
-      linkUrl: "start-end-date-wise-report"
-    )
+      linkUrl: "start-end-date-wise-vacchat-report"
+    ),
+    ReportLink(
+        title: "DhadaBook Report",
+        linkUrl: "start-end-date-wise-dhadabook-report"
+    ),
   ];
 
 
