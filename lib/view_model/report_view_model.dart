@@ -9,7 +9,10 @@ import 'package:vyaparmandali/app_manager/api/api_call.dart';
 import 'package:vyaparmandali/app_manager/component/progress_dialogue.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/app_manager/helper/download_file.dart';
+import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/model/report_link.dart';
+
+import '../authentication/user_repository.dart';
 
 class ReportViewModel extends ChangeNotifier {
 
@@ -96,6 +99,7 @@ class ReportViewModel extends ChangeNotifier {
           apiCallType: ApiCallType.post(body: {
             "start_date": startDate,
             "end_date": endDate,
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString()
           }),
           token: true);
       ProgressDialogue.hide();

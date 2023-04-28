@@ -96,7 +96,7 @@ class RojmelViewModel extends ChangeNotifier {
 
     try {
       var data = await _api.call(
-          url: "get_rojmel_data",
+          url: "get-rojmel-data",
           apiCallType: ApiCallType.post(body: {
             "id": UserRepository.of(NavigationService.context!)
                 .getUser
@@ -143,7 +143,7 @@ class RojmelViewModel extends ChangeNotifier {
         body['id']=id;
       }
       var data= await _api.call(
-          url: id!=null? "update_rojmel_data":"add-rojmel-data",
+          url: id!=null? "update-rojmel-data":"add-rojmel-data",
           apiCallType: ApiCallType.post(body: body),
           token: true
       );
@@ -164,7 +164,7 @@ class RojmelViewModel extends ChangeNotifier {
     ProgressDialogue.show(message: "Deleting Rojmel");
     try {
       var data = await _api.call(
-          url: "delete_rojmel_data",
+          url: "delete-rojmel-data",
           apiCallType: ApiCallType.post(body: {
             "id": id.toString(),
             "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
