@@ -1,5 +1,7 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:vyaparmandali/app_manager/component/drop_down.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
 
 import '../../../../../../model/rojmel.dart';
@@ -56,17 +58,25 @@ class _AddRojmelViewState extends State<AddRojmelView> {
                   const SizedBox(
                     height: 5,
                   ),
-                  TextFormField(
-                    controller: viewModel.type,
-                    decoration: const InputDecoration(
-                      hintText: "Enter Payment Type",
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Required field !';
+                  Selector<RojmelViewModel,String?>(
+                      shouldRebuild: (prev,nex)=>true,
+                      selector: (buildContext , vm)=>vm.selectedPaymentType,
+                      builder: (context,String? data,child) {
+                        return MyDropDown<String>(
+                          hint: "Select Payment Type",
+                          value: data,
+                          isExpanded: true,
+                          items: List.generate(RojmelViewModel.paymentTypes.length, (index) =>
+                              DropdownMenuItem(
+                                  value: RojmelViewModel.paymentTypes[index],
+                                  child: Text(RojmelViewModel.paymentTypes[index]??""))
+                          ),
+                          onChanged: (String? val){
+
+                            viewModel.selectedPaymentType=val;
+                          },
+                        );
                       }
-                      return null;
-                    },
                   ),
                   const SizedBox(
                     height: 10,
@@ -284,56 +294,6 @@ class _AddRojmelViewState extends State<AddRojmelView> {
 
 
 
-
-                  Text(
-                    "Opening Balance",
-                    style: theme.textTheme.titleSmall
-                        ?.copyWith(fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  TextFormField(
-                    controller: viewModel.openingBalanceC,
-                    keyboardType: TextInputType.number,
-                    decoration: const InputDecoration(
-                      hintText: "Enter Opening Balance",
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Required field !';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 15,),
-
-
-
-                  Text(
-                    "Closing Balance",
-                    style: theme.textTheme.titleSmall
-                        ?.copyWith(fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  TextFormField(
-                    controller: viewModel.closingBalanceC,
-                    keyboardType: TextInputType.number,
-                    decoration: const InputDecoration(
-                      hintText: "Enter Closing Balance",
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Required field !';
-                      }
-                      return null;
-                    },
-                  ),
-                  const SizedBox(height: 15,),
-
-
                   Text(
                     "Description",
                     style: theme.textTheme.titleSmall
@@ -363,8 +323,13 @@ class _AddRojmelViewState extends State<AddRojmelView> {
                     child: TextButton(
                       onPressed: () {
                         if (Form.of(ctx).validate()) {
-                          viewModel.addRojmel(
-                              id: widget.rojmelToUpdate?.id);
+                          if(viewModel.selectedPaymentType==null){
+                            Alert.show("Please Select Payment Type");
+                          }
+                          else{
+                            viewModel.addRojmel(
+                                id: widget.rojmelToUpdate?.id);
+                          }
                         } else {
                           Alert.show("Fill all fields");
                         }

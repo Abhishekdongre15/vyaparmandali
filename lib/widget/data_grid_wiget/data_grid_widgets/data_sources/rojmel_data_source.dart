@@ -23,8 +23,6 @@ class RojmelDataSource extends DataGridSource {
     "      Account Code     ",
     "      Amount     ",
     "      Cheque No     ",
-    "      Opening Balance     ",
-    "      Closing Balance     ",
     "      Description     ",
     "      Action     ",
   ];
@@ -55,15 +53,11 @@ class RojmelDataSource extends DataGridSource {
                   columnName: headers[8], value: dataGridRow.amount ?? ""),
               DataGridCell<String>(
                   columnName: headers[9], value: dataGridRow.cheqNo ?? ""),
-      DataGridCell<String>(
-          columnName: headers[10], value: dataGridRow.openingBalance ?? ""),
-      DataGridCell<String>(
-          columnName: headers[11], value: dataGridRow.closingBalance ?? ""),
               DataGridCell<String>(
-                  columnName: headers[12],
+                  columnName: headers[10],
                   value: dataGridRow.description ?? ""),
               DataGridCell<Widget>(
-                  columnName: headers[13], value: actionButton(dataGridRow)),
+                  columnName: headers[11], value: actionButton(dataGridRow)),
             ]))
         .toList();
   }

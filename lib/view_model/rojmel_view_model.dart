@@ -17,7 +17,7 @@ class RojmelViewModel extends ChangeNotifier {
 
   final ApiCall _api = ApiCall();
 
-  TextEditingController type = TextEditingController();
+
   TextEditingController date = TextEditingController();
   TextEditingController transactionType = TextEditingController();
   TextEditingController bankId = TextEditingController();
@@ -28,16 +28,29 @@ class RojmelViewModel extends ChangeNotifier {
   TextEditingController amount = TextEditingController();
   TextEditingController cheqNo = TextEditingController();
   TextEditingController description = TextEditingController();
-  TextEditingController openingBalanceC = TextEditingController();
-  TextEditingController closingBalanceC = TextEditingController();
+
+
+  static List<String> paymentTypes=[
+    "Received",
+    "Payment",
+  ];
+
+
+  String? _selectedPaymentType;
+  String? get selectedPaymentType => _selectedPaymentType;
+  set selectedPaymentType (String? val) {
+    _selectedPaymentType=val;
+    notifyListeners();
+  }
+
 
   void initiateAddRojmel() {
     _clearFields();
   }
 
   void _clearFields() {
-    type.clear();
     date.clear();
+    date.text= DateTime.now().toString();
     transactionType.clear();
     bankId.clear();
     totalBalance.clear();
@@ -47,13 +60,12 @@ class RojmelViewModel extends ChangeNotifier {
     cheqNo.clear();
     description.clear();
     accountCode.clear();
-    openingBalanceC.clear();
-    closingBalanceC.clear();
+    selectedPaymentType=null;
   }
 
   void initiateUpdateRojmel(Rojmel thisRojmel) {
     _clearFields();
-    type.text = thisRojmel.type ?? "";
+    selectedPaymentType = thisRojmel.type ?? "";
     date.text= DateFormat("dd/MM/yyyy").parse(thisRojmel.date??"").toString();
     transactionType.text = thisRojmel.transactionType ?? "";
     bankId.text = thisRojmel.bankId ?? "";
@@ -64,8 +76,6 @@ class RojmelViewModel extends ChangeNotifier {
     cheqNo.text = thisRojmel.cheqNo ?? "";
     description.text = thisRojmel.description ?? "";
     accountCode.text = thisRojmel.accountCode ?? "";
-    openingBalanceC.text = thisRojmel.openingBalance ?? "";
-    closingBalanceC.text = thisRojmel.closingBalance ?? "";
   }
 
   ApiResponse<RojmelData> _customerDataResponse =
@@ -111,12 +121,12 @@ class RojmelViewModel extends ChangeNotifier {
 
   Future<void> addRojmel({String? id}) async {
     ProgressDialogue.show(
-        message: id == null ? "Adding Haml" : "Updating Rojmel");
+        message: id == null ? "Adding Rojmel" : "Updating Rojmel");
     try {
 
 
       Map body= {
-        "type": type.text,
+        "type": selectedPaymentType,
         "date": date.text,
         "transaction_type": transactionType.text,
         "bank_id": bankId.text,
@@ -124,8 +134,6 @@ class RojmelViewModel extends ChangeNotifier {
         "patti_number": pattiNumber.text,
         "account_name": accountName.text,
         "account_code": accountCode.text,
-        "opening_balance": openingBalanceC.text,
-        "closing_balance": closingBalanceC.text,
         "amount": amount.text,
         "cheq_no": cheqNo.text,
         "description": description.text,
@@ -135,8 +143,8 @@ class RojmelViewModel extends ChangeNotifier {
         body['id']=id;
       }
       var data= await _api.call(
-          url: id!=null? "update_rojmel_data":"add_rojmel_data",
-          apiCallType: ApiCallType.rawPost(body: body),
+          url: id!=null? "update_rojmel_data":"add-rojmel-data",
+          apiCallType: ApiCallType.post(body: body),
           token: true
       );
 
