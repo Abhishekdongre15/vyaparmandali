@@ -31,6 +31,14 @@ class ReportViewModel extends ChangeNotifier {
         title: "DhadaBook Report",
         linkUrl: "start-end-date-wise-dhadabook-report"
     ),
+    ReportLink(
+        title: "Rojmel as Book Report",
+        linkUrl: "start-end-date-wise-rojmelAsBook-report"
+    ),
+    ReportLink(
+        title: "Rojmel as CashBook Report",
+        linkUrl: "start-end-date-wise-rojmelCashBook-report"
+    ),
   ];
 
 

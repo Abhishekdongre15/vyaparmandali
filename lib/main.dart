@@ -160,7 +160,6 @@ class MyApp extends StatelessWidget {
 
 final GoRouter _router = GoRouter(
   navigatorKey: NavigationService.navigatorKey,
-
   routes: <RouteBase>[
     GoRoute(
       path: RoutePath.initial,
