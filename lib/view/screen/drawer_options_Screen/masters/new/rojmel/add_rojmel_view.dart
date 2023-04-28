@@ -117,6 +117,9 @@ class _AddRojmelViewState extends State<AddRojmelView> {
                       return null;
                     },
                   ),
+                  const SizedBox(height: 15,),
+
+
                   Text(
                     "Bank ID",
                     style: theme.textTheme.titleSmall
@@ -137,6 +140,7 @@ class _AddRojmelViewState extends State<AddRojmelView> {
                       return null;
                     },
                   ),
+                  const SizedBox(height: 15,),
 
                   Text(
                     "Total Balance",
@@ -148,6 +152,7 @@ class _AddRojmelViewState extends State<AddRojmelView> {
                   ),
                   TextFormField(
                     controller: viewModel.totalBalance,
+                    keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
                       hintText: "Enter Total Balance",
                     ),
@@ -158,6 +163,7 @@ class _AddRojmelViewState extends State<AddRojmelView> {
                       return null;
                     },
                   ),
+                  const SizedBox(height: 15,),
 
                   Text(
                     "Patti Number",
@@ -179,6 +185,7 @@ class _AddRojmelViewState extends State<AddRojmelView> {
                       return null;
                     },
                   ),
+                  const SizedBox(height: 15,),
 
                   Text(
                     "Account Name",
@@ -200,6 +207,7 @@ class _AddRojmelViewState extends State<AddRojmelView> {
                       return null;
                     },
                   ),
+                  const SizedBox(height: 15,),
 
 
                   Text(
@@ -212,6 +220,7 @@ class _AddRojmelViewState extends State<AddRojmelView> {
                   ),
                   TextFormField(
                     controller: viewModel.accountCode,
+                    keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
                       hintText: "Enter Account Code",
                     ),
@@ -222,6 +231,7 @@ class _AddRojmelViewState extends State<AddRojmelView> {
                       return null;
                     },
                   ),
+                  const SizedBox(height: 15,),
 
 
 
@@ -235,6 +245,7 @@ class _AddRojmelViewState extends State<AddRojmelView> {
                   ),
                   TextFormField(
                     controller: viewModel.amount,
+                    keyboardType: TextInputType.number,
                     decoration: const InputDecoration(
                       hintText: "Enter Amount",
                     ),
@@ -245,6 +256,7 @@ class _AddRojmelViewState extends State<AddRojmelView> {
                       return null;
                     },
                   ),
+                  const SizedBox(height: 15,),
 
 
 
@@ -268,6 +280,59 @@ class _AddRojmelViewState extends State<AddRojmelView> {
                       return null;
                     },
                   ),
+                  const SizedBox(height: 15,),
+
+
+
+
+                  Text(
+                    "Opening Balance",
+                    style: theme.textTheme.titleSmall
+                        ?.copyWith(fontWeight: FontWeight.w500),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  TextFormField(
+                    controller: viewModel.openingBalanceC,
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                      hintText: "Enter Opening Balance",
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Required field !';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 15,),
+
+
+
+                  Text(
+                    "Closing Balance",
+                    style: theme.textTheme.titleSmall
+                        ?.copyWith(fontWeight: FontWeight.w500),
+                  ),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  TextFormField(
+                    controller: viewModel.closingBalanceC,
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                      hintText: "Enter Closing Balance",
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Required field !';
+                      }
+                      return null;
+                    },
+                  ),
+                  const SizedBox(height: 15,),
+
 
                   Text(
                     "Description",

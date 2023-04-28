@@ -43,6 +43,8 @@ class Rojmel {
   String? accountCode;
   String? amount;
   String? cheqNo;
+  String? openingBalance;
+  String? closingBalance;
   String? description;
   String? createdAt;
   String? updatedAt;
@@ -61,6 +63,8 @@ class Rojmel {
         accountCode,
         amount,
         cheqNo,
+        openingBalance,
+        closingBalance,
         description,
         createdAt,
         updatedAt,
@@ -79,6 +83,8 @@ class Rojmel {
     accountCode = json['account_code'];
     amount = json['amount'];
     cheqNo = json['cheq_no'];
+    openingBalance = json['opening_balance'];
+    closingBalance = json['closing_balance'];
     description = json['description'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
@@ -99,6 +105,8 @@ class Rojmel {
     data['account_code'] = accountCode;
     data['amount'] = amount;
     data['cheq_no'] = cheqNo;
+    data['opening_balance'] = openingBalance;
+    data['closing_balance'] = closingBalance;
     data['description'] = description;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;

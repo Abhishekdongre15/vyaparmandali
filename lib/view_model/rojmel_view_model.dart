@@ -28,6 +28,8 @@ class RojmelViewModel extends ChangeNotifier {
   TextEditingController amount = TextEditingController();
   TextEditingController cheqNo = TextEditingController();
   TextEditingController description = TextEditingController();
+  TextEditingController openingBalanceC = TextEditingController();
+  TextEditingController closingBalanceC = TextEditingController();
 
   void initiateAddRojmel() {
     _clearFields();
@@ -45,6 +47,8 @@ class RojmelViewModel extends ChangeNotifier {
     cheqNo.clear();
     description.clear();
     accountCode.clear();
+    openingBalanceC.clear();
+    closingBalanceC.clear();
   }
 
   void initiateUpdateRojmel(Rojmel thisRojmel) {
@@ -56,11 +60,12 @@ class RojmelViewModel extends ChangeNotifier {
     totalBalance.text = thisRojmel.totalBalance ?? "";
     pattiNumber.text = thisRojmel.pattiNumber ?? "";
     accountName.text = thisRojmel.accountName ?? "";
-    accountCode.text = thisRojmel.accountCode ?? "";
     amount.text = thisRojmel.amount ?? "";
     cheqNo.text = thisRojmel.cheqNo ?? "";
     description.text = thisRojmel.description ?? "";
     accountCode.text = thisRojmel.accountCode ?? "";
+    openingBalanceC.text = thisRojmel.openingBalance ?? "";
+    closingBalanceC.text = thisRojmel.closingBalance ?? "";
   }
 
   ApiResponse<RojmelData> _customerDataResponse =
@@ -108,44 +113,33 @@ class RojmelViewModel extends ChangeNotifier {
     ProgressDialogue.show(
         message: id == null ? "Adding Haml" : "Updating Rojmel");
     try {
-      var data = id != null
-          ? await _api.call(
-              url: "update_rojmel_data",
-              apiCallType: ApiCallType.post(body: {
-                "type": type.text,
-                "date": date.text,
-                "transaction_type": transactionType.text,
-                "bank_id": bankId.text,
-                "total_balance": totalBalance.text,
-                "patti_number": pattiNumber.text,
-                "account_name": accountName.text,
-                "account_code": accountCode.text,
-                "amount": amount.text,
-                "cheq_no": cheqNo.text,
-                "description": description.text,
-                "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
 
-                "id": id
-              }),
-              token: true)
-          : await _api.call(
-              url: "add_rojmel_data",
-              apiCallType: ApiCallType.post(body: {
-                "type": type.text,
-                "date": date.text,
-                "transaction_type": transactionType.text,
-                "bank_id": bankId.text,
-                "total_balance": totalBalance.text,
-                "patti_number": pattiNumber.text,
-                "account_name": accountName.text,
-                "account_code": accountCode.text,
-                "amount": amount.text,
-                "cheq_no": cheqNo.text,
-                "description": description.text,
-                "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
 
-              }),
-              token: true);
+      Map body= {
+        "type": type.text,
+        "date": date.text,
+        "transaction_type": transactionType.text,
+        "bank_id": bankId.text,
+        "total_balance": totalBalance.text,
+        "patti_number": pattiNumber.text,
+        "account_name": accountName.text,
+        "account_code": accountCode.text,
+        "opening_balance": openingBalanceC.text,
+        "closing_balance": closingBalanceC.text,
+        "amount": amount.text,
+        "cheq_no": cheqNo.text,
+        "description": description.text,
+        "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+      };
+      if(id!=null){
+        body['id']=id;
+      }
+      var data= await _api.call(
+          url: id!=null? "update_rojmel_data":"add_rojmel_data",
+          apiCallType: ApiCallType.rawPost(body: body),
+          token: true
+      );
+
       ProgressDialogue.hide();
       Alert.show(data['message']);
       if (data['code'] == 200 && data['status'] == true) {
