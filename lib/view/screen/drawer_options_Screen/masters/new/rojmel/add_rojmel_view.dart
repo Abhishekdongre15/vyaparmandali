@@ -69,7 +69,7 @@ class _AddRojmelViewState extends State<AddRojmelView> {
                           items: List.generate(RojmelViewModel.paymentTypes.length, (index) =>
                               DropdownMenuItem(
                                   value: RojmelViewModel.paymentTypes[index],
-                                  child: Text(RojmelViewModel.paymentTypes[index]??""))
+                                  child: Text(RojmelViewModel.paymentTypes[index]))
                           ),
                           onChanged: (String? val){
 

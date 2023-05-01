@@ -55,7 +55,7 @@ class VacchatViewModel extends ChangeNotifier {
 
   void initiateUpdateVacchat(Vacchat thisVacchat){
     _clearFields();
-    dateC.text= DateFormat("dd/MM/yyyy").parse(thisVacchat.date??"").toString();
+    dateC.text= DateFormat("yyyy-MM-dd").parse(thisVacchat.date??"").toString();
     vehicleNumberC.text=thisVacchat.vehicalNo??"";
     totalPackageC.text=thisVacchat.totalPackage??"";
     vasuliDarC.text=thisVacchat.vasuliDar??"";

@@ -28,9 +28,12 @@ class _AddVacchatViewState extends State<AddVacchatView> {
         VacchatViewModel.of(context).initiateAddVacchat();
       }
       else {
-        VacchatViewModel.of(context).initiateUpdateVacchat(widget.vacchatToUpdate!);
-      }
+         VacchatViewModel.of(context).initiateUpdateVacchat(widget.vacchatToUpdate!);
 
+      }
+      setState(() {
+
+      });
     });
   }
 
