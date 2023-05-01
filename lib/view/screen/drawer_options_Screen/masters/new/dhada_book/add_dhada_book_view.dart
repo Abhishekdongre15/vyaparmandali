@@ -16,6 +16,7 @@ import 'package:vyaparmandali/model/vehicle_number.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/dhada_book/widgets/dhada_book_details_widget.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/farmer/widget/farmer_selection_widget.dart';
 import 'package:vyaparmandali/view_model/dhada_book_view_model.dart';
+import 'package:vyaparmandali/widget/clear_selection_widget.dart';
 
 class AddDhadaBookView extends StatefulWidget {
   final DhadaBook? dhadaBookToUpdate;
@@ -163,22 +164,11 @@ class _AddDhadaBookViewState extends State<AddDhadaBookView> {
                       builder: (context, Farmer? data,child) {
                       return data!=null?
 
-                      Row(
-                        children: [
-                          Expanded(
-                            child: Text("${data.firstName??""} ${data.middleName??""} ${data.lastName??""}",
-                              style: const TextStyle(
-                              ),),
-                          ),
-                          InkWell(onTap: (){
-                            viewModel.farmerC.clear();
-                            viewModel.selectedFarmer=null;
-
-                          }, child: const Icon(Icons.close,
-                            color: AppColor.primaryColor,))
-                        ],
-                      )
-                          :FarmerSelectionWidget(
+                      ClearSelectionWidget(label: "${data.firstName??""} ${data.middleName??""} ${data.lastName??""}",
+                      onTapClear: (){
+                        viewModel.farmerC.clear();
+                        viewModel.selectedFarmer=null;
+                      },) :FarmerSelectionWidget(
                         controller: viewModel.farmerC,
                         onFarmerSelected: (Farmer? selectedFarmer) {
                           viewModel.selectedFarmer=selectedFarmer;

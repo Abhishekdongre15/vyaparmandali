@@ -22,6 +22,17 @@ class VacchatViewModel extends ChangeNotifier {
   TextEditingController totalPackageC = TextEditingController();
   TextEditingController vasuliDarC = TextEditingController();
 
+
+
+  void selectedProductOnIndex(int index,{
+    String? val
+}) {
+    details[index].item=val;
+    notifyListeners();
+  }
+
+
+
   List<VacchatDetails> details=[];
 
   void addDetails() {

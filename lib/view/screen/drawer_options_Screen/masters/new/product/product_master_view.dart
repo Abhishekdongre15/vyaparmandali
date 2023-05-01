@@ -73,8 +73,7 @@ class ProductMasterViewState extends State<ProductMasterView> {
       floatingActionButton: FloatingActionButton(
           heroTag: "add_product",
           onPressed: () {
-            CustomBottomSheet.open(
-                child: const TitledSheet(title: "Add Product", child: AddProductView()));
+            ProductViewModel.onPressAddProduct();
           },
           child: const Icon(Icons.add)),
     );
