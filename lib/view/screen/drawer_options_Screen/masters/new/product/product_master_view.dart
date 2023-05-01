@@ -6,6 +6,7 @@ import 'package:vyaparmandali/app_manager/api/manage_response.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_sheet.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/titled_sheet.dart';
 import 'package:vyaparmandali/app_manager/constant/project_constant.dart';
+import 'package:vyaparmandali/app_manager/helper/responsive/responsive.dart';
 import 'package:vyaparmandali/model/product.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/product/add_product_view.dart';
 import 'package:vyaparmandali/view_model/product_view_model.dart';
@@ -60,7 +61,7 @@ class ProductMasterViewState extends State<ProductMasterView> {
                       },
                       child: products.isNotEmpty? MySfDataGrid(
                         headers: ProductDataSource.headers,
-                        columnWidthMode: ColumnWidthMode.fill,
+                        columnWidthMode: Responsive.isSmallScreen(context)? ColumnWidthMode.auto:ColumnWidthMode.fill,
                         source: ProductDataSource(listOfDocs: products),
                       ): ProjectConstant.noDatFoundWidget),
                 ),

@@ -15,6 +15,8 @@ class ProductDataSource extends DataGridSource {
 
   static List<String> headers=[
     "      Product Name     ",
+    "      Weight     ",
+    "      Rate     ",
     "      Action     ",
   ];
 
@@ -22,7 +24,9 @@ class ProductDataSource extends DataGridSource {
     dataGridRows = listOfDocs
         .map<DataGridRow>((dataGridRow) => DataGridRow(cells: [
       DataGridCell<String>(columnName: headers[0], value: (dataGridRow.productName??"").toString()),
-      DataGridCell<Widget>(columnName: headers[1], value: actionButton(dataGridRow)),
+      DataGridCell<String>(columnName: headers[1], value: (dataGridRow.weight??"").toString()),
+      DataGridCell<String>(columnName: headers[2], value: (dataGridRow.rate??"").toString()),
+      DataGridCell<Widget>(columnName: headers[3], value: actionButton(dataGridRow)),
     ]))
         .toList();
   }

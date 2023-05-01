@@ -16,6 +16,8 @@ class ProductViewModel extends ChangeNotifier {
   final ApiCall _api=ApiCall();
 
   TextEditingController productNameC = TextEditingController();
+  TextEditingController weightC = TextEditingController();
+  TextEditingController rateC = TextEditingController();
 
 
 
@@ -27,12 +29,16 @@ class ProductViewModel extends ChangeNotifier {
 
   void _clearFields() {
     productNameC.clear();
+    weightC.clear();
+    rateC.clear();
   }
 
 
   void initiateUpdateProduct(Product thisProduct){
     _clearFields();
     productNameC.text=thisProduct.productName??"";
+    weightC.text=thisProduct.weight??"";
+    rateC.text=thisProduct.rate??"";
   }
 
 
@@ -55,7 +61,6 @@ class ProductViewModel extends ChangeNotifier {
           url: "get-product-master-data",
           apiCallType: ApiCallType.post(body: {
             "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
-
             "id": UserRepository.of(NavigationService.context!).getUser.id.toString()
           }),
           token: true
@@ -87,6 +92,8 @@ class ProductViewModel extends ChangeNotifier {
 
       Map bod={
         "product_name": productNameC.text,
+        "weight": weightC.text,
+        "rate": rateC.text,
         "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
 
       };

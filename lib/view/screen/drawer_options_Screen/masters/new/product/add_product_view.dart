@@ -66,6 +66,48 @@ class _AddProductViewState extends State<AddProductView> {
                     },
                   ),
 
+
+                  const SizedBox(height: 15,),
+                  Text("Weight",
+                    style: theme.textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.w500
+                    ),),
+                  const SizedBox(height: 5,),
+                  TextFormField(
+                    controller: viewModel.weightC,
+                    decoration: const InputDecoration(
+                      hintText: "Enter Weight",
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Required field !';
+                      }
+                      return null;
+                    },
+                  ),
+
+
+                  const SizedBox(height: 15,),
+                  Text("Rate",
+                    style: theme.textTheme.titleSmall?.copyWith(
+                        fontWeight: FontWeight.w500
+                    ),),
+                  const SizedBox(height: 5,),
+                  TextFormField(
+                    controller: viewModel.rateC,
+                    keyboardType: TextInputType.number,
+                    decoration: const InputDecoration(
+                      hintText: "Enter Rate",
+                    ),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Required field !';
+                      }
+                      return null;
+                    },
+                  ),
+
+
                   const SizedBox(height: 10,),
                   Center(
                     child: TextButton(

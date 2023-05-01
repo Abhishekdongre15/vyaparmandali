@@ -34,6 +34,8 @@ class Product {
   String? id;
   String? userId;
   String? productName;
+  String? weight;
+  String? rate;
   String? createdAt;
   String? updatedAt;
   String? delStatus;
@@ -42,6 +44,8 @@ class Product {
       {id,
         userId,
         productName,
+        weight,
+        rate,
         createdAt,
         updatedAt,
         delStatus});
@@ -50,6 +54,8 @@ class Product {
     id = json['id'];
     userId = json['user_id'];
     productName = json['product_name'];
+    weight = json['weight'];
+    rate = json['rate'];
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     delStatus = json['del_status'];
@@ -60,6 +66,8 @@ class Product {
     data['id'] = id;
     data['user_id'] = userId;
     data['product_name'] = productName;
+    data['weight'] = weight;
+    data['rate'] = rate;
     data['created_at'] = createdAt;
     data['updated_at'] = updatedAt;
     data['del_status'] = delStatus;
