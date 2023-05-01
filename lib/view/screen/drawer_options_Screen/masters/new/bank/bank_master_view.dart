@@ -74,9 +74,7 @@ class BankMasterViewState extends State<BankMasterView> {
       floatingActionButton: FloatingActionButton(
           heroTag: "add_bank",
           onPressed: () {
-            CustomBottomSheet.openWithContext(
-              NavigationService.context,
-                child: const TitledSheet(title: "Add Bank", child: AddBankView()));
+            BankViewModel().onPressAddBank();
           },
           child: const Icon(Icons.add)),
     );

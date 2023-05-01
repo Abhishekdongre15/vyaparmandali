@@ -94,6 +94,7 @@ class Vacchat {
 class VacchatDetails {
   String? id;
   String? fkVacchatMainId;
+  String? farmerId;
   String? vacchatName;
   String? item;
   String? qty;
@@ -108,6 +109,7 @@ class VacchatDetails {
   VacchatDetails(
       {this.id,
         this.fkVacchatMainId,
+        this.farmerId,
         this.vacchatName,
         this.item,
         this.qty,
@@ -122,6 +124,7 @@ class VacchatDetails {
   VacchatDetails.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     fkVacchatMainId = json['fk_vacchat_main_id'];
+    farmerId = json['farmer_id'];
     vacchatName = json['vacchat_name'];
     item = json['item'];
     qty = json['qty'];
@@ -138,6 +141,7 @@ class VacchatDetails {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
     data['fk_vacchat_main_id'] = fkVacchatMainId;
+    data['farmer_id'] = farmerId;
     data['vacchat_name'] = vacchatName;
     data['item'] = item;
     data['qty'] = qty;

@@ -3,6 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/component/drop_down.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
+import 'package:vyaparmandali/model/bank.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/bank/widget/bank_selection_widget.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/product/widget/product_selection_widget.dart';
+import 'package:vyaparmandali/widget/clear_selection_widget.dart';
 
 import '../../../../../../model/rojmel.dart';
 import '../../../../../../view_model/rojmel_view_model.dart';
@@ -115,40 +119,73 @@ class _AddRojmelViewState extends State<AddRojmelView> {
                   const SizedBox(
                     height: 5,
                   ),
-                  TextFormField(
-                    controller: viewModel.transactionType,
-                    decoration: const InputDecoration(
-                      hintText: "Enter Transaction Type",
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Required field !';
+                  Selector<RojmelViewModel,String?>(
+                      shouldRebuild: (prev,nex)=>true,
+                      selector: (buildContext , vm)=>vm.selectedTransactionType,
+                      builder: (context,String? data,child) {
+                        return MyDropDown<String>(
+                          hint: "Select Transaction Type",
+                          value: data,
+                          isExpanded: true,
+                          items: List.generate(RojmelViewModel.transactionsTypes.length, (index) =>
+                              DropdownMenuItem(
+                                  value: RojmelViewModel.transactionsTypes[index],
+                                  child: Text(RojmelViewModel.transactionsTypes[index]))
+                          ),
+                          onChanged: (String? val){
+
+                            viewModel.selectedTransactionType=val;
+                          },
+                        );
                       }
-                      return null;
-                    },
                   ),
-                  const SizedBox(height: 15,),
 
 
-                  Text(
-                    "Bank ID",
-                    style: theme.textTheme.titleSmall
-                        ?.copyWith(fontWeight: FontWeight.w500),
-                  ),
-                  const SizedBox(
-                    height: 5,
-                  ),
-                  TextFormField(
-                    controller: viewModel.bankId,
-                    decoration: const InputDecoration(
-                      hintText: "Enter Bank ID",
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Required field !';
-                      }
-                      return null;
-                    },
+                  Selector<RojmelViewModel,bool>(
+                      shouldRebuild: (prev,nex)=>true,
+                      selector: (buildContext , vm)=>vm.showBankId,
+                      builder: (context,bool data,child) {
+                      return !data? Container():Padding(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Bank ID",
+                              style: theme.textTheme.titleSmall
+                                  ?.copyWith(fontWeight: FontWeight.w500),
+                            ),
+                            const SizedBox(
+                              height: 5,
+                            ),
+
+
+                            Selector<RojmelViewModel,String?>(
+                                shouldRebuild: (prev,nex)=>true,
+                                selector: (buildContext , vm)=>vm.bankId,
+                                builder: (context,String? data,child) {
+                                return   data!=null?
+
+                                ClearSelectionWidget(label: data,
+                                  onTapClear: (){
+                                    viewModel.bankId=null;
+                                  },) :BankSelectionWidget(
+                                  selectedBank: data==null? null:Bank(
+                                      bankName: viewModel.bankId
+                                  ),
+                                  onBankSelected: (Bank? value) {
+                                    if(value!=null){
+                                      viewModel.bankId=value.bankName;
+                                    }
+                                  },
+
+                                );
+                              }
+                            ),
+                          ],
+                        ),
+                      );
+                    }
                   ),
                   const SizedBox(height: 15,),
 
@@ -325,6 +362,9 @@ class _AddRojmelViewState extends State<AddRojmelView> {
                         if (Form.of(ctx).validate()) {
                           if(viewModel.selectedPaymentType==null){
                             Alert.show("Please Select Payment Type");
+                          }
+                          else if(viewModel.selectedTransactionType==null){
+                            Alert.show("Please Select Transaction Type");
                           }
                           else{
                             viewModel.addRojmel(

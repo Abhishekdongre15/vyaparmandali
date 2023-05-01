@@ -8,6 +8,7 @@ import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
+import 'package:vyaparmandali/model/farmer.dart';
 import 'package:vyaparmandali/model/vacchat.dart';
 
 class VacchatViewModel extends ChangeNotifier {
@@ -22,6 +23,8 @@ class VacchatViewModel extends ChangeNotifier {
   TextEditingController totalPackageC = TextEditingController();
   TextEditingController vasuliDarC = TextEditingController();
 
+  TextEditingController farmerC = TextEditingController();
+
 
 
   void selectedProductOnIndex(int index,{
@@ -32,11 +35,23 @@ class VacchatViewModel extends ChangeNotifier {
   }
 
 
+  void selectedFarmerOnIndex(int index,{
+    Farmer? selectedFarmer
+  }) {
+    details[index].vacchatName="${selectedFarmer!.firstName??""} ${selectedFarmer!.middleName??""} ${selectedFarmer!.lastName??""}";
+    details[index].farmerId = selectedFarmer.id;
+    notifyListeners();
+  }
+
+
 
   List<VacchatDetails> details=[];
 
   void addDetails() {
-    details.add(VacchatDetails());
+    farmerC.clear();
+    details.add(VacchatDetails(
+      hundekariCode: details.isEmpty? null:(details[details.length-1].hundekariCode)
+    ));
     notifyListeners();
   }
 
@@ -59,6 +74,7 @@ class VacchatViewModel extends ChangeNotifier {
     vehicleNumberC.clear();
     totalPackageC.clear();
     vasuliDarC.clear();
+    farmerC.clear();
     details.clear();
     notifyListeners();
   }

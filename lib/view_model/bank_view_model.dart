@@ -2,12 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/api/api_call.dart';
 import 'package:vyaparmandali/app_manager/api/api_response.dart';
+import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_sheet.dart';
+import 'package:vyaparmandali/app_manager/component/bottom_sheet/titled_sheet.dart';
 import 'package:vyaparmandali/app_manager/component/progress_dialogue.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/bank.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/bank/add_bank_view.dart';
 
 class BankViewModel extends ChangeNotifier {
 
@@ -151,7 +154,11 @@ class BankViewModel extends ChangeNotifier {
     }
   }
 
-
+  void onPressAddBank( ) {
+    CustomBottomSheet.openWithContext(
+        NavigationService.context,
+        child: const TitledSheet(title: "Add Bank", child: AddBankView()));
+  }
 
 
 }

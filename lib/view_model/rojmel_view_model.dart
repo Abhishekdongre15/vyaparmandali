@@ -19,8 +19,6 @@ class RojmelViewModel extends ChangeNotifier {
 
 
   TextEditingController date = TextEditingController();
-  TextEditingController transactionType = TextEditingController();
-  TextEditingController bankId = TextEditingController();
   TextEditingController totalBalance = TextEditingController();
   TextEditingController pattiNumber = TextEditingController();
   TextEditingController accountName = TextEditingController();
@@ -44,6 +42,34 @@ class RojmelViewModel extends ChangeNotifier {
   }
 
 
+  String? _bankId;
+  String? get bankId => _bankId;
+  set bankId(String? val) {
+    _bankId=val;
+    notifyListeners();
+  }
+
+
+
+  static List<String> transactionsTypes=[
+    "Bank",
+    "Cash",
+  ];
+
+
+  String? _selectedTransactionType;
+  String? get selectedTransactionType => _selectedTransactionType;
+  set selectedTransactionType (String? val) {
+    _selectedTransactionType=val;
+    notifyListeners();
+    if(val!=transactionsTypes[0]){
+      bankId=null;
+    }
+  }
+
+
+  bool get showBankId => selectedTransactionType=="Bank";
+
   void initiateAddRojmel() {
     _clearFields();
   }
@@ -51,8 +77,7 @@ class RojmelViewModel extends ChangeNotifier {
   void _clearFields() {
     date.clear();
     date.text= DateTime.now().toString();
-    transactionType.clear();
-    bankId.clear();
+    bankId=null;
     totalBalance.clear();
     pattiNumber.clear();
     accountName.clear();
@@ -61,14 +86,15 @@ class RojmelViewModel extends ChangeNotifier {
     description.clear();
     accountCode.clear();
     selectedPaymentType=null;
+    selectedTransactionType=null;
   }
 
   void initiateUpdateRojmel(Rojmel thisRojmel) {
     _clearFields();
     selectedPaymentType = thisRojmel.type ?? "";
+    selectedTransactionType = thisRojmel.transactionType ?? "";
     date.text= DateFormat("dd/MM/yyyy").parse(thisRojmel.date??"").toString();
-    transactionType.text = thisRojmel.transactionType ?? "";
-    bankId.text = thisRojmel.bankId ?? "";
+    bankId = thisRojmel.bankId ?? "";
     totalBalance.text = thisRojmel.totalBalance ?? "";
     pattiNumber.text = thisRojmel.pattiNumber ?? "";
     accountName.text = thisRojmel.accountName ?? "";
@@ -128,8 +154,8 @@ class RojmelViewModel extends ChangeNotifier {
       Map body= {
         "type": selectedPaymentType,
         "date": date.text,
-        "transaction_type": transactionType.text,
-        "bank_id": bankId.text,
+        "transaction_type": selectedTransactionType,
+        "bank_id": bankId,
         "total_balance": totalBalance.text,
         "patti_number": pattiNumber.text,
         "account_name": accountName.text,

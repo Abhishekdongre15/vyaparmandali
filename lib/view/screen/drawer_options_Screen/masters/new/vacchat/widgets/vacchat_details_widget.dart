@@ -3,8 +3,10 @@ import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/api/api_response.dart';
 import 'package:vyaparmandali/app_manager/api/manage_response.dart';
 import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
+import 'package:vyaparmandali/model/farmer.dart';
 import 'package:vyaparmandali/model/product.dart';
 import 'package:vyaparmandali/model/vacchat.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/farmer/widget/farmer_selection_widget.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/product/widget/product_selection_widget.dart';
 import 'package:vyaparmandali/view_model/product_view_model.dart';
 import 'package:vyaparmandali/view_model/vacchat_view_model.dart';
@@ -70,21 +72,18 @@ class VacchatDetailsWidget extends StatelessWidget {
                                 fontWeight: FontWeight.w500
                             ),),
                           const SizedBox(height: 5,),
-                          TextFormField(
-                            initialValue: detail.vacchatName,
-                            decoration: const InputDecoration(
-                              hintText: "Enter Vacchat Name",
-                            ),
-                            validator: (value) {
-                              if (value == null || value.isEmpty) {
-                                return 'Required field !';
-                              }
-                              return null;
-                            },
-                            onChanged: (String val){
-                              viewModel.details[index].vacchatName=val;
-                            },
-                          ),
+                          detail.vacchatName!=null?
+
+                          ClearSelectionWidget(label: detail.vacchatName??"",
+                            onTapClear: (){
+                              viewModel.selectedFarmerOnIndex(index,
+                                  selectedFarmer: null);
+                            },) :FarmerSelectionWidget(onFarmerSelected: (Farmer? selectedFarmer){
+                            if(selectedFarmer!=null){
+                              viewModel.selectedFarmerOnIndex(index,
+                                  selectedFarmer: selectedFarmer);
+                            }
+                          }, controller: viewModel.farmerC),
                           const SizedBox(height: 10,),
                           Text("Item",
                             style: theme.textTheme.titleSmall?.copyWith(
