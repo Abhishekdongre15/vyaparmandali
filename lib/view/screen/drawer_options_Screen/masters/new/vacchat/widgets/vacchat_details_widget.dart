@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/api/api_response.dart';
 import 'package:vyaparmandali/app_manager/api/manage_response.dart';
@@ -19,6 +20,22 @@ class VacchatDetailsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final VacchatViewModel viewModel = VacchatViewModel.of(context);
     final theme=Theme.of(context);
+
+    Widget differenceWidget=Selector<VacchatViewModel,int>(
+        shouldRebuild: (prev,nex)=>true,
+        selector: (buildContext , vm)=>vm.packageDifference,
+        builder: (context,int difference,child) {
+          return Padding(
+            padding: const EdgeInsets.only(top: 8),
+            child: Text(difference==0? "Package Distribution Complete":"Remaining package $difference",
+              style:  TextStyle(
+                  color: difference<0? Colors.red:Colors.green
+              ),),
+          );
+        }
+    );
+
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -61,7 +78,7 @@ class VacchatDetailsWidget extends StatelessWidget {
                                 }else {
                                   viewModel.clearDetailOnIndex(index);
                                 }
-
+                                viewModel.calculatePackageDifference();
                               }, child: const Icon(Icons.close,
                                 color: AppColor.primaryColor,)),
                             ],
@@ -115,8 +132,12 @@ class VacchatDetailsWidget extends StatelessWidget {
                             ),),
                           const SizedBox(height: 5,),
                           TextFormField(
-                            keyboardType: TextInputType.number,
                             initialValue: detail.qty,
+                            keyboardType: TextInputType.number,
+                            inputFormatters: <TextInputFormatter>[
+                              FilteringTextInputFormatter.singleLineFormatter,
+                              FilteringTextInputFormatter.digitsOnly,
+                            ],
                             decoration: const InputDecoration(
                               hintText: "Enter Quantity",
                             ),
@@ -128,9 +149,10 @@ class VacchatDetailsWidget extends StatelessWidget {
                             },
                             onChanged: (String val){
                               viewModel.details[index].qty=val;
+                              viewModel.calculatePackageDifference();
                             },
                           ),
-
+                          differenceWidget,
 
 
                           const SizedBox(height: 10,),

@@ -1,5 +1,6 @@
 import 'package:date_time_picker/date_time_picker.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/model/vacchat.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vacchat/widgets/vacchat_details_widget.dart';
@@ -28,7 +29,7 @@ class _AddVacchatViewState extends State<AddVacchatView> {
         VacchatViewModel.of(context).initiateAddVacchat();
       }
       else {
-         VacchatViewModel.of(context).initiateUpdateVacchat(widget.vacchatToUpdate!);
+        VacchatViewModel.of(context).initiateUpdateVacchat(widget.vacchatToUpdate!);
 
       }
       setState(() {
@@ -101,6 +102,10 @@ class _AddVacchatViewState extends State<AddVacchatView> {
                   TextFormField(
                     controller: viewModel.totalPackageC,
                     keyboardType: TextInputType.number,
+                    inputFormatters: <TextInputFormatter>[
+                      FilteringTextInputFormatter.singleLineFormatter,
+                      FilteringTextInputFormatter.digitsOnly,
+                    ], // O
                     decoration: const InputDecoration(
                       hintText: "Enter Total Package",
                     ),
@@ -109,6 +114,9 @@ class _AddVacchatViewState extends State<AddVacchatView> {
                         return 'Required field !';
                       }
                       return null;
+                    },
+                    onChanged: (val){
+                      viewModel.calculatePackageDifference();
                     },
                   ),
 
@@ -138,9 +146,15 @@ class _AddVacchatViewState extends State<AddVacchatView> {
                     child: TextButton(
                       onPressed: () {
                         if (Form.of(ctx).validate()) {
-                          viewModel.addVacchat(
-                              id: widget.vacchatToUpdate?.id
-                          );
+                          if(viewModel.packageDifference<0){
+                            Alert.show("Distribute packages properly");
+                          }
+                          else{
+                            viewModel.addVacchat(
+                                id: widget.vacchatToUpdate?.id
+                            );
+                          }
+
                         }
                         else {
                           Alert.show("Fill all fields");

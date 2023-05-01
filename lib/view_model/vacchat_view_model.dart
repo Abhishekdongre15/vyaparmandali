@@ -20,7 +20,26 @@ class VacchatViewModel extends ChangeNotifier {
 
   TextEditingController dateC = TextEditingController();
   TextEditingController vehicleNumberC = TextEditingController();
+
+
   TextEditingController totalPackageC = TextEditingController();
+  int get totalPackageInInt => totalPackageC.text.trim().isEmpty?0:int.parse(totalPackageC.text.trim());
+
+  int _packageDifference=0;
+  int get packageDifference=>_packageDifference;
+  set packageDifference(int val){
+    _packageDifference=val;
+    notifyListeners();
+  }
+
+
+  void calculatePackageDifference() {
+    List<int> numbers = details.map((e) => int.parse(e.qty==null? "0":e.qty!.isEmpty? "0":e.qty??"0")).toList();
+    int sum = numbers.fold(0, (a, b) => a + b);
+    packageDifference=totalPackageInInt-sum;
+  }
+
+
   TextEditingController vasuliDarC = TextEditingController();
 
   TextEditingController farmerC = TextEditingController();
