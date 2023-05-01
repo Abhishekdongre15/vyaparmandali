@@ -5,8 +5,6 @@ import 'package:vyaparmandali/app_manager/component/drop_down.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/model/bank.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/bank/widget/bank_selection_widget.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/product/widget/product_selection_widget.dart';
-import 'package:vyaparmandali/view_model/bank_view_model.dart';
 import 'package:vyaparmandali/widget/clear_selection_widget.dart';
 
 import '../../../../../../model/rojmel.dart';

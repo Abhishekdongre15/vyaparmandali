@@ -57,7 +57,7 @@ class VacchatViewModel extends ChangeNotifier {
   void selectedFarmerOnIndex(int index,{
     Farmer? selectedFarmer
   }) {
-    details[index].vacchatName="${selectedFarmer!.firstName??""} ${selectedFarmer!.middleName??""} ${selectedFarmer!.lastName??""}";
+    details[index].vacchatName="${selectedFarmer!.firstName??""} ${selectedFarmer.middleName??""} ${selectedFarmer.lastName??""}";
     details[index].farmerId = selectedFarmer.id;
     notifyListeners();
   }

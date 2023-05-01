@@ -1,15 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:vyaparmandali/app_manager/api/api_response.dart';
-import 'package:vyaparmandali/app_manager/api/manage_response.dart';
 import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
 import 'package:vyaparmandali/model/farmer.dart';
 import 'package:vyaparmandali/model/product.dart';
 import 'package:vyaparmandali/model/vacchat.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/farmer/widget/farmer_selection_widget.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/product/widget/product_selection_widget.dart';
-import 'package:vyaparmandali/view_model/product_view_model.dart';
 import 'package:vyaparmandali/view_model/vacchat_view_model.dart';
 import 'package:vyaparmandali/widget/clear_selection_widget.dart';
 
