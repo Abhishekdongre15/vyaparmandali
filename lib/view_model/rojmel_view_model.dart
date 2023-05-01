@@ -8,6 +8,7 @@ import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
+import 'package:vyaparmandali/model/bank.dart';
 
 import '../model/rojmel.dart';
 
@@ -42,10 +43,10 @@ class RojmelViewModel extends ChangeNotifier {
   }
 
 
-  String? _bankId;
-  String? get bankId => _bankId;
-  set bankId(String? val) {
-    _bankId=val;
+  Bank? _selectedBank;
+  Bank? get selectedBank => _selectedBank;
+  set selectedBank(Bank? val) {
+    _selectedBank=val;
     notifyListeners();
   }
 
@@ -63,7 +64,7 @@ class RojmelViewModel extends ChangeNotifier {
     _selectedTransactionType=val;
     notifyListeners();
     if(val!=transactionsTypes[0]){
-      bankId=null;
+      selectedBank=null;
     }
   }
 
@@ -77,7 +78,7 @@ class RojmelViewModel extends ChangeNotifier {
   void _clearFields() {
     date.clear();
     date.text= DateTime.now().toString();
-    bankId=null;
+    selectedBank=null;
     totalBalance.clear();
     pattiNumber.clear();
     accountName.clear();
@@ -93,8 +94,11 @@ class RojmelViewModel extends ChangeNotifier {
     _clearFields();
     selectedPaymentType = thisRojmel.type ?? "";
     selectedTransactionType = thisRojmel.transactionType ?? "";
-    date.text= DateFormat("dd/MM/yyyy").parse(thisRojmel.date??"").toString();
-    bankId = thisRojmel.bankId ?? "";
+    date.text= DateFormat("yyyy-MM-dd").parse(thisRojmel.date??"").toString();
+    _selectedBank = Bank();
+    _selectedBank!.id=thisRojmel.bankId ?? "";
+    _selectedBank!.bankName=thisRojmel.bankName ?? "";
+    notifyListeners();
     totalBalance.text = thisRojmel.totalBalance ?? "";
     pattiNumber.text = thisRojmel.pattiNumber ?? "";
     accountName.text = thisRojmel.accountName ?? "";
@@ -155,7 +159,8 @@ class RojmelViewModel extends ChangeNotifier {
         "type": selectedPaymentType,
         "date": date.text,
         "transaction_type": selectedTransactionType,
-        "bank_id": bankId,
+        "bank_id": selectedBank!.id,
+        "bank_name": selectedBank!.bankName,
         "total_balance": totalBalance.text,
         "patti_number": pattiNumber.text,
         "account_name": accountName.text,

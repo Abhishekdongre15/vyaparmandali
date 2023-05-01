@@ -37,6 +37,7 @@ class Rojmel {
   String? date;
   String? transactionType;
   String? bankId;
+  String? bankName;
   String? totalBalance;
   String? pattiNumber;
   String? accountName;
@@ -55,6 +56,7 @@ class Rojmel {
         date,
         transactionType,
         bankId,
+        bankName,
         totalBalance,
         pattiNumber,
         accountName,
@@ -73,6 +75,7 @@ class Rojmel {
     date = json['date'];
     transactionType = json['transaction_type'];
     bankId = json['bank_id'];
+    bankName = json['bankName'];
     totalBalance = json['total_balance'];
     pattiNumber = json['patti_number'];
     accountName = json['account_name'];
@@ -93,6 +96,7 @@ class Rojmel {
     data['date'] = date;
     data['transaction_type'] = transactionType;
     data['bank_id'] = bankId;
+    data['bankName'] = bankName;
     data['total_balance'] = totalBalance;
     data['patti_number'] = pattiNumber;
     data['account_name'] = accountName;

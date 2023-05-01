@@ -6,6 +6,7 @@ import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/model/bank.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/bank/widget/bank_selection_widget.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/product/widget/product_selection_widget.dart';
+import 'package:vyaparmandali/view_model/bank_view_model.dart';
 import 'package:vyaparmandali/widget/clear_selection_widget.dart';
 
 import '../../../../../../model/rojmel.dart';
@@ -36,6 +37,9 @@ class _AddRojmelViewState extends State<AddRojmelView> {
         RojmelViewModel.of(context)
             .initiateUpdateRojmel(widget.rojmelToUpdate!);
       }
+      setState(() {
+
+      });
     });
   }
 
@@ -160,22 +164,20 @@ class _AddRojmelViewState extends State<AddRojmelView> {
                             ),
 
 
-                            Selector<RojmelViewModel,String?>(
+                            Selector<RojmelViewModel,Bank?>(
                                 shouldRebuild: (prev,nex)=>true,
-                                selector: (buildContext , vm)=>vm.bankId,
-                                builder: (context,String? data,child) {
+                                selector: (buildContext , vm)=>vm.selectedBank,
+                                builder: (context,Bank? data,child) {
                                 return   data!=null?
 
-                                ClearSelectionWidget(label: data,
+                                ClearSelectionWidget(label: data.bankName??"",
                                   onTapClear: (){
-                                    viewModel.bankId=null;
+                                    viewModel.selectedBank=null;
                                   },) :BankSelectionWidget(
-                                  selectedBank: data==null? null:Bank(
-                                      bankName: viewModel.bankId
-                                  ),
+                                  selectedBank:  viewModel.selectedBank,
                                   onBankSelected: (Bank? value) {
                                     if(value!=null){
-                                      viewModel.bankId=value.bankName;
+                                      viewModel.selectedBank=value;
                                     }
                                   },
 
@@ -365,6 +367,11 @@ class _AddRojmelViewState extends State<AddRojmelView> {
                           }
                           else if(viewModel.selectedTransactionType==null){
                             Alert.show("Please Select Transaction Type");
+                          }
+                          else if(
+                          viewModel.selectedTransactionType==RojmelViewModel.transactionsTypes[0]
+                              && viewModel.selectedBank==null){
+                            Alert.show("Please Select Bank");
                           }
                           else{
                             viewModel.addRojmel(

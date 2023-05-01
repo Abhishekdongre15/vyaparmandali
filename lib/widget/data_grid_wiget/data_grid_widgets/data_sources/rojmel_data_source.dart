@@ -16,7 +16,7 @@ class RojmelDataSource extends DataGridSource {
     "      Type     ",
     "      Date     ",
     "      Transaction Type     ",
-    "      Bank ID     ",
+    "      Bank Name     ",
     "      Total Balance     ",
     "      Patti Number     ",
     "      Account Name     ",
@@ -39,7 +39,7 @@ class RojmelDataSource extends DataGridSource {
                   columnName: headers[2],
                   value: dataGridRow.transactionType ?? ""),
               DataGridCell<String>(
-                  columnName: headers[3], value: dataGridRow.bankId ?? ""),
+                  columnName: headers[3], value: dataGridRow.bankName ?? ""),
               DataGridCell<String>(
                   columnName: headers[4],
                   value: dataGridRow.totalBalance ?? ""),
