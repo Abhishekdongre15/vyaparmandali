@@ -10,7 +10,7 @@ import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/customer.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/customer/add_customer_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/customer/add_customer_view.dart';
 
 class CustomerViewModel extends ChangeNotifier {
   static CustomerViewModel of(BuildContext context) =>

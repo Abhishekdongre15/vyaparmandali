@@ -10,7 +10,7 @@ import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/bank.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/bank/add_bank_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/bank/add_bank_view.dart';
 
 class BankViewModel extends ChangeNotifier {
 

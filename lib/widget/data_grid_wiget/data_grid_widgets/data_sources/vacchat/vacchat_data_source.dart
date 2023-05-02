@@ -14,7 +14,7 @@ import 'package:vyaparmandali/route_name.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
 import 'package:vyaparmandali/model/vacchat.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vacchat/add_vacchat_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/vacchat/add_vacchat_view.dart';
 import 'package:vyaparmandali/view_model/vacchat_view_model.dart';
 import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/my_data_grid_row_adapter.dart';
 

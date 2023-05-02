@@ -6,23 +6,22 @@ import 'package:vyaparmandali/app_manager/api/manage_response.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_sheet.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/titled_sheet.dart';
 import 'package:vyaparmandali/app_manager/constant/project_constant.dart';
-import 'package:vyaparmandali/app_manager/helper/responsive/responsive.dart';
-import 'package:vyaparmandali/model/vehicle.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vehicle/add_vehicle_view.dart';
-import 'package:vyaparmandali/view_model/vehicle_view_model.dart';
-import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/data_sources/vehicle_data_source.dart';
+import 'package:vyaparmandali/model/hamal.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/hamal/add_hamal_view.dart';
+import 'package:vyaparmandali/view_model/hamal_view_model.dart';
+import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/data_sources/hamal_data_source.dart';
 import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/my_sf_data_grid.dart';
 
-class VehicleMasterView extends StatefulWidget {
-  const VehicleMasterView({Key? key}) : super(key: key);
+class HamalMasterView extends StatefulWidget {
+  const HamalMasterView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return VehicleMasterViewState();
+    return HamalMasterViewState();
   }
 }
 
-class VehicleMasterViewState extends State<VehicleMasterView> {
+class HamalMasterViewState extends State<HamalMasterView> {
 
 
   @override
@@ -33,7 +32,7 @@ class VehicleMasterViewState extends State<VehicleMasterView> {
 
   void get() async {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await VehicleViewModel.of(context).fetchVehicles();
+      await HamalViewModel.of(context).fetchHamal();
     });
   }
 
@@ -41,28 +40,28 @@ class VehicleMasterViewState extends State<VehicleMasterView> {
 
   @override
   Widget build(BuildContext context) {
-    VehicleViewModel viewModel=VehicleViewModel.of(context);
+    HamalViewModel viewModel=HamalViewModel.of(context);
     return Scaffold(
       appBar: AppBar(
-        title:  const Text("Vehicle Master View"),
+        title:  const Text("Hamal Master View"),
       ),
-      body: Selector<VehicleViewModel,ApiResponse<VehicleData>>(
+      body: Selector<HamalViewModel,ApiResponse<HamalData>>(
           shouldRebuild: (prev,nex)=>true,
-          selector: (buildContext , vm)=>vm.vehicleDataResponse,
-          builder: (context, ApiResponse<VehicleData> data,child) {
-            List<Vehicle> vehicles=data.data?.getData??[];
+          selector: (buildContext , vm)=>vm.hamalDataResponse,
+          builder: (context, ApiResponse<HamalData> data,child) {
+            List<Hamal> hamals=data.data?.getAllData??[];
             return Column(
               children: [
                 Expanded(
                   child: ManageResponse(
                       response: data,
                       onPressRetry: (){
-                        viewModel.fetchVehicles();
+                        viewModel.fetchHamal();
                       },
-                      child: vehicles.isNotEmpty? MySfDataGrid(
-                        headers: VehicleDataSource.headers,
-                        columnWidthMode: Responsive.isSmallScreen(context)? ColumnWidthMode.auto:ColumnWidthMode.fill,
-                        source: VehicleDataSource(listOfDocs: vehicles),
+                      child: hamals.isNotEmpty? MySfDataGrid(
+                        headers: HamalDataSource.headers,
+                        columnWidthMode: ColumnWidthMode.fill,
+                        source: HamalDataSource(listOfDocs: hamals),
                       ): ProjectConstant.noDatFoundWidget),
                 ),
               ],
@@ -71,10 +70,10 @@ class VehicleMasterViewState extends State<VehicleMasterView> {
           }
       ),
       floatingActionButton: FloatingActionButton(
-          heroTag: "add_vehicle",
+          heroTag: "add_hamal",
           onPressed: () {
             CustomBottomSheet.open(
-                child: const TitledSheet(title: "Add Vehicle", child: AddVehicleView()));
+                child: const TitledSheet(title: "Add Hamal", child: AddHamalView()));
           },
           child: const Icon(Icons.add)),
     );

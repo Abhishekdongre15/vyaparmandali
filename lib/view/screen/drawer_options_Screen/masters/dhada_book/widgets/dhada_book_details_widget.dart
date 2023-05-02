@@ -8,7 +8,7 @@ import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
 import 'package:vyaparmandali/model/customer.dart';
 import 'package:vyaparmandali/model/dhada_book.dart';
 import 'package:vyaparmandali/model/item.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/customer/widget/customer_selection_widget.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/customer/widget/customer_selection_widget.dart';
 import 'package:vyaparmandali/view_model/dhada_book_view_model.dart';
 
 class DhadaBookDetailsWidget extends StatelessWidget {

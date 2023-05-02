@@ -87,28 +87,19 @@ class NarrationViewModel extends ChangeNotifier {
   }) async{
     ProgressDialogue.show(message: id==null? "Adding Narration":"Updating Narration");
     try {
-      var data=
-      id!=null?
-      await _api.call(
-          url: "update-narration-data",
-          apiCallType: ApiCallType.post(body: {
-            "code": codeC.text,
-            "description": descriptionC.text,
-            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
 
-            "id": id
-          }),
-          token: true
-      )
-          :await _api.call(
-          url: "add-narration-data",
-          apiCallType: ApiCallType.post(body: {
-            "code": codeC.text,
-            'id' : id,
-            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
 
-            "description": descriptionC.text,
-          }),
+      Map body={
+        "code": codeC.text,
+        "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+        "description": descriptionC.text,
+      };
+      if(id!=null){
+        body['id']=id;
+      }
+      var data= await _api.call(
+          url: id!=null? "update-narration-data":"add-narration-data",
+          apiCallType: ApiCallType.post(body: body),
           token: true
       );
       ProgressDialogue.hide();

@@ -6,22 +6,22 @@ import 'package:vyaparmandali/app_manager/api/manage_response.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_sheet.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/titled_sheet.dart';
 import 'package:vyaparmandali/app_manager/constant/project_constant.dart';
-import 'package:vyaparmandali/model/hamal.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/hamal/add_hamal_view.dart';
-import 'package:vyaparmandali/view_model/hamal_view_model.dart';
-import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/data_sources/hamal_data_source.dart';
+import 'package:vyaparmandali/model/group.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/group/add_group_view.dart';
+import 'package:vyaparmandali/view_model/group_view_model.dart';
+import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/data_sources/group_data_source.dart';
 import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/my_sf_data_grid.dart';
 
-class HamalMasterView extends StatefulWidget {
-  const HamalMasterView({Key? key}) : super(key: key);
+class GroupMasterView extends StatefulWidget {
+  const GroupMasterView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return HamalMasterViewState();
+    return GroupMasterViewState();
   }
 }
 
-class HamalMasterViewState extends State<HamalMasterView> {
+class GroupMasterViewState extends State<GroupMasterView> {
 
 
   @override
@@ -32,7 +32,7 @@ class HamalMasterViewState extends State<HamalMasterView> {
 
   void get() async {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await HamalViewModel.of(context).fetchHamal();
+      await GroupViewModel.of(context).fetchGroups();
     });
   }
 
@@ -40,28 +40,28 @@ class HamalMasterViewState extends State<HamalMasterView> {
 
   @override
   Widget build(BuildContext context) {
-    HamalViewModel viewModel=HamalViewModel.of(context);
+    GroupViewModel viewModel=GroupViewModel.of(context);
     return Scaffold(
       appBar: AppBar(
-        title:  const Text("Hamal Master View"),
+        title:  const Text("Group Master View"),
       ),
-      body: Selector<HamalViewModel,ApiResponse<HamalData>>(
+      body: Selector<GroupViewModel,ApiResponse<GroupData>>(
           shouldRebuild: (prev,nex)=>true,
-          selector: (buildContext , vm)=>vm.hamalDataResponse,
-          builder: (context, ApiResponse<HamalData> data,child) {
-            List<Hamal> hamals=data.data?.getAllData??[];
+          selector: (buildContext , vm)=>vm.groupDataResponse,
+          builder: (context, ApiResponse<GroupData> data,child) {
+            List<Group> groups=data.data?.getAllData??[];
             return Column(
               children: [
                 Expanded(
                   child: ManageResponse(
                       response: data,
                       onPressRetry: (){
-                        viewModel.fetchHamal();
+                        viewModel.fetchGroups();
                       },
-                      child: hamals.isNotEmpty? MySfDataGrid(
-                        headers: HamalDataSource.headers,
+                      child: groups.isNotEmpty? MySfDataGrid(
+                        headers: GroupDataSource.headers,
                         columnWidthMode: ColumnWidthMode.fill,
-                        source: HamalDataSource(listOfDocs: hamals),
+                        source: GroupDataSource(listOfDocs: groups),
                       ): ProjectConstant.noDatFoundWidget),
                 ),
               ],
@@ -70,10 +70,10 @@ class HamalMasterViewState extends State<HamalMasterView> {
           }
       ),
       floatingActionButton: FloatingActionButton(
-          heroTag: "add_hamal",
+        heroTag: "add_group",
           onPressed: () {
-            CustomBottomSheet.open(
-                child: const TitledSheet(title: "Add Hamal", child: AddHamalView()));
+          CustomBottomSheet.open(
+          child: const TitledSheet(title: "Add Group", child: AddGroupView()));
           },
           child: const Icon(Icons.add)),
     );

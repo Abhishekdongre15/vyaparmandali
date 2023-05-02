@@ -10,7 +10,7 @@ import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/farmer.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/farmer/add_farmer_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/farmer/add_farmer_view.dart';
 
 class FarmerViewModel extends ChangeNotifier {
 

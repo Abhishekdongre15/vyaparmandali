@@ -10,7 +10,7 @@ import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/product.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/product/add_product_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/product/add_product_view.dart';
 
 class ProductViewModel extends ChangeNotifier {
 

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/model/vacchat.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vacchat/widgets/vacchat_details_widget.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/vacchat/widgets/vacchat_details_widget.dart';
 import 'package:vyaparmandali/view_model/vacchat_view_model.dart';
 
 class AddVacchatView extends StatefulWidget {

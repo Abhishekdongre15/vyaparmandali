@@ -7,22 +7,22 @@ import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_s
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/titled_sheet.dart';
 import 'package:vyaparmandali/app_manager/constant/project_constant.dart';
 import 'package:vyaparmandali/app_manager/helper/responsive/responsive.dart';
-import 'package:vyaparmandali/model/vacchat.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/vacchat/add_vacchat_view.dart';
-import 'package:vyaparmandali/view_model/vacchat_view_model.dart';
-import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/data_sources/vacchat/vacchat_data_source.dart';
+import 'package:vyaparmandali/model/agent.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/agent/add_agent_view.dart';
+import 'package:vyaparmandali/view_model/agent_view_model.dart';
+import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/data_sources/agent_data_source.dart';
 import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/my_sf_data_grid.dart';
 
-class VacchatMasterView extends StatefulWidget {
-  const VacchatMasterView({Key? key}) : super(key: key);
+class AgentMasterView extends StatefulWidget {
+  const AgentMasterView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return VacchatMasterViewState();
+    return AgentMasterViewState();
   }
 }
 
-class VacchatMasterViewState extends State<VacchatMasterView> {
+class AgentMasterViewState extends State<AgentMasterView> {
 
 
   @override
@@ -33,7 +33,7 @@ class VacchatMasterViewState extends State<VacchatMasterView> {
 
   void get() async {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await VacchatViewModel.of(context).fetchVacchat();
+      await AgentViewModel.of(context).fetchAgents();
     });
   }
 
@@ -41,28 +41,28 @@ class VacchatMasterViewState extends State<VacchatMasterView> {
 
   @override
   Widget build(BuildContext context) {
-    VacchatViewModel viewModel=VacchatViewModel.of(context);
+    AgentViewModel viewModel=AgentViewModel.of(context);
     return Scaffold(
       appBar: AppBar(
-        title:  const Text("Vacchat Master View"),
+        title:  const Text("Agent Master View"),
       ),
-      body: Selector<VacchatViewModel,ApiResponse<VacchatData>>(
+      body: Selector<AgentViewModel,ApiResponse<AgentData>>(
           shouldRebuild: (prev,nex)=>true,
-          selector: (buildContext , vm)=>vm.vacchatDataResponse,
-          builder: (context, ApiResponse<VacchatData> data,child) {
-            List<Vacchat> vacchats=data.data?.getData??[];
+          selector: (buildContext , vm)=>vm.agentDataResponse,
+          builder: (context, ApiResponse<AgentData> data,child) {
+            List<Agent> agents=data.data?.getData??[];
             return Column(
               children: [
                 Expanded(
                   child: ManageResponse(
                       response: data,
                       onPressRetry: (){
-                        viewModel.fetchVacchat();
+                        viewModel.fetchAgents();
                       },
-                      child: vacchats.isNotEmpty? MySfDataGrid(
-                        headers: VacchatDataSource.headers,
+                      child: agents.isNotEmpty? MySfDataGrid(
+                        headers: AgentDataSource.headers,
                         columnWidthMode: Responsive.isSmallScreen(context)? ColumnWidthMode.auto:ColumnWidthMode.fill,
-                        source: VacchatDataSource(listOfDocs: vacchats),
+                        source: AgentDataSource(listOfDocs: agents),
                       ): ProjectConstant.noDatFoundWidget),
                 ),
               ],
@@ -71,10 +71,10 @@ class VacchatMasterViewState extends State<VacchatMasterView> {
           }
       ),
       floatingActionButton: FloatingActionButton(
-          heroTag: "add_vacchat",
+          heroTag: "add_agent",
           onPressed: () {
             CustomBottomSheet.open(
-                child: const TitledSheet(title: "Add Vacchat", child: AddVacchatView()));
+                child: const TitledSheet(title: "Add Agent", child: AddAgentView()));
           },
           child: const Icon(Icons.add)),
     );

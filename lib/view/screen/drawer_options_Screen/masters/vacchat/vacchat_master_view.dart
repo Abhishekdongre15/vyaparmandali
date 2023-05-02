@@ -7,22 +7,22 @@ import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_s
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/titled_sheet.dart';
 import 'package:vyaparmandali/app_manager/constant/project_constant.dart';
 import 'package:vyaparmandali/app_manager/helper/responsive/responsive.dart';
-import 'package:vyaparmandali/model/cash_book_item.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/cash_book_item/add_cash_book_item_view.dart';
-import 'package:vyaparmandali/view_model/cash_book_item_view_model.dart';
-import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/data_sources/cash_book_item_data_source.dart';
+import 'package:vyaparmandali/model/vacchat.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/vacchat/add_vacchat_view.dart';
+import 'package:vyaparmandali/view_model/vacchat_view_model.dart';
+import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/data_sources/vacchat/vacchat_data_source.dart';
 import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/my_sf_data_grid.dart';
 
-class CashBookItemMasterView extends StatefulWidget {
-  const CashBookItemMasterView({Key? key}) : super(key: key);
+class VacchatMasterView extends StatefulWidget {
+  const VacchatMasterView({Key? key}) : super(key: key);
 
   @override
   State<StatefulWidget> createState() {
-    return CashBookItemMasterViewState();
+    return VacchatMasterViewState();
   }
 }
 
-class CashBookItemMasterViewState extends State<CashBookItemMasterView> {
+class VacchatMasterViewState extends State<VacchatMasterView> {
 
 
   @override
@@ -33,7 +33,7 @@ class CashBookItemMasterViewState extends State<CashBookItemMasterView> {
 
   void get() async {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) async {
-      await CashBookItemViewModel.of(context).fetchCashBookItem();
+      await VacchatViewModel.of(context).fetchVacchat();
     });
   }
 
@@ -41,28 +41,28 @@ class CashBookItemMasterViewState extends State<CashBookItemMasterView> {
 
   @override
   Widget build(BuildContext context) {
-    CashBookItemViewModel viewModel=CashBookItemViewModel.of(context);
+    VacchatViewModel viewModel=VacchatViewModel.of(context);
     return Scaffold(
       appBar: AppBar(
-        title:  const Text("CashBookItem Master View"),
+        title:  const Text("Vacchat Master View"),
       ),
-      body: Selector<CashBookItemViewModel,ApiResponse<CashBookItemData>>(
+      body: Selector<VacchatViewModel,ApiResponse<VacchatData>>(
           shouldRebuild: (prev,nex)=>true,
-          selector: (buildContext , vm)=>vm.cashBookItemDataResponse,
-          builder: (context, ApiResponse<CashBookItemData> data,child) {
-            List<CashBookItem> cashBookItems=data.data?.getData??[];
+          selector: (buildContext , vm)=>vm.vacchatDataResponse,
+          builder: (context, ApiResponse<VacchatData> data,child) {
+            List<Vacchat> vacchats=data.data?.getData??[];
             return Column(
               children: [
                 Expanded(
                   child: ManageResponse(
                       response: data,
                       onPressRetry: (){
-                        viewModel.fetchCashBookItem();
+                        viewModel.fetchVacchat();
                       },
-                      child: cashBookItems.isNotEmpty? MySfDataGrid(
-                        headers: CashBookItemDataSource.headers,
+                      child: vacchats.isNotEmpty? MySfDataGrid(
+                        headers: VacchatDataSource.headers,
                         columnWidthMode: Responsive.isSmallScreen(context)? ColumnWidthMode.auto:ColumnWidthMode.fill,
-                        source: CashBookItemDataSource(listOfDocs: cashBookItems),
+                        source: VacchatDataSource(listOfDocs: vacchats),
                       ): ProjectConstant.noDatFoundWidget),
                 ),
               ],
@@ -71,10 +71,10 @@ class CashBookItemMasterViewState extends State<CashBookItemMasterView> {
           }
       ),
       floatingActionButton: FloatingActionButton(
-          heroTag: "add_CashBookItem",
+          heroTag: "add_vacchat",
           onPressed: () {
             CustomBottomSheet.open(
-                child: const TitledSheet(title: "Add CashBookItem", child: AddCashBookItemView()));
+                child: const TitledSheet(title: "Add Vacchat", child: AddVacchatView()));
           },
           child: const Icon(Icons.add)),
     );

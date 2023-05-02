@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_sheet.dart';
 import 'package:vyaparmandali/app_manager/component/bottom_sheet/functional_sheet.dart';
+import 'package:vyaparmandali/app_manager/component/bottom_sheet/titled_sheet.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
 import 'package:vyaparmandali/model/customer.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/customer/add_customer_view.dart';
 import 'package:vyaparmandali/view_model/customer_view_model.dart';
 import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/my_data_grid_row_adapter.dart';
 
-import '../../../../app_manager/component/bottom_sheet/titled_sheet.dart';
-import '../../../../view/screen/drawer_options_Screen/masters/new/customer/add_customer_view.dart';
 
 class CustomerDataSource extends DataGridSource {
   static List<String> headers = [

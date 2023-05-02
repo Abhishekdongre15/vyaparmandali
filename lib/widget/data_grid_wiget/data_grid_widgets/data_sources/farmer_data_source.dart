@@ -7,7 +7,7 @@ import 'package:vyaparmandali/app_manager/component/bottom_sheet/functional_shee
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
 import 'package:vyaparmandali/model/farmer.dart';
-import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/new/farmer/add_farmer_view.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/farmer/add_farmer_view.dart';
 import 'package:vyaparmandali/view_model/farmer_view_model.dart';
 import 'package:vyaparmandali/widget/data_grid_wiget/data_grid_widgets/my_data_grid_row_adapter.dart';
 
