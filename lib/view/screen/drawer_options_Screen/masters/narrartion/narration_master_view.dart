@@ -49,7 +49,7 @@ class NarrationMasterViewState extends State<NarrationMasterView> {
           shouldRebuild: (prev,nex)=>true,
           selector: (buildContext , vm)=>vm.narrationDataResponse,
           builder: (context, ApiResponse<NarrationData> data,child) {
-            List<Narration> narrations=data.data?.getAllData??[];
+            List<Narration> narrations=data.data?.getData??[];
             return Column(
               children: [
                 Expanded(
@@ -72,8 +72,7 @@ class NarrationMasterViewState extends State<NarrationMasterView> {
       floatingActionButton: FloatingActionButton(
         heroTag: "add_narration",
           onPressed: () {
-          CustomBottomSheet.open(
-          child: const TitledSheet(title: "Add Narration", child: AddNarrationView()));
+          NarrationViewModel.onPressAddNarration();
           },
           child: const Icon(Icons.add)),
     );

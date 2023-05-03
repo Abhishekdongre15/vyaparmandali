@@ -4,7 +4,9 @@ import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/component/drop_down.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/model/bank.dart';
+import 'package:vyaparmandali/model/narration.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/bank/widget/bank_selection_widget.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/narrartion/widget/narration_selection_widget.dart';
 import 'package:vyaparmandali/widget/clear_selection_widget.dart';
 
 import '../../../../../../model/rojmel.dart';
@@ -339,17 +341,25 @@ class _AddRojmelViewState extends State<AddRojmelView> {
                   const SizedBox(
                     height: 5,
                   ),
-                  TextFormField(
-                    controller: viewModel.description,
-                    decoration: const InputDecoration(
-                      hintText: "Enter Description",
-                    ),
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Required field !';
+                  Selector<RojmelViewModel,Narration?>(
+                      shouldRebuild: (prev,nex)=>true,
+                      selector: (buildContext , vm)=>vm.selectedNarration,
+                      builder: (context, Narration? data,child) {
+                        return data!=null?
+
+                        ClearSelectionWidget(label: data.description??"",
+                          onTapClear: (){
+                            viewModel.description.clear();
+                            viewModel.selectedNarration=null;
+                          },) :NarrationSelectionWidget(
+                          controller: viewModel.description,
+                          onNarrationSelected: (Narration? val) {
+                            viewModel.selectedNarration=val;
+                          },
+                          selectedNarration: data,
+
+                        );
                       }
-                      return null;
-                    },
                   ),
 
 
@@ -370,6 +380,10 @@ class _AddRojmelViewState extends State<AddRojmelView> {
                           viewModel.selectedTransactionType==RojmelViewModel.transactionsTypes[0]
                               && viewModel.selectedBank==null){
                             Alert.show("Please Select Bank");
+                          }
+                          else if(
+                          viewModel.selectedNarration == null){
+                            Alert.show("Please Select Description");
                           }
                           else{
                             viewModel.addRojmel(

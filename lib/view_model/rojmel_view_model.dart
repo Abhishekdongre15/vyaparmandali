@@ -9,6 +9,7 @@ import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/bank.dart';
+import 'package:vyaparmandali/model/narration.dart';
 
 import '../model/rojmel.dart';
 
@@ -27,6 +28,15 @@ class RojmelViewModel extends ChangeNotifier {
   TextEditingController amount = TextEditingController();
   TextEditingController cheqNo = TextEditingController();
   TextEditingController description = TextEditingController();
+
+
+  Narration? _selectedNarration;
+  Narration? get selectedNarration=>_selectedNarration;
+  set selectedNarration(Narration? val){
+    _selectedNarration=val;
+    notifyListeners();
+  }
+
 
 
   static List<String> paymentTypes=[
@@ -85,6 +95,7 @@ class RojmelViewModel extends ChangeNotifier {
     amount.clear();
     cheqNo.clear();
     description.clear();
+    selectedNarration = null;
     accountCode.clear();
     selectedPaymentType=null;
     selectedTransactionType=null;
@@ -99,6 +110,8 @@ class RojmelViewModel extends ChangeNotifier {
     _selectedBank!.id=thisRojmel.bankId ?? "";
     _selectedBank!.bankName=thisRojmel.bankName ?? "";
     notifyListeners();
+    _selectedNarration = Narration();
+    _selectedNarration!.description = thisRojmel.description??"";
     totalBalance.text = thisRojmel.totalBalance ?? "";
     pattiNumber.text = thisRojmel.pattiNumber ?? "";
     accountName.text = thisRojmel.accountName ?? "";
@@ -167,7 +180,7 @@ class RojmelViewModel extends ChangeNotifier {
         "account_code": accountCode.text,
         "amount": amount.text,
         "cheq_no": cheqNo.text,
-        "description": description.text,
+        "description": selectedNarration?.description??"",
         "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
       };
       if(id!=null){

@@ -1,30 +1,19 @@
-
 class NarrationData {
   int? code;
   bool? status;
   String? message;
-  Narration? getUserNarrationIdWiseData;
-  List<Narration>? getAllData;
+  List<Narration>? getData;
 
-  NarrationData(
-      {this.code,
-        this.status,
-        this.message,
-        this.getUserNarrationIdWiseData,
-        this.getAllData});
+  NarrationData({this.code, this.status, this.message, this.getData});
 
   NarrationData.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     status = json['status'];
     message = json['message'];
-    getUserNarrationIdWiseData = json['get_usergroup_id_wise_data'] != null
-        ? Narration.fromJson(
-        json['get_usergroup_id_wise_data'])
-        : null;
-    if (json['get_all_data'] != null) {
-      getAllData = <Narration>[];
-      json['get_all_data'].forEach((v) {
-        getAllData!.add(Narration.fromJson(v));
+    if (json['get_data'] != null) {
+      getData = <Narration>[];
+      json['get_data'].forEach((v) {
+        getData!.add(Narration.fromJson(v));
       });
     }
   }
@@ -34,12 +23,8 @@ class NarrationData {
     data['code'] = code;
     data['status'] = status;
     data['message'] = message;
-    if (getUserNarrationIdWiseData != null) {
-      data['get_usergroup_id_wise_data'] =
-          getUserNarrationIdWiseData!.toJson();
-    }
-    if (getAllData != null) {
-      data['get_all_data'] = getAllData!.map((v) => v.toJson()).toList();
+    if (getData != null) {
+      data['get_data'] = getData!.map((v) => v.toJson()).toList();
     }
     return data;
   }
@@ -47,6 +32,7 @@ class NarrationData {
 
 class Narration {
   String? id;
+  String? userId;
   String? code;
   String? description;
   String? delStatus;
@@ -55,6 +41,7 @@ class Narration {
 
   Narration(
       {this.id,
+        this.userId,
         this.code,
         this.description,
         this.delStatus,
@@ -63,6 +50,7 @@ class Narration {
 
   Narration.fromJson(Map<String, dynamic> json) {
     id = json['id'];
+    userId = json['user_id'];
     code = json['code'];
     description = json['description'];
     delStatus = json['del_status'];
@@ -73,6 +61,7 @@ class Narration {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['id'] = id;
+    data['user_id'] = userId;
     data['code'] = code;
     data['description'] = description;
     data['del_status'] = delStatus;

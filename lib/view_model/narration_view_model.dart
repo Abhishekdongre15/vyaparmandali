@@ -2,12 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:vyaparmandali/app_manager/api/api_call.dart';
 import 'package:vyaparmandali/app_manager/api/api_response.dart';
+import 'package:vyaparmandali/app_manager/component/bottom_sheet/custom_bottom_sheet.dart';
+import 'package:vyaparmandali/app_manager/component/bottom_sheet/titled_sheet.dart';
 import 'package:vyaparmandali/app_manager/component/progress_dialogue.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/app_manager/helper/navigation/navigator.dart';
 import 'package:vyaparmandali/app_manager/service/navigation_service.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/narration.dart';
+import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/narrartion/add_narration_view.dart';
 
 class NarrationViewModel extends ChangeNotifier {
 
@@ -49,7 +52,7 @@ class NarrationViewModel extends ChangeNotifier {
 
 
   Future<void> fetchNarrations() async {
-    if((narrationDataResponse.data?.getAllData??[]).isEmpty){
+    if((narrationDataResponse.data?.getData??[]).isEmpty){
       narrationDataResponse=ApiResponse<NarrationData>.loading('Fetching Narrations');
     }
 
@@ -147,6 +150,53 @@ class NarrationViewModel extends ChangeNotifier {
     }
   }
 
+
+
+
+  ApiResponse<List<Narration>> _searchedNarrationResponse=ApiResponse<List<Narration>>.initial("Initial");
+  ApiResponse<List<Narration>> get searchedNarrationResponse=>_searchedNarrationResponse;
+  set searchedNarrationResponse(ApiResponse<List<Narration>> val){
+    _searchedNarrationResponse=val;
+    notifyListeners();
+  }
+
+
+  Future<void> fetchNarrationByDescription({
+    required String narrationName
+  }) async {
+    searchedNarrationResponse=ApiResponse<List<Narration>>.loading('Fetching Narrations');
+    try{
+      var data=await _api.call(
+          url: "fetch-narration-data-by-description",
+          apiCallType: ApiCallType.post(body: {
+            "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
+            "description": narrationName
+          }),
+          token: true
+      );
+
+      if(data['code']==200 && data['status']==true){
+
+        searchedNarrationResponse=ApiResponse<List<Narration>>.completed(
+            List<Narration>.from(
+                (data['fetch_narration_data_by_description'] as List).map((e) => Narration.fromJson(e))
+            )
+        );
+      }
+      else {
+        searchedNarrationResponse=ApiResponse<List<Narration>>.empty("Data Not found");
+      }
+    }
+    catch(e){
+      searchedNarrationResponse=ApiResponse<List<Narration>>.error(e.toString());
+    }
+
+  }
+
+  static void onPressAddNarration(){
+    CustomBottomSheet.open(
+        child: const TitledSheet(title: "Add Narration", child: AddNarrationView()));
+  }
 
 
 
