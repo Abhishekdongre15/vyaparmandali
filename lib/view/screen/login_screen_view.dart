@@ -38,7 +38,7 @@ class _LoginScreenViewState extends State<LoginScreenView> {
         child:Container(
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage("assets/images/farm_background.jpg"),
+              image: AssetImage("assets/images/farm_background.png"),
               fit: BoxFit.cover,
             ),
           ),
@@ -92,7 +92,7 @@ class _LoginScreenViewState extends State<LoginScreenView> {
                               children: [
                                 TextFormField(
                                   controller: viewModel.emailC,
-                                  style: const TextStyle(color: AppColor.white),
+                                  style: const TextStyle(color: AppColor.grey),
                                   decoration:  InputDecoration(
                                       hintText: 'Please Enter Email ID',
                                       contentPadding: !Responsive.isSmallScreen(context)?  const EdgeInsets.all(20): null
@@ -112,7 +112,7 @@ class _LoginScreenViewState extends State<LoginScreenView> {
                                 ),
 
                                 PasswordField(
-                                  style: const TextStyle(color: AppColor.white),
+                                  style: const TextStyle(color: AppColor.black),
                                   theme: CustomTextFieldTheme.secondary,
                                   controller: viewModel.passwordC,
                                   hintText: 'Please Enter Password',

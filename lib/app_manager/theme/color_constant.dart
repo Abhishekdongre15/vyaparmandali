@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:vyaparmandali/app_manager/extension/color_extention.dart';
 
 class AppColor {
-  static const Color primaryColor = Color(0xFFFAC243);
+  static const Color primaryColor = Color(0xFFDA3D1C);
   static final Color secondaryColor = "#FFFFFF".toColor();
 
   static const Color backgroundColor = Colors.white;

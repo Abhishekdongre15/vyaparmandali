@@ -12,9 +12,9 @@ import 'package:flutter/widgets.dart';
 class $AssetsImagesGen {
   const $AssetsImagesGen();
 
-  /// File path: assets/images/farm_background.jpg
+  /// File path: assets/images/farm_background.png
   AssetGenImage get farmBackground =>
-      const AssetGenImage('assets/images/farm_background.jpg');
+      const AssetGenImage('assets/images/farm_background.png');
 
   /// File path: assets/images/mount.png
   AssetGenImage get mount => const AssetGenImage('assets/images/mount.png');

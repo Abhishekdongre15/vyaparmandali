@@ -32,13 +32,13 @@ class CustomTextFieldTheme {
     isDense: true,
     prefixStyle: Typography.whiteMountainView.titleMedium,
     hintStyle:  TextStyle(
-        color: AppColor.white.withOpacity(0.6)
+        color: AppColor.black.withOpacity(0.6)
     ),
     contentPadding: const EdgeInsets.all(
         10
     ),
     labelStyle: const TextStyle(
-      color: AppColor.white,
+      color: AppColor.black,
 
     ),
     filled: true,
