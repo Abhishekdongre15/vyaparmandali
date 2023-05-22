@@ -34,7 +34,7 @@ class _ReportViewState extends State<ReportView> {
     //   setState((){ });
     // });
 
-    FlutterDownloader.registerCallback(downloadCallback);
+    FlutterDownloader.registerCallback((id, status, progress) {}, step: 10);
   }
 
   void get() async {

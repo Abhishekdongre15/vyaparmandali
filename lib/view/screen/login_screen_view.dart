@@ -4,11 +4,11 @@ import 'package:go_router/go_router.dart';
 import 'package:vyaparmandali/app_manager/component/colored_safe_area.dart';
 import 'package:vyaparmandali/app_manager/component/password_field.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
-import 'package:vyaparmandali/route_name.dart';
 import 'package:vyaparmandali/app_manager/helper/responsive/responsive.dart';
 import 'package:vyaparmandali/app_manager/helper/responsive/widget/responsive_screen.dart';
 import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
 import 'package:vyaparmandali/app_manager/theme/widget_theme_data/custom_text_field_theme.dart';
+import 'package:vyaparmandali/route_name.dart';
 import 'package:vyaparmandali/util/email_validation.dart';
 import 'package:vyaparmandali/view_model/login_view_model.dart';
 
@@ -54,13 +54,10 @@ class _LoginScreenViewState extends State<LoginScreenView> {
                           ? MainAxisAlignment.center
                           : MainAxisAlignment.start,
                       children: [
-                        const Align(
+                        Align(
                           alignment: Alignment.bottomCenter,
-                          child: CircleAvatar(
-                            radius: 80,
-                            backgroundImage: NetworkImage(
-                                'https://media.istockphoto.com/photos/millennial-male-team-leader-organize-virtual-workshop-with-employees-picture-id1300972574?b=1&k=20&m=1300972574&s=170667a&w=0&h=2nBGC7tr0kWIU8zRQ3dMg-C5JLo9H2sNUuDjQ5mlYfo='),
-                          ),
+                          child: Image.asset("assets/images/logo.png",
+                              height: 200),
                         ),
                         const SizedBox(
                           height: 10,

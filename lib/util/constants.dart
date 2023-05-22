@@ -23,38 +23,42 @@ final List<Entry> data = <Entry>[
     <Entry>[
       Entry(
         "FOR ADMIN",
-          <Entry>[
-            Entry('REGISTERED USER'),
-          ],
+        <Entry>[
+          Entry('REGISTERED USER'),
+        ],
       ),
-      Entry('HAMAL'),
+      Entry('CODES', <Entry>[
+        Entry("GROUP"),
+        Entry('NARRATION'),
+        Entry('STD CODE'),
+      ]),
+      Entry('ITEM', <Entry>[
+        Entry("PRODUCT"),
+        Entry('HAMAL'),
+      ]),
       Entry('AGENT'),
       Entry('BANK'),
       Entry('PRODUCT'),
       Entry('WEIGHT'),
       Entry('VEHICLE'),
       Entry('FARMER'),
+      Entry('CUSTOMER'),
+    ],
+  ),
+  Entry(
+    'DATA ENTRY',
+    <Entry>[
+      Entry('CASH BILL'),
+      Entry('ROJMEL'),
       Entry('VACCHAT'),
       Entry('DHADA BOOK'),
-      Entry('CUSTOMER'),
-      Entry('ROJMEL'),
+      Entry('BILL PROCESSING'),
+      Entry('GROCCERY BOARD AVAK'),
       Entry('CASH BOOK ITEM'),
-      Entry('GROUP'),
-      // Entry('STD CODE'),
-      Entry('NARRATION'),
-
-      // Entry(
-      //   'ITEM',
-      //   <Entry>[
-      //     Entry('ITEM NAME'),
-      //     Entry('ITEM EXP'),
-      //     Entry('HAMALI EXP'),
-      //   ],
-      // ),
-      // Entry('A/C MASTER'),
-      // Entry('PLACE MASTER'),
-      // Entry('A/C SETTINGS'),
-      // Entry('ACCOUNT MERGE'),
+      Entry('OCCATIONAL ENTRY', <Entry>[
+        Entry('JOURNAL ENTRY'),
+        Entry('PURCHASE ENTRY'),
+      ]),
     ],
   ),
 
