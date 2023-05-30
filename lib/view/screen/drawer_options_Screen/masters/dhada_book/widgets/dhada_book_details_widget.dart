@@ -150,7 +150,7 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                           TextFormField(
                             keyboardType: TextInputType.number,
                             inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly
+                              FilteringTextInputFormatter.allow(RegExp(r"[0-9.]")),
                             ], // Only numbers can be entered
                             initialValue: detail.package,
                             decoration: const InputDecoration(
@@ -184,7 +184,8 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                           TextFormField(
                             keyboardType: TextInputType.number,
                             inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly
+                              FilteringTextInputFormatter.allow(RegExp(r"[0-9.]")),
+
                             ], //
                             initialValue: detail.vWeight,
                             decoration: const InputDecoration(
@@ -212,7 +213,7 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                           TextFormField(
                             keyboardType: TextInputType.number,
                             inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly
+                              FilteringTextInputFormatter.allow(RegExp(r"[0-9.]")),
                             ], //
                             initialValue: detail.cWeight,
                             decoration: const InputDecoration(
@@ -264,7 +265,7 @@ class DhadaBookDetailsWidget extends StatelessWidget {
                           TextFormField(
                             keyboardType: TextInputType.number,
                             inputFormatters: <TextInputFormatter>[
-                              FilteringTextInputFormatter.digitsOnly
+                              FilteringTextInputFormatter.allow(RegExp(r"[0-9.]")),
                             ], //
                             initialValue: detail.rate,
                             decoration: const InputDecoration(
