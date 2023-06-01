@@ -54,6 +54,7 @@ import 'package:vyaparmandali/view_model/weight_view_model.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
 
 import 'view/master/items/item_view.dart';
+import 'view/screen/drawer_options_Screen/masters/cash_bill/cash_bill_master_view.dart';
 import 'view/screen/drawer_options_Screen/masters/dhada_book/dhada_book_master_view.dart';
 import 'view/screen/drawer_options_Screen/masters/farmer/farmer_master_view.dart';
 import 'view/screen/drawer_options_Screen/masters/product/product_master_view.dart';
@@ -340,6 +341,12 @@ final GoRouter _router = GoRouter(
       path: RoutePath.reportView,
       builder: (BuildContext context, GoRouterState state) {
         return const ReportView();
+      },
+    ),
+    GoRoute(
+      path: RoutePath.cashBillMaster,
+      builder: (BuildContext context, GoRouterState state) {
+        return const CashBillMasterView();
       },
     ),
   ],

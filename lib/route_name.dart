@@ -31,5 +31,6 @@ class RoutePath {
   static String vacchatDetailsView="/vacchatDetailsView";
   static String dhadaBookDetailsView="/dhadaBookDetailsView";
   static String reportView="/reportView";
+  static String cashBillMaster="/cashBillMaster";
 
 }
