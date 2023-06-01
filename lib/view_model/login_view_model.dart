@@ -41,7 +41,7 @@ class LoginViewModel extends ChangeNotifier {
               }
           ),
       token: true,
-      newToken: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MjQzMDF9.-CmJlmBM1iY3-zSvrlgsGJVTL2EXoZWxXpgbZqbJPmU");
+      newToken: "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6NTk4MTB9.ZmJjYjc3OTE4OTIxYjdjY2JjYzQzOTYyZmU5NDk0ZjllMTgyNDExZWE2Y2YyYTE4MTk3Y2QyYzVjZDVmYjRjOQ");
 
       if(updating==false){
         ProgressDialogue.hide();
