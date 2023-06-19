@@ -160,7 +160,8 @@ class RegistrationViewModel extends ChangeNotifier{
                 "edit_city": city,
                 "id": id
               }
-          ));
+          ),
+      token: true);
       ProgressDialogue.hide();
       Alert.show(data['message']);
       if(data['code']==200 && data['status']==true){
