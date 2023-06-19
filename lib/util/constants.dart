@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:uitoolkit/uitoolkit.dart';
+import 'package:vyaparmandali/ui_tool_kit/src/colors.dart';
+
 import 'package:vyaparmandali/widget/entry.dart';
 
 // Colors used in this app

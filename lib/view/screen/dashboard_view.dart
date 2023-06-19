@@ -1,8 +1,9 @@
 
 import 'package:flutter/material.dart';
-import 'package:uitoolkit/uitoolkit.dart';
+
 import 'package:vyaparmandali/app_manager/theme/color_constant.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
+import 'package:vyaparmandali/ui_tool_kit/src/colors.dart';
 import 'package:vyaparmandali/widget/app_bar_profile.dart';
 import 'package:vyaparmandali/components/light_sidebar.dart';
 import 'package:vyaparmandali/model/user.dart';

@@ -1,13 +1,14 @@
 import 'package:csc_picker/csc_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
-import 'package:uitoolkit/uitoolkit.dart';
+
 import 'package:vyaparmandali/app_manager/component/colored_safe_area.dart';
 import 'package:vyaparmandali/app_manager/component/password_field.dart';
 import 'package:vyaparmandali/app_manager/extension/valid_password.dart';
 import 'package:vyaparmandali/app_manager/helper/alert.dart';
 import 'package:vyaparmandali/gen/assets.gen.dart';
 import 'package:vyaparmandali/model/user.dart';
+import 'package:vyaparmandali/ui_tool_kit/src/colors.dart';
 import 'package:vyaparmandali/util/email_validation.dart';
 import 'package:vyaparmandali/view_model/registration_view_model.dart';
 

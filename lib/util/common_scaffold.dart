@@ -1,7 +1,10 @@
 // ignore: depend_on_referenced_packages
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:uitoolkit/uitoolkit.dart';
+import 'package:vyaparmandali/ui_tool_kit/src/assets.dart';
+import 'package:vyaparmandali/ui_tool_kit/src/colors.dart';
+import 'package:vyaparmandali/ui_tool_kit/src/typography.dart';
+
 
 class CommonScaffold extends StatelessWidget {
   const CommonScaffold({

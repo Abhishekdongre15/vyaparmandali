@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:uitoolkit/uitoolkit.dart';
+
 import 'package:vyaparmandali/app_manager/constant/project_constant.dart';
 import 'package:vyaparmandali/route_name.dart';
 import 'package:vyaparmandali/authentication/user_repository.dart';
+import 'package:vyaparmandali/ui_tool_kit/src/colors.dart';
 import 'package:vyaparmandali/widget/user_avatar.dart';
 
 class AppBarProfile extends StatelessWidget {

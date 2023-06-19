@@ -1,0 +1,1 @@
+enum CardFace { front, back }

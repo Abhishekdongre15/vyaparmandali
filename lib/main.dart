@@ -13,11 +13,6 @@ import 'package:vyaparmandali/authentication/user_repository.dart';
 import 'package:vyaparmandali/model/dhada_book.dart';
 import 'package:vyaparmandali/model/user.dart';
 import 'package:vyaparmandali/model/vacchat.dart';
-import 'package:vyaparmandali/view/forget_password_view.dart';
-import 'package:vyaparmandali/view/master/ac_master_view.dart';
-import 'package:vyaparmandali/view/master/add_place_master.dart';
-import 'package:vyaparmandali/view/master/items/add_hamali_exp_view.dart';
-import 'package:vyaparmandali/view/master/items/add_item_exp.dart';
 import 'package:vyaparmandali/view/screen/dashboard_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/group/group_master_view.dart';
 import 'package:vyaparmandali/view/screen/drawer_options_Screen/masters/narrartion/narration_master_view.dart';
@@ -52,8 +47,6 @@ import 'package:vyaparmandali/view_model/vehicle_view_model.dart';
 import 'package:vyaparmandali/view_model/weight_view_model.dart';
 // ignore: depend_on_referenced_packages
 import 'package:flutter_web_plugins/url_strategy.dart';
-
-import 'view/master/items/item_view.dart';
 import 'view/screen/drawer_options_Screen/masters/cash_bill/cash_bill_master_view.dart';
 import 'view/screen/drawer_options_Screen/masters/dhada_book/dhada_book_master_view.dart';
 import 'view/screen/drawer_options_Screen/masters/farmer/farmer_master_view.dart';
@@ -191,30 +184,7 @@ final GoRouter _router = GoRouter(
         return const DashboardView();
       },
     ),
-    GoRoute(
-      path: RoutePath.addHamaliExpView,
-      builder: (BuildContext context, GoRouterState state) {
-        return const AddHamaliExpView();
-      },
-    ),
-    GoRoute(
-      path: RoutePath.addItemExp,
-      builder: (BuildContext context, GoRouterState state) {
-        return const AddItemExp();
-      },
-    ),
-    GoRoute(
-      path: RoutePath.addPlaceMaster,
-      builder: (BuildContext context, GoRouterState state) {
-        return const AddPlaceMaster();
-      },
-    ),
-    GoRoute(
-      path: RoutePath.forgetPasswordView,
-      builder: (BuildContext context, GoRouterState state) {
-        return const ForgetPasswordView();
-      },
-    ),
+
     GoRoute(
       path: RoutePath.profilePageView,
       builder: (BuildContext context, GoRouterState state) {
@@ -299,24 +269,14 @@ final GoRouter _router = GoRouter(
         return const NarrationMasterView();
       },
     ),
-    GoRoute(
-      path: RoutePath.acMasterListView,
-      builder: (BuildContext context, GoRouterState state) {
-        return const ACMasterListView();
-      },
-    ),
+
     GoRoute(
       path: RoutePath.rojmelMasterView,
       builder: (BuildContext context, GoRouterState state) {
         return const RojmelMasterView();
       },
     ),
-    GoRoute(
-      path: RoutePath.itemView,
-      builder: (BuildContext context, GoRouterState state) {
-        return const ItemView();
-      },
-    ),
+
     GoRoute(
       path: RoutePath.registeredUserMasterView,
       builder: (BuildContext context, GoRouterState state) {

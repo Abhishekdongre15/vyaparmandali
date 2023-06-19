@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:uitoolkit/uitoolkit.dart';
+import 'package:vyaparmandali/ui_tool_kit/src/colors.dart';
 
 import '../widget/app_bar_profile.dart';
 import '../components/drawer_list.dart';
