@@ -172,8 +172,6 @@ class RojmelViewModel extends ChangeNotifier {
         "type": selectedPaymentType,
         "date": date.text,
         "transaction_type": selectedTransactionType,
-        "bank_id": selectedBank!.id,
-        "bank_name": selectedBank!.bankName,
         "total_balance": totalBalance.text,
         "patti_number": pattiNumber.text,
         "account_name": accountName.text,
@@ -183,6 +181,10 @@ class RojmelViewModel extends ChangeNotifier {
         "description": selectedNarration?.description??"",
         "user_id": UserRepository.of(NavigationService.context!).getUser.id.toString(),
       };
+      if(selectedBank!=null) {
+        body.addAll({ "bank_id": selectedBank?.id.toString(),
+          "bank_name": selectedBank?.bankName.toString(),});
+      }
       if(id!=null){
         body['id']=id;
       }

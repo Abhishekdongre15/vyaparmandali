@@ -27,6 +27,7 @@ import 'package:vyaparmandali/view/screen/drawer_options_Screen/reports/report_v
 import 'package:vyaparmandali/view/screen/login_screen_view.dart';
 import 'package:vyaparmandali/view/screen/profile/profile_page_view.dart';
 import 'package:vyaparmandali/view/screen/splash_screen_view.dart';
+import 'package:vyaparmandali/view_model/cash_bill_view_model.dart';
 import 'package:vyaparmandali/view_model/customer_view_model.dart';
 import 'package:vyaparmandali/view_model/agent_view_model.dart';
 import 'package:vyaparmandali/view_model/bank_view_model.dart';
@@ -124,6 +125,8 @@ Future main() async {
             create: (_) => VacchatViewModel()),
         ChangeNotifierProvider<DhadaBookViewModel>(
             create: (_) => DhadaBookViewModel()),
+        ChangeNotifierProvider<CashBillViewModel>(
+            create: (_) => CashBillViewModel()),
         ChangeNotifierProvider<CashBookItemViewModel>(
             create: (_) => CashBookItemViewModel()),
         ChangeNotifierProvider<UserRegistrationMasterViewModel>(
